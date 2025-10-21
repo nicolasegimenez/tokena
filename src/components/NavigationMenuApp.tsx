@@ -73,7 +73,7 @@ const NavigationMenuApp = () => {
         </NavigationMenuItem>
 
         <NavigationMenuItem>
-          <NavigationMenuLink href="/settings">
+          <NavigationMenuLink href="/profile">
             Profile
           </NavigationMenuLink>
         </NavigationMenuItem>
