@@ -76,6 +76,7 @@ const menuItems = [
 const singleMenuItems = [
   { href: "/market", title: "Market Place" },
   { href: "/profile", title: "Profile" },
+  { href: "/token", title: "Token Management" },
 ];
 
 const NavigationMenuApp = () => {

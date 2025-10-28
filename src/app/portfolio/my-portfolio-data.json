@@ -1,0 +1,24 @@
+{
+  "portfolioValue": 12345.67,
+  "portfolioChange24h": 123.45,
+  "portfolioChangePercent24h": 1.01,
+  "portfolioValueHistory": [
+    { "date": "2024-06-01", "value": 11000 },
+    { "date": "2024-06-02", "value": 11200 },
+    { "date": "2024-06-03", "value": 11500 },
+    { "date": "2024-06-04", "value": 11400 },
+    { "date": "2024-06-05", "value": 11800 },
+    { "date": "2024-06-06", "value": 12000 },
+    { "date": "2024-06-07", "value": 12345.67 }
+  ],
+  "assets": [
+    { "id": 1, "name": "RealEstate Fund A", "symbol": "REFA", "quantity": 50, "price": 123.45, "change24h": 2.5, "logo": "/src/assets/edificio.png" },
+    { "id": 2, "name": "Startup Ventures X", "symbol": "SVX", "quantity": 100, "price": 87.65, "change24h": -1.2, "logo": "/src/assets/startup.png" },
+    { "id": 3, "name": "Ethereum", "symbol": "ETH", "quantity": 0.5, "price": 3500, "change24h": 3.1, "logo": "/src/assets/ethereum.png" }
+  ],
+  "recentActivity": [
+    { "id": 1, "type": "Buy", "token": "REFA", "amount": 10, "price": 120.00, "date": "2024-06-05" },
+    { "id": 2, "type": "Sell", "token": "SVX", "amount": 20, "price": 90.00, "date": "2024-06-03" },
+    { "id": 3, "type": "Deposit", "currency": "USD", "amount": 1000, "date": "2024-06-01" }
+  ]
+}

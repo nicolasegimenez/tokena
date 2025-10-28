@@ -1,0 +1,21 @@
+{
+  "capitalGains": {
+    "shortTerm": {
+      "gains": 1234.56,
+      "losses": -234.56,
+      "net": 1000.00
+    },
+    "longTerm": {
+      "gains": 5432.10,
+      "losses": -432.10,
+      "net": 5000.00
+    }
+  },
+  "transactions": [
+    { "id": 1, "date": "2024-06-05", "type": "Buy", "asset": "RealEstate Fund A", "amount": 10, "price": 120.00, "total": 1200.00 },
+    { "id": 2, "date": "2024-06-03", "type": "Sell", "asset": "Startup Ventures X", "amount": 20, "price": 90.00, "total": 1800.00 },
+    { "id": 3, "date": "2024-06-01", "type": "Deposit", "asset": "USD", "amount": 1000, "price": 1.00, "total": 1000.00 },
+    { "id": 4, "date": "2024-05-28", "type": "Buy", "asset": "Ethereum", "amount": 0.2, "price": 3400.00, "total": 680.00 },
+    { "id": 5, "date": "2024-05-25", "type": "Withdraw", "asset": "USD", "amount": 500, "price": 1.00, "total": 500.00 }
+  ]
+}

@@ -1,0 +1,13 @@
+{
+  "assetDistribution": [
+    { "name": "Real Estate", "value": 400 },
+    { "name": "Startups", "value": 300 },
+    { "name": "Art & Collectibles", "value": 300 },
+    { "name": "Others", "value": 200 }
+  ],
+  "topTokens": [
+    { "id": 1, "name": "RealEstate Fund A", "price": 123.45, "change": "+2.5%", "volume": 123456 },
+    { "id": 2, "name": "Startup Ventures X", "price": 87.65, "change": "-1.2%", "volume": 98765 },
+    { "id": 3, "name": "Classic Art Piece Y", "price": 543.21, "change": "+5.8%", "volume": 54321 }
+  ]
+}

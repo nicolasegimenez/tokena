@@ -1,0 +1,27 @@
+{
+  "id": "project2",
+  "name": "Fondo de Criptomonedas",
+  "description": "Portfolio diversificado de criptomonedas principales con gestión profesional. Invierte en un fondo gestionado que busca maximizar los retornos en el volátil mercado de las criptomonedas.",
+  "image": "/src/assets/ethereum.png",
+  "fundingGoal": 1000000,
+  "amountRaised": 750000,
+  "investors": 350,
+  "pricePerToken": 50,
+  "team": [
+    { "name": "Satoshi Nakamoto", "role": "Fund Manager", "bio": "Experto en criptomonedas con 10 años de experiencia en trading y análisis de mercado." }
+  ],
+  "documents": [
+    { "name": "Fondo Prospectus", "url": "#" },
+    { "name": "Estrategia de Inversión", "url": "#" }
+  ],
+  "compliance": {
+    "tokenStandard": "ERC-20",
+    "legalStructure": "Cayman Islands Mutual Fund",
+    "custodian": "Self-custody (on-chain)",
+    "kycRequired": true,
+    "legalDocuments": [
+      { "name": "Private Placement Memorandum", "url": "#" },
+      { "name": "Subscription Agreement", "url": "#" }
+    ]
+  }
+}

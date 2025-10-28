@@ -1,0 +1,28 @@
+{
+  "id": "project1",
+  "name": "Eco-Friendly Housing Development",
+  "description": "A new development of 50 eco-friendly homes, built with sustainable materials and powered by renewable energy. This project aims to provide affordable, green housing while delivering a solid return for investors through property sales.",
+  "image": "/src/assets/edificio.png",
+  "fundingGoal": 5000000,
+  "amountRaised": 1250000,
+  "investors": 150,
+  "pricePerToken": 100,
+  "team": [
+    { "name": "Jane Doe", "role": "Project Manager", "bio": "15 years of experience in real estate development." },
+    { "name": "John Smith", "role": "Lead Architect", "bio": "Specializes in sustainable architecture." }
+  ],
+  "documents": [
+    { "name": "Project Prospectus", "url": "#" },
+    { "name": "Financial Projections", "url": "#" }
+  ],
+  "compliance": {
+    "tokenStandard": "ERC-3643 (T-REX)",
+    "legalStructure": "Special Purpose Vehicle (SPV) LLC",
+    "custodian": "SecureAsset Custody Ltd.",
+    "kycRequired": true,
+    "legalDocuments": [
+      { "name": "Shareholder Agreement", "url": "#" },
+      { "name": "Property Title Deed", "url": "#" }
+    ]
+  }
+}

@@ -5,6 +5,13 @@ import MarketPlaceApp from "@/components/MarketPlaceApp"
 import Profile from "@/components/Profile"
 import { ThemeProvider } from "@/components/theme-provider"
 import { Layout } from "@/components/Layout"
+import TokenManagement from "@/components/TokenManagement"
+import DashboardPage from "@/app/dashboard/page"
+import AnalyticsPage from "@/app/analytics/page"
+import ReportsPage from "@/app/reports/page"
+import PortfolioPage from "@/app/portfolio/page"
+import InvestProject1Page from "@/app/invest/project1/page"
+import InvestProject2Page from "@/app/invest/project2/page"
 
 function NotFound() {
   return (
@@ -28,8 +35,15 @@ function App() {
           } />
           <Route path="/profile" element={<Profile />} />
           <Route path="/market" element={<MarketPlaceApp />} />
+          <Route path="/token" element={<TokenManagement />} />
+          <Route path="/analytics" element={<AnalyticsPage />} />
+          <Route path="/reports" element={<ReportsPage />} />
+          <Route path="/portfolio" element={<PortfolioPage />} />
+          <Route path="/invest/project1" element={<InvestProject1Page />} />
+          <Route path="/invest/project2" element={<InvestProject2Page />} />
           <Route path="*" element={<NotFound />} />
         </Route>
+        <Route path="/dashboard" element={<DashboardPage />} />
       </Routes>
     </ThemeProvider>
   )

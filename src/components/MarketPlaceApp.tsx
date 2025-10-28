@@ -20,6 +20,7 @@ import {
   SelectValue,
 } from "@/components/ui/select"
 import { useState } from "react"
+import { Link } from "react-router-dom"
 
 const investmentsData = [
     {
@@ -192,12 +193,23 @@ const MarketPlaceApp = () => {
   </CardContent>
             
   <CardFooter>
-              <Button 
-                className="w-full" 
-                disabled={investment.status === "Agotado"}
-              >
-                {investment.status === "Agotado" ? "Agotado" : "Invertir"}
-              </Button>
+    {investment.id === 3 ? (
+      <Button
+        className="w-full"
+        disabled={true}
+      >
+        Próximamente
+      </Button>
+    ) : (
+      <Link to={`/invest/project${investment.id}`} className="w-full">
+        <Button 
+          className="w-full" 
+          disabled={investment.status === "Agotado"}
+        >
+          {investment.status === "Agotado" ? "Agotado" : "Invertir"}
+        </Button>
+      </Link>
+    )}
   </CardFooter>
           </Card>
         ))}
