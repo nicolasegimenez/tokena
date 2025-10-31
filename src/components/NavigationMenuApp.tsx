@@ -21,6 +21,7 @@ import { cn } from "@/lib/utils";
 import { Link } from "react-router-dom";
 
 const menuItems = [
+  /*
   {
     title: "Dashboard",
     items: [
@@ -71,12 +72,14 @@ const menuItems = [
       },
     ],
   },
-];
+  */
+] as any;
 
 const singleMenuItems = [
-  { href: "/market", title: "Market Place" },
-  { href: "/profile", title: "Profile" },
-  { href: "/token", title: "Token Management" },
+  { href: "/market", title: "Invertir" },{href:"/trade", title: "Trade"}, {href: "/create", title: "Publica tu Proyecto"},
+  { href: "/profile", title: "Mi Perfil" },
+ 
+  
 ];
 
 const NavigationMenuApp = () => {

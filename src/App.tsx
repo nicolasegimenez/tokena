@@ -15,6 +15,8 @@ const ReportsPage = lazy(() => import("@/app/reports/page"))
 const PortfolioPage = lazy(() => import("@/app/portfolio/page"))
 const InvestProject1Page = lazy(() => import("@/app/invest/project1/page"))
 const InvestProject2Page = lazy(() => import("@/app/invest/project2/page"))
+const CreateProjectPage = lazy(() => import("@/app/create/page"))
+const TradePage = lazy(() => import("@/app/trade/page"))
 
 function NotFound() {
   return (
@@ -45,6 +47,8 @@ function App() {
             <Route path="/portfolio" element={<PortfolioPage />} />
             <Route path="/invest/project1" element={<InvestProject1Page />} />
             <Route path="/invest/project2" element={<InvestProject2Page />} />
+            <Route path="/create" element={<CreateProjectPage />} />
+            <Route path="/trade" element={<TradePage />} />
             <Route path="*" element={<NotFound />} />
           </Route>
           <Route path="/dashboard" element={<DashboardPage />} />

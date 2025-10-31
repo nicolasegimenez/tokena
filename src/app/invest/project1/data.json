@@ -24,5 +24,16 @@
       { "name": "Shareholder Agreement", "url": "#" },
       { "name": "Property Title Deed", "url": "#" }
     ]
+  },
+  "investmentSummary": {
+    "currency": "DÓLAR",
+    "estimatedTotalReturn": "28,22% en USD",
+    "quarterlyPayment": "1,5% en USD",
+    "totalDuration": "24 meses",
+    "minimumInvestment": "ARS 250.000",
+    "fiduciary": "Compañía Fiduciaria Americana S.A.",
+    "developer": "Barza Real Estate",
+    "constructor": "RIVA",
+    "legalVehicle": "Fideicomiso Privado"
   }
 }
