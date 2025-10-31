@@ -20,7 +20,18 @@ import {
 import { cn } from "@/lib/utils";
 import { Link } from "react-router-dom";
 
-const menuItems = [
+interface SubMenuItem {
+  href: string;
+  title: string;
+  description: string;
+}
+
+interface MenuItem {
+  title: string;
+  items: SubMenuItem[];
+}
+
+const menuItems: MenuItem[] = [
   /*
   {
     title: "Dashboard",
@@ -73,13 +84,18 @@ const menuItems = [
     ],
   },
   */
-] as any;
+];
 
-const singleMenuItems = [
-  { href: "/market", title: "Invertir" },{href:"/trade", title: "Trade"}, {href: "/create", title: "Publica tu Proyecto"},
+interface SingleMenuItem {
+  href: string;
+  title: string;
+}
+
+const singleMenuItems: SingleMenuItem[] = [
+  { href: "/market", title: "Invertir" },
+  { href: "/trade", title: "Trade" },
+  { href: "/create", title: "Publica tu Proyecto" },
   { href: "/profile", title: "Mi Perfil" },
- 
-  
 ];
 
 const NavigationMenuApp = () => {
@@ -98,10 +114,10 @@ const NavigationMenuApp = () => {
             <SheetTitle>Tokena</SheetTitle>
           </SheetHeader>
           <div className="grid gap-4 py-4">
-            {menuItems.map((item) => (
+            {menuItems.map((item: MenuItem) => (
               <div key={item.title}>
                 <h3 className="font-bold">{item.title}</h3>
-                {item.items.map((subItem) => (
+                {item.items.map((subItem: SubMenuItem) => (
                   <Link
                     key={subItem.href}
                     to={subItem.href}
@@ -112,7 +128,7 @@ const NavigationMenuApp = () => {
                 ))}
               </div>
             ))}
-            {singleMenuItems.map((item) => (
+            {singleMenuItems.map((item: SingleMenuItem) => (
               <Link
                 key={item.href}
                 to={item.href}
@@ -130,12 +146,12 @@ const NavigationMenuApp = () => {
   return (
     <NavigationMenu className="max-w-full">
       <NavigationMenuList>
-        {menuItems.map((item) => (
+        {menuItems.map((item: MenuItem) => (
           <NavigationMenuItem key={item.title}>
             <NavigationMenuTrigger>{item.title}</NavigationMenuTrigger>
             <NavigationMenuContent>
               <ul className="grid w-[400px] gap-3 p-4 md:w-[500px] md:grid-cols-2 lg:w-[600px]">
-                {item.items.map((subItem, index) => (
+                {item.items.map((subItem: SubMenuItem, index: number) => (
                   <ListItem
                     key={subItem.href}
                     href={subItem.href}
@@ -149,7 +165,7 @@ const NavigationMenuApp = () => {
             </NavigationMenuContent>
           </NavigationMenuItem>
         ))}
-        {singleMenuItems.map((item) => (
+        {singleMenuItems.map((item: SingleMenuItem) => (
           <NavigationMenuItem key={item.href}>
             <Link to={item.href}>
               <NavigationMenuLink className="p-2 hover:bg-accent">
