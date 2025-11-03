@@ -4,6 +4,7 @@ import { Routes, Route } from "react-router-dom"
 import { ThemeProvider } from "@/components/theme-provider"
 import { Layout } from "@/components/Layout"
 import { Skeleton } from "@/components/ui/skeleton"
+import { AuthProvider } from "@/lib/auth"
 
 const CarouselApp = lazy(() => import("@/components/CarouselApp"))
 const MarketPlaceApp = lazy(() => import("@/components/MarketPlaceApp"))
@@ -17,6 +18,8 @@ const InvestProject1Page = lazy(() => import("@/app/invest/project1/page"))
 const InvestProject2Page = lazy(() => import("@/app/invest/project2/page"))
 const CreateProjectPage = lazy(() => import("@/app/create/page"))
 const TradePage = lazy(() => import("@/app/trade/page"))
+const LoginForm = lazy(() => import("@/components/login-form").then(m => ({ default: m.LoginForm })))
+const RegisterPage = lazy(() => import("@/app/registrarse/page"))
 
 function NotFound() {
   return (
@@ -29,7 +32,8 @@ function NotFound() {
 
 function App() {
   return (
-    <ThemeProvider defaultTheme="dark" storageKey="vite-ui-theme">
+    <AuthProvider>
+      <ThemeProvider defaultTheme="dark" storageKey="vite-ui-theme">
       <Suspense fallback={<div className="w-full h-screen flex items-center justify-center"><Skeleton className="w-1/2 h-1/2" /></div>}>
         <Routes>
           <Route path="/" element={<Layout />}>
@@ -40,6 +44,8 @@ function App() {
               </div>
             } />
             <Route path="/profile" element={<Profile />} />
+            <Route path="/login" element={<LoginForm />} />
+            <Route path="/registrarse" element={<RegisterPage />} />
             <Route path="/market" element={<MarketPlaceApp />} />
             <Route path="/token" element={<TokenManagement />} />
             <Route path="/analytics" element={<AnalyticsPage />} />
@@ -54,7 +60,8 @@ function App() {
           <Route path="/dashboard" element={<DashboardPage />} />
         </Routes>
       </Suspense>
-    </ThemeProvider>
+      </ThemeProvider>
+    </AuthProvider>
   )
 }
 

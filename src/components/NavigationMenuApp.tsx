@@ -18,7 +18,7 @@ import {
   NavigationMenuViewport,
 } from "@/components/ui/navigation-menu";
 import { cn } from "@/lib/utils";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -28,6 +28,7 @@ import {
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
+import { useAuth } from "@/lib/auth";
 
 interface SubMenuItem {
   href: string;
@@ -109,6 +110,8 @@ const singleMenuItems: SingleMenuItem[] = [
 
 const NavigationMenuApp = () => {
   const isMobile = useIsMobile();
+  const { isAuthenticated, user, logout } = useAuth();
+  const navigate = useNavigate();
 
   if (isMobile) {
     return (
@@ -188,12 +191,13 @@ const NavigationMenuApp = () => {
         <NavigationMenuViewport />
       </NavigationMenu>
 
+      {isAuthenticated && (
       <DropdownMenu>
         <DropdownMenuTrigger asChild>
           <button className="inline-flex items-center gap-2 rounded-full p-1 outline-none ring-0 hover:opacity-90">
             <Avatar className="h-9 w-9">
-              <AvatarImage src="" alt="Usuario" />
-              <AvatarFallback>US</AvatarFallback>
+              <AvatarImage src={user?.avatarUrl || ""} alt="Usuario" />
+              <AvatarFallback>{user?.name?.slice(0,2).toUpperCase() || "US"}</AvatarFallback>
             </Avatar>
           </button>
         </DropdownMenuTrigger>
@@ -206,9 +210,7 @@ const NavigationMenuApp = () => {
           <DropdownMenuItem asChild>
             <Link to="/investments">Mis Inversiones</Link>
           </DropdownMenuItem>
-          <DropdownMenuItem asChild>
-            <Link to="/referrals">Mis Referidos</Link>
-          </DropdownMenuItem>
+          
           <DropdownMenuItem asChild>
             <Link to="/benefits">Mis Beneficios</Link>
           </DropdownMenuItem>
@@ -216,9 +218,10 @@ const NavigationMenuApp = () => {
           <DropdownMenuItem asChild>
             <Link to="/account">Mi cuenta</Link>
           </DropdownMenuItem>
-          <DropdownMenuItem>Salir</DropdownMenuItem>
+          <DropdownMenuItem onSelect={(e) => { e.preventDefault(); logout(); navigate("/login"); }}>Salir</DropdownMenuItem>
         </DropdownMenuContent>
       </DropdownMenu>
+      )}
     </div>
   );
 };
