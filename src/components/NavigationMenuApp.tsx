@@ -19,6 +19,15 @@ import {
 } from "@/components/ui/navigation-menu";
 import { cn } from "@/lib/utils";
 import { Link } from "react-router-dom";
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuLabel,
+  DropdownMenuSeparator,
+  DropdownMenuTrigger,
+} from "@/components/ui/dropdown-menu";
+import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 
 interface SubMenuItem {
   href: string;
@@ -144,8 +153,9 @@ const NavigationMenuApp = () => {
   }
 
   return (
-    <NavigationMenu className="max-w-full">
-      <NavigationMenuList>
+    <div className="flex w-full items-center justify-between gap-4">
+      <NavigationMenu className="max-w-full">
+        <NavigationMenuList>
         {menuItems.map((item: MenuItem) => (
           <NavigationMenuItem key={item.title}>
             <NavigationMenuTrigger>{item.title}</NavigationMenuTrigger>
@@ -174,9 +184,42 @@ const NavigationMenuApp = () => {
             </Link>
           </NavigationMenuItem>
         ))}
-      </NavigationMenuList>
-      <NavigationMenuViewport />
-    </NavigationMenu>
+        </NavigationMenuList>
+        <NavigationMenuViewport />
+      </NavigationMenu>
+
+      <DropdownMenu>
+        <DropdownMenuTrigger asChild>
+          <button className="inline-flex items-center gap-2 rounded-full p-1 outline-none ring-0 hover:opacity-90">
+            <Avatar className="h-9 w-9">
+              <AvatarImage src="" alt="Usuario" />
+              <AvatarFallback>US</AvatarFallback>
+            </Avatar>
+          </button>
+        </DropdownMenuTrigger>
+        <DropdownMenuContent align="end" className="w-56">
+          <DropdownMenuLabel>Mi cuenta</DropdownMenuLabel>
+          <DropdownMenuSeparator />
+          <DropdownMenuItem asChild>
+            <Link to="/profile">Mi Perfil</Link>
+          </DropdownMenuItem>
+          <DropdownMenuItem asChild>
+            <Link to="/investments">Mis Inversiones</Link>
+          </DropdownMenuItem>
+          <DropdownMenuItem asChild>
+            <Link to="/referrals">Mis Referidos</Link>
+          </DropdownMenuItem>
+          <DropdownMenuItem asChild>
+            <Link to="/benefits">Mis Beneficios</Link>
+          </DropdownMenuItem>
+          <DropdownMenuSeparator />
+          <DropdownMenuItem asChild>
+            <Link to="/account">Mi cuenta</Link>
+          </DropdownMenuItem>
+          <DropdownMenuItem>Salir</DropdownMenuItem>
+        </DropdownMenuContent>
+      </DropdownMenu>
+    </div>
   );
 };
 
