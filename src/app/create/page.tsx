@@ -4,8 +4,10 @@ import { Label } from "@/components/ui/label";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Button } from "@/components/ui/button";
+import { useLanguage } from '@/lib/language';
 
 export default function CreateProjectPage() {
+  const { t } = useLanguage();
   const [projectName, setProjectName] = useState('');
   const [projectDescription, setProjectDescription] = useState('');
   const [fundingGoal, setFundingGoal] = useState('');
@@ -24,7 +26,7 @@ export default function CreateProjectPage() {
       tokenTicker,
       totalSupply,
     });
-    alert('Proyecto enviado (simulado)! Revisa la consola para los datos.');
+    alert(t('project_submitted_alert'));
     // Reset form
     setProjectName('');
     setProjectDescription('');
@@ -38,35 +40,35 @@ export default function CreateProjectPage() {
     <div className="container mx-auto py-8">
       <Card className="max-w-2xl mx-auto">
         <CardHeader>
-          <CardTitle>Publicar Nuevo Proyecto de Inversión</CardTitle>
+          <CardTitle>{t('publish_new_project')}</CardTitle>
           <CardDescription>
-            Completa los detalles para que otros usuarios puedan invertir en tu proyecto.
+            {t('fill_details_for_investors')}
           </CardDescription>
         </CardHeader>
         <CardContent>
           <form onSubmit={handleSubmit} className="grid gap-4">
             <div className="grid gap-2">
-              <Label htmlFor="projectName">Nombre del Proyecto</Label>
+              <Label htmlFor="projectName">{t('project_name')}</Label>
               <Input
                 id="projectName"
-                placeholder="Mi Innovador Proyecto"
+                placeholder={t('my_innovative_project')}
                 value={projectName}
                 onChange={(e) => setProjectName(e.target.value)}
                 required
               />
             </div>
             <div className="grid gap-2">
-              <Label htmlFor="projectDescription">Descripción del Proyecto</Label>
+              <Label htmlFor="projectDescription">{t('project_description')}</Label>
               <Textarea
                 id="projectDescription"
-                placeholder="Describe tu proyecto en detalle..."
+                placeholder={t('describe_your_project')}
                 value={projectDescription}
                 onChange={(e) => setProjectDescription(e.target.value)}
                 required
               />
             </div>
             <div className="grid gap-2">
-              <Label htmlFor="fundingGoal">Objetivo de Financiación (USD)</Label>
+              <Label htmlFor="fundingGoal">{t('funding_goal_usd')}</Label>
               <Input
                 id="fundingGoal"
                 type="number"
@@ -78,17 +80,17 @@ export default function CreateProjectPage() {
               />
             </div>
             <div className="grid gap-2">
-              <Label htmlFor="projectImageUrl">URL de la Imagen del Proyecto</Label>
+              <Label htmlFor="projectImageUrl">{t('project_image_url')}</Label>
               <Input
                 id="projectImageUrl"
                 type="url"
-                placeholder="https://ejemplo.com/imagen-proyecto.jpg"
+                placeholder={t('project_image_url_placeholder')}
                 value={projectImageUrl}
                 onChange={(e) => setProjectImageUrl(e.target.value)}
               />
             </div>
             <div className="grid gap-2">
-              <Label htmlFor="tokenTicker">Símbolo del Token (Ej: MYPROJ)</Label>
+              <Label htmlFor="tokenTicker">{t('token_symbol')}</Label>
               <Input
                 id="tokenTicker"
                 placeholder="MYPROJ"
@@ -99,7 +101,7 @@ export default function CreateProjectPage() {
               />
             </div>
             <div className="grid gap-2">
-              <Label htmlFor="totalSupply">Suministro Total de Tokens</Label>
+              <Label htmlFor="totalSupply">{t('total_token_supply')}</Label>
               <Input
                 id="totalSupply"
                 type="number"
@@ -110,12 +112,12 @@ export default function CreateProjectPage() {
                 min="1"
               />
             </div>
-            <Button type="submit" className="w-full">Publicar Proyecto</Button>
+            <Button type="submit" className="w-full">{t('publish_project_button')}</Button>
           </form>
         </CardContent>
         <CardFooter>
           <p className="text-sm text-muted-foreground">
-            Al publicar, tu proyecto estará visible para posibles inversores.
+            {t('by_publishing_note')}
           </p>
         </CardFooter>
       </Card>

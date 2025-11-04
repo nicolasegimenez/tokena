@@ -19,53 +19,55 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select"
-import { useState } from "react"
+import { useState, useMemo } from "react"
 import { Link } from "react-router-dom"
 import PaymentDialog from "@/components/PaymentDialog"
-
-
-const investmentsData = [
-    {
-      id: 1,
-      title: "Departamentos Pozo Tokenizados",
-      description: "Inversión en departamentos de lujo en zona premium con tokenización completa",
-      price: 50000,
-      roi: 12,
-      duration: 24,
-      available: 15,
-      status: "Disponible",
-      category: "Real Estate",
-      image: edificiosImg,
-      currency:"Dolares"
-
-    },
-    {
-      id: 2,
-      title: "Fondo de Criptomonedas",
-      description: "Portfolio diversificado de criptomonedas principales con gestión profesional",
-      price: 25000,
-      roi: 18,
-      duration: 12,
-      available: 50,
-      status: "Disponible",
-      category: "Crypto",
-      image: ethereumImg
-    },
-    {
-      id: 3,
-      title: "Startup Tech Tokenizada",
-      description: "Participación en startup de tecnología con gran potencial de crecimiento",
-      price: 75000,
-      roi: 25,
-      duration: 36,
-      available: 8,
-      status: "Agotado",
-      category: "Startup",
-      image: startupImg
-    }
-  ]
+import { useLanguage } from "@/lib/language"
 
 const MarketPlaceApp = () => {
+    const { t, language } = useLanguage();
+
+    const investmentsData = useMemo(() => [
+        {
+          id: 1,
+          title: t('tokenized_apartments_title'),
+          description: t('tokenized_apartments_desc'),
+          price: 50000,
+          roi: 12,
+          duration: 24,
+          available: 15,
+          status: t('available'),
+          category: t('real_estate'),
+          image: edificiosImg,
+          currency:"Dolares"
+    
+        },
+        {
+          id: 2,
+          title: t('crypto_fund_title'),
+          description: t('crypto_fund_desc'),
+          price: 25000,
+          roi: 18,
+          duration: 12,
+          available: 50,
+          status: t('available'),
+          category: t('crypto'),
+          image: ethereumImg
+        },
+        {
+          id: 3,
+          title: t('tokenized_startup_title'),
+          description: t('tokenized_startup_desc'),
+          price: 75000,
+          roi: 25,
+          duration: 36,
+          available: 8,
+          status: t('sold_out'),
+          category: t('startup'),
+          image: startupImg
+        }
+      ], [language]);
+
     const [investments, setInvestments] = useState(investmentsData);
     const [searchTerm, setSearchTerm] = useState("");
     const [category, setCategory] = useState("all");
@@ -112,14 +114,14 @@ const MarketPlaceApp = () => {
   return (
     <div className="container mx-auto p-6">
       <div className="mb-8">
-        <h1 className="text-3xl font-bold mb-2">Invest Market</h1>
+        <h1 className="text-3xl font-bold mb-2">{t('invest_market')}</h1>
         <p className="text-muted-foreground">
-          Descubre oportunidades de inversión tokenizadas
+          {t('discover_tokenized_opportunities')}
         </p>
       </div>
       <div className="flex justify-between mb-4">
         <Input
-          placeholder="Search..."
+          placeholder={t('search')}
           value={searchTerm}
           onChange={handleSearch}
           className="max-w-sm"
@@ -127,24 +129,24 @@ const MarketPlaceApp = () => {
         <div className="flex gap-2">
             <Select onValueChange={handleCategoryChange} defaultValue="all">
                 <SelectTrigger className="w-[180px]">
-                    <SelectValue placeholder="Category" />
+                    <SelectValue placeholder={t('category')} />
                 </SelectTrigger>
                 <SelectContent>
-                    <SelectItem value="all">All</SelectItem>
-                    <SelectItem value="Real Estate">Real Estate</SelectItem>
-                    <SelectItem value="Crypto">Crypto</SelectItem>
-                    <SelectItem value="Startup">Startup</SelectItem>
+                    <SelectItem value="all">{t('all')}</SelectItem>
+                    <SelectItem value="Real Estate">{t('real_estate')}</SelectItem>
+                    <SelectItem value="Crypto">{t('crypto')}</SelectItem>
+                    <SelectItem value="Startup">{t('startup')}</SelectItem>
                 </SelectContent>
             </Select>
             <Select onValueChange={handleSortByChange} defaultValue="default">
                 <SelectTrigger className="w-[180px]">
-                    <SelectValue placeholder="Sort by" />
+                    <SelectValue placeholder={t('sort_by')} />
                 </SelectTrigger>
                 <SelectContent>
-                    <SelectItem value="default">Default</SelectItem>
-                    <SelectItem value="price-asc">Price: Low to High</SelectItem>
-                    <SelectItem value="price-desc">Price: High to Low</SelectItem>
-                    <SelectItem value="roi-desc">ROI: High to Low</SelectItem>
+                    <SelectItem value="default">{t('default')}</SelectItem>
+                    <SelectItem value="price-asc">{t('price_asc')}</SelectItem>
+                    <SelectItem value="price-desc">{t('price_desc')}</SelectItem>
+                    <SelectItem value="roi-desc">{t('roi_desc')}</SelectItem>
                 </SelectContent>
             </Select>
         </div>
@@ -166,7 +168,7 @@ const MarketPlaceApp = () => {
               <div className="flex justify-between items-start mb-2">
                 <Badge variant="secondary">{investment.category}</Badge>
                 <Badge 
-                  variant={investment.status === "Disponible" ? "default" : "destructive"}
+                  variant={investment.status === t('available') ? "default" : "destructive"}
                 >
                   {investment.status}
                 </Badge>
@@ -181,7 +183,7 @@ const MarketPlaceApp = () => {
               <div className="grid grid-cols-1 place-items-center text-center"> 
                 <div>
                   <p className="text-5xl md:text-7xl font-extrabold text-green-600">{investment.roi}%</p>
-                  <p className="mt-2 text-xl text-muted-foreground max-w-xs mx-auto">De Rentabilidad esperada en {investment.currency} a {investment.duration} meses</p>
+                  <p className="mt-2 text-xl text-muted-foreground max-w-xs mx-auto">{t('expected_return', { currency: investment.currency, duration: investment.duration })}</p>
                 </div>
               </div>
             </CardContent>
@@ -189,17 +191,17 @@ const MarketPlaceApp = () => {
   <CardFooter>
     {investment.id === 3 ? (
       <Button className="w-full" disabled>
-        Próximamente
+        {t('coming_soon')}
       </Button>
-    ) : investment.status === "Agotado" ? (
+    ) : investment.status === t('sold_out') ? (
       <Button className="w-full" disabled>
-        Agotado
+        {t('sold_out')}
       </Button>
     ) : (
       <div className="flex w-full gap-2">
         <Link to={`/invest/project${investment.id}`} className="flex-1">
           <Button className="w-full bg-foreground text-background hover:bg-foreground/90" variant="default">
-            Más Info
+            {t('more_info')}
           </Button>
         </Link>
         <Button 
@@ -210,7 +212,7 @@ const MarketPlaceApp = () => {
             setPaymentDialogOpen(true);
           }}
         >
-          Invertir
+          {t('invest')}
         </Button>
       </div>
     )}

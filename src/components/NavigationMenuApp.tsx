@@ -31,6 +31,7 @@ import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { useAuth } from "@/lib/auth";
 import { Button } from "./ui/button";
 import { ModeToggle } from "./mode-toggle";
+import { useLanguage } from "@/lib/language";
 
 interface SubMenuItem {
   href: string;
@@ -100,19 +101,35 @@ const menuItems: MenuItem[] = [
 
 interface SingleMenuItem {
   href: string;
-  title: string;
+  titleKey: string;
 }
 
 const singleMenuItems: SingleMenuItem[] = [
-  { href: "/market", title: "Invertir" },
-  { href: "/trade", title: "Trade" },
-  { href: "/create", title: "Publica tu Proyecto" }
+  { href:"/", titleKey:"Home"},
+  { href: "/market", titleKey: "invest" },
+  { href: "/trade", titleKey: "trade" },
+  { href: "/create", titleKey: "create_project" }
 ];
+
+const LanguageSwitcher = () => {
+  const { language, setLanguage } = useLanguage();
+
+  const toggleLanguage = () => {
+    setLanguage(language === 'es' ? 'en' : 'es');
+  };
+
+  return (
+    <Button variant="ghost" size="sm" onClick={toggleLanguage}>
+      {language.toUpperCase()}
+    </Button>
+  );
+};
 
 const NavigationMenuApp = () => {
   const isMobile = useIsMobile();
   const { isAuthenticated, user, logout, login } = useAuth();
   const navigate = useNavigate();
+  const { t } = useLanguage();
 
   if (isMobile) {
     return (
@@ -147,10 +164,11 @@ const NavigationMenuApp = () => {
                 to={item.href}
                 className="block p-2 hover:bg-accent font-bold"
               >
-                {item.title}
+                {t(item.titleKey)}
               </Link>
             ))}
             <div className="flex items-center gap-2 pt-4">
+              <LanguageSwitcher />
               <ModeToggle />
               {!isAuthenticated ? (
                 <div className="inline-flex items-center gap-2">
@@ -198,7 +216,7 @@ const NavigationMenuApp = () => {
           <NavigationMenuItem key={item.href}>
             <Link to={item.href}>
               <NavigationMenuLink className="p-2 hover:bg-accent">
-                {item.title}
+                {t(item.titleKey)}
               </NavigationMenuLink>
             </Link>
           </NavigationMenuItem>
@@ -208,6 +226,7 @@ const NavigationMenuApp = () => {
       </NavigationMenu>
 
       <div className="flex items-center gap-2">
+        <LanguageSwitcher />
         <ModeToggle />
         {!isAuthenticated ? (
             <div className="inline-flex items-center gap-2">
@@ -232,23 +251,23 @@ const NavigationMenuApp = () => {
             </button>
           </DropdownMenuTrigger>
           <DropdownMenuContent align="end" className="w-56">
-            <DropdownMenuLabel>Mi cuenta</DropdownMenuLabel>
+            <DropdownMenuLabel>{t('my_account')}</DropdownMenuLabel>
             <DropdownMenuSeparator />
             <DropdownMenuItem asChild>
-              <Link to="/profile">Mi Perfil</Link>
+              <Link to="/profile">{t('my_profile')}</Link>
             </DropdownMenuItem>
             <DropdownMenuItem asChild>
-              <Link to="/investments">Mis Inversiones</Link>
+              <Link to="/investments">{t('my_investments')}</Link>
             </DropdownMenuItem>
             
             <DropdownMenuItem asChild>
-              <Link to="/benefits">Mis Beneficios</Link>
+              <Link to="/benefits">{t('my_benefits')}</Link>
             </DropdownMenuItem>
             <DropdownMenuSeparator />
             <DropdownMenuItem asChild>
-              <Link to="/account">Mi cuenta</Link>
+              <Link to="/account">{t('my_account')}</Link>
             </DropdownMenuItem>
-            <DropdownMenuItem onSelect={(e) => { e.preventDefault(); logout(); navigate("/login"); }}>Salir</DropdownMenuItem>
+            <DropdownMenuItem onSelect={(e) => { e.preventDefault(); logout(); navigate("/login"); }}>{t('logout')}</DropdownMenuItem>
           </DropdownMenuContent>
         </DropdownMenu>
         )}

@@ -92,7 +92,7 @@ export default function TradePage() {
               <div className="grid gap-2">
                 <Label>Categoría</Label>
                 <Select>
-                  <SelectTrigger>
+                  <SelectTrigger className="w-full truncate">
                     <SelectValue placeholder="Todas las categorías" />
                   </SelectTrigger>
                   <SelectContent>
@@ -108,7 +108,7 @@ export default function TradePage() {
               <div className="grid gap-2">
                 <Label>Ordenar por</Label>
                 <Select>
-                  <SelectTrigger>
+                  <SelectTrigger className="w-full truncate">
                     <SelectValue placeholder="Precio: de menor a mayor" />
                   </SelectTrigger>
                   <SelectContent>
