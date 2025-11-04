@@ -1,13 +1,9 @@
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { Button } from "@/components/ui/button";
-import { Input } from "@/components/ui/input";
-import { Label } from "@/components/ui/label";
 import { Avatar, AvatarFallback } from "@/components/ui/avatar";
 import InvestmentSimulator from "@/components/InvestmentSimulator";
 import projectData from "./data.json";
 
 export default function InvestPage() {
-  const progress = (projectData.amountRaised / projectData.fundingGoal) * 100;
 
   return (
     <div className="container mx-auto py-8">
@@ -108,3 +104,4 @@ export default function InvestPage() {
     </div>
   );
 }
+
