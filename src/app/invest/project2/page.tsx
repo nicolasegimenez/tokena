@@ -3,6 +3,7 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Avatar, AvatarFallback } from "@/components/ui/avatar";
+import InvestmentSimulator from "@/components/InvestmentSimulator";
 import projectData from "./data.json";
 
 export default function InvestPage() {
@@ -91,45 +92,17 @@ export default function InvestPage() {
           </Card>
         </div>
 
-        {/* Right Column: Investment Card */}
+        {/* Right Column: Investment Simulator */}
         <div className="lg:col-span-1">
-          <Card className="sticky top-.8">
-            <CardHeader>
-              <CardTitle>Invest in this Project</CardTitle>
-            </CardHeader>
-            <CardContent className="flex flex-col gap-4">
-              <div>
-                <div className="w-full bg-muted rounded-full h-2.5">
-                  <div className="bg-primary h-2.5 rounded-full" style={{ width: `${progress}%` }}></div>
-                </div>
-                <p className="text-sm text-muted-foreground mt-2">
-                  ${projectData.amountRaised.toLocaleString()} raised of ${projectData.fundingGoal.toLocaleString()}
-                </p>
-              </div>
-
-              <div className="grid grid-cols-2 gap-4 text-center">
-                <div>
-                  <p className="text-sm text-muted-foreground">Investors</p>
-                  <p className="text-lg font-bold">{projectData.investors}</p>
-                </div>
-                <div>
-                  <p className="text-sm text-muted-foreground">Price per Token</p>
-                  <p className="text-lg font-bold">${projectData.pricePerToken}</p>
-                </div>
-              </div>
-
-              <div className="flex flex-col gap-2">
-                <Label htmlFor="investment-amount">Investment Amount (USD)</Label>
-                <Input id="investment-amount" type="number" placeholder="e.g., 1000" />
-              </div>
-
-              <div className="text-center text-sm text-muted-foreground">
-                <p>You will receive 20 tokens.</p>
-              </div>
-
-              <Button size="lg" className="w-full">Invest Now</Button>
-            </CardContent>
-          </Card>
+          <InvestmentSimulator
+            projectData={{
+              pricePerToken: projectData.pricePerToken,
+              roi: 18, // ROI del proyecto 2 según MarketPlaceApp
+              duration: 12, // Duración en meses según MarketPlaceApp
+              fundingGoal: projectData.fundingGoal,
+              amountRaised: projectData.amountRaised,
+            }}
+          />
         </div>
       </div>
     </div>

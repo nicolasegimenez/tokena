@@ -21,6 +21,8 @@ import {
 } from "@/components/ui/select"
 import { useState } from "react"
 import { Link } from "react-router-dom"
+import PaymentDialog from "@/components/PaymentDialog"
+
 
 const investmentsData = [
     {
@@ -33,7 +35,9 @@ const investmentsData = [
       available: 15,
       status: "Disponible",
       category: "Real Estate",
-      image: edificiosImg
+      image: edificiosImg,
+      currency:"Dolares"
+
     },
     {
       id: 2,
@@ -66,6 +70,8 @@ const MarketPlaceApp = () => {
     const [searchTerm, setSearchTerm] = useState("");
     const [category, setCategory] = useState("all");
     const [sortBy, setSortBy] = useState("default");
+    const [paymentDialogOpen, setPaymentDialogOpen] = useState(false);
+    const [selectedInvestment, setSelectedInvestment] = useState<typeof investmentsData[0] | null>(null);
 
     const handleSearch = (event: React.ChangeEvent<HTMLInputElement>) => {
         setSearchTerm(event.target.value);
@@ -172,48 +178,54 @@ const MarketPlaceApp = () => {
   </CardHeader>
             
             <CardContent className="space-y-4">
-              <div className="grid grid-cols-2 gap-4 text-sm">
+              <div className="grid grid-cols-1 place-items-center text-center"> 
                 <div>
-                  <p className="font-medium text-muted-foreground">Precio por token</p>
-                  <p className="text-lg font-bold">${investment.price.toLocaleString()}</p>
-                </div>
-                <div>
-                  <p className="font-medium text-muted-foreground">ROI Esperado</p>
-                  <p className="text-lg font-bold text-green-600">{investment.roi}%</p>
-                </div>
-                <div>
-                  <p className="font-medium text-muted-foreground">Duración</p>
-                  <p className="font-semibold">{investment.duration} meses</p>
-                </div>
-                <div>
-                  <p className="font-medium text-muted-foreground">Disponibles</p>
-                  <p className="font-semibold">{investment.available} tokens</p>
+                  <p className="text-5xl md:text-7xl font-extrabold text-green-600">{investment.roi}%</p>
+                  <p className="mt-2 text-xl text-muted-foreground max-w-xs mx-auto">De Rentabilidad esperada en {investment.currency} a {investment.duration} meses</p>
                 </div>
               </div>
-  </CardContent>
+            </CardContent>
             
   <CardFooter>
     {investment.id === 3 ? (
-      <Button
-        className="w-full"
-        disabled={true}
-      >
+      <Button className="w-full" disabled>
         Próximamente
       </Button>
+    ) : investment.status === "Agotado" ? (
+      <Button className="w-full" disabled>
+        Agotado
+      </Button>
     ) : (
-      <Link to={`/invest/project${investment.id}`} className="w-full">
+      <div className="flex w-full gap-2">
+        <Link to={`/invest/project${investment.id}`} className="flex-1">
+          <Button className="w-full bg-foreground text-background hover:bg-foreground/90" variant="default">
+            Más Info
+          </Button>
+        </Link>
         <Button 
-          className="w-full" 
-          disabled={investment.status === "Agotado"}
+          className="flex-1 bg-green-600 text-white hover:bg-green-700" 
+          variant="default"
+          onClick={() => {
+            setSelectedInvestment(investment);
+            setPaymentDialogOpen(true);
+          }}
         >
-          {investment.status === "Agotado" ? "Agotado" : "Invertir"}
+          Invertir
         </Button>
-      </Link>
+      </div>
     )}
   </CardFooter>
           </Card>
         ))}
       </div>
+      
+      {selectedInvestment && (
+        <PaymentDialog
+          open={paymentDialogOpen}
+          onOpenChange={setPaymentDialogOpen}
+          investment={selectedInvestment}
+        />
+      )}
     </div>
   )
 }

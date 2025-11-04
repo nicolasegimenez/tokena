@@ -29,6 +29,8 @@ import {
 } from "@/components/ui/dropdown-menu";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { useAuth } from "@/lib/auth";
+import { Button } from "./ui/button";
+import { ModeToggle } from "./mode-toggle";
 
 interface SubMenuItem {
   href: string;
@@ -104,13 +106,12 @@ interface SingleMenuItem {
 const singleMenuItems: SingleMenuItem[] = [
   { href: "/market", title: "Invertir" },
   { href: "/trade", title: "Trade" },
-  { href: "/create", title: "Publica tu Proyecto" },
-  { href: "/profile", title: "Mi Perfil" },
+  { href: "/create", title: "Publica tu Proyecto" }
 ];
 
 const NavigationMenuApp = () => {
   const isMobile = useIsMobile();
-  const { isAuthenticated, user, logout } = useAuth();
+  const { isAuthenticated, user, logout, login } = useAuth();
   const navigate = useNavigate();
 
   if (isMobile) {
@@ -149,6 +150,21 @@ const NavigationMenuApp = () => {
                 {item.title}
               </Link>
             ))}
+            <div className="flex items-center gap-2 pt-4">
+              <ModeToggle />
+              {!isAuthenticated ? (
+                <div className="inline-flex items-center gap-2">
+                  <Button asChild variant="outline">
+                    <Link to="/registrarse">Registrarse</Link>
+                  </Button>
+                  <Button asChild>
+                    <Link to="/login">Iniciar sesión</Link>
+                  </Button>
+                  {/* Solo para demo: botón rápido para simular login */}
+                  <Button variant="ghost" onClick={() => login()}>Demo</Button>
+                </div>
+              ) : null}
+            </div>
           </div>
         </SheetContent>
       </Sheet>
@@ -156,7 +172,7 @@ const NavigationMenuApp = () => {
   }
 
   return (
-    <div className="flex w-full items-center justify-between gap-4">
+    <div className="flex w-full items-center justify-between gap-4 p-4">
       <NavigationMenu className="max-w-full">
         <NavigationMenuList>
         {menuItems.map((item: MenuItem) => (
@@ -191,37 +207,52 @@ const NavigationMenuApp = () => {
         <NavigationMenuViewport />
       </NavigationMenu>
 
-      {isAuthenticated && (
-      <DropdownMenu>
-        <DropdownMenuTrigger asChild>
-          <button className="inline-flex items-center gap-2 rounded-full p-1 outline-none ring-0 hover:opacity-90">
-            <Avatar className="h-9 w-9">
-              <AvatarImage src={user?.avatarUrl || ""} alt="Usuario" />
-              <AvatarFallback>{user?.name?.slice(0,2).toUpperCase() || "US"}</AvatarFallback>
-            </Avatar>
-          </button>
-        </DropdownMenuTrigger>
-        <DropdownMenuContent align="end" className="w-56">
-          <DropdownMenuLabel>Mi cuenta</DropdownMenuLabel>
-          <DropdownMenuSeparator />
-          <DropdownMenuItem asChild>
-            <Link to="/profile">Mi Perfil</Link>
-          </DropdownMenuItem>
-          <DropdownMenuItem asChild>
-            <Link to="/investments">Mis Inversiones</Link>
-          </DropdownMenuItem>
-          
-          <DropdownMenuItem asChild>
-            <Link to="/benefits">Mis Beneficios</Link>
-          </DropdownMenuItem>
-          <DropdownMenuSeparator />
-          <DropdownMenuItem asChild>
-            <Link to="/account">Mi cuenta</Link>
-          </DropdownMenuItem>
-          <DropdownMenuItem onSelect={(e) => { e.preventDefault(); logout(); navigate("/login"); }}>Salir</DropdownMenuItem>
-        </DropdownMenuContent>
-      </DropdownMenu>
-      )}
+      <div className="flex items-center gap-2">
+        <ModeToggle />
+        {!isAuthenticated ? (
+            <div className="inline-flex items-center gap-2">
+              <Button asChild variant="outline">
+                <Link to="/registrarse">Registrarse</Link>
+              </Button>
+              <Button asChild>
+                <Link to="/login">Iniciar sesión</Link>
+              </Button>
+              {/* Solo para demo: botón rápido para simular login */}
+              <Button variant="ghost" onClick={() => login()}>Demo Login</Button>
+            </div>
+          ) : null}
+        {isAuthenticated && (
+        <DropdownMenu>
+          <DropdownMenuTrigger asChild>
+            <button className="inline-flex items-center gap-2 rounded-full p-1 outline-none ring-0 hover:opacity-90">
+              <Avatar className="h-9 w-9">
+                <AvatarImage src={user?.avatarUrl || ""} alt="Usuario" />
+                <AvatarFallback>{user?.name?.slice(0,2).toUpperCase() || "US"}</AvatarFallback>
+              </Avatar>
+            </button>
+          </DropdownMenuTrigger>
+          <DropdownMenuContent align="end" className="w-56">
+            <DropdownMenuLabel>Mi cuenta</DropdownMenuLabel>
+            <DropdownMenuSeparator />
+            <DropdownMenuItem asChild>
+              <Link to="/profile">Mi Perfil</Link>
+            </DropdownMenuItem>
+            <DropdownMenuItem asChild>
+              <Link to="/investments">Mis Inversiones</Link>
+            </DropdownMenuItem>
+            
+            <DropdownMenuItem asChild>
+              <Link to="/benefits">Mis Beneficios</Link>
+            </DropdownMenuItem>
+            <DropdownMenuSeparator />
+            <DropdownMenuItem asChild>
+              <Link to="/account">Mi cuenta</Link>
+            </DropdownMenuItem>
+            <DropdownMenuItem onSelect={(e) => { e.preventDefault(); logout(); navigate("/login"); }}>Salir</DropdownMenuItem>
+          </DropdownMenuContent>
+        </DropdownMenu>
+        )}
+      </div>
     </div>
   );
 };
