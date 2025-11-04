@@ -9,17 +9,17 @@ import { Search, Tag, Building, DollarSign } from 'lucide-react';
 
 // --- Datos de Ejemplo Mejorados ---
 const availableListings = [
-  { id: '1', projectName: 'Eco-Friendly Housing', tokenSymbol: 'ECOH', quantity: 100, pricePerToken: 105, seller: '0xabc...', image: '/src/assets/edificio.png', category: 'Real Estate' },
-  { id: '2', projectName: 'Renewable Energy Farm', tokenSymbol: 'RENF', quantity: 50, pricePerToken: 210, seller: '0xdef...', image: '/src/assets/startup.png', category: 'Energy' },
-  { id: '3', projectName: 'Tech Startup Fund', tokenSymbol: 'TSF', quantity: 200, pricePerToken: 50, seller: '0xghi...', image: '/src/assets/ethereum.png', category: 'Venture Capital' },
-  { id: '4', projectName: 'Real Estate Portfolio', tokenSymbol: 'REPT', quantity: 75, pricePerToken: 150, seller: '0xjkl...', image: '/src/assets/edificio.png', category: 'Real Estate' },
-  { id: '5', projectName: 'Crypto Index Fund', tokenSymbol: 'CIF', quantity: 300, pricePerToken: 25, seller: '0xmno...', image: '/src/assets/ethereum.png', category: 'Crypto' },
-  { id: '6', projectName: 'Art Collection', tokenSymbol: 'ARTC', quantity: 10, pricePerToken: 1000, seller: '0xpqr...', image: '/src/assets/startup.png', category: 'Collectibles' },
+  { id: '1', projectName: 'Eco-Friendly Housing', tokenSymbol: 'ECOH', quantity: 100, pricePerToken: 105, seller: '0xabc...', image: 'https://res.cloudinary.com/dhacybdxf/image/upload/v1762299810/edificio_qhi0ri.png', category: 'Real Estate' },
+  { id: '2', projectName: 'Renewable Energy Farm', tokenSymbol: 'RENF', quantity: 50, pricePerToken: 210, seller: '0xdef...', image: 'https://res.cloudinary.com/dhacybdxf/image/upload/v1762299809/startup_tb5wu3.png', category: 'Energy' },
+  { id: '3', projectName: 'Tech Startup Fund', tokenSymbol: 'TSF', quantity: 200, pricePerToken: 50, seller: '0xghi...', image: 'https://res.cloudinary.com/dhacybdxf/image/upload/v1762299809/ethereum_vs8k4y.png', category: 'Venture Capital' },
+  { id: '4', projectName: 'Real Estate Portfolio', tokenSymbol: 'REPT', quantity: 75, pricePerToken: 150, seller: '0xjkl...', image: 'https://res.cloudinary.com/dhacybdxf/image/upload/v1762299810/edificio_qhi0ri.png', category: 'Real Estate' },
+  { id: '5', projectName: 'Crypto Index Fund', tokenSymbol: 'CIF', quantity: 300, pricePerToken: 25, seller: '0xmno...', image: 'https://res.cloudinary.com/dhacybdxf/image/upload/v1762299809/ethereum_vs8k4y.png', category: 'Crypto' },
+  { id: '6', projectName: 'Art Collection', tokenSymbol: 'ARTC', quantity: 10, pricePerToken: 1000, seller: '0xpqr...', image: 'https://res.cloudinary.com/dhacybdxf/image/upload/v1762299809/startup_tb5wu3.png', category: 'Collectibles' },
 ];
 
 const myTokens = [
-  { id: 't1', projectName: 'Eco-Friendly Housing', tokenSymbol: 'ECOH', quantity: 200, availableToSell: 150, image: '/src/assets/edificio.png' },
-  { id: 't2', projectName: 'Tech Startup Fund', tokenSymbol: 'TSF', quantity: 100, availableToSell: 100, image: '/src/assets/ethereum.png' },
+  { id: 't1', projectName: 'Eco-Friendly Housing', tokenSymbol: 'ECOH', quantity: 200, availableToSell: 150, image: 'https://res.cloudinary.com/dhacybdxf/image/upload/v1762299810/edificio_qhi0ri.png' },
+  { id: 't2', projectName: 'Tech Startup Fund', tokenSymbol: 'TSF', quantity: 100, availableToSell: 100, image: 'https://res.cloudinary.com/dhacybdxf/image/upload/v1762299809/ethereum_vs8k4y.png' },
 ];
 
 // --- Componente de Tarjeta de Listado ---

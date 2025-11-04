@@ -2,7 +2,7 @@
   "id": "project1",
   "name": "Eco-Friendly Housing Development",
   "description": "A new development of 50 eco-friendly homes, built with sustainable materials and powered by renewable energy. This project aims to provide affordable, green housing while delivering a solid return for investors through property sales.",
-  "image": "/src/assets/edificio.png",
+  "image": "https://res.cloudinary.com/dhacybdxf/image/upload/v1762299810/edificio_qhi0ri.png",
   "fundingGoal": 5000000,
   "amountRaised": 1250000,
   "investors": 150,

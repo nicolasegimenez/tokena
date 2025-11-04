@@ -6,28 +6,28 @@ import {
   CarouselPrevious,
 } from "@/components/ui/carousel"
 import { Card, CardContent } from "@/components/ui/card"
-import edificiosImg from "@/assets/edificio.png"
-import ethereumImg from "@/assets/ethereum.png"
-import startupImg from "@/assets/startup.png"
+
+
+
 
 const investments = [
     {
       id: 1,
       title: "Departamentos Pozo Tokenizados",
       description: "Inversión en departamentos de lujo en zona premium con tokenización completa",
-      image: edificiosImg
+      image: "https://res.cloudinary.com/dhacybdxf/image/upload/v1762299810/edificio_qhi0ri.png"
     },
     {
       id: 2,
       title: "Fondo de Criptomonedas",
       description: "Portfolio diversificado de criptomonedas principales con gestión profesional",
-      image: ethereumImg
+      image: "https://res.cloudinary.com/dhacybdxf/image/upload/v1762299809/ethereum_vs8k4y.png"
     },
     {
       id: 3,
       title: "Startup Tech Tokenizada",
       description: "Participación en startup de tecnología con gran potencial de crecimiento",
-      image: startupImg
+      image: "https://res.cloudinary.com/dhacybdxf/image/upload/v1762299809/startup_tb5wu3.png"
     }
   ]
 

@@ -2,7 +2,7 @@
   "id": "project2",
   "name": "Fondo de Criptomonedas",
   "description": "Portfolio diversificado de criptomonedas principales con gestión profesional. Invierte en un fondo gestionado que busca maximizar los retornos en el volátil mercado de las criptomonedas.",
-  "image": "/src/assets/ethereum.png",
+  "image": "https://res.cloudinary.com/dhacybdxf/image/upload/v1762299809/ethereum_vs8k4y.png",
   "fundingGoal": 1000000,
   "amountRaised": 750000,
   "investors": 350,

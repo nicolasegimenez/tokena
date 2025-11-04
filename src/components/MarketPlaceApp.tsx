@@ -8,9 +8,9 @@ import {
   } from "@/components/ui/card"
 import { Button } from "@/components/ui/button"
 import { Badge } from "@/components/ui/badge"
-import edificiosImg from "@/assets/edificio.png"
-import ethereumImg from "@/assets/ethereum.png"
-import startupImg from "@/assets/startup.png"
+
+
+
 import { Input } from "@/components/ui/input"
 import {
   Select,
@@ -38,7 +38,7 @@ const MarketPlaceApp = () => {
           available: 15,
           status: t('available'),
           category: t('real_estate'),
-          image: edificiosImg,
+          image: "https://res.cloudinary.com/dhacybdxf/image/upload/v1762299810/edificio_qhi0ri.png",
           currency:"Dolares"
     
         },
@@ -52,7 +52,7 @@ const MarketPlaceApp = () => {
           available: 50,
           status: t('available'),
           category: t('crypto'),
-          image: ethereumImg
+          image: "https://res.cloudinary.com/dhacybdxf/image/upload/v1762299809/ethereum_vs8k4y.png"
         },
         {
           id: 3,
@@ -64,7 +64,7 @@ const MarketPlaceApp = () => {
           available: 8,
           status: t('sold_out'),
           category: t('startup'),
-          image: startupImg
+          image: "https://res.cloudinary.com/dhacybdxf/image/upload/v1762299809/startup_tb5wu3.png"
         }
       ], [language]);
 
