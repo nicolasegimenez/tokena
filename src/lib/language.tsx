@@ -11,7 +11,7 @@ interface LanguageContextType {
 const LanguageContext = createContext<LanguageContextType | undefined>(undefined);
 
 // Translation dictionary
-const translations = {
+const translations: Record<string, Record<string, string>> = {
   es: {
     invest: 'Invertir',
     trade: 'Trade',

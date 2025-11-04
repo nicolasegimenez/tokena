@@ -22,8 +22,19 @@ const myTokens = [
   { id: 't2', projectName: 'Tech Startup Fund', tokenSymbol: 'TSF', quantity: 100, availableToSell: 100, image: 'https://res.cloudinary.com/dhacybdxf/image/upload/v1762299809/ethereum_vs8k4y.png' },
 ];
 
+interface Listing {
+  id: string;
+  projectName: string;
+  tokenSymbol: string;
+  quantity: number;
+  pricePerToken: number;
+  seller: string;
+  image: string;
+  category: string;
+}
+
 // --- Componente de Tarjeta de Listado ---
-function ListingCard({ listing }) {
+function ListingCard({ listing }: { listing: Listing }) {
   const handleBuy = (listingId: string) => {
     console.log(`Comprar listing: ${listingId}`);
     alert(`Has comprado (simulado) el listing ${listingId}!`);
