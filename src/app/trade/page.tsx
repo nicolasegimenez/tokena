@@ -6,6 +6,7 @@ import { Label } from "@/components/ui/label";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Search, Tag, Building, DollarSign } from 'lucide-react';
+import { useLanguage } from '@/lib/language';
 
 // --- Datos de Ejemplo Mejorados ---
 const availableListings = [
@@ -35,9 +36,10 @@ interface Listing {
 
 // --- Componente de Tarjeta de Listado ---
 function ListingCard({ listing }: { listing: Listing }) {
+  const { t } = useLanguage();
   const handleBuy = (listingId: string) => {
     console.log(`Comprar listing: ${listingId}`);
-    alert(`Has comprado (simulado) el listing ${listingId}!`);
+    alert(t('buy_listing_simulated', { listingId }));
   };
 
   return (
@@ -49,18 +51,18 @@ function ListingCard({ listing }: { listing: Listing }) {
         <CardTitle className="text-lg font-bold mb-2 truncate">{listing.projectName}</CardTitle>
         <CardDescription className="flex items-center gap-2 text-sm text-muted-foreground mb-4">
           <Tag className="w-4 h-4" /> {listing.tokenSymbol}
-          <Building className="w-4 h-4 ml-auto" /> {listing.category}
+          <Building className="w-4 h-4 ml-auto" /> {t(listing.category.toLowerCase().replace(' ', '_'))}
         </CardDescription>
         <div className="flex justify-between items-center">
           <div className="text-2xl font-bold text-primary">${listing.pricePerToken}</div>
           <div className="text-right">
-            <p className="text-sm font-medium">Disponibles</p>
+            <p className="text-sm font-medium">{t('available')}</p>
             <p className="text-sm text-muted-foreground">{listing.quantity}</p>
           </div>
         </div>
       </CardContent>
       <CardFooter className="p-4 pt-0">
-        <Button className="w-full" onClick={() => handleBuy(listing.id)}>Comprar Ahora</Button>
+        <Button className="w-full" onClick={() => handleBuy(listing.id)}>{t('buy_now')}</Button>
       </CardFooter>
     </Card>
   );
@@ -68,6 +70,7 @@ function ListingCard({ listing }: { listing: Listing }) {
 
 // --- Componente Principal de la Página de Trade ---
 export default function TradePage() {
+  const { t } = useLanguage();
   const [selectedTokenToSell, setSelectedTokenToSell] = useState('');
   const [sellQuantity, setSellQuantity] = useState('');
   const [sellPrice, setSellPrice] = useState('');
@@ -75,7 +78,7 @@ export default function TradePage() {
   const handleSellSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     console.log({ action: 'sell', token: selectedTokenToSell, quantity: sellQuantity, price: sellPrice });
-    alert('Oferta de venta creada (simulado)!');
+    alert(t('sell_offer_created'));
     setSelectedTokenToSell('');
     setSellQuantity('');
     setSellPrice('');
@@ -84,8 +87,8 @@ export default function TradePage() {
   return (
     <div className="container mx-auto py-8">
       <header className="mb-8">
-        <h1 className="text-4xl font-bold tracking-tight">Mercado P2P</h1>
-        <p className="text-muted-foreground mt-2">Intercambia security tokens de forma segura y eficiente.</p>
+        <h1 className="text-4xl font-bold tracking-tight">{t('p2p_market')}</h1>
+        <p className="text-muted-foreground mt-2">{t('trade_security_tokens')}</p>
       </header>
 
       <div className="grid grid-cols-1 lg:grid-cols-4 gap-8">
@@ -93,43 +96,43 @@ export default function TradePage() {
         <aside className="lg:col-span-1">
           <Card>
             <CardHeader>
-              <CardTitle className="text-xl">Filtros</CardTitle>
+              <CardTitle className="text-xl">{t('filters')}</CardTitle>
             </CardHeader>
             <CardContent className="grid gap-6">
               <div className="relative">
                 <Search className="absolute left-3 top-1/2 -translate-y-1/2 h-5 w-5 text-muted-foreground" />
-                <Input placeholder="Buscar por nombre..." className="pl-10" />
+                <Input placeholder={t('search_by_name')} className="pl-10" />
               </div>
               <div className="grid gap-2">
-                <Label>Categoría</Label>
+                <Label>{t('category')}</Label>
                 <Select>
                   <SelectTrigger className="w-full truncate">
-                    <SelectValue placeholder="Todas las categorías" />
+                    <SelectValue placeholder={t('all_categories')} />
                   </SelectTrigger>
                   <SelectContent>
-                    <SelectItem value="all">Todas las categorías</SelectItem>
-                    <SelectItem value="real-estate">Real Estate</SelectItem>
-                    <SelectItem value="energy">Energy</SelectItem>
-                    <SelectItem value="vc">Venture Capital</SelectItem>
-                    <SelectItem value="crypto">Crypto</SelectItem>
-                    <SelectItem value="collectibles">Collectibles</SelectItem>
+                    <SelectItem value="all">{t('all_categories')}</SelectItem>
+                    <SelectItem value="real-estate">{t('real_estate')}</SelectItem>
+                    <SelectItem value="energy">{t('energy')}</SelectItem>
+                    <SelectItem value="vc">{t('venture_capital')}</SelectItem>
+                    <SelectItem value="crypto">{t('crypto')}</SelectItem>
+                    <SelectItem value="collectibles">{t('collectibles')}</SelectItem>
                   </SelectContent>
                 </Select>
               </div>
               <div className="grid gap-2">
-                <Label>Ordenar por</Label>
+                <Label>{t('sort_by')}</Label>
                 <Select>
                   <SelectTrigger className="w-full truncate">
-                    <SelectValue placeholder="Precio: de menor a mayor" />
+                    <SelectValue placeholder={t('price_low_to_high')} />
                   </SelectTrigger>
                   <SelectContent>
-                    <SelectItem value="price-asc">Precio: de menor a mayor</SelectItem>
-                    <SelectItem value="price-desc">Precio: de mayor a menor</SelectItem>
-                    <SelectItem value="newest">Más recientes</SelectItem>
+                    <SelectItem value="price-asc">{t('price_low_to_high')}</SelectItem>
+                    <SelectItem value="price-desc">{t('price_high_to_low')}</SelectItem>
+                    <SelectItem value="newest">{t('newest')}</SelectItem>
                   </SelectContent>
                 </Select>
               </div>
-              <Button variant="secondary">Limpiar Filtros</Button>
+              <Button variant="secondary">{t('clear_filters')}</Button>
             </CardContent>
           </Card>
         </aside>
@@ -138,8 +141,8 @@ export default function TradePage() {
         <main className="lg:col-span-3">
           <Tabs defaultValue="buy" className="w-full">
             <TabsList className="grid w-full grid-cols-2 mb-6">
-              <TabsTrigger value="buy">Comprar Tokens</TabsTrigger>
-              <TabsTrigger value="sell">Vender Mis Tokens</TabsTrigger>
+              <TabsTrigger value="buy">{t('buy_tokens')}</TabsTrigger>
+              <TabsTrigger value="sell">{t('sell_my_tokens')}</TabsTrigger>
             </TabsList>
 
             {/* --- Tab de Comprar --- */}
@@ -155,16 +158,16 @@ export default function TradePage() {
             <TabsContent value="sell">
               <Card>
                 <CardHeader>
-                  <CardTitle className="text-2xl">Crear una Oferta de Venta</CardTitle>
-                  <CardDescription>Publica tus tokens en el mercado para que otros los compren.</CardDescription>
+                  <CardTitle className="text-2xl">{t('create_sell_offer')}</CardTitle>
+                  <CardDescription>{t('publish_your_tokens')}</CardDescription>
                 </CardHeader>
                 <CardContent>
                   <form onSubmit={handleSellSubmit} className="grid gap-6">
                     <div className="grid gap-2">
-                      <Label htmlFor="tokenToSell">Token a Vender</Label>
+                      <Label htmlFor="tokenToSell">{t('token_to_sell')}</Label>
                       <Select onValueChange={setSelectedTokenToSell} value={selectedTokenToSell}>
                         <SelectTrigger id="tokenToSell">
-                          <SelectValue placeholder="Selecciona de tu portafolio" />
+                          <SelectValue placeholder={t('select_from_portfolio')} />
                         </SelectTrigger>
                         <SelectContent>
                           {myTokens.map(token => (
@@ -173,7 +176,7 @@ export default function TradePage() {
                                 <img src={token.image} className="w-8 h-8 object-cover rounded-md"/>
                                 <div>
                                   <p>{token.projectName} ({token.tokenSymbol})</p>
-                                  <p className="text-xs text-muted-foreground">{token.availableToSell} disponibles</p>
+                                  <p className="text-xs text-muted-foreground">{token.availableToSell} {t('available_to_sell')}</p>
                                 </div>
                               </div>
                             </SelectItem>
@@ -183,19 +186,19 @@ export default function TradePage() {
                     </div>
                     <div className="grid grid-cols-2 gap-4">
                       <div className="grid gap-2">
-                        <Label htmlFor="sellQuantity">Cantidad</Label>
-                        <Input id="sellQuantity" type="number" placeholder="Ej: 10" value={sellQuantity} onChange={(e) => setSellQuantity(e.target.value)} required min="1" />
+                        <Label htmlFor="sellQuantity">{t('quantity')}</Label>
+                        <Input id="sellQuantity" type="number" placeholder={t('quantity_placeholder')} value={sellQuantity} onChange={(e) => setSellQuantity(e.target.value)} required min="1" />
                       </div>
                       <div className="grid gap-2">
-                        <Label htmlFor="sellPrice">Precio por Token (USD)</Label>
+                        <Label htmlFor="sellPrice">{t('price_per_token_usd')}</Label>
                         <div className="relative">
                            <DollarSign className="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-muted-foreground" />
-                           <Input id="sellPrice" type="number" placeholder="Ej: 105.50" value={sellPrice} onChange={(e) => setSellPrice(e.target.value)} required min="0.01" step="0.01" className="pl-8"/>
+                           <Input id="sellPrice" type="number" placeholder={t('price_placeholder')} value={sellPrice} onChange={(e) => setSellPrice(e.target.value)} required min="0.01" step="0.01" className="pl-8"/>
                         </div>
                       </div>
                     </div>
                     <CardFooter className="p-0 pt-4">
-                       <Button type="submit" size="lg" className="w-full">Publicar Oferta de Venta</Button>
+                       <Button type="submit" size="lg" className="w-full">{t('publish_sell_offer')}</Button>
                     </CardFooter>
                   </form>
                 </CardContent>
