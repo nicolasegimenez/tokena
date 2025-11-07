@@ -13,8 +13,9 @@ const LanguageContext = createContext<LanguageContextType | undefined>(undefined
 // Translation dictionary
 const translations: Record<string, Record<string, string>> = {
   es: {
+    Home: 'Inicio',
     invest: 'Invertir',
-    trade: 'Trade',
+    trade: 'p2p',
     create_project: 'Publica tu Proyecto',
     invest_market: 'Invest Market',
     discover_tokenized_opportunities: 'Descubre oportunidades de inversión tokenizadas',
