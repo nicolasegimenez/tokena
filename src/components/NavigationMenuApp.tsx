@@ -161,7 +161,7 @@ const NavigationMenuApp = () => {
           {singleMenuItems.map((item: SingleMenuItem) => (
             <NavigationMenuItem key={item.href}>
               <Link to={item.href}>
-                <NavigationMenuLink className="p-2 hover:bg-accent">
+                <NavigationMenuLink className="p-2 hover:bg-accent text-lg font-semibold">
                   {t(item.titleKey)}
                 </NavigationMenuLink>
               </Link>

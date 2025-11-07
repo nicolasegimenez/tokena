@@ -1,3 +1,5 @@
+import React from "react";
+import Autoplay from "embla-carousel-autoplay";
 import { useLanguage } from "@/lib/language";
 import {
   Carousel,
@@ -10,6 +12,9 @@ import { Card, CardContent } from "@/components/ui/card"
 
 const CarouselApp = () => {
   const { t } = useLanguage();
+  const plugin = React.useRef(
+    Autoplay({ delay: 2000, stopOnInteraction: false })
+  );
 
   const investments = [
     {
@@ -33,7 +38,12 @@ const CarouselApp = () => {
   ]
 
   return (
-    <Carousel className="w-full">
+    <Carousel 
+      className="w-full"
+      plugins={[plugin.current]}
+      onMouseEnter={plugin.current.stop}
+      onMouseLeave={plugin.current.reset}
+    >
       <CarouselContent>
         {investments.map((investment) => (
           <CarouselItem key={investment.id}>
