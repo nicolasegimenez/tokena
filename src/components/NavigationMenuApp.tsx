@@ -29,6 +29,7 @@ import {
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { useAuth } from "@/lib/auth";
 import { Button } from "./ui/button";
+import { Input } from "./ui/input";
 import { ModeToggle } from "./mode-toggle";
 import { useLanguage } from "@/lib/language";
 
@@ -87,7 +88,7 @@ const NavigationMenuApp = () => {
         </SheetTrigger>
         <SheetContent side="left">
           <SheetHeader>
-            <SheetTitle>Tokena</SheetTitle>
+            <SheetTitle>InvestToken</SheetTitle>
           </SheetHeader>
           <div className="grid gap-4 py-4">
             {menuItems.map((item: MenuItem) => (
@@ -137,39 +138,47 @@ const NavigationMenuApp = () => {
 
   return (
     <div className="flex w-full items-center justify-between gap-4 p-4">
-      <NavigationMenu className="max-w-full">
-        <NavigationMenuList>
-          {menuItems.map((item: MenuItem) => (
-            <NavigationMenuItem key={item.title}>
-              <NavigationMenuTrigger>{item.title}</NavigationMenuTrigger>
-              <NavigationMenuContent>
-                <ul className="grid w-[400px] gap-3 p-4 md:w-[500px] md:grid-cols-2 lg:w-[600px]">
-                  {item.items.map((subItem: SubMenuItem, index: number) => (
-                    <ListItem
-                      key={subItem.href}
-                      href={subItem.href}
-                      title={subItem.title}
-                      className={index === 0 ? "row-span-3" : ""}
-                    >
-                      {subItem.description}
-                    </ListItem>
-                  ))}
-                </ul>
-              </NavigationMenuContent>
-            </NavigationMenuItem>
-          ))}
-          {singleMenuItems.map((item: SingleMenuItem) => (
-            <NavigationMenuItem key={item.href}>
-              <Link to={item.href}>
-                <NavigationMenuLink className="p-2 hover:bg-accent text-lg font-semibold">
-                  {t(item.titleKey)}
-                </NavigationMenuLink>
-              </Link>
-            </NavigationMenuItem>
-          ))}
-        </NavigationMenuList>
-        <NavigationMenuViewport />
-      </NavigationMenu>
+      <div className="flex items-center gap-4">
+        <div>
+          <span className="font-bold text-lg">LOGO</span>
+        </div>
+        <NavigationMenu className="max-w-full">
+          <NavigationMenuList>
+            {menuItems.map((item: MenuItem) => (
+              <NavigationMenuItem key={item.title}>
+                <NavigationMenuTrigger>{item.title}</NavigationMenuTrigger>
+                <NavigationMenuContent>
+                  <ul className="grid w-[400px] gap-3 p-4 md:w-[500px] md:grid-cols-2 lg:w-[600px]">
+                    {item.items.map((subItem: SubMenuItem, index: number) => (
+                      <ListItem
+                        key={subItem.href}
+                        href={subItem.href}
+                        title={subItem.title}
+                        className={index === 0 ? "row-span-3" : ""}
+                      >
+                        {subItem.description}
+                      </ListItem>
+                    ))}
+                  </ul>
+                </NavigationMenuContent>
+              </NavigationMenuItem>
+            ))}
+            {singleMenuItems.map((item: SingleMenuItem) => (
+              <NavigationMenuItem key={item.href}>
+                <Link to={item.href}>
+                  <NavigationMenuLink className="p-2 hover:bg-accent text-lg font-semibold">
+                    {t(item.titleKey)}
+                  </NavigationMenuLink>
+                </Link>
+              </NavigationMenuItem>
+            ))}
+          </NavigationMenuList>
+          <NavigationMenuViewport />
+        </NavigationMenu>
+        <div>
+          <Input type="search" placeholder="Search..." className="md:w-[100px] lg:w-[300px]" />
+        </div>
+      </div>
 
       <div className="flex items-center gap-2">
         <LanguageSwitcher />
