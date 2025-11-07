@@ -39,8 +39,8 @@ const MarketPlaceApp = () => {
           status: t('available'),
           category: t('real_estate'),
           image: "https://res.cloudinary.com/dhacybdxf/image/upload/v1762299810/edificio_qhi0ri.png",
-          currency:"Dolares"
     
+          currency:"Dolares"
         },
         {
           id: 2,
@@ -52,6 +52,7 @@ const MarketPlaceApp = () => {
           available: 50,
           status: t('available'),
           category: t('crypto'),
+          currency:"Dolares",
           image: "https://res.cloudinary.com/dhacybdxf/image/upload/v1762299809/ethereum_vs8k4y.png"
         },
         {
@@ -64,6 +65,7 @@ const MarketPlaceApp = () => {
           available: 8,
           status: t('sold_out'),
           category: t('startup'),
+          currency:"Pesos",
           image: "https://res.cloudinary.com/dhacybdxf/image/upload/v1762299809/startup_tb5wu3.png"
         }
       ], [language]);

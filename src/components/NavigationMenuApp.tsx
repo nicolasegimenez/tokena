@@ -1,4 +1,3 @@
-
 import {
   Sheet,
   SheetContent,
@@ -44,60 +43,7 @@ interface MenuItem {
   items: SubMenuItem[];
 }
 
-const menuItems: MenuItem[] = [
-  /*
-  {
-    title: "Dashboard",
-    items: [
-      {
-        href: "/",
-        title: "Tokena Dashboard",
-        description: "Gestiona tus inversiones y tokens de manera inteligente",
-      },
-      {
-        href: "/portfolio",
-        title: "Portfolio",
-        description: "Visualiza tu cartera de inversiones",
-      },
-      {
-        href: "/analytics",
-        title: "Analytics",
-        description: "Análisis detallado de rendimiento",
-      },
-      {
-        href: "/reports",
-        title: "Reportes",
-        description: "Reportes mensuales y trimestrales",
-      },
-    ],
-  },
-  {
-    title: "Inversiones",
-    items: [
-      {
-        href: "/investments/new",
-        title: "Nueva Inversión",
-        description: "Crear una nueva inversión",
-      },
-      {
-        href: "/investments/active",
-        title: "Inversiones Activas",
-        description: "Ver inversiones en curso",
-      },
-      {
-        href: "/investments/history",
-        title: "Historial",
-        description: "Historial completo de inversiones",
-      },
-      {
-        href: "/investments/strategies",
-        title: "Estrategias",
-        description: "Estrategias de inversión recomendadas",
-      },
-    ],
-  },
-  */
-];
+const menuItems: MenuItem[] = [];
 
 interface SingleMenuItem {
   href: string;
@@ -105,21 +51,21 @@ interface SingleMenuItem {
 }
 
 const singleMenuItems: SingleMenuItem[] = [
-  { href:"/", titleKey:"Home"},
+  { href: "/", titleKey: "Home" },
   { href: "/market", titleKey: "invest" },
   { href: "/trade", titleKey: "trade" },
-  { href: "/create", titleKey: "create_project" }
+  { href: "/create", titleKey: "create_project" },
 ];
 
 const LanguageSwitcher = () => {
   const { language, setLanguage } = useLanguage();
 
   const toggleLanguage = () => {
-    setLanguage(language === 'es' ? 'en' : 'es');
+    setLanguage(language === "es" ? "en" : "es");
   };
 
   return (
-    <Button variant="ghost" size="sm" onClick={toggleLanguage}>
+    <Button variant="ghost" onClick={toggleLanguage}>
       {language.toUpperCase()}
     </Button>
   );
@@ -193,34 +139,34 @@ const NavigationMenuApp = () => {
     <div className="flex w-full items-center justify-between gap-4 p-4">
       <NavigationMenu className="max-w-full">
         <NavigationMenuList>
-        {menuItems.map((item: MenuItem) => (
-          <NavigationMenuItem key={item.title}>
-            <NavigationMenuTrigger>{item.title}</NavigationMenuTrigger>
-            <NavigationMenuContent>
-              <ul className="grid w-[400px] gap-3 p-4 md:w-[500px] md:grid-cols-2 lg:w-[600px]">
-                {item.items.map((subItem: SubMenuItem, index: number) => (
-                  <ListItem
-                    key={subItem.href}
-                    href={subItem.href}
-                    title={subItem.title}
-                    className={index === 0 ? "row-span-3" : ""}
-                  >
-                    {subItem.description}
-                  </ListItem>
-                ))}
-              </ul>
-            </NavigationMenuContent>
-          </NavigationMenuItem>
-        ))}
-        {singleMenuItems.map((item: SingleMenuItem) => (
-          <NavigationMenuItem key={item.href}>
-            <Link to={item.href}>
-              <NavigationMenuLink className="p-2 hover:bg-accent">
-                {t(item.titleKey)}
-              </NavigationMenuLink>
-            </Link>
-          </NavigationMenuItem>
-        ))}
+          {menuItems.map((item: MenuItem) => (
+            <NavigationMenuItem key={item.title}>
+              <NavigationMenuTrigger>{item.title}</NavigationMenuTrigger>
+              <NavigationMenuContent>
+                <ul className="grid w-[400px] gap-3 p-4 md:w-[500px] md:grid-cols-2 lg:w-[600px]">
+                  {item.items.map((subItem: SubMenuItem, index: number) => (
+                    <ListItem
+                      key={subItem.href}
+                      href={subItem.href}
+                      title={subItem.title}
+                      className={index === 0 ? "row-span-3" : ""}
+                    >
+                      {subItem.description}
+                    </ListItem>
+                  ))}
+                </ul>
+              </NavigationMenuContent>
+            </NavigationMenuItem>
+          ))}
+          {singleMenuItems.map((item: SingleMenuItem) => (
+            <NavigationMenuItem key={item.href}>
+              <Link to={item.href}>
+                <NavigationMenuLink className="p-2 hover:bg-accent">
+                  {t(item.titleKey)}
+                </NavigationMenuLink>
+              </Link>
+            </NavigationMenuItem>
+          ))}
         </NavigationMenuList>
         <NavigationMenuViewport />
       </NavigationMenu>
@@ -229,47 +175,47 @@ const NavigationMenuApp = () => {
         <LanguageSwitcher />
         <ModeToggle />
         {!isAuthenticated ? (
-            <div className="inline-flex items-center gap-2">
-              <Button asChild variant="outline">
-                <Link to="/registrarse">Registrarse</Link>
-              </Button>
-              <Button asChild>
-                <Link to="/login">Iniciar sesión</Link>
-              </Button>
-              {/* Solo para demo: botón rápido para simular login */}
-              <Button variant="ghost" onClick={() => login()}>Demo Login</Button>
-            </div>
-          ) : null}
+          <div className="inline-flex items-center gap-2">
+            <Button asChild variant="outline">
+              <Link to="/registrarse">Registrarse</Link>
+            </Button>
+            <Button asChild>
+              <Link to="/login">Iniciar sesión</Link>
+            </Button>
+            {/* Solo para demo: botón rápido para simular login */}
+            <Button variant="ghost" onClick={() => login()}>Demo Login</Button>
+          </div>
+        ) : null}
         {isAuthenticated && (
-        <DropdownMenu>
-          <DropdownMenuTrigger asChild>
-            <button className="inline-flex items-center gap-2 rounded-full p-1 outline-none ring-0 hover:opacity-90">
-              <Avatar className="h-9 w-9">
-                <AvatarImage src={user?.avatarUrl || ""} alt="Usuario" />
-                <AvatarFallback>{user?.name?.slice(0,2).toUpperCase() || "US"}</AvatarFallback>
-              </Avatar>
-            </button>
-          </DropdownMenuTrigger>
-          <DropdownMenuContent align="end" className="w-56">
-            <DropdownMenuLabel>{t('my_account')}</DropdownMenuLabel>
-            <DropdownMenuSeparator />
-            <DropdownMenuItem asChild>
-              <Link to="/profile">{t('my_profile')}</Link>
-            </DropdownMenuItem>
-            <DropdownMenuItem asChild>
-              <Link to="/investments">{t('my_investments')}</Link>
-            </DropdownMenuItem>
-            
-            <DropdownMenuItem asChild>
-              <Link to="/benefits">{t('my_benefits')}</Link>
-            </DropdownMenuItem>
-            <DropdownMenuSeparator />
-            <DropdownMenuItem asChild>
-              <Link to="/account">{t('my_account')}</Link>
-            </DropdownMenuItem>
-            <DropdownMenuItem onSelect={(e) => { e.preventDefault(); logout(); navigate("/login"); }}>{t('logout')}</DropdownMenuItem>
-          </DropdownMenuContent>
-        </DropdownMenu>
+          <DropdownMenu>
+            <DropdownMenuTrigger asChild>
+              <button className="inline-flex items-center gap-2 rounded-full p-1 outline-none ring-0 hover:opacity-90">
+                <Avatar className="h-9 w-9">
+                  <AvatarImage src={user?.avatarUrl || ""} alt="Usuario" />
+                  <AvatarFallback>{user?.name?.slice(0,2).toUpperCase() || "US"}</AvatarFallback>
+                </Avatar>
+              </button>
+            </DropdownMenuTrigger>
+            <DropdownMenuContent align="end" className="w-56">
+              <DropdownMenuLabel>{t("my_account")}</DropdownMenuLabel>
+              <DropdownMenuSeparator />
+              <DropdownMenuItem asChild>
+                <Link to="/profile">{t("my_profile")}</Link>
+              </DropdownMenuItem>
+              <DropdownMenuItem asChild>
+                <Link to="/investments">{t("my_investments")}</Link>
+              </DropdownMenuItem>
+
+              <DropdownMenuItem asChild>
+                <Link to="/benefits">{t("my_benefits")}</Link>
+              </DropdownMenuItem>
+              <DropdownMenuSeparator />
+              <DropdownMenuItem asChild>
+                <Link to="/account">{t("my_account")}</Link>
+              </DropdownMenuItem>
+              <DropdownMenuItem onSelect={(e) => { e.preventDefault(); logout(); navigate("/login"); }}>{t("logout")}</DropdownMenuItem>
+            </DropdownMenuContent>
+          </DropdownMenu>
         )}
       </div>
     </div>
