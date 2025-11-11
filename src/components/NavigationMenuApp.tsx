@@ -52,7 +52,6 @@ interface SingleMenuItem {
 }
 
 const singleMenuItems: SingleMenuItem[] = [
-  { href: "/", titleKey: "Home" },
   { href: "/market", titleKey: "invest" },
   { href: "/trade", titleKey: "trade" },
   { href: "/create", titleKey: "create_project" },

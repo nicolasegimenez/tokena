@@ -13,7 +13,7 @@ import { Card, CardContent } from "@/components/ui/card"
 const CarouselApp = () => {
   const { t } = useLanguage();
   const plugin = React.useRef(
-    Autoplay({ delay: 2000, stopOnInteraction: false })
+    Autoplay({ delay: 2500, stopOnInteraction: false })
   );
 
   const investments = [
@@ -38,11 +38,9 @@ const CarouselApp = () => {
   ]
 
   return (
-    <Carousel 
+    <Carousel
       className="w-full"
       plugins={[plugin.current]}
-      onMouseEnter={plugin.current.stop}
-      onMouseLeave={plugin.current.reset}
     >
       <CarouselContent>
         {investments.map((investment) => (
