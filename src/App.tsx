@@ -20,6 +20,7 @@ const CreateProjectPage = lazy(() => import("@/app/create/page"))
 const TradePage = lazy(() => import("@/app/trade/page"))
 const LoginForm = lazy(() => import("@/components/login-form").then(m => ({ default: m.LoginForm })))
 const RegisterPage = lazy(() => import("@/app/registrarse/page"))
+const LandingPage = lazy(() => import("@/app/landing/page"))
 
 function NotFound() {
   return (
@@ -46,6 +47,7 @@ function App() {
             <Route path="/profile" element={<Profile />} />
             <Route path="/login" element={<LoginForm />} />
             <Route path="/registrarse" element={<RegisterPage />} />
+            <Route path="/landing" element={<LandingPage />} />
             <Route path="/market" element={<MarketPlaceApp />} />
             <Route path="/token" element={<TokenManagement />} />
             <Route path="/analytics" element={<AnalyticsPage />} />
