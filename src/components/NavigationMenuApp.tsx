@@ -139,9 +139,13 @@ const NavigationMenuApp = () => {
   return (
     <div className="flex w-full items-center justify-between gap-4 p-4">
       <div className="flex items-center gap-4">
-        <div>
-          <span className="font-bold text-lg">LOGO</span>
-        </div>
+        <Link to="/">
+          <img
+            src="https://res.cloudinary.com/dhacybdxf/image/upload/v1762901050/Investoken/investoken_solo_logo_oficial_azul_y_blanco_jdbnpk.svg"
+            alt="Investoken"
+            className="h-10 w-10 cursor-pointer hover:opacity-80 transition-opacity"
+          />
+        </Link>
         <NavigationMenu className="max-w-full">
           <NavigationMenuList>
             {menuItems.map((item: MenuItem) => (
