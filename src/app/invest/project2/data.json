@@ -3,6 +3,12 @@
   "name": "Fondo de Criptomonedas",
   "description": "Portfolio diversificado de criptomonedas principales con gestión profesional. Invierte en un fondo gestionado que busca maximizar los retornos en el volátil mercado de las criptomonedas.",
   "image": "https://res.cloudinary.com/dhacybdxf/image/upload/v1762299809/ethereum_vs8k4y.png",
+  "images": [
+    "https://res.cloudinary.com/dhacybdxf/image/upload/v1762299809/ethereum_vs8k4y.png",
+    "https://via.placeholder.com/800x400?text=Crypto+Portfolio",
+    "https://via.placeholder.com/800x400?text=Market+Analysis",
+    "https://via.placeholder.com/800x400?text=Investment+Strategy"
+  ],
   "fundingGoal": 1000000,
   "amountRaised": 750000,
   "investors": 350,

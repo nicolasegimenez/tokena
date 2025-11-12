@@ -1,6 +1,7 @@
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Avatar, AvatarFallback } from "@/components/ui/avatar";
 import InvestmentSimulator from "@/components/InvestmentSimulator";
+import { ImageCarousel } from "@/components/ImageCarousel";
 import projectData from "./data.json";
 
 export default function InvestPage() {
@@ -12,7 +13,11 @@ export default function InvestPage() {
         <div className="lg:col-span-2 flex flex-col gap-8">
           <Card>
             <CardHeader>
-              <img src={projectData.image} alt={projectData.name} className="w-full h-64 object-cover rounded-lg mb-4" />
+              <ImageCarousel
+                images={projectData.images || [projectData.image]}
+                alt={projectData.name}
+                className="mb-4"
+              />
               <h1 className="text-3xl font-bold tracking-tight">{projectData.name}</h1>
             </CardHeader>
             <CardContent>

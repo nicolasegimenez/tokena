@@ -156,6 +156,7 @@ const translations: Record<string, Record<string, string>> = {
     status_active: 'Activo',
     download_report: 'Descargar Reporte',
     invest_more: 'Invertir Más',
+    sell_token: 'Vender',
   },
   en: {
     invest: 'Invest',
@@ -300,6 +301,7 @@ const translations: Record<string, Record<string, string>> = {
     status_active: 'Active',
     download_report: 'Download Report',
     invest_more: 'Invest More',
+    sell_token: 'Sell',
   },
 };
 

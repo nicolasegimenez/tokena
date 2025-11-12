@@ -27,9 +27,9 @@ interface SingleMenuItem {
 }
 
 const singleMenuItems: SingleMenuItem[] = [
-  { href: "/investments", titleKey: "my_investments" },
   { href: "/market", titleKey: "invest" },
   { href: "/trade", titleKey: "trade" },
+  { href: "/investments", titleKey: "my_investments" },
   { href: "/create", titleKey: "create_project" },
 ];
 

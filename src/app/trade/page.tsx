@@ -1,5 +1,5 @@
-import { useState, useMemo } from 'react';
-import { Link } from 'react-router-dom';
+import { useState, useMemo, useEffect } from 'react';
+import { Link, useLocation } from 'react-router-dom';
 import { Card, CardHeader, CardTitle, CardContent, CardFooter, CardDescription } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
@@ -93,9 +93,11 @@ function ListingCard({ listing, onBuyClick }: { listing: Listing, onBuyClick: (l
 // --- Componente Principal de la Página de Trade ---
 export default function TradePage() {
   const { t } = useLanguage();
+  const location = useLocation();
   const [selectedTokenToSell, setSelectedTokenToSell] = useState('');
   const [sellQuantity, setSellQuantity] = useState('');
   const [sellPrice, setSellPrice] = useState('');
+  const [activeTab, setActiveTab] = useState('buy');
 
   // State for filters
   const [searchTerm, setSearchTerm] = useState('');
@@ -105,6 +107,16 @@ export default function TradePage() {
   // State for P2P Dialog
   const [isTradeDialogOpen, setIsTradeDialogOpen] = useState(false);
   const [selectedListing, setSelectedListing] = useState<Listing | null>(null);
+
+  // Effect para manejar navegación desde investments page
+  useEffect(() => {
+    if (location.state?.tab === 'sell') {
+      setActiveTab('sell');
+      if (location.state?.tokenSymbol) {
+        setSelectedTokenToSell(location.state.tokenSymbol);
+      }
+    }
+  }, [location]);
 
   const filteredListings = useMemo(() => {
     let listings = marketProjects.filter(listing => {
@@ -205,7 +217,7 @@ export default function TradePage() {
 
         {/* --- Contenido Principal (Tabs) --- */}
         <main className="lg:col-span-3">
-          <Tabs defaultValue="buy" className="w-full">
+          <Tabs value={activeTab} onValueChange={setActiveTab} className="w-full">
             <TabsList className="grid w-full grid-cols-2 mb-6">
               <TabsTrigger value="buy">{t('buy_tokens')}</TabsTrigger>
               <TabsTrigger value="sell">{t('sell_my_tokens')}</TabsTrigger>

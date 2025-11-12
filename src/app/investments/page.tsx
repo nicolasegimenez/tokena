@@ -5,9 +5,11 @@ import { Button } from '@/components/ui/button';
 import { TrendingUp, DollarSign, Wallet } from 'lucide-react';
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from '@/components/ui/table';
 import { useLanguage } from '@/lib/language';
+import { useNavigate } from 'react-router-dom';
 
 const InvestmentsPage: React.FC = () => {
   const { t } = useLanguage();
+  const navigate = useNavigate();
 
   // Mock data - Inversiones que posee el usuario
   const myInvestments = [
@@ -144,6 +146,7 @@ const InvestmentsPage: React.FC = () => {
                   <TableHead className="text-right">{t('change_24h_col')}</TableHead>
                   <TableHead className="text-right">{t('annual_roi_col')}</TableHead>
                   <TableHead className="text-center">{t('status_col')}</TableHead>
+                  <TableHead className="text-center">Acciones</TableHead>
                 </TableRow>
               </TableHeader>
               <TableBody>
@@ -181,6 +184,15 @@ const InvestmentsPage: React.FC = () => {
                       <Badge variant="default" className="bg-green-600">
                         {t('status_active')}
                       </Badge>
+                    </TableCell>
+                    <TableCell className="text-center">
+                      <Button
+                        size="sm"
+                        variant="outline"
+                        onClick={() => navigate('/trade', { state: { tokenSymbol: investment.symbol, tokenTitle: investment.title, tab: 'sell' } })}
+                      >
+                        {t('sell_token')}
+                      </Button>
                     </TableCell>
                   </TableRow>
                 ))}
