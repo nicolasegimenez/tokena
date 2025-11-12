@@ -1,0 +1,145 @@
+{
+  "id": "project5",
+  "name": "Polo Horse Token – \"Embajador\"",
+  "description": "Participá desde USD 250 en la tokenización de caballos de polo de genética comprobada. Un activo real con potencial deportivo y económico, gestionado por criadores y petiseros expertos. Rentabilidad estimada: 25–40% anual. Plazo estimado: 12–18 meses.",
+  "image": "https://res.cloudinary.com/dhacybdxf/image/upload/w_1000,ar_16:9,c_fill,g_auto,e_sharpen/v1762901052/Investoken/2F732387-0F70-4B32-B07E-8F3E7D1A3F7B_rnfbis.png",
+  "images": [
+    "https://res.cloudinary.com/dhacybdxf/image/upload/w_1000,ar_16:9,c_fill,g_auto,e_sharpen/v1762901052/Investoken/2F732387-0F70-4B32-B07E-8F3E7D1A3F7B_rnfbis.png",
+    "https://res.cloudinary.com/dhacybdxf/image/upload/w_1000,ar_16:9,c_fill,g_auto,e_sharpen/v1762901053/Investoken/E0B55D18-7D54-4CE1-BFE4-87B7153BD6EC_pbmnjr.png",
+   "https://res.cloudinary.com/dhacybdxf/image/upload/w_1000,ar_16:9,c_fill,g_auto,e_sharpen/v1762901060/Investoken/IMG_3020_piphv0.jpg",
+   "https://res.cloudinary.com/dhacybdxf/image/upload/w_1000,ar_16:9,c_fill,g_auto,e_sharpen/v1762901063/Investoken/IMG_3021_wllcig.jpg"
+  ],
+  "fundingGoal": 50000,
+  "amountRaised": 18500,
+  "investors": 74,
+  "pricePerToken": 50,
+  "team": [
+    { "name": "Diego Campanelli", "role": "Criador & Experto Genético", "bio": "25+ años criando caballos de polo de línea argentina, especialista en genética AAP y pedigrí de campeones." },
+    { "name": "Martín Costas", "role": "Petisero & Entrenador", "bio": "Entrenador profesional con experiencia en preparación de caballos para torneos internacionales." },
+    { "name": "Dra. Claudia Reyes", "role": "Veterinaria Equina", "bio": "Especialista en medicina deportiva equina, certificaciones en bienestar animal y manejo de riesgos veterinarios." }
+  ],
+  "documents": [
+    { "name": "Term Sheet Polo Horse", "url": "#" },
+    { "name": "Contrato de Fideicomiso Equino", "url": "#" },
+    { "name": "Póliza de Seguro Veterinario", "url": "#" },
+    { "name": "Certificación AAP (Asociación Argentina de Polo)", "url": "#" }
+  ],
+  "compliance": {
+    "tokenStandard": "ERC-20",
+    "legalStructure": "SPV / Fideicomiso Ganadero Equino",
+    "custodian": "Escribanía Fiduciaria + Criadero Certificado",
+    "kycRequired": true,
+    "legalDocuments": [
+      { "name": "Contrato Legal del Caballo", "url": "#" },
+      { "name": "Póliza de Seguro Integral", "url": "#" },
+      { "name": "Certificación Veterinaria Mensual", "url": "#" }
+    ]
+  },
+  "investmentDetails": {
+    "rentabilidadObjetivo": "25–40% anual",
+    "ticketMinimo": "USD 250",
+    "activo": "1 caballo de polo (2 años, línea genética AAP)",
+    "duracionCiclo": "12–18 meses",
+    "capitalRequerido": "USD 50,000 (compra + entrenamiento + mantenimiento + seguro)",
+    "capitalTokenizado": "USD 50,000 (1,000 tokens de USD 50)",
+    "estimacionRetorno": "~30–40% en 12–18 meses por revalorización + derechos de monta/cría"
+  },
+  "modeloNegocio": [
+    "Adquisición de caballo joven (2 años) con pedigree comprobado en línea genética AAP (padre/madre campeones).",
+    "Entrenamiento intensivo con petisero certificado durante 6–12 meses.",
+    "Competencia en torneos internos y circuitos nacionales para demostrar valor deportivo.",
+    "Revalorización por performance (premios, méritos, registros).",
+    "Salida: venta directa a polo player / criador de renombre, subasta AAP o generación de derechos de reproducción.",
+    "Distribución de utilidades netas a token-holders proporcionales."
+  ],
+  "estructuraTokenizacion": [
+    "Vehículo legal: SPV / fideicomiso ganadero equino que adquiere y custodia el caballo.",
+    "Emisión de tokens: 1,000 unidades, cada una representa el 0.1% de propiedad y derecho económico.",
+    "Blockchain: registro on-chain de propiedad fraccionaria, trazabilidad y reportes certificados.",
+    "Seguro integral: cobertura veterinaria, responsabilidad civil, pérdida total y robo.",
+    "Auditoría: certificación veterinaria mensual, chips de identificación, videos de entrenamiento y análisis de progreso.",
+    "Distribuciones: al cierre del ciclo o en hitos (competiciones, valuación independiente)."
+  ],
+  "cronograma": [
+    {
+      "fase": "Mes 0",
+      "descripcion": "Emisión de tokens + adquisición del caballo + inscripción en registro AAP"
+    },
+    {
+      "fase": "Mes 1–3",
+      "descripcion": "Adaptación, adiestramiento inicial, evaluación veterinaria de línea base"
+    },
+    {
+      "fase": "Mes 6",
+      "descripcion": "Primeros torneos internos, evaluación de progreso deportivo, reporte de valuación"
+    },
+    {
+      "fase": "Mes 12–14",
+      "descripcion": "Potencial exposición en subastas, valorización del activo, evaluación de mercado"
+    },
+    {
+      "fase": "Mes 14–18",
+      "descripcion": "Venta o generación de derechos de monta/reproducción; negocios con criadores interesados"
+    },
+    {
+      "fase": "Mes 18",
+      "descripcion": "Liquidación final, distribución de utilidades, cierre del fideicomiso"
+    }
+  ],
+  "ventajasTokenizacion": [
+    "Acceso democrático: invertir desde USD 250 en activos premium equinos sin comprar un caballo completo.",
+    "Activo tangible: caballo real, registrado, entrenado, competidor, con valor comprobable en mercado.",
+    "Transparencia total: seguimiento online de salud, entrenamiento, competencias, videos y reportes veterinarios.",
+    "Potencial de revalorización: el valor del caballo crece con su desempeño deportivo y genética comprobada.",
+    "Múltiples salidas: venta, reproducción, derechos de monta o intercambio de tokens en mercado secundario.",
+    "Seguridad legal: fideicomiso auditado, seguros integrales y certificaciones AAP/veterinarias."
+  ],
+  "riesgos": [
+    {
+      "titulo": "Lesión o enfermedad del caballo",
+      "mitigante": "Seguro veterinario integral, veterinario especializado on-site, plan de contingencia con reemplazo o retorno proporcional."
+    },
+    {
+      "titulo": "Performance deportiva inferior a proyecciones",
+      "mitigante": "Plan B: venta como montura de buena calidad, reproducción certificada, garantía de piso de valor."
+    },
+    {
+      "titulo": "Variabilidad del mercado equino",
+      "mitigante": "Valuaciones independientes cada 6 meses, comparables de subastas AAP, diversificación de salidas (venta, monta, cría)."
+    },
+    {
+      "titulo": "Liquidez secundaria limitada",
+      "mitigante": "Mercado secundario interno Investoken, potencial compra por criadores interesados, salida garantizada al cierre."
+    },
+    {
+      "titulo": "Riesgo de custodia / seguridad física",
+      "mitigante": "Criadero de talla mundial con seguridad 24/7, pólizas de robo e incendio, identificación con chip + registro digital."
+    }
+  ],
+  "faqs": [
+    {
+      "pregunta": "¿Cuál es el monto mínimo para invertir?",
+      "respuesta": "USD 250 (equivale a 5 tokens de USD 50 cada uno)."
+    },
+    {
+      "pregunta": "¿Cómo sé que el caballo es auténtico y de buena genética?",
+      "respuesta": "El caballo está registrado en AAP (Asociación Argentina de Polo), tiene pedigree comprobado y certificación veterinaria mensual con fotos/videos públicos en la plataforma."
+    },
+    {
+      "pregunta": "¿Qué pasa si el caballo se enferma o lesiona?",
+      "respuesta": "Está cubierto por póliza integral de seguro. Si es total, se reembolsa el valor asegurado. Si es parcial, se rehabilita bajo supervisión veterinaria."
+    },
+    {
+      "pregunta": "¿Puedo vender mis tokens antes de los 18 meses?",
+      "respuesta": "Sí, en el mercado secundario de Investoken si hay demanda de otros inversores. También hay compras periódicas por parte del fondo o criadores interesados."
+    },
+    {
+      "pregunta": "¿Cómo se determina el valor final de venta del caballo?",
+      "respuesta": "Por tasación de criador experto + comparables de mercado AAP (subastas Palermo) + valuación independiente cada 6 meses."
+    },
+    {
+      "pregunta": "¿Qué comisiones se cobran?",
+      "respuesta": "2% de estructuración + 1% anual de administración. El resto va a inversores y cobertura de gastos directos."
+    }
+  ]
+}

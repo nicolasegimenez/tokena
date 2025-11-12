@@ -1,0 +1,134 @@
+{
+  "id": "project4",
+  "name": "Tokenización de Ganado – Vaca Alfa",
+  "description": "Participá desde USD 50 en la tokenización de \"Vaca Alfa\" — un activo real, una vaca de engorde optimizada, con trazabilidad, feedlot y contrato de venta final. Tokeniza-y-liquida-y-gana.",
+  "image": "https://res.cloudinary.com/dhacybdxf/image/upload/w_1000,ar_16:9,c_fill,g_auto,e_sharpen/v1762901062/Investoken/IMG_3014_wbml4i.jpg",
+  "images": [
+    "https://res.cloudinary.com/dhacybdxf/image/upload/w_1000,ar_16:9,c_fill,g_auto,e_sharpen/v1762901062/Investoken/IMG_3014_wbml4i.jpg",
+    "https://res.cloudinary.com/dhacybdxf/image/upload/w_1000,ar_16:9,c_fill,g_auto,e_sharpen/v1762901059/Investoken/IMG_3013_eqecdo.jpg",
+    "https://res.cloudinary.com/dhacybdxf/image/upload/v1762901066/Investoken/IMG_3011_kuzanh.jpg"
+  ],
+  "fundingGoal": 60000,
+  "amountRaised": 28000,
+  "investors": 420,
+  "pricePerToken": 80,
+  "team": [
+    { "name": "Carlos Mendez", "role": "Ganadero & Productor", "bio": "25+ años en producción ganadera y engorde en feedlot. Especialista en ciclos de cría y venta." },
+    { "name": "Sandra López", "role": "Trazabilidad & Compliance", "bio": "Experta en blockchain ganadero y auditoría de activos tangibles." }
+  ],
+  "documents": [
+    { "name": "Term Sheet", "url": "#" },
+    { "name": "Seguro de Mortalidad", "url": "#" },
+    { "name": "Contrato con Frigorífico", "url": "#" }
+  ],
+  "compliance": {
+    "tokenStandard": "ERC-20",
+    "legalStructure": "SPV / Fideicomiso Ganadero",
+    "custodian": "Predio Auditado + Reporte Mensual",
+    "kycRequired": true,
+    "legalDocuments": [
+      { "name": "Contrato de Custodial del Animal", "url": "#" },
+      { "name": "Póliza de Seguro", "url": "#" }
+    ]
+  },
+  "investmentDetails": {
+    "rentabilidadObjetivo": "20–25% sobre capital (≈ 28% anualizado)",
+    "ticketMinimo": "USD 50",
+    "activo": "1 vaca premium (±400 kg inicial)",
+    "duracionCiclo": "8–10 meses",
+    "capitalRequerido": "USD 80,000 (compra + engorde + sanidad + logística)",
+    "capitalTokenizado": "USD 60,000 (750 tokens de USD 80)",
+    "tirObjetivo": "≈ 22%",
+    "comisiones": "2% de estructura + 1% anual de administración",
+    "pesoInicial": "±400 kg",
+    "pesoFinal": "550–600 kg",
+    "estimacionRetorno": "~49% en 8–10 meses (ejemplo ilustrativo)"
+  },
+  "modeloNegocio": [
+    "Compra de la vaca inicial (400 kg aprox.)",
+    "Feedlot / engorde (8–10 meses)",
+    "Sanidad, alimentación, sanidad preventiva durante el engorde",
+    "Venta del novillo (aprox. 550-600 kg) a frigorífico o mercado",
+    "Distribución: se reparten utilidades netas a token-holders"
+  ],
+  "estructuraTokenizacion": [
+    "Vehículo legal: SPV / fideicomiso que adquiere la vaca y gestiona",
+    "Emisión de tokens: cada token representa una fracción del derecho económico",
+    "Blockchain o ledger privado para registro y trazabilidad",
+    "Custodia: animal en predio auditado y reportes periódicos (mensuales)",
+    "Distribuciones: al cierre del ciclo o en hitos (peso, control sanitario)"
+  ],
+  "riesgos": [
+    {
+      "titulo": "Clima / Pasturas",
+      "mitigante": "Feedlot cubierto, dieta suplementada, control de calidad"
+    },
+    {
+      "titulo": "Sanidad",
+      "mitigante": "Plan sanitario obligatorio, seguros de mortalidad"
+    },
+    {
+      "titulo": "Precio de venta",
+      "mitigante": "Contrato con frigorífico o garantía de piso (precio mínimo)"
+    },
+    {
+      "titulo": "Liquidez secundaria limitada",
+      "mitigante": "Mercado secundario sólo disponible si hay demanda; comunicación transparente"
+    },
+    {
+      "titulo": "Animal vs masa mayor",
+      "mitigante": "Auditoría, seguro, contingencia"
+    }
+  ],
+  "cronograma": [
+    {
+      "fase": "Mes 0",
+      "descripcion": "Emisión de tokens + compra del animal"
+    },
+    {
+      "fase": "Mes 1",
+      "descripcion": "Traslado al feedlot + inicio engorde"
+    },
+    {
+      "fase": "Mes 3, 5",
+      "descripcion": "Reporte de avance (peso, sanidad, alimentación)"
+    },
+    {
+      "fase": "Mes 8–10",
+      "descripcion": "Venta del animal + cierre del ciclo + distribución de utilidades"
+    },
+    {
+      "fase": "Mes 10",
+      "descripcion": "Nueva emisión o reinvestment"
+    }
+  ],
+  "ventajasTokenizacion": [
+    "Capital accesible: desde USD 50, sin comprar el animal completo",
+    "Activo tangible: vaca real, alimentación, sanidad, kilos finales, venta",
+    "Transparencia y trazabilidad: seguimiento via blockchain, carcasa, kilos producidos",
+    "Liquidez: posibilidad de venta de tokens en mercado secundario al final del ciclo",
+    "Impacto real: participás en ganadería eficiente, bien documentada y con auditoría"
+  ],
+  "faqs": [
+    {
+      "pregunta": "¿Cuál es el monto mínimo?",
+      "respuesta": "Desde USD 50."
+    },
+    {
+      "pregunta": "¿Cómo gano dinero?",
+      "respuesta": "Por la utilidad del animal al momento de la venta."
+    },
+    {
+      "pregunta": "¿Puedo vender mis tokens antes del cierre?",
+      "respuesta": "Sí — en el mercado secundario de Investoken, sujeto a demanda."
+    },
+    {
+      "pregunta": "¿Qué pasa si el animal muere o enferma?",
+      "respuesta": "Hay seguro de mortalidad y contingencia; se informó en el Term Sheet."
+    },
+    {
+      "pregunta": "¿Está regulado?",
+      "respuesta": "Sí — los tokens representan derechos económicos de un fideicomiso; no son valores bancarios. Ver Term Sheet y riesgos."
+    }
+  ]
+}

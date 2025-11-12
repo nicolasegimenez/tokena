@@ -1,0 +1,140 @@
+{
+  "id": "project6",
+  "name": "Recital Tokenizado – \"LUNA EN VIVO 2025\"",
+  "description": "Viví la experiencia. Invertí en el show. Por primera vez, un recital de una artista pop argentina se tokeniza para que los fans y inversores participen del éxito. Invertí desde USD 100 y obtené beneficios económicos, acceso exclusivo y NFTs coleccionables. Movistar Arena, 24 de mayo de 2025. Rentabilidad estimada: 18–25%.",
+  "image": "https://res.cloudinary.com/dhacybdxf/image/upload/w_1000,ar_16:9,c_fill,g_auto,e_sharpen/v1762901058/Investoken/IMG_3028_c95kop.jpg",
+  "images": [
+    "https://res.cloudinary.com/dhacybdxf/image/upload/w_1000,ar_16:9,c_fill,g_auto,e_sharpen/v1762901058/Investoken/IMG_3028_c95kop.jpg",
+    "https://res.cloudinary.com/dhacybdxf/image/upload/w_1000,ar_16:9,c_fill,g_auto,e_sharpen/v1762901054/Investoken/IMG_3026_o8de0r.jpg",
+    "https://res.cloudinary.com/dhacybdxf/image/upload/w_1000,ar_16:9,c_fill,g_auto,e_sharpen/v1762901059/Investoken/IMG_3027_im8miq.jpg"
+  ],
+  "fundingGoal": 250000,
+  "amountRaised": 89500,
+  "investors": 895,
+  "pricePerToken": 100,
+  "team": [
+    { "name": "Luna Rodríguez", "role": "Artista & Directora Creativa", "bio": "Cantante y compositora argentina con presencia internacional, productora de su propio contenido digital y experiencias fan." },
+    { "name": "Carlos Mendez", "role": "Productor Ejecutivo", "bio": "Productor de shows con 15+ años en la industria, especializado en eventos de gran escala y streaming." },
+    { "name": "Martina González", "role": "Directora Financiera", "bio": "Experta en finanzas de entretenimiento y tokenización de contenido artístico." }
+  ],
+  "documents": [
+    { "name": "Whitepaper del Recital Tokenizado", "url": "#" },
+    { "name": "Presupuesto de Producción Detallado", "url": "#" },
+    { "name": "Contrato de Fideicomiso Artístico", "url": "#" },
+    { "name": "Seguro de Producción", "url": "#" }
+  ],
+  "compliance": {
+    "tokenStandard": "ERC-1155",
+    "legalStructure": "Fideicomiso de Producción Artística",
+    "custodian": "Escribanía Fiduciaria + Banco Depositario",
+    "kycRequired": true,
+    "legalDocuments": [
+      { "name": "Contrato de Fideicomiso", "url": "#" },
+      { "name": "Términos y Condiciones de Beneficiarios", "url": "#" },
+      { "name": "Póliza de Seguro Integral de Producción", "url": "#" }
+    ]
+  },
+  "investmentDetails": {
+    "rentabilidadObjetivo": "18–25% anual",
+    "ticketMinimo": "USD 100",
+    "activo": "Recital de Luna en Movistar Arena",
+    "duracionCiclo": "6 meses",
+    "capitalRequerido": "USD 500,000 (producción integral)",
+    "capitalTokenizado": "USD 250,000 (2,500 tokens de USD 100)",
+    "estimacionRetorno": "~18–25% en 6 meses por ingresos de tickets, streaming y merchandising"
+  },
+  "modeloNegocio": [
+    "Financiamiento integral de la producción del show mediante tokens (USD 250,000 de USD 500,000 totales).",
+    "Ingresos por venta de entradas presenciales (general y VIP) en el Movistar Arena.",
+    "Streaming online exclusivo para holders de tokens durante y después del recital.",
+    "Venta de merchandising oficial con ediciones limitadas y descuentos para inversores.",
+    "Sponsors y derechos audiovisuales de transmisión y distribución.",
+    "Liquidación final: ingresos netos se distribuyen proporcionales a tokens en circulación."
+  ],
+  "estructuraTokenizacion": [
+    "Vehículo legal: fideicomiso de producción artística auditado y registrado.",
+    "Tokens ERC-1155: 2,500 unidades emitidas en blockchain Ethereum con trazabilidad total.",
+    "Derechos económicos: cada token representa participación proporcional en los ingresos netos del evento.",
+    "Beneficiarios: acceso prioritario a entradas VIP, NFT exclusivo, backstage digital y descuentos.",
+    "Blockchain: registro transparente de transacciones, auditable en tiempo real.",
+    "Reportes: actualizaciones semanales de ventas, sponsors confirmados y métricas de avance."
+  ],
+  "cronograma": [
+    {
+      "fase": "Febrero 2025",
+      "descripcion": "Lanzamiento de preventa de tokens e inicio de producción integral del show"
+    },
+    {
+      "fase": "Marzo–Abril 2025",
+      "descripcion": "Ensayos, campañas de marketing, montaje de escenografía y confirmación de sponsors"
+    },
+    {
+      "fase": "24 de Mayo 2025",
+      "descripcion": "Luna en Vivo 2025 en Movistar Arena de Buenos Aires — 15,000 personas"
+    },
+    {
+      "fase": "Junio 2025",
+      "descripcion": "Lanzamiento de versión streaming exclusiva y entrega de NFTs coleccionables a holders"
+    },
+    {
+      "fase": "Julio 2025",
+      "descripcion": "Liquidación de ingresos, cálculo de utilidades y distribución a inversores según participación"
+    }
+  ],
+  "ventajasTokenizacion": [
+    "Democracia del entretenimiento: invertir desde USD 100 en un show de talla mundial sin ser productor.",
+    "Activo tangible y verificable: un evento real, fechado, con producción documentada y transmisible.",
+    "Transparencia blockchain: todas las transacciones y reportes disponibles en tiempo real en la plataforma.",
+    "Beneficios experienciales: acceso VIP, NFTs únicos, backstage digital y conocer a la artista.",
+    "Múltiples fuentes de ingresos: tickets presenciales, streaming, merchandising, sponsors.",
+    "Salida flexible: vender tokens en mercado secundario o mantener hasta la liquidación final con utilidades."
+  ],
+  "riesgos": [
+    {
+      "titulo": "Cancelación del show",
+      "mitigante": "Seguro de producción integral que cubre devolución de capital en caso de fuerza mayor."
+    },
+    {
+      "titulo": "Baja venta de entradas",
+      "mitigante": "Campañas de marketing estratégico, presencia de artista en redes, acuerdos de sponsors y difusión."
+    },
+    {
+      "titulo": "Aumento inesperado de costos",
+      "mitigante": "Contratos cerrados con proveedores, fondo de contingencia y presupuesto flexible."
+    },
+    {
+      "titulo": "Riesgo de variación legal",
+      "mitigante": "Respaldo bajo fideicomiso auditado conforme a ley argentina, asesoría legal especializada."
+    },
+    {
+      "titulo": "Rendimientos dependientes del éxito comercial",
+      "mitigante": "Histórico de la artista, análisis de mercado de fans, acuerdos preestablecidos con sponsors."
+    }
+  ],
+  "faqs": [
+    {
+      "pregunta": "¿Puedo asistir al recital con mi token?",
+      "respuesta": "Sí. Algunos niveles de token incluyen acceso VIP prioritario, merchandising oficial y experiencias especiales. Otros inversores pueden mantener tokens para cobrar utilidades o vender en mercado secundario."
+    },
+    {
+      "pregunta": "¿Cómo se generan las ganancias?",
+      "respuesta": "Por ingresos de venta de entradas presenciales, streaming online exclusivo, merchandising oficial y acuerdos de sponsoreo y derechos audiovisuales."
+    },
+    {
+      "pregunta": "¿Qué pasa si no puedo asistir al recital?",
+      "respuesta": "Podés mantener tus tokens y cobrar tu parte proporcional de utilidades al cierre, o venderlos en el mercado secundario de Investoken a otros inversores."
+    },
+    {
+      "pregunta": "¿Cómo garantizan la transparencia?",
+      "respuesta": "Todas las transacciones se registran en blockchain Ethereum, auditable en tiempo real. Reportes semanales de ventas, sponsors y métricas disponibles en tu panel."
+    },
+    {
+      "pregunta": "¿Los rendimientos están asegurados?",
+      "respuesta": "No. Son proyecciones basadas en análisis de mercado de fans, venta de entradas estimada y acuerdos comerciales preestablecidos."
+    },
+    {
+      "pregunta": "¿Qué comisiones cobran?",
+      "respuesta": "2% de estructuración + 1% anual de administración. El resto va íntegramente a inversores y cobertura de gastos de producción."
+    }
+  ]
+}

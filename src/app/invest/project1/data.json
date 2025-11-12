@@ -1,13 +1,12 @@
 {
   "id": "project1",
-  "name": "Eco-Friendly Housing Development",
-  "description": "A new development of 50 eco-friendly homes, built with sustainable materials and powered by renewable energy. This project aims to provide affordable, green housing while delivering a solid return for investors through property sales.",
+  "name": "The Residents – Inversión Inmobiliaria Premium",
+  "description": "Viví frente al mar. Invertí desde cualquier lugar. The Residents redefine el concepto de inversión inmobiliaria premium: un edificio frente al océano Atlántico con amenities de primer nivel y la posibilidad de participar desde USD 200 mediante tokens. Rentabilidad objetivo: 13–17% anual (en USD). Plazo estimado: 28 meses. Ticket mínimo: USD 200. Distribuciones: por hitos de obra y venta.",
   "image": "https://res.cloudinary.com/dhacybdxf/image/upload/v1762299810/edificio_qhi0ri.png",
   "images": [
     "https://res.cloudinary.com/dhacybdxf/image/upload/v1762299810/edificio_qhi0ri.png",
     "https://res.cloudinary.com/dhacybdxf/image/upload/v1762901059/Investoken/IMG_2914_pewjb8.jpg",
     "https://res.cloudinary.com/dhacybdxf/image/upload/v1762901063/Investoken/IMG_2923_t7diap.jpg",
-    "https://res.cloudinary.com/dhacybdxf/image/upload/v1762901066/Investoken/IMG_2924_ayqj5j.jpg",
     "https://res.cloudinary.com/dhacybdxf/image/upload/v1762901064/Investoken/IMG_2917_z2iaht.jpg",
     "https://res.cloudinary.com/dhacybdxf/image/upload/v1762901065/Investoken/IMG_2919_juybka.jpg",
     "https://res.cloudinary.com/dhacybdxf/image/upload/v1762901063/Investoken/IMG_2921_erhake.jpg",
@@ -20,32 +19,41 @@
   "investors": 150,
   "pricePerToken": 100,
   "team": [
-    { "name": "Jane Doe", "role": "Project Manager", "bio": "15 years of experience in real estate development." },
-    { "name": "John Smith", "role": "Lead Architect", "bio": "Specializes in sustainable architecture." }
+    { "name": "Grupo Horizon Developments", "role": "Sponsor & Constructor", "bio": "Desarrollador especializado en proyectos premium en Costa Atlántica. 6 edificios premium entregados. +25,000 m2 desarrollados." },
+    { "name": "Estudio Lamas + Partners", "role": "Arquitectura", "bio": "Estudio de diseño reconocido especializado en arquitectura residencial de lujo." },
+    { "name": "Consultora Axis Projects", "role": "Auditoría Técnica", "bio": "Auditoría independiente de avance de obra y ejecución técnica." }
   ],
   "documents": [
-    { "name": "Project Prospectus", "url": "#" },
-    { "name": "Financial Projections", "url": "#" }
+    { "name": "Term Sheet The Residents", "url": "#" },
+    { "name": "Proyecciones Financieras Detalladas", "url": "#" },
+    { "name": "Planos Arquitectónicos", "url": "#" },
+    { "name": "Contrato con Constructor", "url": "#" }
   ],
   "compliance": {
-    "tokenStandard": "ERC-3643 (T-REX)",
-    "legalStructure": "Special Purpose Vehicle (SPV) LLC",
-    "custodian": "SecureAsset Custody Ltd.",
+    "tokenStandard": "ERC-20",
+    "legalStructure": "Fideicomiso Privado Inmobiliario",
+    "custodian": "Compañía Fiduciaria Americana S.A.",
     "kycRequired": true,
     "legalDocuments": [
-      { "name": "Shareholder Agreement", "url": "#" },
-      { "name": "Property Title Deed", "url": "#" }
+      { "name": "Contrato de Fideicomiso", "url": "#" },
+      { "name": "Documentación de Propiedad", "url": "#" },
+      { "name": "Permisos Municipales", "url": "#" }
     ]
   },
   "investmentSummary": {
     "currency": "DÓLAR",
-    "estimatedTotalReturn": "28,22% en USD",
+    "estimatedTotalReturn": "15,40% en USD",
     "quarterlyPayment": "1,5% en USD",
-    "totalDuration": "24 meses",
-    "minimumInvestment": "ARS 250.000",
+    "totalDuration": "28 meses",
+    "minimumInvestment": "USD 200",
     "fiduciary": "Compañía Fiduciaria Americana S.A.",
-    "developer": "Barza Real Estate",
-    "constructor": "RIVA",
-    "legalVehicle": "Fideicomiso Privado"
+    "developer": "Grupo Horizon Developments",
+    "constructor": "Grupo Horizon Developments",
+    "legalVehicle": "Fideicomiso Privado Inmobiliario",
+    "location": "Boulevard Marítimo y Berutti, Mar del Plata",
+    "capexTotal": "USD 12,4 M",
+    "capitalTokenizado": "USD 4,1 M",
+    "tir": "16,9%",
+    "payback": "28 meses"
   }
 }

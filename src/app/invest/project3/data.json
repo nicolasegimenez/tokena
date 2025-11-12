@@ -1,0 +1,93 @@
+{
+  "id": "project3",
+  "name": "Campo Santa Lucía – Zona Núcleo",
+  "description": "Invertí en tierra productiva tokenizada. Participá desde USD 100 en un campo agrícola de la Zona Núcleo con renta de arrendamiento y potencial de apreciación del valor de la tierra.",
+  "image": "https://via.placeholder.com/800x400?text=Campo+Santa+Lucia",
+  "images": [
+    "https://via.placeholder.com/800x400?text=Campo+Santa+Lucia",
+    "https://via.placeholder.com/800x400?text=Zona+Nucleo+Agricultura",
+    "https://via.placeholder.com/800x400?text=Renta+Arrendamiento",
+    "https://via.placeholder.com/800x400?text=Tokenizacion+Tierra"
+  ],
+  "fundingGoal": 1250000,
+  "amountRaised": 450000,
+  "investors": 280,
+  "pricePerToken": 125,
+  "team": [
+    { "name": "Juan Carlos Pérez", "role": "Gestor Agrícola", "bio": "20+ años en agricultura de Zona Núcleo. Experiencia en arrendamientos y operaciones de campo." },
+    { "name": "María González", "role": "Legal & Cumplimiento", "bio": "Especialista en fideicomisos inmobiliarios y regulación agraria." }
+  ],
+  "documents": [
+    { "name": "Term Sheet", "url": "#" },
+    { "name": "Documento de Riesgos", "url": "#" },
+    { "name": "Contrato de Fideicomiso", "url": "#" }
+  ],
+  "compliance": {
+    "tokenStandard": "ERC-20",
+    "legalStructure": "Fideicomiso Inmobiliario",
+    "custodian": "Escribanía Externa + Data-room",
+    "kycRequired": true,
+    "legalDocuments": [
+      { "name": "Verificación de Dominio", "url": "#" },
+      { "name": "Acta de Due Diligence", "url": "#" }
+    ]
+  },
+  "investmentDetails": {
+    "rentabilidadObjetivo": "10–15% anual (mix arrendamiento + apreciación)",
+    "modalidad": "Fideicomiso + tokens",
+    "superficieTotal": "142 ha",
+    "superficieAgricola": "78 ha",
+    "ticketMinimo": "USD 100",
+    "distribuciones": "Anuales por arrendamiento (en qq soja/ha)",
+    "rentaObjetivo": "18–20 qq soja/ha/año",
+    "horizonte": "3–5 años",
+    "ubicacion": "Zona Núcleo (PBA / Sur de Santa Fe)",
+    "cultivos": "Rotación soja/maíz/trigo",
+    "arrendatario": "Con historial comprobable y garantías"
+  },
+  "riesgos": [
+    {
+      "titulo": "Precio agrícola / Clima",
+      "mitigante": "Diversificación de cultivos y coberturas/seguros cuando corresponde"
+    },
+    {
+      "titulo": "Vacancia/Impago de renta",
+      "mitigante": "Selección de arrendatarios con garantías y track-record"
+    },
+    {
+      "titulo": "Liquidez secundaria",
+      "mitigante": "Mercado peer-to-peer sujeto a demanda"
+    },
+    {
+      "titulo": "Regulatorio/Legal",
+      "mitigante": "Instrumentación mediante fideicomiso y auditorías externas"
+    }
+  ],
+  "tesis": [
+    "Tierra productiva escasa: la Zona Núcleo muestra demanda sostenida de alquiler agrícola",
+    "Cash flow por arrendamiento: renta anual expresada en qq/ha, históricamente resiliente",
+    "Tokenización: acceso fraccionado, gobernanza digital y trazabilidad de la posición"
+  ],
+  "faqs": [
+    {
+      "pregunta": "¿Cómo se compone el retorno?",
+      "respuesta": "Por renta de arrendamiento anual (qq/ha) + potencial apreciación del valor de la tierra"
+    },
+    {
+      "pregunta": "¿Puedo vender antes del final?",
+      "respuesta": "Podés listar tus tokens en el mercado secundario si hay demanda"
+    },
+    {
+      "pregunta": "¿Qué comisiones cobra Investoken?",
+      "respuesta": "Estructuración, administración del fideicomiso y custodia de tokens (ver Term Sheet)"
+    },
+    {
+      "pregunta": "¿Los rendimientos están garantizados?",
+      "respuesta": "No. Son proyecciones sujetas a variables climáticas, de precios y contractuales"
+    },
+    {
+      "pregunta": "¿Quién custodia la documentación?",
+      "respuesta": "Escribanía/estudio jurídico externo + data-room de due diligence disponible para inversores"
+    }
+  ]
+}
