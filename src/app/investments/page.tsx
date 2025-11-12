@@ -4,8 +4,11 @@ import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
 import { TrendingUp, DollarSign, Wallet } from 'lucide-react';
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from '@/components/ui/table';
+import { useLanguage } from '@/lib/language';
 
 const InvestmentsPage: React.FC = () => {
+  const { t } = useLanguage();
+
   // Mock data - Inversiones que posee el usuario
   const myInvestments = [
     {
@@ -67,9 +70,9 @@ const InvestmentsPage: React.FC = () => {
     <div className="container mx-auto py-8 px-4">
       {/* Header */}
       <div className="mb-8">
-        <h1 className="text-4xl font-bold tracking-tight mb-2">Mis Inversiones</h1>
+        <h1 className="text-4xl font-bold tracking-tight mb-2">{t('investments_page_title')}</h1>
         <p className="text-lg text-muted-foreground">
-          Gestiona y monitorea tus activos tokenizados
+          {t('investments_page_desc')}
         </p>
       </div>
 
@@ -77,7 +80,7 @@ const InvestmentsPage: React.FC = () => {
       <div className="grid gap-4 md:grid-cols-3 mb-8">
         <Card>
           <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-            <CardTitle className="text-sm font-medium">Valor Total</CardTitle>
+            <CardTitle className="text-sm font-medium">{t('total_value')}</CardTitle>
             <Wallet className="h-4 w-4 text-muted-foreground" />
           </CardHeader>
           <CardContent>
@@ -85,14 +88,14 @@ const InvestmentsPage: React.FC = () => {
               ${totalValue.toLocaleString('es-AR', { maximumFractionDigits: 0 })}
             </div>
             <p className="text-xs text-muted-foreground mt-2">
-              {myInvestments.length} activos
+              {t('active_assets', { count: myInvestments.length })}
             </p>
           </CardContent>
         </Card>
 
         <Card>
           <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-            <CardTitle className="text-sm font-medium">Cambio 24h</CardTitle>
+            <CardTitle className="text-sm font-medium">{t('change_24h')}</CardTitle>
             <TrendingUp className="h-4 w-4 text-muted-foreground" />
           </CardHeader>
           <CardContent>
@@ -107,7 +110,7 @@ const InvestmentsPage: React.FC = () => {
 
         <Card>
           <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-            <CardTitle className="text-sm font-medium">ROI Promedio</CardTitle>
+            <CardTitle className="text-sm font-medium">{t('average_roi')}</CardTitle>
             <DollarSign className="h-4 w-4 text-muted-foreground" />
           </CardHeader>
           <CardContent>
@@ -115,7 +118,7 @@ const InvestmentsPage: React.FC = () => {
               {(myInvestments.reduce((sum, inv) => sum + inv.roi, 0) / myInvestments.length).toFixed(1)}%
             </div>
             <p className="text-xs text-muted-foreground mt-2">
-              Retorno anual esperado
+              {t('expected_annual_return')}
             </p>
           </CardContent>
         </Card>
@@ -124,9 +127,9 @@ const InvestmentsPage: React.FC = () => {
       {/* Investments Table */}
       <Card>
         <CardHeader>
-          <CardTitle>Tus Tokens</CardTitle>
+          <CardTitle>{t('your_tokens')}</CardTitle>
           <CardDescription>
-            Listado de todos los activos que posees
+            {t('token_list_desc')}
           </CardDescription>
         </CardHeader>
         <CardContent>
@@ -134,13 +137,13 @@ const InvestmentsPage: React.FC = () => {
             <Table>
               <TableHeader>
                 <TableRow>
-                  <TableHead>Activo</TableHead>
-                  <TableHead className="text-right">Cantidad</TableHead>
-                  <TableHead className="text-right">Precio Unitario</TableHead>
-                  <TableHead className="text-right">Valor Total</TableHead>
-                  <TableHead className="text-right">Cambio 24h</TableHead>
-                  <TableHead className="text-right">ROI Anual</TableHead>
-                  <TableHead className="text-center">Estado</TableHead>
+                  <TableHead>{t('asset')}</TableHead>
+                  <TableHead className="text-right">{t('quantity')}</TableHead>
+                  <TableHead className="text-right">{t('unit_price')}</TableHead>
+                  <TableHead className="text-right">{t('total_value_col')}</TableHead>
+                  <TableHead className="text-right">{t('change_24h_col')}</TableHead>
+                  <TableHead className="text-right">{t('annual_roi_col')}</TableHead>
+                  <TableHead className="text-center">{t('status_col')}</TableHead>
                 </TableRow>
               </TableHeader>
               <TableBody>
@@ -176,7 +179,7 @@ const InvestmentsPage: React.FC = () => {
                     </TableCell>
                     <TableCell className="text-center">
                       <Badge variant="default" className="bg-green-600">
-                        Activo
+                        {t('status_active')}
                       </Badge>
                     </TableCell>
                   </TableRow>
@@ -190,10 +193,10 @@ const InvestmentsPage: React.FC = () => {
       {/* Actions */}
       <div className="mt-8 flex justify-end gap-4">
         <Button variant="outline">
-          Descargar Reporte
+          {t('download_report')}
         </Button>
         <Button>
-          Invertir Más
+          {t('invest_more')}
         </Button>
       </div>
     </div>

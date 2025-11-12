@@ -5,6 +5,7 @@ import { ThemeProvider } from "@/components/theme-provider"
 import { Layout } from "@/components/Layout"
 import { Skeleton } from "@/components/ui/skeleton"
 import { AuthProvider } from "@/lib/auth"
+import { LanguageProvider } from "@/lib/language"
 
 const MarketPlaceApp = lazy(() => import("@/components/MarketPlaceApp"))
 const Profile = lazy(() => import("@/components/Profile"))
@@ -35,9 +36,10 @@ function NotFound() {
 function App() {
   return (
     <AuthProvider>
-      <ThemeProvider defaultTheme="dark" storageKey="vite-ui-theme">
-      <Suspense fallback={<div className="w-full h-screen flex items-center justify-center"><Skeleton className="w-1/2 h-1/2" /></div>}>
-        <Routes>
+      <LanguageProvider>
+        <ThemeProvider defaultTheme="dark" storageKey="vite-ui-theme">
+        <Suspense fallback={<div className="w-full h-screen flex items-center justify-center"><Skeleton className="w-1/2 h-1/2" /></div>}>
+          <Routes>
           <Route path="/" element={<Layout />}>
             <Route index element={<HomePage />} />
             <Route path="/profile" element={<Profile />} />
@@ -57,9 +59,10 @@ function App() {
             <Route path="*" element={<NotFound />} />
           </Route>
           <Route path="/dashboard" element={<DashboardPage />} />
-        </Routes>
-      </Suspense>
-      </ThemeProvider>
+          </Routes>
+        </Suspense>
+        </ThemeProvider>
+      </LanguageProvider>
     </AuthProvider>
   )
 }
