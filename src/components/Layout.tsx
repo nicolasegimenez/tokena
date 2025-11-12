@@ -2,11 +2,14 @@
 import { Outlet } from "react-router-dom";
 import NavigationMenuApp from "@/components/NavigationMenuApp";
 import WhatsAppButton from "./WhatsAppButton";
+import { useAuth } from "@/lib/auth";
 
 export function Layout() {
+  const { isAuthenticated } = useAuth();
+
   return (
     <div>
-      <NavigationMenuApp />
+      {isAuthenticated && <NavigationMenuApp />}
       <main className="p-4">
         <Outlet />
       </main>

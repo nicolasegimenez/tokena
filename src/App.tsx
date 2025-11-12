@@ -6,7 +6,6 @@ import { Layout } from "@/components/Layout"
 import { Skeleton } from "@/components/ui/skeleton"
 import { AuthProvider } from "@/lib/auth"
 
-const CarouselApp = lazy(() => import("@/components/CarouselApp"))
 const MarketPlaceApp = lazy(() => import("@/components/MarketPlaceApp"))
 const Profile = lazy(() => import("@/components/Profile"))
 const TokenManagement = lazy(() => import("@/components/TokenManagement"))
@@ -21,6 +20,8 @@ const TradePage = lazy(() => import("@/app/trade/page"))
 const LoginForm = lazy(() => import("@/components/login-form").then(m => ({ default: m.LoginForm })))
 const RegisterPage = lazy(() => import("@/app/registrarse/page"))
 const LandingPage = lazy(() => import("@/app/landing/page"))
+const HomePage = lazy(() => import("@/components/HomePage"))
+const InvestmentsPage = lazy(() => import("@/app/investments/page"))
 
 function NotFound() {
   return (
@@ -38,12 +39,7 @@ function App() {
       <Suspense fallback={<div className="w-full h-screen flex items-center justify-center"><Skeleton className="w-1/2 h-1/2" /></div>}>
         <Routes>
           <Route path="/" element={<Layout />}>
-            <Route index element={
-              <div>
-                <CarouselApp />
-                <MarketPlaceApp />
-              </div>
-            } />
+            <Route index element={<HomePage />} />
             <Route path="/profile" element={<Profile />} />
             <Route path="/login" element={<LoginForm />} />
             <Route path="/registrarse" element={<RegisterPage />} />
@@ -57,6 +53,7 @@ function App() {
             <Route path="/invest/project2" element={<InvestProject2Page />} />
             <Route path="/create" element={<CreateProjectPage />} />
             <Route path="/trade" element={<TradePage />} />
+            <Route path="/investments" element={<InvestmentsPage />} />
             <Route path="*" element={<NotFound />} />
           </Route>
           <Route path="/dashboard" element={<DashboardPage />} />

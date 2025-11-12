@@ -7,23 +7,11 @@ import {
 } from "@/components/ui/sheet";
 import { Menu } from "lucide-react";
 import { useIsMobile } from "@/hooks/use-mobile";
-import {
-  NavigationMenu,
-  NavigationMenuContent,
-  NavigationMenuItem,
-  NavigationMenuLink,
-  NavigationMenuList,
-  NavigationMenuTrigger,
-  NavigationMenuViewport,
-} from "@/components/ui/navigation-menu";
-import { cn } from "@/lib/utils";
 import { Link, useNavigate } from "react-router-dom";
 import {
   DropdownMenu,
   DropdownMenuContent,
   DropdownMenuItem,
-  DropdownMenuLabel,
-  DropdownMenuSeparator,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
@@ -33,25 +21,13 @@ import { Input } from "./ui/input";
 import { ModeToggle } from "./mode-toggle";
 import { useLanguage } from "@/lib/language";
 
-interface SubMenuItem {
-  href: string;
-  title: string;
-  description: string;
-}
-
-interface MenuItem {
-  title: string;
-  items: SubMenuItem[];
-}
-
-const menuItems: MenuItem[] = [];
-
 interface SingleMenuItem {
   href: string;
   titleKey: string;
 }
 
 const singleMenuItems: SingleMenuItem[] = [
+  { href: "/investments", titleKey: "my_investments" },
   { href: "/market", titleKey: "invest" },
   { href: "/trade", titleKey: "trade" },
   { href: "/create", titleKey: "create_project" },
@@ -65,7 +41,7 @@ const LanguageSwitcher = () => {
   };
 
   return (
-    <Button variant="ghost" onClick={toggleLanguage}>
+    <Button variant="ghost" size="sm" onClick={toggleLanguage}>
       {language.toUpperCase()}
     </Button>
   );
@@ -90,20 +66,6 @@ const NavigationMenuApp = () => {
             <SheetTitle>InvestToken</SheetTitle>
           </SheetHeader>
           <div className="grid gap-4 py-4">
-            {menuItems.map((item: MenuItem) => (
-              <div key={item.title}>
-                <h3 className="font-bold">{item.title}</h3>
-                {item.items.map((subItem: SubMenuItem) => (
-                  <Link
-                    key={subItem.href}
-                    to={subItem.href}
-                    className="block p-2 hover:bg-accent"
-                  >
-                    {subItem.title}
-                  </Link>
-                ))}
-              </div>
-            ))}
             {singleMenuItems.map((item: SingleMenuItem) => (
               <Link
                 key={item.href}
@@ -124,7 +86,6 @@ const NavigationMenuApp = () => {
                   <Button asChild>
                     <Link to="/login">Iniciar sesión</Link>
                   </Button>
-                  {/* Solo para demo: botón rápido para simular login */}
                   <Button variant="ghost" onClick={() => login()}>Demo</Button>
                 </div>
               ) : null}
@@ -136,7 +97,7 @@ const NavigationMenuApp = () => {
   }
 
   return (
-    <div className="flex w-full items-center justify-between gap-4 p-4">
+    <div className="flex w-full items-center justify-between gap-4 p-4 border-b">
       <div className="flex items-center gap-4">
         <Link to="/">
           <img
@@ -145,125 +106,110 @@ const NavigationMenuApp = () => {
             className="h-10 w-10 cursor-pointer hover:opacity-80 transition-opacity"
           />
         </Link>
-        <NavigationMenu className="max-w-full">
-          <NavigationMenuList>
-            {menuItems.map((item: MenuItem) => (
-              <NavigationMenuItem key={item.title}>
-                <NavigationMenuTrigger>{item.title}</NavigationMenuTrigger>
-                <NavigationMenuContent>
-                  <ul className="grid w-[400px] gap-3 p-4 md:w-[500px] md:grid-cols-2 lg:w-[600px]">
-                    {item.items.map((subItem: SubMenuItem, index: number) => (
-                      <ListItem
-                        key={subItem.href}
-                        href={subItem.href}
-                        title={subItem.title}
-                        className={index === 0 ? "row-span-3" : ""}
-                      >
-                        {subItem.description}
-                      </ListItem>
-                    ))}
-                  </ul>
-                </NavigationMenuContent>
-              </NavigationMenuItem>
-            ))}
-            {singleMenuItems.map((item: SingleMenuItem) => (
-              <NavigationMenuItem key={item.href}>
-                <Link to={item.href}>
-                  <NavigationMenuLink className="p-2 hover:bg-accent text-lg font-semibold">
-                    {t(item.titleKey)}
-                  </NavigationMenuLink>
-                </Link>
-              </NavigationMenuItem>
-            ))}
-          </NavigationMenuList>
-          <NavigationMenuViewport />
-        </NavigationMenu>
-        <div>
-          <Input type="search" placeholder="Search..." className="md:w-[100px] lg:w-[300px]" />
+        <div className="hidden lg:flex items-center gap-1">
+          {singleMenuItems.map((item: SingleMenuItem) => (
+            <Link key={item.href} to={item.href}>
+              <Button variant="ghost" size="sm">
+                {t(item.titleKey)}
+              </Button>
+            </Link>
+          ))}
+        </div>
+        <div className="hidden md:block">
+          <Input type="search" placeholder="Buscar..." className="md:w-[200px]" />
         </div>
       </div>
 
-      <div className="flex items-center gap-2">
+      <div className="flex items-center gap-3">
         <LanguageSwitcher />
         <ModeToggle />
         {!isAuthenticated ? (
-          <div className="inline-flex items-center gap-2">
-            <Button asChild variant="outline">
+          <div className="hidden sm:inline-flex items-center gap-2">
+            <Button asChild variant="outline" size="sm">
               <Link to="/registrarse">Registrarse</Link>
             </Button>
-            <Button asChild>
+            <Button asChild size="sm">
               <Link to="/login">Iniciar sesión</Link>
             </Button>
-            {/* Solo para demo: botón rápido para simular login */}
-            <Button variant="ghost" onClick={() => login()}>Demo Login</Button>
           </div>
         ) : null}
         {isAuthenticated && (
-          <DropdownMenu>
-            <DropdownMenuTrigger asChild>
-              <button className="inline-flex items-center gap-2 rounded-full p-1 outline-none ring-0 hover:opacity-90">
-                <Avatar className="h-9 w-9">
-                  <AvatarImage src={user?.avatarUrl || ""} alt="Usuario" />
-                  <AvatarFallback>{user?.name?.slice(0,2).toUpperCase() || "US"}</AvatarFallback>
-                </Avatar>
-              </button>
-            </DropdownMenuTrigger>
-            <DropdownMenuContent align="end" className="w-56">
-              <DropdownMenuLabel>{t("my_account")}</DropdownMenuLabel>
-              <DropdownMenuSeparator />
-              <DropdownMenuItem asChild>
-                <Link to="/profile">{t("my_profile")}</Link>
-              </DropdownMenuItem>
-              <DropdownMenuItem asChild>
-                <Link to="/investments">{t("my_investments")}</Link>
-              </DropdownMenuItem>
+          <div className="flex items-center gap-3">
+            {/* Balance Badge */}
+            <div className="hidden sm:flex px-3 py-1.5 rounded-lg bg-green-600/10 backdrop-blur-sm border border-green-500/30 shadow-sm">
+              <span className="text-xs font-bold text-green-600">$ 5,432.50</span>
+            </div>
 
-              <DropdownMenuItem asChild>
-                <Link to="/benefits">{t("my_benefits")}</Link>
-              </DropdownMenuItem>
-              <DropdownMenuSeparator />
-              <DropdownMenuItem asChild>
-                <Link to="/account">{t("my_account")}</Link>
-              </DropdownMenuItem>
-              <DropdownMenuItem onSelect={(e) => { e.preventDefault(); logout(); navigate("/login"); }}>{t("logout")}</DropdownMenuItem>
+            <DropdownMenu>
+              <DropdownMenuTrigger asChild>
+                <button className="inline-flex items-center gap-2 p-1 rounded-full hover:bg-accent transition-colors focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2">
+                  <Avatar className="h-10 w-10 ring-2 ring-primary/20 hover:ring-primary/40 transition-all">
+                    <AvatarImage src={user?.avatarUrl || ""} alt={user?.name || "Usuario"} />
+                    <AvatarFallback className="font-semibold bg-gradient-to-br from-primary/20 to-primary/10">
+                      {user?.name?.slice(0, 2).toUpperCase() || "US"}
+                    </AvatarFallback>
+                  </Avatar>
+                </button>
+              </DropdownMenuTrigger>
+            <DropdownMenuContent align="end" className="w-64 p-0">
+              {/* User Header */}
+              <div className="px-4 py-3 border-b bg-gradient-to-r from-primary/5 to-transparent">
+                <div className="flex items-center gap-3">
+                  <Avatar className="h-12 w-12 ring-2 ring-primary/20">
+                    <AvatarImage src={user?.avatarUrl || ""} alt={user?.name || "Usuario"} />
+                    <AvatarFallback className="font-bold text-sm">{user?.name?.slice(0, 2).toUpperCase() || "US"}</AvatarFallback>
+                  </Avatar>
+                  <div className="flex-1 min-w-0">
+                    <p className="text-sm font-semibold text-foreground truncate">{user?.name || "Usuario"}</p>
+                    <p className="text-xs text-muted-foreground truncate">{user?.email || "email@example.com"}</p>
+                  </div>
+                </div>
+              </div>
+
+              {/* Quick Actions */}
+              <div className="p-2 border-b space-y-1">
+                <DropdownMenuItem asChild className="cursor-pointer">
+                  <Link to="/profile" className="flex items-center gap-3 px-3 py-2 rounded-md hover:bg-accent">
+                    <span className="text-lg">👤</span>
+                    <span className="text-sm font-medium">{t("my_profile")}</span>
+                  </Link>
+                </DropdownMenuItem>
+                <DropdownMenuItem asChild className="cursor-pointer">
+                  <Link to="/investments" className="flex items-center gap-3 px-3 py-2 rounded-md hover:bg-accent">
+                    <span className="text-lg">💼</span>
+                    <span className="text-sm font-medium">{t("my_investments")}</span>
+                  </Link>
+                </DropdownMenuItem>
+              </div>
+
+              {/* Settings */}
+              <div className="p-2 border-b">
+                <DropdownMenuItem asChild className="cursor-pointer">
+                  <Link to="/account" className="flex items-center gap-3 px-3 py-2 rounded-md hover:bg-accent">
+                    <span className="text-lg">⚙️</span>
+                    <span className="text-sm font-medium">Configuración</span>
+                  </Link>
+                </DropdownMenuItem>
+              </div>
+
+              {/* Logout */}
+              <div className="p-2">
+                <DropdownMenuItem
+                  onSelect={(e) => { e.preventDefault(); logout(); navigate("/"); }}
+                  className="cursor-pointer"
+                >
+                  <button className="w-full flex items-center gap-3 px-3 py-2 rounded-md text-red-600 hover:bg-red-50 transition-colors">
+                    <span className="text-lg">🚪</span>
+                    <span className="text-sm font-medium">{t("logout")}</span>
+                  </button>
+                </DropdownMenuItem>
+              </div>
             </DropdownMenuContent>
-          </DropdownMenu>
+            </DropdownMenu>
+          </div>
         )}
       </div>
     </div>
-  );
-};
-
-const ListItem = ({
-  className,
-  title,
-  children,
-  href,
-  ...props
-}: {
-  className?: string;
-  title: string;
-  children: React.ReactNode;
-  href: string;
-}) => {
-  return (
-    <li>
-      <NavigationMenuLink asChild>
-        <Link
-          to={href}
-          className={cn(
-            "block select-none space-y-1 rounded-md p-3 leading-none no-underline outline-none transition-colors hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground",
-            className
-          )}
-          {...props}
-        >
-          <div className="text-sm font-medium leading-none">{title}</div>
-          <p className="line-clamp-2 text-sm leading-snug text-muted-foreground">
-            {children}
-          </p>
-        </Link>
-      </NavigationMenuLink>
-    </li>
   );
 };
 

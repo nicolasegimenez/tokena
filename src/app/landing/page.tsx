@@ -3,9 +3,18 @@ import React from 'react';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
+import { useAuth } from '@/lib/auth';
 
 const LandingPage: React.FC = () => {
+  const { login } = useAuth();
+  const navigate = useNavigate();
+
+  const handleDemoLogin = () => {
+    login();
+    navigate('/');
+  };
+
   return (
     <main className="flex flex-col items-center justify-center min-h-[calc(100vh-4rem)] px-4">
       {/* Hero Section */}
@@ -24,10 +33,8 @@ const LandingPage: React.FC = () => {
         </p>
         
         <div className="flex flex-col sm:flex-row items-center justify-center gap-4 mb-8">
-          <Button asChild size="lg" className="text-lg px-10 py-6 h-auto shadow-lg hover:shadow-xl transition-shadow">
-            <Link to="/registrarse" aria-label="Crear cuenta y empezar a invertir">
-              Crear cuenta
-            </Link>
+          <Button onClick={handleDemoLogin} size="lg" className="text-lg px-10 py-6 h-auto shadow-lg hover:shadow-xl transition-shadow">
+            Demo Login
           </Button>
           <Button asChild variant="outline" size="lg" className="text-lg px-10 py-6 h-auto border-2">
             <Link to="/market" aria-label="Explorar el marketplace de activos tokenizados">
@@ -321,10 +328,8 @@ const LandingPage: React.FC = () => {
               Probá la plataforma gratis y descubre cómo simplificar tu inversión en activos tokenizados
             </p>
             <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
-              <Button asChild size="lg" className="text-lg px-12 py-7 h-auto shadow-lg hover:shadow-xl">
-                <Link to="/registrarse" aria-label="Crear cuenta">
-                  Crear cuenta gratis
-                </Link>
+              <Button onClick={handleDemoLogin} size="lg" className="text-lg px-12 py-7 h-auto shadow-lg hover:shadow-xl">
+                Demo Login
               </Button>
               <Button asChild variant="outline" size="lg" className="text-lg px-12 py-7 h-auto border-2">
                 <Link to="/analytics" aria-label="Ver analíticas de la plataforma">

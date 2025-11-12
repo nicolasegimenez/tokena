@@ -1,11 +1,13 @@
 {
+  "permissions": {
+    "allow": [
+      "Bash(dir C:Usersnicoatokenasrcapp)"
+    ],
+    "deny": [],
+    "ask": []
+  },
   "enableAllProjectMcpServers": true,
   "enabledMcpjsonServers": [
     "shadcn"
-  ],
-  "permissions": {
-    "allow": [
-      "Bash(tree:*)"
-    ]
-  }
+  ]
 }
