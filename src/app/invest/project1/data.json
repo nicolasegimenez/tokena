@@ -1,7 +1,13 @@
 {
   "id": "project1",
-  "name": "The Residents – Inversión Inmobiliaria Premium",
-  "description": "Viví frente al mar. Invertí desde cualquier lugar. The Residents redefine el concepto de inversión inmobiliaria premium: un edificio frente al océano Atlántico con amenities de primer nivel y la posibilidad de participar desde USD 200 mediante tokens. Rentabilidad objetivo: 13–17% anual (en USD). Plazo estimado: 28 meses. Ticket mínimo: USD 200. Distribuciones: por hitos de obra y venta.",
+  "name": {
+    "es": "The Residents – Inversión Inmobiliaria Premium",
+    "en": "The Residents – Premium Real Estate Investment"
+  },
+  "description": {
+    "es": "Viví frente al mar. Invertí desde cualquier lugar. The Residents redefine el concepto de inversión inmobiliaria premium: un edificio frente al océano Atlántico con amenities de primer nivel y la posibilidad de participar desde USD 200 mediante tokens. Rentabilidad objetivo: 13–17% anual (en USD). Plazo estimado: 28 meses. Ticket mínimo: USD 200. Distribuciones: por hitos de obra y venta.",
+    "en": "Live by the sea. Invest from anywhere. The Residents redefine premium real estate investment: a building facing the Atlantic Ocean with first-class amenities and the opportunity to participate from USD 200 through tokens. Target return: 13–17% annually (in USD). Estimated timeline: 28 months. Minimum ticket: USD 200. Distributions: per construction milestones and sale."
+  },
   "image": "https://res.cloudinary.com/dhacybdxf/image/upload/v1762299810/edificio_qhi0ri.png",
   "images": [
     "https://res.cloudinary.com/dhacybdxf/image/upload/v1762299810/edificio_qhi0ri.png",
@@ -19,25 +25,25 @@
   "investors": 150,
   "pricePerToken": 100,
   "team": [
-    { "name": "Grupo Horizon Developments", "role": "Sponsor & Constructor", "bio": "Desarrollador especializado en proyectos premium en Costa Atlántica. 6 edificios premium entregados. +25,000 m2 desarrollados." },
-    { "name": "Estudio Lamas + Partners", "role": "Arquitectura", "bio": "Estudio de diseño reconocido especializado en arquitectura residencial de lujo." },
-    { "name": "Consultora Axis Projects", "role": "Auditoría Técnica", "bio": "Auditoría independiente de avance de obra y ejecución técnica." }
+    { "name": "Grupo Horizon Developments", "role": { "es": "Sponsor & Constructor", "en": "Sponsor & Constructor" }, "bio": { "es": "Desarrollador especializado en proyectos premium en Costa Atlántica. 6 edificios premium entregados. +25,000 m2 desarrollados.", "en": "Developer specialized in premium projects on the Atlantic Coast. 6 premium buildings delivered. +25,000 m2 developed." } },
+    { "name": "Estudio Lamas + Partners", "role": { "es": "Arquitectura", "en": "Architecture" }, "bio": { "es": "Estudio de diseño reconocido especializado en arquitectura residencial de lujo.", "en": "Renowned design studio specialized in luxury residential architecture." } },
+    { "name": "Consultora Axis Projects", "role": { "es": "Auditoría Técnica", "en": "Technical Audit" }, "bio": { "es": "Auditoría independiente de avance de obra y ejecución técnica.", "en": "Independent audit of construction progress and technical execution." } }
   ],
   "documents": [
-    { "name": "Term Sheet The Residents", "url": "#" },
-    { "name": "Proyecciones Financieras Detalladas", "url": "#" },
-    { "name": "Planos Arquitectónicos", "url": "#" },
-    { "name": "Contrato con Constructor", "url": "#" }
+    { "name": { "es": "Term Sheet The Residents", "en": "Term Sheet The Residents" }, "url": "#" },
+    { "name": { "es": "Proyecciones Financieras Detalladas", "en": "Detailed Financial Projections" }, "url": "#" },
+    { "name": { "es": "Planos Arquitectónicos", "en": "Architectural Plans" }, "url": "#" },
+    { "name": { "es": "Contrato con Constructor", "en": "Constructor Contract" }, "url": "#" }
   ],
   "compliance": {
     "tokenStandard": "ERC-20",
-    "legalStructure": "Fideicomiso Privado Inmobiliario",
-    "custodian": "Compañía Fiduciaria Americana S.A.",
+    "legalStructure": { "es": "Fideicomiso Privado Inmobiliario", "en": "Private Real Estate Trust" },
+    "custodian": { "es": "Compañía Fiduciaria Americana S.A.", "en": "American Fiduciary Company S.A." },
     "kycRequired": true,
     "legalDocuments": [
-      { "name": "Contrato de Fideicomiso", "url": "#" },
-      { "name": "Documentación de Propiedad", "url": "#" },
-      { "name": "Permisos Municipales", "url": "#" }
+      { "name": { "es": "Contrato de Fideicomiso", "en": "Trust Agreement" }, "url": "#" },
+      { "name": { "es": "Documentación de Propiedad", "en": "Property Documentation" }, "url": "#" },
+      { "name": { "es": "Permisos Municipales", "en": "Municipal Permits" }, "url": "#" }
     ]
   },
   "investmentSummary": {

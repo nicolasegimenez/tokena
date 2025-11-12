@@ -23,52 +23,99 @@ import { useState, useMemo } from "react"
 import { Link } from "react-router-dom"
 import PaymentDialog from "@/components/PaymentDialog"
 import { useLanguage } from "@/lib/language"
+import { marketProjects } from "@/lib/market-data"
+
+const labels = {
+  es: {
+    invest_market: "Invest Market",
+    discover_tokenized_opportunities: "Descubre oportunidades de inversión tokenizadas",
+    search: "Buscar...",
+    category: "Categoría",
+    all: "Todos",
+    real_estate: "Real Estate",
+    crypto: "Crypto",
+    startup: "Startup",
+    entertainment: "Entretenimiento",
+    sort_by: "Ordenar por",
+    default: "Defecto",
+    price_asc: "Precio: Menor a Mayor",
+    price_desc: "Precio: Mayor a Menor",
+    roi_desc: "ROI: Mayor a Menor",
+    available: "Disponible",
+    sold_out: "Agotado",
+    expected_return: "De Rentabilidad esperada en {currency} a {duration} meses",
+    more_info: "Más Info",
+    invest: "Invertir",
+    project_1_name: "The Residents – Inversión Inmobiliaria Premium",
+    project_2_name: "Fondo de Criptomonedas",
+    project_3_name: "Campo Santa Lucía – Zona Núcleo",
+    project_4_name: "Tokenización de Ganado – Vaca Alfa",
+    project_5_name: "Polo Horse Token – \"Embajador\"",
+    project_6_name: "Recital Tokenizado – \"LUNA EN VIVO 2025\"",
+    project_7_name: "Investoken – Seed Round",
+  },
+  en: {
+    invest_market: "Invest Market",
+    discover_tokenized_opportunities: "Discover tokenized investment opportunities",
+    search: "Search...",
+    category: "Category",
+    all: "All",
+    real_estate: "Real Estate",
+    crypto: "Crypto",
+    startup: "Startup",
+    entertainment: "Entertainment",
+    sort_by: "Sort by",
+    default: "Default",
+    price_asc: "Price: Low to High",
+    price_desc: "Price: High to Low",
+    roi_desc: "ROI: High to Low",
+    available: "Available",
+    sold_out: "Sold Out",
+    expected_return: "Expected return in {currency} in {duration} months",
+    more_info: "More Info",
+    invest: "Invest",
+    project_1_name: "The Residents – Premium Real Estate Investment",
+    project_2_name: "Cryptocurrency Fund",
+    project_3_name: "Santa Lucía Field – Core Zone",
+    project_4_name: "Livestock Tokenization – Vaca Alfa",
+    project_5_name: "Polo Horse Token – \"Ambassador\"",
+    project_6_name: "Tokenized Concert – \"LUNA LIVE 2025\"",
+    project_7_name: "Investoken – Seed Round",
+  }
+};
 
 const MarketPlaceApp = () => {
-    const { t, language } = useLanguage();
+    const { language } = useLanguage();
+    const t = (key: keyof typeof labels.es, vars?: Record<string, any>) => {
+      let text = labels[language][key] || '';
+      if (vars) {
+        Object.keys(vars).forEach(key => {
+          text = text.replace(`{${key}}`, vars[key]);
+        });
+      }
+      return text;
+    };
 
-    const investmentsData = useMemo(() => [
-        {
-          id: 1,
-          title: t('tokenized_apartments_title'),
-          description: t('tokenized_apartments_desc'),
-          price: 50000,
-          roi: 12,
-          duration: 24,
-          available: 15,
-          status: t('available'),
-          category: t('real_estate'),
-          image: "https://res.cloudinary.com/dhacybdxf/image/upload/v1762299810/edificio_qhi0ri.png",
-    
-          currency:"Dolares"
-        },
-        {
-          id: 2,
-          title: t('crypto_fund_title'),
-          description: t('crypto_fund_desc'),
-          price: 25000,
-          roi: 18,
-          duration: 12,
-          available: 50,
-          status: t('available'),
-          category: t('crypto'),
-          currency:"Dolares",
-          image: "https://res.cloudinary.com/dhacybdxf/image/upload/v1762299809/ethereum_vs8k4y.png"
-        },
-        {
-          id: 3,
-          title: t('tokenized_startup_title'),
-          description: t('tokenized_startup_desc'),
-          price: 75000,
-          roi: 25,
-          duration: 36,
-          available: 8,
-          status: t('sold_out'),
-          category: t('startup'),
-          currency:"Pesos",
-          image: "https://res.cloudinary.com/dhacybdxf/image/upload/v1762299809/startup_tb5wu3.png"
-        }
-      ], [language]);
+    const investmentsData = useMemo(() =>
+      marketProjects.map((project) => {
+        const projectNameKey = `project_${project.id}_name` as keyof typeof labels.es;
+        return {
+          id: parseInt(project.id),
+          title: t(projectNameKey),
+          description: t(projectNameKey),
+          price: project.pricePerToken * 100,
+          roi: 15,
+          duration: parseInt(project.totalDuration.replace(/[^0-9]/g, '')),
+          available: project.quantity,
+          status: project.quantity > 0 ? t('available') : t('sold_out'),
+          category: project.category,
+          image: project.image,
+          currency: "USD",
+          marketUrl: project.marketUrl,
+          paymentMethods: project.paymentMethods,
+        };
+      })
+    , [language, t]);
 
     const [investments, setInvestments] = useState(investmentsData);
     const [searchTerm, setSearchTerm] = useState("");
@@ -138,6 +185,7 @@ const MarketPlaceApp = () => {
                     <SelectItem value="Real Estate">{t('real_estate')}</SelectItem>
                     <SelectItem value="Crypto">{t('crypto')}</SelectItem>
                     <SelectItem value="Startup">{t('startup')}</SelectItem>
+                    <SelectItem value="Entretenimiento">{t('entertainment')}</SelectItem>
                 </SelectContent>
             </Select>
             <Select onValueChange={handleSortByChange} defaultValue="default">
@@ -191,23 +239,19 @@ const MarketPlaceApp = () => {
             </CardContent>
             
   <CardFooter>
-    {investment.id === 3 ? (
-      <Button className="w-full" disabled>
-        {t('coming_soon')}
-      </Button>
-    ) : investment.status === t('sold_out') ? (
+    {investment.status === t('sold_out') ? (
       <Button className="w-full" disabled>
         {t('sold_out')}
       </Button>
     ) : (
       <div className="flex w-full gap-2">
-        <Link to={`/invest/project${investment.id}`} className="flex-1">
+        <Link to={investment.marketUrl} className="flex-1">
           <Button className="w-full bg-foreground text-background hover:bg-foreground/90" variant="default">
             {t('more_info')}
           </Button>
         </Link>
-        <Button 
-          className="flex-1 bg-green-600 text-white hover:bg-green-700" 
+        <Button
+          className="flex-1 bg-green-600 text-white hover:bg-green-700"
           variant="default"
           onClick={() => {
             setSelectedInvestment(investment);

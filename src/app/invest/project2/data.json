@@ -1,7 +1,13 @@
 {
   "id": "project2",
-  "name": "Fondo de Criptomonedas",
-  "description": "Portfolio diversificado de criptomonedas principales con gestión profesional. Invierte en un fondo gestionado que busca maximizar los retornos en el volátil mercado de las criptomonedas.",
+  "name": {
+    "es": "Fondo de Criptomonedas",
+    "en": "Cryptocurrency Fund"
+  },
+  "description": {
+    "es": "Portfolio diversificado de criptomonedas principales con gestión profesional. Invierte en un fondo gestionado que busca maximizar los retornos en el volátil mercado de las criptomonedas.",
+    "en": "Diversified portfolio of major cryptocurrencies with professional management. Invest in a managed fund that seeks to maximize returns in the volatile cryptocurrency market."
+  },
   "image": "https://res.cloudinary.com/dhacybdxf/image/upload/v1762299809/ethereum_vs8k4y.png",
   "images": [
     "https://res.cloudinary.com/dhacybdxf/image/upload/v1762299809/ethereum_vs8k4y.png",
@@ -14,20 +20,20 @@
   "investors": 350,
   "pricePerToken": 50,
   "team": [
-    { "name": "Satoshi Nakamoto", "role": "Fund Manager", "bio": "Experto en criptomonedas con 10 años de experiencia en trading y análisis de mercado." }
+    { "name": "Satoshi Nakamoto", "role": { "es": "Gestor de Fondo", "en": "Fund Manager" }, "bio": { "es": "Experto en criptomonedas con 10 años de experiencia en trading y análisis de mercado.", "en": "Cryptocurrency expert with 10 years of experience in trading and market analysis." } }
   ],
   "documents": [
-    { "name": "Fondo Prospectus", "url": "#" },
-    { "name": "Estrategia de Inversión", "url": "#" }
+    { "name": { "es": "Fondo Prospectus", "en": "Fund Prospectus" }, "url": "#" },
+    { "name": { "es": "Estrategia de Inversión", "en": "Investment Strategy" }, "url": "#" }
   ],
   "compliance": {
     "tokenStandard": "ERC-20",
-    "legalStructure": "Cayman Islands Mutual Fund",
-    "custodian": "Self-custody (on-chain)",
+    "legalStructure": { "es": "Fondo Mutualista de Islas Caimán", "en": "Cayman Islands Mutual Fund" },
+    "custodian": { "es": "Auto-custodia (en-cadena)", "en": "Self-custody (on-chain)" },
     "kycRequired": true,
     "legalDocuments": [
-      { "name": "Private Placement Memorandum", "url": "#" },
-      { "name": "Subscription Agreement", "url": "#" }
+      { "name": { "es": "Memorándum de Oferta Privada", "en": "Private Placement Memorandum" }, "url": "#" },
+      { "name": { "es": "Acuerdo de Suscripción", "en": "Subscription Agreement" }, "url": "#" }
     ]
   }
 }

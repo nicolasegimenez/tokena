@@ -1,7 +1,13 @@
 {
   "id": "project4",
-  "name": "Tokenización de Ganado – Vaca Alfa",
-  "description": "Participá desde USD 50 en la tokenización de \"Vaca Alfa\" — un activo real, una vaca de engorde optimizada, con trazabilidad, feedlot y contrato de venta final. Tokeniza-y-liquida-y-gana.",
+  "name": {
+    "es": "Tokenización de Ganado – Vaca Alfa",
+    "en": "Cattle Tokenization – Alpha Cow"
+  },
+  "description": {
+    "es": "Participá desde USD 50 en la tokenización de \"Vaca Alfa\" — un activo real, una vaca de engorde optimizada, con trazabilidad, feedlot y contrato de venta final. Tokeniza-y-liquida-y-gana.",
+    "en": "Participate from USD 50 in the tokenization of \"Alpha Cow\" — a real asset, an optimized feedlot cow, with traceability, feedlot management and final sale contract. Tokenize-liquidate-and-earn."
+  },
   "image": "https://res.cloudinary.com/dhacybdxf/image/upload/w_1000,ar_16:9,c_fill,g_auto,e_sharpen/v1762901062/Investoken/IMG_3014_wbml4i.jpg",
   "images": [
     "https://res.cloudinary.com/dhacybdxf/image/upload/w_1000,ar_16:9,c_fill,g_auto,e_sharpen/v1762901062/Investoken/IMG_3014_wbml4i.jpg",
@@ -13,22 +19,78 @@
   "investors": 420,
   "pricePerToken": 80,
   "team": [
-    { "name": "Carlos Mendez", "role": "Ganadero & Productor", "bio": "25+ años en producción ganadera y engorde en feedlot. Especialista en ciclos de cría y venta." },
-    { "name": "Sandra López", "role": "Trazabilidad & Compliance", "bio": "Experta en blockchain ganadero y auditoría de activos tangibles." }
+    {
+      "name": "Carlos Mendez",
+      "role": {
+        "es": "Ganadero & Productor",
+        "en": "Cattle Rancher & Producer"
+      },
+      "bio": {
+        "es": "25+ años en producción ganadera y engorde en feedlot. Especialista en ciclos de cría y venta.",
+        "en": "25+ years in cattle production and feedlot fattening. Specialist in breeding cycles and sales."
+      }
+    },
+    {
+      "name": "Sandra López",
+      "role": {
+        "es": "Trazabilidad & Compliance",
+        "en": "Traceability & Compliance"
+      },
+      "bio": {
+        "es": "Experta en blockchain ganadero y auditoría de activos tangibles.",
+        "en": "Expert in cattle blockchain and tangible asset auditing."
+      }
+    }
   ],
   "documents": [
-    { "name": "Term Sheet", "url": "#" },
-    { "name": "Seguro de Mortalidad", "url": "#" },
-    { "name": "Contrato con Frigorífico", "url": "#" }
+    {
+      "name": {
+        "es": "Term Sheet",
+        "en": "Term Sheet"
+      },
+      "url": "#"
+    },
+    {
+      "name": {
+        "es": "Seguro de Mortalidad",
+        "en": "Mortality Insurance"
+      },
+      "url": "#"
+    },
+    {
+      "name": {
+        "es": "Contrato con Frigorífico",
+        "en": "Slaughterhouse Contract"
+      },
+      "url": "#"
+    }
   ],
   "compliance": {
     "tokenStandard": "ERC-20",
-    "legalStructure": "SPV / Fideicomiso Ganadero",
-    "custodian": "Predio Auditado + Reporte Mensual",
+    "legalStructure": {
+      "es": "SPV / Fideicomiso Ganadero",
+      "en": "SPV / Cattle Trust"
+    },
+    "custodian": {
+      "es": "Predio Auditado + Reporte Mensual",
+      "en": "Audited Facility + Monthly Report"
+    },
     "kycRequired": true,
     "legalDocuments": [
-      { "name": "Contrato de Custodial del Animal", "url": "#" },
-      { "name": "Póliza de Seguro", "url": "#" }
+      {
+        "name": {
+          "es": "Contrato de Custodial del Animal",
+          "en": "Animal Custody Agreement"
+        },
+        "url": "#"
+      },
+      {
+        "name": {
+          "es": "Póliza de Seguro",
+          "en": "Insurance Policy"
+        },
+        "url": "#"
+      }
     ]
   },
   "investmentDetails": {
@@ -45,90 +107,225 @@
     "estimacionRetorno": "~49% en 8–10 meses (ejemplo ilustrativo)"
   },
   "modeloNegocio": [
-    "Compra de la vaca inicial (400 kg aprox.)",
-    "Feedlot / engorde (8–10 meses)",
-    "Sanidad, alimentación, sanidad preventiva durante el engorde",
-    "Venta del novillo (aprox. 550-600 kg) a frigorífico o mercado",
-    "Distribución: se reparten utilidades netas a token-holders"
+    {
+      "es": "Compra de la vaca inicial (400 kg aprox.)",
+      "en": "Purchase of initial cow (approx. 400 kg)"
+    },
+    {
+      "es": "Feedlot / engorde (8–10 meses)",
+      "en": "Feedlot / fattening (8–10 months)"
+    },
+    {
+      "es": "Sanidad, alimentación, sanidad preventiva durante el engorde",
+      "en": "Health care, nutrition, preventive health during fattening"
+    },
+    {
+      "es": "Venta del novillo (aprox. 550-600 kg) a frigorífico o mercado",
+      "en": "Sale of steer (approx. 550-600 kg) to slaughterhouse or market"
+    },
+    {
+      "es": "Distribución: se reparten utilidades netas a token-holders",
+      "en": "Distribution: net profits distributed to token-holders"
+    }
   ],
   "estructuraTokenizacion": [
-    "Vehículo legal: SPV / fideicomiso que adquiere la vaca y gestiona",
-    "Emisión de tokens: cada token representa una fracción del derecho económico",
-    "Blockchain o ledger privado para registro y trazabilidad",
-    "Custodia: animal en predio auditado y reportes periódicos (mensuales)",
-    "Distribuciones: al cierre del ciclo o en hitos (peso, control sanitario)"
+    {
+      "es": "Vehículo legal: SPV / fideicomiso que adquiere la vaca y gestiona",
+      "en": "Legal vehicle: SPV / trust that acquires the cow and manages operations"
+    },
+    {
+      "es": "Emisión de tokens: cada token representa una fracción del derecho económico",
+      "en": "Token issuance: each token represents a fraction of the economic rights"
+    },
+    {
+      "es": "Blockchain o ledger privado para registro y trazabilidad",
+      "en": "Blockchain or private ledger for registration and traceability"
+    },
+    {
+      "es": "Custodia: animal en predio auditado y reportes periódicos (mensuales)",
+      "en": "Custody: animal at audited facility and periodic reports (monthly)"
+    },
+    {
+      "es": "Distribuciones: al cierre del ciclo o en hitos (peso, control sanitario)",
+      "en": "Distributions: at cycle closure or at milestones (weight, health control)"
+    }
   ],
   "riesgos": [
     {
-      "titulo": "Clima / Pasturas",
-      "mitigante": "Feedlot cubierto, dieta suplementada, control de calidad"
+      "titulo": {
+        "es": "Clima / Pasturas",
+        "en": "Weather / Pastures"
+      },
+      "mitigante": {
+        "es": "Feedlot cubierto, dieta suplementada, control de calidad",
+        "en": "Covered feedlot, supplemented diet, quality control"
+      }
     },
     {
-      "titulo": "Sanidad",
-      "mitigante": "Plan sanitario obligatorio, seguros de mortalidad"
+      "titulo": {
+        "es": "Sanidad",
+        "en": "Health"
+      },
+      "mitigante": {
+        "es": "Plan sanitario obligatorio, seguros de mortalidad",
+        "en": "Mandatory health plan, mortality insurance"
+      }
     },
     {
-      "titulo": "Precio de venta",
-      "mitigante": "Contrato con frigorífico o garantía de piso (precio mínimo)"
+      "titulo": {
+        "es": "Precio de venta",
+        "en": "Sale price"
+      },
+      "mitigante": {
+        "es": "Contrato con frigorífico o garantía de piso (precio mínimo)",
+        "en": "Contract with slaughterhouse or floor guarantee (minimum price)"
+      }
     },
     {
-      "titulo": "Liquidez secundaria limitada",
-      "mitigante": "Mercado secundario sólo disponible si hay demanda; comunicación transparente"
+      "titulo": {
+        "es": "Liquidez secundaria limitada",
+        "en": "Limited secondary liquidity"
+      },
+      "mitigante": {
+        "es": "Mercado secundario sólo disponible si hay demanda; comunicación transparente",
+        "en": "Secondary market only available if there is demand; transparent communication"
+      }
     },
     {
-      "titulo": "Animal vs masa mayor",
-      "mitigante": "Auditoría, seguro, contingencia"
+      "titulo": {
+        "es": "Animal vs masa mayor",
+        "en": "Individual animal vs larger herd"
+      },
+      "mitigante": {
+        "es": "Auditoría, seguro, contingencia",
+        "en": "Auditing, insurance, contingency"
+      }
     }
   ],
   "cronograma": [
     {
-      "fase": "Mes 0",
-      "descripcion": "Emisión de tokens + compra del animal"
+      "fase": {
+        "es": "Mes 0",
+        "en": "Month 0"
+      },
+      "descripcion": {
+        "es": "Emisión de tokens + compra del animal",
+        "en": "Token issuance + animal purchase"
+      }
     },
     {
-      "fase": "Mes 1",
-      "descripcion": "Traslado al feedlot + inicio engorde"
+      "fase": {
+        "es": "Mes 1",
+        "en": "Month 1"
+      },
+      "descripcion": {
+        "es": "Traslado al feedlot + inicio engorde",
+        "en": "Transfer to feedlot + fattening begins"
+      }
     },
     {
-      "fase": "Mes 3, 5",
-      "descripcion": "Reporte de avance (peso, sanidad, alimentación)"
+      "fase": {
+        "es": "Mes 3, 5",
+        "en": "Month 3, 5"
+      },
+      "descripcion": {
+        "es": "Reporte de avance (peso, sanidad, alimentación)",
+        "en": "Progress report (weight, health, nutrition)"
+      }
     },
     {
-      "fase": "Mes 8–10",
-      "descripcion": "Venta del animal + cierre del ciclo + distribución de utilidades"
+      "fase": {
+        "es": "Mes 8–10",
+        "en": "Month 8–10"
+      },
+      "descripcion": {
+        "es": "Venta del animal + cierre del ciclo + distribución de utilidades",
+        "en": "Animal sale + cycle closure + profit distribution"
+      }
     },
     {
-      "fase": "Mes 10",
-      "descripcion": "Nueva emisión o reinvestment"
+      "fase": {
+        "es": "Mes 10",
+        "en": "Month 10"
+      },
+      "descripcion": {
+        "es": "Nueva emisión o reinvestment",
+        "en": "New issuance or reinvestment"
+      }
     }
   ],
   "ventajasTokenizacion": [
-    "Capital accesible: desde USD 50, sin comprar el animal completo",
-    "Activo tangible: vaca real, alimentación, sanidad, kilos finales, venta",
-    "Transparencia y trazabilidad: seguimiento via blockchain, carcasa, kilos producidos",
-    "Liquidez: posibilidad de venta de tokens en mercado secundario al final del ciclo",
-    "Impacto real: participás en ganadería eficiente, bien documentada y con auditoría"
+    {
+      "es": "Capital accesible: desde USD 50, sin comprar el animal completo",
+      "en": "Accessible capital: from USD 50, without buying the entire animal"
+    },
+    {
+      "es": "Activo tangible: vaca real, alimentación, sanidad, kilos finales, venta",
+      "en": "Tangible asset: real cow, feeding, health, final weight, sale"
+    },
+    {
+      "es": "Transparencia y trazabilidad: seguimiento via blockchain, carcasa, kilos producidos",
+      "en": "Transparency and traceability: tracking via blockchain, carcass, kilograms produced"
+    },
+    {
+      "es": "Liquidez: posibilidad de venta de tokens en mercado secundario al final del ciclo",
+      "en": "Liquidity: possibility of token sales in secondary market at cycle end"
+    },
+    {
+      "es": "Impacto real: participás en ganadería eficiente, bien documentada y con auditoría",
+      "en": "Real impact: participate in efficient cattle ranching, well-documented and audited"
+    }
   ],
   "faqs": [
     {
-      "pregunta": "¿Cuál es el monto mínimo?",
-      "respuesta": "Desde USD 50."
+      "pregunta": {
+        "es": "¿Cuál es el monto mínimo?",
+        "en": "What is the minimum amount?"
+      },
+      "respuesta": {
+        "es": "Desde USD 50.",
+        "en": "From USD 50."
+      }
     },
     {
-      "pregunta": "¿Cómo gano dinero?",
-      "respuesta": "Por la utilidad del animal al momento de la venta."
+      "pregunta": {
+        "es": "¿Cómo gano dinero?",
+        "en": "How do I make money?"
+      },
+      "respuesta": {
+        "es": "Por la utilidad del animal al momento de la venta.",
+        "en": "From the profit of the animal at the time of sale."
+      }
     },
     {
-      "pregunta": "¿Puedo vender mis tokens antes del cierre?",
-      "respuesta": "Sí — en el mercado secundario de Investoken, sujeto a demanda."
+      "pregunta": {
+        "es": "¿Puedo vender mis tokens antes del cierre?",
+        "en": "Can I sell my tokens before closure?"
+      },
+      "respuesta": {
+        "es": "Sí — en el mercado secundario de Investoken, sujeto a demanda.",
+        "en": "Yes — in Investoken's secondary market, subject to demand."
+      }
     },
     {
-      "pregunta": "¿Qué pasa si el animal muere o enferma?",
-      "respuesta": "Hay seguro de mortalidad y contingencia; se informó en el Term Sheet."
+      "pregunta": {
+        "es": "¿Qué pasa si el animal muere o enferma?",
+        "en": "What happens if the animal dies or gets sick?"
+      },
+      "respuesta": {
+        "es": "Hay seguro de mortalidad y contingencia; se informó en el Term Sheet.",
+        "en": "There is mortality and contingency insurance; disclosed in the Term Sheet."
+      }
     },
     {
-      "pregunta": "¿Está regulado?",
-      "respuesta": "Sí — los tokens representan derechos económicos de un fideicomiso; no son valores bancarios. Ver Term Sheet y riesgos."
+      "pregunta": {
+        "es": "¿Está regulado?",
+        "en": "Is it regulated?"
+      },
+      "respuesta": {
+        "es": "Sí — los tokens representan derechos económicos de un fideicomiso; no son valores bancarios. Ver Term Sheet y riesgos.",
+        "en": "Yes — tokens represent economic rights of a trust; they are not bank securities. See Term Sheet and risks."
+      }
     }
   ]
 }

@@ -1,7 +1,13 @@
 {
   "id": "project5",
-  "name": "Polo Horse Token – \"Embajador\"",
-  "description": "Participá desde USD 250 en la tokenización de caballos de polo de genética comprobada. Un activo real con potencial deportivo y económico, gestionado por criadores y petiseros expertos. Rentabilidad estimada: 25–40% anual. Plazo estimado: 12–18 meses.",
+  "name": {
+    "es": "Polo Horse Token – \"Embajador\"",
+    "en": "Polo Horse Token – \"Ambassador\""
+  },
+  "description": {
+    "es": "Participá desde USD 250 en la tokenización de caballos de polo de genética comprobada. Un activo real con potencial deportivo y económico, gestionado por criadores y petiseros expertos. Rentabilidad estimada: 25–40% anual. Plazo estimado: 12–18 meses.",
+    "en": "Invest from USD 250 in tokenized polo horses with proven genetics. A real asset with sports and economic potential, managed by expert breeders and horse trainers. Estimated return: 25–40% annually. Estimated timeline: 12–18 months."
+  },
   "image": "https://res.cloudinary.com/dhacybdxf/image/upload/w_1000,ar_16:9,c_fill,g_auto,e_sharpen/v1762901052/Investoken/2F732387-0F70-4B32-B07E-8F3E7D1A3F7B_rnfbis.png",
   "images": [
     "https://res.cloudinary.com/dhacybdxf/image/upload/w_1000,ar_16:9,c_fill,g_auto,e_sharpen/v1762901052/Investoken/2F732387-0F70-4B32-B07E-8F3E7D1A3F7B_rnfbis.png",
@@ -14,132 +20,198 @@
   "investors": 74,
   "pricePerToken": 50,
   "team": [
-    { "name": "Diego Campanelli", "role": "Criador & Experto Genético", "bio": "25+ años criando caballos de polo de línea argentina, especialista en genética AAP y pedigrí de campeones." },
-    { "name": "Martín Costas", "role": "Petisero & Entrenador", "bio": "Entrenador profesional con experiencia en preparación de caballos para torneos internacionales." },
-    { "name": "Dra. Claudia Reyes", "role": "Veterinaria Equina", "bio": "Especialista en medicina deportiva equina, certificaciones en bienestar animal y manejo de riesgos veterinarios." }
+    {
+      "name": "Diego Campanelli",
+      "role": { "es": "Criador & Experto Genético", "en": "Breeder & Genetic Expert" },
+      "bio": { "es": "25+ años criando caballos de polo de línea argentina, especialista en genética AAP y pedigrí de campeones.", "en": "25+ years breeding Argentine polo horses, specialist in AAP genetics and champion pedigrees." }
+    },
+    {
+      "name": "Martín Costas",
+      "role": { "es": "Petisero & Entrenador", "en": "Professional Trainer" },
+      "bio": { "es": "Entrenador profesional con experiencia en preparación de caballos para torneos internacionales.", "en": "Professional trainer with experience in preparing horses for international tournaments." }
+    },
+    {
+      "name": "Dra. Claudia Reyes",
+      "role": { "es": "Veterinaria Equina", "en": "Equine Veterinarian" },
+      "bio": { "es": "Especialista en medicina deportiva equina, certificaciones en bienestar animal y manejo de riesgos veterinarios.", "en": "Specialist in equine sports medicine, certifications in animal welfare and veterinary risk management." }
+    }
   ],
   "documents": [
-    { "name": "Term Sheet Polo Horse", "url": "#" },
-    { "name": "Contrato de Fideicomiso Equino", "url": "#" },
-    { "name": "Póliza de Seguro Veterinario", "url": "#" },
-    { "name": "Certificación AAP (Asociación Argentina de Polo)", "url": "#" }
+    { "name": { "es": "Term Sheet Polo Horse", "en": "Term Sheet Polo Horse" }, "url": "#" },
+    { "name": { "es": "Contrato de Fideicomiso Equino", "en": "Equine Trust Agreement" }, "url": "#" },
+    { "name": { "es": "Póliza de Seguro Veterinario", "en": "Veterinary Insurance Policy" }, "url": "#" },
+    { "name": { "es": "Certificación AAP (Asociación Argentina de Polo)", "en": "AAP Certification (Argentine Polo Association)" }, "url": "#" }
   ],
   "compliance": {
     "tokenStandard": "ERC-20",
-    "legalStructure": "SPV / Fideicomiso Ganadero Equino",
-    "custodian": "Escribanía Fiduciaria + Criadero Certificado",
+    "legalStructure": { "es": "SPV / Fideicomiso Ganadero Equino", "en": "SPV / Equine Livestock Trust" },
+    "custodian": { "es": "Escribanía Fiduciaria + Criadero Certificado", "en": "Trust Notary + Certified Breeding Facility" },
     "kycRequired": true,
     "legalDocuments": [
-      { "name": "Contrato Legal del Caballo", "url": "#" },
-      { "name": "Póliza de Seguro Integral", "url": "#" },
-      { "name": "Certificación Veterinaria Mensual", "url": "#" }
+      { "name": { "es": "Contrato Legal del Caballo", "en": "Horse Legal Contract" }, "url": "#" },
+      { "name": { "es": "Póliza de Seguro Integral", "en": "Comprehensive Insurance Policy" }, "url": "#" },
+      { "name": { "es": "Certificación Veterinaria Mensual", "en": "Monthly Veterinary Certification" }, "url": "#" }
     ]
   },
   "investmentDetails": {
-    "rentabilidadObjetivo": "25–40% anual",
+    "rentabilidadObjetivo": { "es": "25–40% anual", "en": "25–40% annual" },
     "ticketMinimo": "USD 250",
-    "activo": "1 caballo de polo (2 años, línea genética AAP)",
-    "duracionCiclo": "12–18 meses",
-    "capitalRequerido": "USD 50,000 (compra + entrenamiento + mantenimiento + seguro)",
-    "capitalTokenizado": "USD 50,000 (1,000 tokens de USD 50)",
-    "estimacionRetorno": "~30–40% en 12–18 meses por revalorización + derechos de monta/cría"
+    "activo": { "es": "1 caballo de polo (2 años, línea genética AAP)", "en": "1 polo horse (2 years old, AAP genetic line)" },
+    "duracionCiclo": { "es": "12–18 meses", "en": "12–18 months" },
+    "capitalRequerido": { "es": "USD 50,000 (compra + entrenamiento + mantenimiento + seguro)", "en": "USD 50,000 (purchase + training + maintenance + insurance)" },
+    "capitalTokenizado": { "es": "USD 50,000 (1,000 tokens de USD 50)", "en": "USD 50,000 (1,000 tokens of USD 50 each)" },
+    "estimacionRetorno": { "es": "~30–40% en 12–18 meses por revalorización + derechos de monta/cría", "en": "~30–40% in 12–18 months from revaluation + breeding/riding rights" }
   },
   "modeloNegocio": [
-    "Adquisición de caballo joven (2 años) con pedigree comprobado en línea genética AAP (padre/madre campeones).",
-    "Entrenamiento intensivo con petisero certificado durante 6–12 meses.",
-    "Competencia en torneos internos y circuitos nacionales para demostrar valor deportivo.",
-    "Revalorización por performance (premios, méritos, registros).",
-    "Salida: venta directa a polo player / criador de renombre, subasta AAP o generación de derechos de reproducción.",
-    "Distribución de utilidades netas a token-holders proporcionales."
+    {
+      "es": "Adquisición de caballo joven (2 años) con pedigree comprobado en línea genética AAP (padre/madre campeones).",
+      "en": "Acquisition of young horse (2 years old) with proven pedigree in AAP genetic line (champion parents)."
+    },
+    {
+      "es": "Entrenamiento intensivo con petisero certificado durante 6–12 meses.",
+      "en": "Intensive training with certified trainer for 6–12 months."
+    },
+    {
+      "es": "Competencia en torneos internos y circuitos nacionales para demostrar valor deportivo.",
+      "en": "Competition in internal tournaments and national circuits to demonstrate sports value."
+    },
+    {
+      "es": "Revalorización por performance (premios, méritos, registros).",
+      "en": "Revaluation based on performance (awards, merits, records)."
+    },
+    {
+      "es": "Salida: venta directa a polo player / criador de renombre, subasta AAP o generación de derechos de reproducción.",
+      "en": "Exit: direct sale to polo player / renowned breeder, AAP auction, or generation of breeding rights."
+    },
+    {
+      "es": "Distribución de utilidades netas a token-holders proporcionales.",
+      "en": "Distribution of net proceeds to token holders proportionally."
+    }
   ],
   "estructuraTokenizacion": [
-    "Vehículo legal: SPV / fideicomiso ganadero equino que adquiere y custodia el caballo.",
-    "Emisión de tokens: 1,000 unidades, cada una representa el 0.1% de propiedad y derecho económico.",
-    "Blockchain: registro on-chain de propiedad fraccionaria, trazabilidad y reportes certificados.",
-    "Seguro integral: cobertura veterinaria, responsabilidad civil, pérdida total y robo.",
-    "Auditoría: certificación veterinaria mensual, chips de identificación, videos de entrenamiento y análisis de progreso.",
-    "Distribuciones: al cierre del ciclo o en hitos (competiciones, valuación independiente)."
+    {
+      "es": "Vehículo legal: SPV / fideicomiso ganadero equino que adquiere y custodia el caballo.",
+      "en": "Legal vehicle: SPV / equine livestock trust that acquires and custodies the horse."
+    },
+    {
+      "es": "Emisión de tokens: 1,000 unidades, cada una representa el 0.1% de propiedad y derecho económico.",
+      "en": "Token issuance: 1,000 units, each representing 0.1% ownership and economic rights."
+    },
+    {
+      "es": "Blockchain: registro on-chain de propiedad fraccionaria, trazabilidad y reportes certificados.",
+      "en": "Blockchain: on-chain registry of fractional ownership, traceability and certified reports."
+    },
+    {
+      "es": "Seguro integral: cobertura veterinaria, responsabilidad civil, pérdida total y robo.",
+      "en": "Comprehensive insurance: veterinary coverage, liability, total loss and theft."
+    },
+    {
+      "es": "Auditoría: certificación veterinaria mensual, chips de identificación, videos de entrenamiento y análisis de progreso.",
+      "en": "Audit: monthly veterinary certification, identification chips, training videos and progress analysis."
+    },
+    {
+      "es": "Distribuciones: al cierre del ciclo o en hitos (competiciones, valuación independiente).",
+      "en": "Distributions: at cycle close or at milestones (competitions, independent valuation)."
+    }
   ],
   "cronograma": [
     {
-      "fase": "Mes 0",
-      "descripcion": "Emisión de tokens + adquisición del caballo + inscripción en registro AAP"
+      "fase": { "es": "Mes 0", "en": "Month 0" },
+      "descripcion": { "es": "Emisión de tokens + adquisición del caballo + inscripción en registro AAP", "en": "Token issuance + horse acquisition + AAP registry registration" }
     },
     {
-      "fase": "Mes 1–3",
-      "descripcion": "Adaptación, adiestramiento inicial, evaluación veterinaria de línea base"
+      "fase": { "es": "Mes 1–3", "en": "Month 1–3" },
+      "descripcion": { "es": "Adaptación, adiestramiento inicial, evaluación veterinaria de línea base", "en": "Adaptation, initial training, baseline veterinary evaluation" }
     },
     {
-      "fase": "Mes 6",
-      "descripcion": "Primeros torneos internos, evaluación de progreso deportivo, reporte de valuación"
+      "fase": { "es": "Mes 6", "en": "Month 6" },
+      "descripcion": { "es": "Primeros torneos internos, evaluación de progreso deportivo, reporte de valuación", "en": "First internal tournaments, sports progress evaluation, valuation report" }
     },
     {
-      "fase": "Mes 12–14",
-      "descripcion": "Potencial exposición en subastas, valorización del activo, evaluación de mercado"
+      "fase": { "es": "Mes 12–14", "en": "Month 12–14" },
+      "descripcion": { "es": "Potencial exposición en subastas, valorización del activo, evaluación de mercado", "en": "Potential auction exposure, asset valuation, market evaluation" }
     },
     {
-      "fase": "Mes 14–18",
-      "descripcion": "Venta o generación de derechos de monta/reproducción; negocios con criadores interesados"
+      "fase": { "es": "Mes 14–18", "en": "Month 14–18" },
+      "descripcion": { "es": "Venta o generación de derechos de monta/reproducción; negocios con criadores interesados", "en": "Sale or generation of breeding/riding rights; deals with interested breeders" }
     },
     {
-      "fase": "Mes 18",
-      "descripcion": "Liquidación final, distribución de utilidades, cierre del fideicomiso"
+      "fase": { "es": "Mes 18", "en": "Month 18" },
+      "descripcion": { "es": "Liquidación final, distribución de utilidades, cierre del fideicomiso", "en": "Final liquidation, distribution of proceeds, trust closure" }
     }
   ],
   "ventajasTokenizacion": [
-    "Acceso democrático: invertir desde USD 250 en activos premium equinos sin comprar un caballo completo.",
-    "Activo tangible: caballo real, registrado, entrenado, competidor, con valor comprobable en mercado.",
-    "Transparencia total: seguimiento online de salud, entrenamiento, competencias, videos y reportes veterinarios.",
-    "Potencial de revalorización: el valor del caballo crece con su desempeño deportivo y genética comprobada.",
-    "Múltiples salidas: venta, reproducción, derechos de monta o intercambio de tokens en mercado secundario.",
-    "Seguridad legal: fideicomiso auditado, seguros integrales y certificaciones AAP/veterinarias."
+    {
+      "es": "Acceso democrático: invertir desde USD 250 en activos premium equinos sin comprar un caballo completo.",
+      "en": "Democratic access: invest from USD 250 in premium equine assets without buying a complete horse."
+    },
+    {
+      "es": "Activo tangible: caballo real, registrado, entrenado, competidor, con valor comprobable en mercado.",
+      "en": "Tangible asset: real, registered, trained, competing horse with proven market value."
+    },
+    {
+      "es": "Transparencia total: seguimiento online de salud, entrenamiento, competencias, videos y reportes veterinarios.",
+      "en": "Total transparency: online tracking of health, training, competitions, videos and veterinary reports."
+    },
+    {
+      "es": "Potencial de revalorización: el valor del caballo crece con su desempeño deportivo y genética comprobada.",
+      "en": "Revaluation potential: horse value grows with sports performance and proven genetics."
+    },
+    {
+      "es": "Múltiples salidas: venta, reproducción, derechos de monta o intercambio de tokens en mercado secundario.",
+      "en": "Multiple exits: sale, breeding, riding rights or token exchange in secondary market."
+    },
+    {
+      "es": "Seguridad legal: fideicomiso auditado, seguros integrales y certificaciones AAP/veterinarias.",
+      "en": "Legal security: audited trust, comprehensive insurance and AAP/veterinary certifications."
+    }
   ],
   "riesgos": [
     {
-      "titulo": "Lesión o enfermedad del caballo",
-      "mitigante": "Seguro veterinario integral, veterinario especializado on-site, plan de contingencia con reemplazo o retorno proporcional."
+      "titulo": { "es": "Lesión o enfermedad del caballo", "en": "Horse injury or illness" },
+      "mitigante": { "es": "Seguro veterinario integral, veterinario especializado on-site, plan de contingencia con reemplazo o retorno proporcional.", "en": "Comprehensive veterinary insurance, specialized on-site veterinarian, contingency plan with replacement or proportional return." }
     },
     {
-      "titulo": "Performance deportiva inferior a proyecciones",
-      "mitigante": "Plan B: venta como montura de buena calidad, reproducción certificada, garantía de piso de valor."
+      "titulo": { "es": "Performance deportiva inferior a proyecciones", "en": "Sports performance below projections" },
+      "mitigante": { "es": "Plan B: venta como montura de buena calidad, reproducción certificada, garantía de piso de valor.", "en": "Plan B: sale as quality riding horse, certified breeding, value floor guarantee." }
     },
     {
-      "titulo": "Variabilidad del mercado equino",
-      "mitigante": "Valuaciones independientes cada 6 meses, comparables de subastas AAP, diversificación de salidas (venta, monta, cría)."
+      "titulo": { "es": "Variabilidad del mercado equino", "en": "Equine market variability" },
+      "mitigante": { "es": "Valuaciones independientes cada 6 meses, comparables de subastas AAP, diversificación de salidas (venta, monta, cría).", "en": "Independent valuations every 6 months, AAP auction comparables, diversification of exits (sale, riding, breeding)." }
     },
     {
-      "titulo": "Liquidez secundaria limitada",
-      "mitigante": "Mercado secundario interno Investoken, potencial compra por criadores interesados, salida garantizada al cierre."
+      "titulo": { "es": "Liquidez secundaria limitada", "en": "Limited secondary liquidity" },
+      "mitigante": { "es": "Mercado secundario interno Investoken, potencial compra por criadores interesados, salida garantizada al cierre.", "en": "Internal Investoken secondary market, potential purchase by interested breeders, guaranteed exit at closure." }
     },
     {
-      "titulo": "Riesgo de custodia / seguridad física",
-      "mitigante": "Criadero de talla mundial con seguridad 24/7, pólizas de robo e incendio, identificación con chip + registro digital."
+      "titulo": { "es": "Riesgo de custodia / seguridad física", "en": "Custody/physical security risk" },
+      "mitigante": { "es": "Criadero de talla mundial con seguridad 24/7, pólizas de robo e incendio, identificación con chip + registro digital.", "en": "World-class breeding facility with 24/7 security, theft and fire insurance, chip identification + digital registry." }
     }
   ],
   "faqs": [
     {
-      "pregunta": "¿Cuál es el monto mínimo para invertir?",
-      "respuesta": "USD 250 (equivale a 5 tokens de USD 50 cada uno)."
+      "pregunta": { "es": "¿Cuál es el monto mínimo para invertir?", "en": "What is the minimum investment amount?" },
+      "respuesta": { "es": "USD 250 (equivale a 5 tokens de USD 50 cada uno).", "en": "USD 250 (equivalent to 5 tokens of USD 50 each)." }
     },
     {
-      "pregunta": "¿Cómo sé que el caballo es auténtico y de buena genética?",
-      "respuesta": "El caballo está registrado en AAP (Asociación Argentina de Polo), tiene pedigree comprobado y certificación veterinaria mensual con fotos/videos públicos en la plataforma."
+      "pregunta": { "es": "¿Cómo sé que el caballo es auténtico y de buena genética?", "en": "How do I know the horse is authentic and has good genetics?" },
+      "respuesta": { "es": "El caballo está registrado en AAP (Asociación Argentina de Polo), tiene pedigree comprobado y certificación veterinaria mensual con fotos/videos públicos en la plataforma.", "en": "The horse is registered with AAP (Argentine Polo Association), has proven pedigree and monthly veterinary certification with public photos/videos on the platform." }
     },
     {
-      "pregunta": "¿Qué pasa si el caballo se enferma o lesiona?",
-      "respuesta": "Está cubierto por póliza integral de seguro. Si es total, se reembolsa el valor asegurado. Si es parcial, se rehabilita bajo supervisión veterinaria."
+      "pregunta": { "es": "¿Qué pasa si el caballo se enferma o lesiona?", "en": "What happens if the horse gets sick or injured?" },
+      "respuesta": { "es": "Está cubierto por póliza integral de seguro. Si es total, se reembolsa el valor asegurado. Si es parcial, se rehabilita bajo supervisión veterinaria.", "en": "Covered by comprehensive insurance policy. If total, insured value is reimbursed. If partial, rehabilitation under veterinary supervision." }
     },
     {
-      "pregunta": "¿Puedo vender mis tokens antes de los 18 meses?",
-      "respuesta": "Sí, en el mercado secundario de Investoken si hay demanda de otros inversores. También hay compras periódicas por parte del fondo o criadores interesados."
+      "pregunta": { "es": "¿Puedo vender mis tokens antes de los 18 meses?", "en": "Can I sell my tokens before 18 months?" },
+      "respuesta": { "es": "Sí, en el mercado secundario de Investoken si hay demanda de otros inversores. También hay compras periódicas por parte del fondo o criadores interesados.", "en": "Yes, in the Investoken secondary market if there is demand from other investors. There are also periodic purchases by the fund or interested breeders." }
     },
     {
-      "pregunta": "¿Cómo se determina el valor final de venta del caballo?",
-      "respuesta": "Por tasación de criador experto + comparables de mercado AAP (subastas Palermo) + valuación independiente cada 6 meses."
+      "pregunta": { "es": "¿Cómo se determina el valor final de venta del caballo?", "en": "How is the final sale price of the horse determined?" },
+      "respuesta": { "es": "Por tasación de criador experto + comparables de mercado AAP (subastas Palermo) + valuación independiente cada 6 meses.", "en": "By expert breeder appraisal + AAP market comparables (Palermo auctions) + independent valuation every 6 months." }
     },
     {
-      "pregunta": "¿Qué comisiones se cobran?",
-      "respuesta": "2% de estructuración + 1% anual de administración. El resto va a inversores y cobertura de gastos directos."
+      "pregunta": { "es": "¿Qué comisiones se cobran?", "en": "What commissions are charged?" },
+      "respuesta": { "es": "2% de estructuración + 1% anual de administración. El resto va a inversores y cobertura de gastos directos.", "en": "2% structuring + 1% annual administration. The rest goes to investors and direct expense coverage." }
     }
   ]
 }

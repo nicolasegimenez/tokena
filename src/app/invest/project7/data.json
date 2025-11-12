@@ -1,7 +1,13 @@
 {
   "id": "project7",
-  "name": "Investoken – La Startup que Tokeniza el Mundo Real",
-  "description": "Transformamos activos reales en oportunidades de inversión digital. Investoken es una startup tecnológica que permite invertir en activos del mundo real (RWA) a través de la tokenización, combinando blockchain, finanzas y transparencia legal. Invierte desde USD 10,000 en una revolución del acceso a inversiones tangibles.",
+  "name": {
+    "es": "Investoken – La Startup que Tokeniza el Mundo Real",
+    "en": "Investoken – The Startup Tokenizing the Real World"
+  },
+  "description": {
+    "es": "Transformamos activos reales en oportunidades de inversión digital. Investoken es una startup tecnológica que permite invertir en activos del mundo real (RWA) a través de la tokenización, combinando blockchain, finanzas y transparencia legal. Invierte desde USD 10,000 en una revolución del acceso a inversiones tangibles.",
+    "en": "We transform real assets into digital investment opportunities. Investoken is a technology startup that enables investing in real-world assets (RWA) through tokenization, combining blockchain, finance and legal transparency. Invest from USD 10,000 in a revolution of access to tangible investments."
+  },
   "image": "https://res.cloudinary.com/dhacybdxf/image/upload/w_1000,ar_16:9,c_fill,g_auto,e_sharpen/v1762901058/Investoken/IMG_3015_qngjqa.jpg",
   "images": [
     "https://res.cloudinary.com/dhacybdxf/image/upload/w_1000,ar_16:9,c_fill,g_auto,e_sharpen/v1762901055/Investoken/IMG_3017_wissmv.jpg",
@@ -13,25 +19,37 @@
   "investors": 45,
   "pricePerToken": 50000,
   "team": [
-    { "name": "Martín Pérez", "role": "Fundador & CEO", "bio": "Emprendedor en fintech, 12+ años en blockchain y tokenización. Anteriormente co-fundador de plataforma de trading cripto." },
-    { "name": "Sofía García", "role": "Directora de Tecnología", "bio": "Ingeniera full-stack especializada en smart contracts, Ethereum y arquitectura de plataformas descentralizadas." },
-    { "name": "Roberto Martínez", "role": "Asesor Legal & Compliance", "bio": "Abogado especialista en finanzas, regulación blockchain y estructuras fiduciarias en Argentina y Latinoamérica." }
+    {
+      "name": "Martín Pérez",
+      "role": { "es": "Fundador & CEO", "en": "Founder & CEO" },
+      "bio": { "es": "Emprendedor en fintech, 12+ años en blockchain y tokenización. Anteriormente co-fundador de plataforma de trading cripto.", "en": "Fintech entrepreneur, 12+ years in blockchain and tokenization. Previously co-founder of crypto trading platform." }
+    },
+    {
+      "name": "Sofía García",
+      "role": { "es": "Directora de Tecnología", "en": "Chief Technology Officer" },
+      "bio": { "es": "Ingeniera full-stack especializada en smart contracts, Ethereum y arquitectura de plataformas descentralizadas.", "en": "Full-stack engineer specialized in smart contracts, Ethereum and decentralized platform architecture." }
+    },
+    {
+      "name": "Roberto Martínez",
+      "role": { "es": "Asesor Legal & Compliance", "en": "Legal Advisor & Compliance" },
+      "bio": { "es": "Abogado especialista en finanzas, regulación blockchain y estructuras fiduciarias en Argentina y Latinoamérica.", "en": "Attorney specialized in finance, blockchain regulation and trust structures in Argentina and Latin America." }
+    }
   ],
   "documents": [
-    { "name": "Pitch Deck Investoken", "url": "#" },
-    { "name": "Financial Projections 2025-2028", "url": "#" },
-    { "name": "Legal Framework & Compliance", "url": "#" },
-    { "name": "SAFE Agreement Template", "url": "#" }
+    { "name": { "es": "Pitch Deck Investoken", "en": "Investoken Pitch Deck" }, "url": "#" },
+    { "name": { "es": "Financial Projections 2025-2028", "en": "Financial Projections 2025-2028" }, "url": "#" },
+    { "name": { "es": "Legal Framework & Compliance", "en": "Legal Framework & Compliance" }, "url": "#" },
+    { "name": { "es": "SAFE Agreement Template", "en": "SAFE Agreement Template" }, "url": "#" }
   ],
   "compliance": {
     "tokenStandard": "Equity Convertible / SAFE",
-    "legalStructure": "Startup SRL Argentina",
-    "custodian": "Estructura de Inversión bajo Ley Argentina",
+    "legalStructure": { "es": "Startup SRL Argentina", "en": "Startup SRL Argentina" },
+    "custodian": { "es": "Estructura de Inversión bajo Ley Argentina", "en": "Investment Structure under Argentine Law" },
     "kycRequired": true,
     "legalDocuments": [
-      { "name": "SAFE Agreement", "url": "#" },
-      { "name": "Acta Constitutiva y Estatutos", "url": "#" },
-      { "name": "Financial Statements Auditados", "url": "#" }
+      { "name": { "es": "SAFE Agreement", "en": "SAFE Agreement" }, "url": "#" },
+      { "name": { "es": "Acta Constitutiva y Estatutos", "en": "Articles of Incorporation and Bylaws" }, "url": "#" },
+      { "name": { "es": "Financial Statements Auditados", "en": "Audited Financial Statements" }, "url": "#" }
     ]
   },
   "investmentDetails": {
@@ -44,109 +62,55 @@
     "estimacionRetorno": "5–8x en 3 años por crecimiento de plataforma, usuarios y volumen tokenizado"
   },
   "modeloNegocio": [
-    "Infraestructura de tokenización: desarrollo de plataforma para identificar, emitir y operar tokens de activos reales.",
-    "Estructuración de proyectos: creación de vehículos legales (SPV/fideicomisos), auditoría y lanzamiento de cada tokenización.",
-    "Comisiones de estructuración: 2–3% por cada proyecto tokenizado.",
-    "Comisiones de administración: 1% anual sobre activos bajo custodia.",
-    "Marketplace secundario: 0.5–1% de comisión en trading entre inversores.",
-    "Servicios B2B: consultoría y white-label para otras plataformas y emisores.",
-    "Token nativo futuro (INV$): emisión de token de gobernanza con potencial de valorización.",
-    "Expansión regional: escalado a Uruguay, Paraguay, Chile y otros países LATAM."
+    { "es": "Infraestructura de tokenización: desarrollo de plataforma para identificar, emitir y operar tokens de activos reales.", "en": "Tokenization infrastructure: platform development to identify, issue and operate real asset tokens." },
+    { "es": "Estructuración de proyectos: creación de vehículos legales (SPV/fideicomisos), auditoría y lanzamiento de cada tokenización.", "en": "Project structuring: creation of legal vehicles (SPV/trusts), auditing and launch of each tokenization." },
+    { "es": "Comisiones de estructuración: 2–3% por cada proyecto tokenizado.", "en": "Structuring fees: 2–3% per tokenized project." },
+    { "es": "Comisiones de administración: 1% anual sobre activos bajo custodia.", "en": "Management fees: 1% annually on assets under custody." },
+    { "es": "Marketplace secundario: 0.5–1% de comisión en trading entre inversores.", "en": "Secondary marketplace: 0.5–1% commission on trading between investors." },
+    { "es": "Servicios B2B: consultoría y white-label para otras plataformas y emisores.", "en": "B2B services: consulting and white-label for other platforms and issuers." },
+    { "es": "Token nativo futuro (INV$): emisión de token de gobernanza con potencial de valorización.", "en": "Future native token (INV$): issuance of governance token with potential for appreciation." },
+    { "es": "Expansión regional: escalado a Uruguay, Paraguay, Chile y otros países LATAM.", "en": "Regional expansion: scaling to Uruguay, Paraguay, Chile and other LATAM countries." }
   ],
   "estructuraTokenizacion": [
-    "Vehículo: Investoken SRL, empresa Argentina con estructura de startup regulada.",
-    "Inversión: SAFE (Simple Agreement for Future Equity) convertible a equity al próximo round o IPO.",
-    "Participación: inversionistas obtienen derechos futuros de propiedad en la empresa.",
-    "Valuación: basada en comparables de startups fintech latinoamericanas.",
-    "Dilución: estructura estándar de rounds seed → series A → series B.",
-    "Liquidez futura: exit por merger, adquisición o IPO proyectado para años 3–5.",
-    "Reportes: actualizaciones trimestrales de métricas (usuarios, volumen, ingresos, roadmap)."
+    { "es": "Vehículo: Investoken SRL, empresa Argentina con estructura de startup regulada.", "en": "Vehicle: Investoken SRL, Argentine company with regulated startup structure." },
+    { "es": "Inversión: SAFE (Simple Agreement for Future Equity) convertible a equity al próximo round o IPO.", "en": "Investment: SAFE (Simple Agreement for Future Equity) convertible to equity at next round or IPO." },
+    { "es": "Participación: inversionistas obtienen derechos futuros de propiedad en la empresa.", "en": "Participation: investors obtain future ownership rights in the company." },
+    { "es": "Valuación: basada en comparables de startups fintech latinoamericanas.", "en": "Valuation: based on Latin American fintech startup comparables." },
+    { "es": "Dilución: estructura estándar de rounds seed → series A → series B.", "en": "Dilution: standard round structure seed → series A → series B." },
+    { "es": "Liquidez futura: exit por merger, adquisición o IPO proyectado para años 3–5.", "en": "Future liquidity: exit via merger, acquisition or IPO projected for years 3–5." },
+    { "es": "Reportes: actualizaciones trimestrales de métricas (usuarios, volumen, ingresos, roadmap).", "en": "Reports: quarterly updates on metrics (users, volume, revenue, roadmap)." }
   ],
   "cronograma": [
-    {
-      "fase": "Q1 2025",
-      "descripcion": "Cierre de Seed Round, lanzamiento de plataforma beta con primeros 3 proyectos tokenizados"
-    },
-    {
-      "fase": "Q2 2025",
-      "descripcion": "Plataforma completa para minoristas, dashboard de inversores, KYC automatizado"
-    },
-    {
-      "fase": "Q3 2025",
-      "descripcion": "Integración con wallets Web3, marketplace secundario en vivo, 10+ proyectos activos"
-    },
-    {
-      "fase": "Q4 2025",
-      "descripcion": "Análisis de series A, expansión a Uruguay, primeros 50,000 usuarios activos"
-    },
-    {
-      "fase": "Q1 2026",
-      "descripcion": "Cierre de Series A, emisión de token de gobernanza INV$ (potencial IPO privada)"
-    },
-    {
-      "fase": "2026–2028",
-      "descripcion": "Escalado LATAM, integración institucional, preparación de exit (IPO o M&A)"
-    }
+    { "fase": { "es": "Q1 2025", "en": "Q1 2025" }, "descripcion": { "es": "Cierre de Seed Round, lanzamiento de plataforma beta con primeros 3 proyectos tokenizados", "en": "Seed Round closure, beta platform launch with first 3 tokenized projects" } },
+    { "fase": { "es": "Q2 2025", "en": "Q2 2025" }, "descripcion": { "es": "Plataforma completa para minoristas, dashboard de inversores, KYC automatizado", "en": "Full retail platform, investor dashboard, automated KYC" } },
+    { "fase": { "es": "Q3 2025", "en": "Q3 2025" }, "descripcion": { "es": "Integración con wallets Web3, marketplace secundario en vivo, 10+ proyectos activos", "en": "Web3 wallet integration, live secondary marketplace, 10+ active projects" } },
+    { "fase": { "es": "Q4 2025", "en": "Q4 2025" }, "descripcion": { "es": "Análisis de series A, expansión a Uruguay, primeros 50,000 usuarios activos", "en": "Series A analysis, Uruguay expansion, first 50,000 active users" } },
+    { "fase": { "es": "Q1 2026", "en": "Q1 2026" }, "descripcion": { "es": "Cierre de Series A, emisión de token de gobernanza INV$ (potencial IPO privada)", "en": "Series A closure, INV$ governance token issuance (potential private IPO)" } },
+    { "fase": { "es": "2026–2028", "en": "2026–2028" }, "descripcion": { "es": "Escalado LATAM, integración institucional, preparación de exit (IPO o M&A)", "en": "LATAM scaling, institutional integration, exit preparation (IPO or M&A)" } }
   ],
   "ventajasTokenizacion": [
-    "Pionera en LATAM: Investoken es la primer plataforma integral de tokenización de activos reales en la región.",
-    "Mercado sin competencia: demanda creciente de acceso a inversiones alternativas con blockchain.",
-    "Modelo de negocio escalable: comisiones recurrentes por cada activo, cada operación, cada año.",
-    "Ecosistema defensible: red de efectos, relaciones con criadores, productores y reguladores.",
-    "Retorno potencial alto: multiplicadores de 5–8x típicos en startups fintech exitosas.",
-    "Alineamiento de incentivos: fundadores y early investors apuestan por el éxito del proyecto.",
-    "Exposición a industria RWA: tokenización de activos reales es tendencia global 2024–2028."
+    { "es": "Pionera en LATAM: Investoken es la primer plataforma integral de tokenización de activos reales en la región.", "en": "Pioneer in LATAM: Investoken is the first comprehensive real asset tokenization platform in the region." },
+    { "es": "Mercado sin competencia: demanda creciente de acceso a inversiones alternativas con blockchain.", "en": "Uncompeted market: growing demand for access to alternative investments with blockchain." },
+    { "es": "Modelo de negocio escalable: comisiones recurrentes por cada activo, cada operación, cada año.", "en": "Scalable business model: recurring commissions per asset, per operation, per year." },
+    { "es": "Ecosistema defensible: red de efectos, relaciones con criadores, productores y reguladores.", "en": "Defensible ecosystem: network effects, relationships with breeders, producers and regulators." },
+    { "es": "Retorno potencial alto: multiplicadores de 5–8x típicos en startups fintech exitosas.", "en": "High potential return: 5–8x multipliers typical in successful fintech startups." },
+    { "es": "Alineamiento de incentivos: fundadores y early investors apuestan por el éxito del proyecto.", "en": "Incentive alignment: founders and early investors bet on project success." },
+    { "es": "Exposición a industria RWA: tokenización de activos reales es tendencia global 2024–2028.", "en": "RWA industry exposure: real asset tokenization is a global trend 2024–2028." }
   ],
   "riesgos": [
-    {
-      "titulo": "Riesgo regulatorio",
-      "mitigante": "Equipo legal especializado, alineamiento proactivo con reguladores argentinos, estructura legal clara y auditable."
-    },
-    {
-      "titulo": "Competencia de plataformas internacionales",
-      "mitigante": "Enfoque regional LATAM, relaciones locales, ventaja de idioma y conocimiento de mercado local."
-    },
-    {
-      "titulo": "Adopción de usuarios",
-      "mitigante": "Campañas de marketing, partnerships con influencers cripto, educación en tokenización, gamificación."
-    },
-    {
-      "titulo": "Riesgo tecnológico",
-      "mitigante": "Equipo de ingeniería experimentado, auditorías de seguridad, redundancia y backups de infraestructura."
-    },
-    {
-      "titulo": "Concentración en activos reales específicos",
-      "mitigante": "Diversificación de tipos de activos (inmobiliarios, agrícolas, ganaderos, artísticos, equinos), geografía, ciclos."
-    },
-    {
-      "titulo": "Volatilidad de criptomonedas",
-      "mitigante": "Stablecoins como moneda principal, opciones de pago en fiat, reservas en efectivo."
-    }
+    { "titulo": { "es": "Riesgo regulatorio", "en": "Regulatory risk" }, "mitigante": { "es": "Equipo legal especializado, alineamiento proactivo con reguladores argentinos, estructura legal clara y auditable.", "en": "Specialized legal team, proactive alignment with Argentine regulators, clear and auditable legal structure." } },
+    { "titulo": { "es": "Competencia de plataformas internacionales", "en": "Competition from international platforms" }, "mitigante": { "es": "Enfoque regional LATAM, relaciones locales, ventaja de idioma y conocimiento de mercado local.", "en": "LATAM regional focus, local relationships, language advantage and local market knowledge." } },
+    { "titulo": { "es": "Adopción de usuarios", "en": "User adoption" }, "mitigante": { "es": "Campañas de marketing, partnerships con influencers cripto, educación en tokenización, gamificación.", "en": "Marketing campaigns, partnerships with crypto influencers, tokenization education, gamification." } },
+    { "titulo": { "es": "Riesgo tecnológico", "en": "Technology risk" }, "mitigante": { "es": "Equipo de ingeniería experimentado, auditorías de seguridad, redundancia y backups de infraestructura.", "en": "Experienced engineering team, security audits, infrastructure redundancy and backups." } },
+    { "titulo": { "es": "Concentración en activos reales específicos", "en": "Concentration on specific real assets" }, "mitigante": { "es": "Diversificación de tipos de activos (inmobiliarios, agrícolas, ganaderos, artísticos, equinos), geografía, ciclos.", "en": "Diversification of asset types (real estate, agricultural, cattle, artistic, equine), geography, cycles." } },
+    { "titulo": { "es": "Volatilidad de criptomonedas", "en": "Cryptocurrency volatility" }, "mitigante": { "es": "Stablecoins como moneda principal, opciones de pago en fiat, reservas en efectivo.", "en": "Stablecoins as main currency, fiat payment options, cash reserves." } }
   ],
   "faqs": [
-    {
-      "pregunta": "¿Cuál es el monto mínimo de inversión?",
-      "respuesta": "USD 10,000 para inversores calificados. Se ofrece en modalidad SAFE convertible a equity, con derechos futuros sobre Investoken SRL."
-    },
-    {
-      "pregunta": "¿Cómo se usa el capital levantado?",
-      "respuesta": "Desarrollo de plataforma tecnológica (40%), marketing y crecimiento de usuarios (30%), conformación de equipo (20%), operaciones y legal (10%)."
-    },
-    {
-      "pregunta": "¿Cuándo se espera un retorno?",
-      "respuesta": "El modelo proyecta multiplicadores de 5–8x a 3 años, vía crecimiento de ingresos, expansión regional y potencial exit (M&A o IPO)."
-    },
-    {
-      "pregunta": "¿Qué pasa si Investoken no logra los objetivos?",
-      "respuesta": "Como cualquier startup, existe riesgo de pérdida total. Sin embargo, estructura legal y auditabilidad protegen a inversores."
-    },
-    {
-      "pregunta": "¿Cuál es la visión a largo plazo?",
-      "respuesta": "Convertirse en el estándar de tokenización de activos reales en Latinoamérica, con token INV$ listado en exchanges y usuarios en millones."
-    },
-    {
-      "pregunta": "¿Hay liquidez secundaria?",
-      "respuesta": "No inmediata. La liquidez se espera vía exit (M&A, IPO o compra por fondos venture) en años 3–5."
-    }
+    { "pregunta": { "es": "¿Cuál es el monto mínimo de inversión?", "en": "What is the minimum investment amount?" }, "respuesta": { "es": "USD 10,000 para inversores calificados. Se ofrece en modalidad SAFE convertible a equity, con derechos futuros sobre Investoken SRL.", "en": "USD 10,000 for qualified investors. Offered as SAFE convertible to equity, with future rights over Investoken SRL." } },
+    { "pregunta": { "es": "¿Cómo se usa el capital levantado?", "en": "How is the raised capital used?" }, "respuesta": { "es": "Desarrollo de plataforma tecnológica (40%), marketing y crecimiento de usuarios (30%), conformación de equipo (20%), operaciones y legal (10%).", "en": "Technology platform development (40%), marketing and user growth (30%), team formation (20%), operations and legal (10%)." } },
+    { "pregunta": { "es": "¿Cuándo se espera un retorno?", "en": "When is a return expected?" }, "respuesta": { "es": "El modelo proyecta multiplicadores de 5–8x a 3 años, vía crecimiento de ingresos, expansión regional y potencial exit (M&A o IPO).", "en": "The model projects 5–8x multipliers at 3 years, via revenue growth, regional expansion and potential exit (M&A or IPO)." } },
+    { "pregunta": { "es": "¿Qué pasa si Investoken no logra los objetivos?", "en": "What if Investoken doesn't achieve its goals?" }, "respuesta": { "es": "Como cualquier startup, existe riesgo de pérdida total. Sin embargo, estructura legal y auditabilidad protegen a inversores.", "en": "Like any startup, there is risk of total loss. However, legal structure and auditability protect investors." } },
+    { "pregunta": { "es": "¿Cuál es la visión a largo plazo?", "en": "What is the long-term vision?" }, "respuesta": { "es": "Convertirse en el estándar de tokenización de activos reales en Latinoamérica, con token INV$ listado en exchanges y usuarios en millones.", "en": "Become the standard for real asset tokenization in Latin America, with INV$ token listed on exchanges and millions of users." } },
+    { "pregunta": { "es": "¿Hay liquidez secundaria?", "en": "Is there secondary liquidity?" }, "respuesta": { "es": "No inmediata. La liquidez se espera vía exit (M&A, IPO o compra por fondos venture) en años 3–5.", "en": "Not immediate. Liquidity is expected via exit (M&A, IPO or venture fund purchase) in years 3–5." } }
   ]
 }

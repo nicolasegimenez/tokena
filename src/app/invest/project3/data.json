@@ -1,93 +1,242 @@
 {
   "id": "project3",
-  "name": "Campo Santa Lucía – Zona Núcleo",
-  "description": "Invertí en tierra productiva tokenizada. Participá desde USD 100 en un campo agrícola de la Zona Núcleo con renta de arrendamiento y potencial de apreciación del valor de la tierra.",
-  "image": "https://via.placeholder.com/800x400?text=Campo+Santa+Lucia",
+  "name": {
+    "es": "Campo Santa Lucía – Zona Núcleo",
+    "en": "Campo Santa Lucía – Core Zone"
+  },
+  "description": {
+    "es": "Invertí en tierra productiva tokenizada. Participá desde USD 100 en un campo agrícola de la Zona Núcleo con renta de arrendamiento y potencial de apreciación del valor de la tierra.",
+    "en": "Invest in tokenized productive land. Participate from USD 100 in an agricultural field in the Core Zone with lease income and potential land appreciation."
+  },
+  "image": "https://res.cloudinary.com/dhacybdxf/image/upload/v1762299810/edificio_qhi0ri.png",
   "images": [
-    "https://via.placeholder.com/800x400?text=Campo+Santa+Lucia",
-    "https://via.placeholder.com/800x400?text=Zona+Nucleo+Agricultura",
-    "https://via.placeholder.com/800x400?text=Renta+Arrendamiento",
-    "https://via.placeholder.com/800x400?text=Tokenizacion+Tierra"
+    "https://res.cloudinary.com/dhacybdxf/image/upload/v1762299810/edificio_qhi0ri.png",
+    "https://res.cloudinary.com/dhacybdxf/image/upload/v1762901059/Investoken/IMG_2914_pewjb8.jpg",
+    "https://res.cloudinary.com/dhacybdxf/image/upload/v1762901063/Investoken/IMG_2923_t7diap.jpg",
+    "https://res.cloudinary.com/dhacybdxf/image/upload/v1762901064/Investoken/IMG_2917_z2iaht.jpg"
   ],
   "fundingGoal": 1250000,
   "amountRaised": 450000,
   "investors": 280,
   "pricePerToken": 125,
   "team": [
-    { "name": "Juan Carlos Pérez", "role": "Gestor Agrícola", "bio": "20+ años en agricultura de Zona Núcleo. Experiencia en arrendamientos y operaciones de campo." },
-    { "name": "María González", "role": "Legal & Cumplimiento", "bio": "Especialista en fideicomisos inmobiliarios y regulación agraria." }
+    {
+      "name": "Juan Carlos Pérez",
+      "role": {
+        "es": "Gestor Agrícola",
+        "en": "Agricultural Manager"
+      },
+      "bio": {
+        "es": "20+ años en agricultura de Zona Núcleo. Experiencia en arrendamientos y operaciones de campo.",
+        "en": "20+ years in Core Zone agriculture. Experience in leasing and field operations."
+      }
+    },
+    {
+      "name": "María González",
+      "role": {
+        "es": "Legal & Cumplimiento",
+        "en": "Legal & Compliance"
+      },
+      "bio": {
+        "es": "Especialista en fideicomisos inmobiliarios y regulación agraria.",
+        "en": "Specialist in real estate trusts and agricultural regulation."
+      }
+    }
   ],
   "documents": [
-    { "name": "Term Sheet", "url": "#" },
-    { "name": "Documento de Riesgos", "url": "#" },
-    { "name": "Contrato de Fideicomiso", "url": "#" }
+    {
+      "name": {
+        "es": "Term Sheet",
+        "en": "Term Sheet"
+      },
+      "url": "#"
+    },
+    {
+      "name": {
+        "es": "Documento de Riesgos",
+        "en": "Risk Document"
+      },
+      "url": "#"
+    },
+    {
+      "name": {
+        "es": "Contrato de Fideicomiso",
+        "en": "Trust Agreement"
+      },
+      "url": "#"
+    }
   ],
   "compliance": {
     "tokenStandard": "ERC-20",
-    "legalStructure": "Fideicomiso Inmobiliario",
-    "custodian": "Escribanía Externa + Data-room",
+    "legalStructure": {
+      "es": "Fideicomiso Inmobiliario",
+      "en": "Real Estate Trust"
+    },
+    "custodian": {
+      "es": "Escribanía Externa + Data-room",
+      "en": "External Notary + Data-room"
+    },
     "kycRequired": true,
     "legalDocuments": [
-      { "name": "Verificación de Dominio", "url": "#" },
-      { "name": "Acta de Due Diligence", "url": "#" }
+      {
+        "name": {
+          "es": "Verificación de Dominio",
+          "en": "Domain Verification"
+        },
+        "url": "#"
+      },
+      {
+        "name": {
+          "es": "Acta de Due Diligence",
+          "en": "Due Diligence Report"
+        },
+        "url": "#"
+      }
     ]
   },
   "investmentDetails": {
-    "rentabilidadObjetivo": "10–15% anual (mix arrendamiento + apreciación)",
-    "modalidad": "Fideicomiso + tokens",
+    "rentabilidadObjetivo": {
+      "es": "10–15% anual (mix arrendamiento + apreciación)",
+      "en": "10–15% annual (lease + appreciation mix)"
+    },
+    "modalidad": {
+      "es": "Fideicomiso + tokens",
+      "en": "Trust + tokens"
+    },
     "superficieTotal": "142 ha",
     "superficieAgricola": "78 ha",
     "ticketMinimo": "USD 100",
-    "distribuciones": "Anuales por arrendamiento (en qq soja/ha)",
-    "rentaObjetivo": "18–20 qq soja/ha/año",
-    "horizonte": "3–5 años",
-    "ubicacion": "Zona Núcleo (PBA / Sur de Santa Fe)",
-    "cultivos": "Rotación soja/maíz/trigo",
-    "arrendatario": "Con historial comprobable y garantías"
+    "distribuciones": {
+      "es": "Anuales por arrendamiento (en qq soja/ha)",
+      "en": "Annual lease payments (in qq soy/ha)"
+    },
+    "rentaObjetivo": {
+      "es": "18–20 qq soja/ha/año",
+      "en": "18–20 qq soy/ha/year"
+    },
+    "horizonte": {
+      "es": "3–5 años",
+      "en": "3–5 years"
+    },
+    "ubicacion": {
+      "es": "Zona Núcleo (PBA / Sur de Santa Fe)",
+      "en": "Core Zone (Buenos Aires Province / South of Santa Fe)"
+    },
+    "cultivos": {
+      "es": "Rotación soja/maíz/trigo",
+      "en": "Soy/corn/wheat rotation"
+    },
+    "arrendatario": {
+      "es": "Con historial comprobable y garantías",
+      "en": "With verifiable track record and guarantees"
+    }
   },
   "riesgos": [
     {
-      "titulo": "Precio agrícola / Clima",
-      "mitigante": "Diversificación de cultivos y coberturas/seguros cuando corresponde"
+      "titulo": {
+        "es": "Precio agrícola / Clima",
+        "en": "Agricultural Price / Climate"
+      },
+      "mitigante": {
+        "es": "Diversificación de cultivos y coberturas/seguros cuando corresponde",
+        "en": "Crop diversification and hedging/insurance when applicable"
+      }
     },
     {
-      "titulo": "Vacancia/Impago de renta",
-      "mitigante": "Selección de arrendatarios con garantías y track-record"
+      "titulo": {
+        "es": "Vacancia/Impago de renta",
+        "en": "Vacancy/Rent Default"
+      },
+      "mitigante": {
+        "es": "Selección de arrendatarios con garantías y track-record",
+        "en": "Selection of tenants with guarantees and track record"
+      }
     },
     {
-      "titulo": "Liquidez secundaria",
-      "mitigante": "Mercado peer-to-peer sujeto a demanda"
+      "titulo": {
+        "es": "Liquidez secundaria",
+        "en": "Secondary Liquidity"
+      },
+      "mitigante": {
+        "es": "Mercado peer-to-peer sujeto a demanda",
+        "en": "Peer-to-peer market subject to demand"
+      }
     },
     {
-      "titulo": "Regulatorio/Legal",
-      "mitigante": "Instrumentación mediante fideicomiso y auditorías externas"
+      "titulo": {
+        "es": "Regulatorio/Legal",
+        "en": "Regulatory/Legal"
+      },
+      "mitigante": {
+        "es": "Instrumentación mediante fideicomiso y auditorías externas",
+        "en": "Implementation through trust and external audits"
+      }
     }
   ],
   "tesis": [
-    "Tierra productiva escasa: la Zona Núcleo muestra demanda sostenida de alquiler agrícola",
-    "Cash flow por arrendamiento: renta anual expresada en qq/ha, históricamente resiliente",
-    "Tokenización: acceso fraccionado, gobernanza digital y trazabilidad de la posición"
+    {
+      "es": "Tierra productiva escasa: la Zona Núcleo muestra demanda sostenida de alquiler agrícola",
+      "en": "Scarce productive land: the Core Zone shows sustained demand for agricultural leases"
+    },
+    {
+      "es": "Cash flow por arrendamiento: renta anual expresada en qq/ha, históricamente resiliente",
+      "en": "Lease cash flow: annual rent expressed in qq/ha, historically resilient"
+    },
+    {
+      "es": "Tokenización: acceso fraccionado, gobernanza digital y trazabilidad de la posición",
+      "en": "Tokenization: fractional access, digital governance and position traceability"
+    }
   ],
   "faqs": [
     {
-      "pregunta": "¿Cómo se compone el retorno?",
-      "respuesta": "Por renta de arrendamiento anual (qq/ha) + potencial apreciación del valor de la tierra"
+      "pregunta": {
+        "es": "¿Cómo se compone el retorno?",
+        "en": "How is the return composed?"
+      },
+      "respuesta": {
+        "es": "Por renta de arrendamiento anual (qq/ha) + potencial apreciación del valor de la tierra",
+        "en": "From annual lease income (qq/ha) + potential land value appreciation"
+      }
     },
     {
-      "pregunta": "¿Puedo vender antes del final?",
-      "respuesta": "Podés listar tus tokens en el mercado secundario si hay demanda"
+      "pregunta": {
+        "es": "¿Puedo vender antes del final?",
+        "en": "Can I sell before the end?"
+      },
+      "respuesta": {
+        "es": "Podés listar tus tokens en el mercado secundario si hay demanda",
+        "en": "You can list your tokens on the secondary market if there is demand"
+      }
     },
     {
-      "pregunta": "¿Qué comisiones cobra Investoken?",
-      "respuesta": "Estructuración, administración del fideicomiso y custodia de tokens (ver Term Sheet)"
+      "pregunta": {
+        "es": "¿Qué comisiones cobra Investoken?",
+        "en": "What fees does Investoken charge?"
+      },
+      "respuesta": {
+        "es": "Estructuración, administración del fideicomiso y custodia de tokens (ver Term Sheet)",
+        "en": "Structuring, trust administration and token custody (see Term Sheet)"
+      }
     },
     {
-      "pregunta": "¿Los rendimientos están garantizados?",
-      "respuesta": "No. Son proyecciones sujetas a variables climáticas, de precios y contractuales"
+      "pregunta": {
+        "es": "¿Los rendimientos están garantizados?",
+        "en": "Are returns guaranteed?"
+      },
+      "respuesta": {
+        "es": "No. Son proyecciones sujetas a variables climáticas, de precios y contractuales",
+        "en": "No. They are projections subject to climate, price and contractual variables"
+      }
     },
     {
-      "pregunta": "¿Quién custodia la documentación?",
-      "respuesta": "Escribanía/estudio jurídico externo + data-room de due diligence disponible para inversores"
+      "pregunta": {
+        "es": "¿Quién custodia la documentación?",
+        "en": "Who holds custody of the documentation?"
+      },
+      "respuesta": {
+        "es": "Escribanía/estudio jurídico externo + data-room de due diligence disponible para inversores",
+        "en": "External notary/law firm + due diligence data-room available for investors"
+      }
     }
   ]
 }

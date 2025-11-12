@@ -1,7 +1,13 @@
 {
   "id": "project6",
-  "name": "Recital Tokenizado – \"LUNA EN VIVO 2025\"",
-  "description": "Viví la experiencia. Invertí en el show. Por primera vez, un recital de una artista pop argentina se tokeniza para que los fans y inversores participen del éxito. Invertí desde USD 100 y obtené beneficios económicos, acceso exclusivo y NFTs coleccionables. Movistar Arena, 24 de mayo de 2025. Rentabilidad estimada: 18–25%.",
+  "name": {
+    "es": "Recital Tokenizado – \"LUNA EN VIVO 2025\"",
+    "en": "Tokenized Concert – \"LUNA LIVE 2025\""
+  },
+  "description": {
+    "es": "Viví la experiencia. Invertí en el show. Por primera vez, un recital de una artista pop argentina se tokeniza para que los fans y inversores participen del éxito. Invertí desde USD 100 y obtené beneficios económicos, acceso exclusivo y NFTs coleccionables. Movistar Arena, 24 de mayo de 2025. Rentabilidad estimada: 18–25%.",
+    "en": "Live the experience. Invest in the show. For the first time, a concert by an Argentine pop artist is tokenized so fans and investors can participate in the success. Invest from USD 100 and obtain economic benefits, exclusive access, and collectible NFTs. Movistar Arena, May 24, 2025. Estimated return: 18–25%."
+  },
   "image": "https://res.cloudinary.com/dhacybdxf/image/upload/w_1000,ar_16:9,c_fill,g_auto,e_sharpen/v1762901058/Investoken/IMG_3028_c95kop.jpg",
   "images": [
     "https://res.cloudinary.com/dhacybdxf/image/upload/w_1000,ar_16:9,c_fill,g_auto,e_sharpen/v1762901058/Investoken/IMG_3028_c95kop.jpg",
@@ -13,25 +19,37 @@
   "investors": 895,
   "pricePerToken": 100,
   "team": [
-    { "name": "Luna Rodríguez", "role": "Artista & Directora Creativa", "bio": "Cantante y compositora argentina con presencia internacional, productora de su propio contenido digital y experiencias fan." },
-    { "name": "Carlos Mendez", "role": "Productor Ejecutivo", "bio": "Productor de shows con 15+ años en la industria, especializado en eventos de gran escala y streaming." },
-    { "name": "Martina González", "role": "Directora Financiera", "bio": "Experta en finanzas de entretenimiento y tokenización de contenido artístico." }
+    {
+      "name": "Luna Rodríguez",
+      "role": { "es": "Artista & Directora Creativa", "en": "Artist & Creative Director" },
+      "bio": { "es": "Cantante y compositora argentina con presencia internacional, productora de su propio contenido digital y experiencias fan.", "en": "Argentine singer and songwriter with international presence, producer of her own digital content and fan experiences." }
+    },
+    {
+      "name": "Carlos Mendez",
+      "role": { "es": "Productor Ejecutivo", "en": "Executive Producer" },
+      "bio": { "es": "Productor de shows con 15+ años en la industria, especializado en eventos de gran escala y streaming.", "en": "Show producer with 15+ years in the industry, specialized in large-scale events and streaming." }
+    },
+    {
+      "name": "Martina González",
+      "role": { "es": "Directora Financiera", "en": "Chief Financial Officer" },
+      "bio": { "es": "Experta en finanzas de entretenimiento y tokenización de contenido artístico.", "en": "Expert in entertainment finance and artistic content tokenization." }
+    }
   ],
   "documents": [
-    { "name": "Whitepaper del Recital Tokenizado", "url": "#" },
-    { "name": "Presupuesto de Producción Detallado", "url": "#" },
-    { "name": "Contrato de Fideicomiso Artístico", "url": "#" },
-    { "name": "Seguro de Producción", "url": "#" }
+    { "name": { "es": "Whitepaper del Recital Tokenizado", "en": "Tokenized Concert Whitepaper" }, "url": "#" },
+    { "name": { "es": "Presupuesto de Producción Detallado", "en": "Detailed Production Budget" }, "url": "#" },
+    { "name": { "es": "Contrato de Fideicomiso Artístico", "en": "Artistic Trust Agreement" }, "url": "#" },
+    { "name": { "es": "Seguro de Producción", "en": "Production Insurance" }, "url": "#" }
   ],
   "compliance": {
     "tokenStandard": "ERC-1155",
-    "legalStructure": "Fideicomiso de Producción Artística",
-    "custodian": "Escribanía Fiduciaria + Banco Depositario",
+    "legalStructure": { "es": "Fideicomiso de Producción Artística", "en": "Artistic Production Trust" },
+    "custodian": { "es": "Escribanía Fiduciaria + Banco Depositario", "en": "Fiduciary Notary + Custodian Bank" },
     "kycRequired": true,
     "legalDocuments": [
-      { "name": "Contrato de Fideicomiso", "url": "#" },
-      { "name": "Términos y Condiciones de Beneficiarios", "url": "#" },
-      { "name": "Póliza de Seguro Integral de Producción", "url": "#" }
+      { "name": { "es": "Contrato de Fideicomiso", "en": "Trust Agreement" }, "url": "#" },
+      { "name": { "es": "Términos y Condiciones de Beneficiarios", "en": "Beneficiary Terms and Conditions" }, "url": "#" },
+      { "name": { "es": "Póliza de Seguro Integral de Producción", "en": "Comprehensive Production Insurance Policy" }, "url": "#" }
     ]
   },
   "investmentDetails": {
@@ -44,97 +62,49 @@
     "estimacionRetorno": "~18–25% en 6 meses por ingresos de tickets, streaming y merchandising"
   },
   "modeloNegocio": [
-    "Financiamiento integral de la producción del show mediante tokens (USD 250,000 de USD 500,000 totales).",
-    "Ingresos por venta de entradas presenciales (general y VIP) en el Movistar Arena.",
-    "Streaming online exclusivo para holders de tokens durante y después del recital.",
-    "Venta de merchandising oficial con ediciones limitadas y descuentos para inversores.",
-    "Sponsors y derechos audiovisuales de transmisión y distribución.",
-    "Liquidación final: ingresos netos se distribuyen proporcionales a tokens en circulación."
+    { "es": "Financiamiento integral de la producción del show mediante tokens (USD 250,000 de USD 500,000 totales).", "en": "Comprehensive show production financing through tokens (USD 250,000 of USD 500,000 total)." },
+    { "es": "Ingresos por venta de entradas presenciales (general y VIP) en el Movistar Arena.", "en": "Revenue from in-person ticket sales (general and VIP) at Movistar Arena." },
+    { "es": "Streaming online exclusivo para holders de tokens durante y después del recital.", "en": "Exclusive online streaming for token holders during and after the concert." },
+    { "es": "Venta de merchandising oficial con ediciones limitadas y descuentos para inversores.", "en": "Official merchandise sales with limited editions and discounts for investors." },
+    { "es": "Sponsors y derechos audiovisuales de transmisión y distribución.", "en": "Sponsors and audiovisual broadcast and distribution rights." },
+    { "es": "Liquidación final: ingresos netos se distribuyen proporcionales a tokens en circulación.", "en": "Final settlement: net revenues distributed proportionally to tokens in circulation." }
   ],
   "estructuraTokenizacion": [
-    "Vehículo legal: fideicomiso de producción artística auditado y registrado.",
-    "Tokens ERC-1155: 2,500 unidades emitidas en blockchain Ethereum con trazabilidad total.",
-    "Derechos económicos: cada token representa participación proporcional en los ingresos netos del evento.",
-    "Beneficiarios: acceso prioritario a entradas VIP, NFT exclusivo, backstage digital y descuentos.",
-    "Blockchain: registro transparente de transacciones, auditable en tiempo real.",
-    "Reportes: actualizaciones semanales de ventas, sponsors confirmados y métricas de avance."
+    { "es": "Vehículo legal: fideicomiso de producción artística auditado y registrado.", "en": "Legal vehicle: audited and registered artistic production trust." },
+    { "es": "Tokens ERC-1155: 2,500 unidades emitidas en blockchain Ethereum con trazabilidad total.", "en": "ERC-1155 tokens: 2,500 units issued on Ethereum blockchain with full traceability." },
+    { "es": "Derechos económicos: cada token representa participación proporcional en los ingresos netos del evento.", "en": "Economic rights: each token represents proportional participation in the event's net revenues." },
+    { "es": "Beneficiarios: acceso prioritario a entradas VIP, NFT exclusivo, backstage digital y descuentos.", "en": "Beneficiaries: priority access to VIP tickets, exclusive NFT, digital backstage and discounts." },
+    { "es": "Blockchain: registro transparente de transacciones, auditable en tiempo real.", "en": "Blockchain: transparent transaction registry, auditable in real-time." },
+    { "es": "Reportes: actualizaciones semanales de ventas, sponsors confirmados y métricas de avance.", "en": "Reports: weekly updates on sales, confirmed sponsors and progress metrics." }
   ],
   "cronograma": [
-    {
-      "fase": "Febrero 2025",
-      "descripcion": "Lanzamiento de preventa de tokens e inicio de producción integral del show"
-    },
-    {
-      "fase": "Marzo–Abril 2025",
-      "descripcion": "Ensayos, campañas de marketing, montaje de escenografía y confirmación de sponsors"
-    },
-    {
-      "fase": "24 de Mayo 2025",
-      "descripcion": "Luna en Vivo 2025 en Movistar Arena de Buenos Aires — 15,000 personas"
-    },
-    {
-      "fase": "Junio 2025",
-      "descripcion": "Lanzamiento de versión streaming exclusiva y entrega de NFTs coleccionables a holders"
-    },
-    {
-      "fase": "Julio 2025",
-      "descripcion": "Liquidación de ingresos, cálculo de utilidades y distribución a inversores según participación"
-    }
+    { "fase": { "es": "Febrero 2025", "en": "February 2025" }, "descripcion": { "es": "Lanzamiento de preventa de tokens e inicio de producción integral del show", "en": "Token presale launch and start of comprehensive show production" } },
+    { "fase": { "es": "Marzo–Abril 2025", "en": "March–April 2025" }, "descripcion": { "es": "Ensayos, campañas de marketing, montaje de escenografía y confirmación de sponsors", "en": "Rehearsals, marketing campaigns, stage setup and sponsor confirmation" } },
+    { "fase": { "es": "24 de Mayo 2025", "en": "May 24, 2025" }, "descripcion": { "es": "Luna en Vivo 2025 en Movistar Arena de Buenos Aires — 15,000 personas", "en": "Luna Live 2025 at Movistar Arena in Buenos Aires — 15,000 people" } },
+    { "fase": { "es": "Junio 2025", "en": "June 2025" }, "descripcion": { "es": "Lanzamiento de versión streaming exclusiva y entrega de NFTs coleccionables a holders", "en": "Launch of exclusive streaming version and delivery of collectible NFTs to holders" } },
+    { "fase": { "es": "Julio 2025", "en": "July 2025" }, "descripcion": { "es": "Liquidación de ingresos, cálculo de utilidades y distribución a inversores según participación", "en": "Revenue settlement, profit calculation and distribution to investors according to participation" } }
   ],
   "ventajasTokenizacion": [
-    "Democracia del entretenimiento: invertir desde USD 100 en un show de talla mundial sin ser productor.",
-    "Activo tangible y verificable: un evento real, fechado, con producción documentada y transmisible.",
-    "Transparencia blockchain: todas las transacciones y reportes disponibles en tiempo real en la plataforma.",
-    "Beneficios experienciales: acceso VIP, NFTs únicos, backstage digital y conocer a la artista.",
-    "Múltiples fuentes de ingresos: tickets presenciales, streaming, merchandising, sponsors.",
-    "Salida flexible: vender tokens en mercado secundario o mantener hasta la liquidación final con utilidades."
+    { "es": "Democracia del entretenimiento: invertir desde USD 100 en un show de talla mundial sin ser productor.", "en": "Entertainment democracy: invest from USD 100 in a world-class show without being a producer." },
+    { "es": "Activo tangible y verificable: un evento real, fechado, con producción documentada y transmisible.", "en": "Tangible and verifiable asset: a real event, dated, with documented and transmissible production." },
+    { "es": "Transparencia blockchain: todas las transacciones y reportes disponibles en tiempo real en la plataforma.", "en": "Blockchain transparency: all transactions and reports available in real-time on the platform." },
+    { "es": "Beneficios experienciales: acceso VIP, NFTs únicos, backstage digital y conocer a la artista.", "en": "Experiential benefits: VIP access, unique NFTs, digital backstage and meet the artist." },
+    { "es": "Múltiples fuentes de ingresos: tickets presenciales, streaming, merchandising, sponsors.", "en": "Multiple revenue sources: in-person tickets, streaming, merchandising, sponsors." },
+    { "es": "Salida flexible: vender tokens en mercado secundario o mantener hasta la liquidación final con utilidades.", "en": "Flexible exit: sell tokens in secondary market or hold until final settlement with profits." }
   ],
   "riesgos": [
-    {
-      "titulo": "Cancelación del show",
-      "mitigante": "Seguro de producción integral que cubre devolución de capital en caso de fuerza mayor."
-    },
-    {
-      "titulo": "Baja venta de entradas",
-      "mitigante": "Campañas de marketing estratégico, presencia de artista en redes, acuerdos de sponsors y difusión."
-    },
-    {
-      "titulo": "Aumento inesperado de costos",
-      "mitigante": "Contratos cerrados con proveedores, fondo de contingencia y presupuesto flexible."
-    },
-    {
-      "titulo": "Riesgo de variación legal",
-      "mitigante": "Respaldo bajo fideicomiso auditado conforme a ley argentina, asesoría legal especializada."
-    },
-    {
-      "titulo": "Rendimientos dependientes del éxito comercial",
-      "mitigante": "Histórico de la artista, análisis de mercado de fans, acuerdos preestablecidos con sponsors."
-    }
+    { "titulo": { "es": "Cancelación del show", "en": "Show cancellation" }, "mitigante": { "es": "Seguro de producción integral que cubre devolución de capital en caso de fuerza mayor.", "en": "Comprehensive production insurance covering capital refund in case of force majeure." } },
+    { "titulo": { "es": "Baja venta de entradas", "en": "Low ticket sales" }, "mitigante": { "es": "Campañas de marketing estratégico, presencia de artista en redes, acuerdos de sponsors y difusión.", "en": "Strategic marketing campaigns, artist social media presence, sponsor agreements and promotion." } },
+    { "titulo": { "es": "Aumento inesperado de costos", "en": "Unexpected cost increase" }, "mitigante": { "es": "Contratos cerrados con proveedores, fondo de contingencia y presupuesto flexible.", "en": "Closed contracts with vendors, contingency fund and flexible budget." } },
+    { "titulo": { "es": "Riesgo de variación legal", "en": "Legal variation risk" }, "mitigante": { "es": "Respaldo bajo fideicomiso auditado conforme a ley argentina, asesoría legal especializada.", "en": "Backing under audited trust compliant with Argentine law, specialized legal counsel." } },
+    { "titulo": { "es": "Rendimientos dependientes del éxito comercial", "en": "Returns dependent on commercial success" }, "mitigante": { "es": "Histórico de la artista, análisis de mercado de fans, acuerdos preestablecidos con sponsors.", "en": "Artist track record, fan market analysis, pre-established sponsor agreements." } }
   ],
   "faqs": [
-    {
-      "pregunta": "¿Puedo asistir al recital con mi token?",
-      "respuesta": "Sí. Algunos niveles de token incluyen acceso VIP prioritario, merchandising oficial y experiencias especiales. Otros inversores pueden mantener tokens para cobrar utilidades o vender en mercado secundario."
-    },
-    {
-      "pregunta": "¿Cómo se generan las ganancias?",
-      "respuesta": "Por ingresos de venta de entradas presenciales, streaming online exclusivo, merchandising oficial y acuerdos de sponsoreo y derechos audiovisuales."
-    },
-    {
-      "pregunta": "¿Qué pasa si no puedo asistir al recital?",
-      "respuesta": "Podés mantener tus tokens y cobrar tu parte proporcional de utilidades al cierre, o venderlos en el mercado secundario de Investoken a otros inversores."
-    },
-    {
-      "pregunta": "¿Cómo garantizan la transparencia?",
-      "respuesta": "Todas las transacciones se registran en blockchain Ethereum, auditable en tiempo real. Reportes semanales de ventas, sponsors y métricas disponibles en tu panel."
-    },
-    {
-      "pregunta": "¿Los rendimientos están asegurados?",
-      "respuesta": "No. Son proyecciones basadas en análisis de mercado de fans, venta de entradas estimada y acuerdos comerciales preestablecidos."
-    },
-    {
-      "pregunta": "¿Qué comisiones cobran?",
-      "respuesta": "2% de estructuración + 1% anual de administración. El resto va íntegramente a inversores y cobertura de gastos de producción."
-    }
+    { "pregunta": { "es": "¿Puedo asistir al recital con mi token?", "en": "Can I attend the concert with my token?" }, "respuesta": { "es": "Sí. Algunos niveles de token incluyen acceso VIP prioritario, merchandising oficial y experiencias especiales. Otros inversores pueden mantener tokens para cobrar utilidades o vender en mercado secundario.", "en": "Yes. Some token tiers include priority VIP access, official merchandise and special experiences. Other investors can hold tokens to collect profits or sell in the secondary market." } },
+    { "pregunta": { "es": "¿Cómo se generan las ganancias?", "en": "How are profits generated?" }, "respuesta": { "es": "Por ingresos de venta de entradas presenciales, streaming online exclusivo, merchandising oficial y acuerdos de sponsoreo y derechos audiovisuales.", "en": "From in-person ticket sales revenue, exclusive online streaming, official merchandising and sponsorship agreements and audiovisual rights." } },
+    { "pregunta": { "es": "¿Qué pasa si no puedo asistir al recital?", "en": "What if I can't attend the concert?" }, "respuesta": { "es": "Podés mantener tus tokens y cobrar tu parte proporcional de utilidades al cierre, o venderlos en el mercado secundario de Investoken a otros inversores.", "en": "You can hold your tokens and collect your proportional share of profits at closure, or sell them in Investoken's secondary market to other investors." } },
+    { "pregunta": { "es": "¿Cómo garantizan la transparencia?", "en": "How do you guarantee transparency?" }, "respuesta": { "es": "Todas las transacciones se registran en blockchain Ethereum, auditable en tiempo real. Reportes semanales de ventas, sponsors y métricas disponibles en tu panel.", "en": "All transactions are recorded on Ethereum blockchain, auditable in real-time. Weekly reports of sales, sponsors and metrics available on your dashboard." } },
+    { "pregunta": { "es": "¿Los rendimientos están asegurados?", "en": "Are returns guaranteed?" }, "respuesta": { "es": "No. Son proyecciones basadas en análisis de mercado de fans, venta de entradas estimada y acuerdos comerciales preestablecidos.", "en": "No. They are projections based on fan market analysis, estimated ticket sales and pre-established commercial agreements." } },
+    { "pregunta": { "es": "¿Qué comisiones cobran?", "en": "What fees do you charge?" }, "respuesta": { "es": "2% de estructuración + 1% anual de administración. El resto va íntegramente a inversores y cobertura de gastos de producción.", "en": "2% structuring fee + 1% annual management fee. The rest goes entirely to investors and production expense coverage." } }
   ]
 }
