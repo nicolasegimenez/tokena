@@ -5,6 +5,22 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/com
 import { Badge } from '@/components/ui/badge';
 import { Link, useNavigate } from 'react-router-dom';
 import { useAuth } from '@/lib/auth';
+import { ModeToggle } from '@/components/mode-toggle';
+import { useLanguage } from '@/lib/language';
+
+const LanguageSwitcher = () => {
+  const { language, setLanguage } = useLanguage();
+
+  const toggleLanguage = () => {
+    setLanguage(language === "es" ? "en" : "es");
+  };
+
+  return (
+    <Button variant="ghost" size="sm" onClick={toggleLanguage} className="h-8 rounded-md gap-1.5 px-3">
+      {language.toUpperCase()}
+    </Button>
+  );
+};
 
 const LandingPage: React.FC = () => {
   const { login } = useAuth();
@@ -16,7 +32,13 @@ const LandingPage: React.FC = () => {
   };
 
   return (
-    <main className="flex flex-col items-center justify-center min-h-[calc(100vh-4rem)] px-4">
+    <main className="flex flex-col items-center justify-center min-h-[calc(100vh-4rem)] px-4 relative">
+      {/* Theme Toggle & Language Switcher */}
+      <div className="absolute top-6 right-6 z-10 flex items-center gap-2">
+        <LanguageSwitcher />
+        <ModeToggle />
+      </div>
+
       {/* Hero Section */}
       <section className="py-24 w-full max-w-6xl text-center" aria-label="Hero">
         <Badge variant="secondary" className="mb-6 px-4 py-2 text-sm font-medium">
