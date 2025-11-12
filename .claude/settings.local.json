@@ -1,7 +1,8 @@
 {
   "permissions": {
     "allow": [
-      "Bash(dir C:Usersnicoatokenasrcapp)"
+      "Bash(dir C:Usersnicoatokenasrcapp)",
+      "Bash(Remove-Item -Recurse -Force \"c:\\Users\\nicoa\\tokena\\src\\app\\invest\\project7\")"
     ],
     "deny": [],
     "ask": []

@@ -52,7 +52,6 @@ const labels = {
     project_4_name: "Tokenización de Ganado – Vaca Alfa",
     project_5_name: "Polo Horse Token – \"Embajador\"",
     project_6_name: "Recital Tokenizado – \"LUNA EN VIVO 2025\"",
-    project_7_name: "Investoken – Seed Round",
   },
   en: {
     invest_market: "Invest Market",
@@ -80,7 +79,6 @@ const labels = {
     project_4_name: "Livestock Tokenization – Vaca Alfa",
     project_5_name: "Polo Horse Token – \"Ambassador\"",
     project_6_name: "Tokenized Concert – \"LUNA LIVE 2025\"",
-    project_7_name: "Investoken – Seed Round",
   }
 };
 

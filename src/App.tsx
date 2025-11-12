@@ -20,7 +20,6 @@ const InvestProject3Page = lazy(() => import("@/app/invest/project3/page"))
 const InvestProject4Page = lazy(() => import("@/app/invest/project4/page"))
 const InvestProject5Page = lazy(() => import("@/app/invest/project5/page"))
 const InvestProject6Page = lazy(() => import("@/app/invest/project6/page"))
-const InvestProject7Page = lazy(() => import("@/app/invest/project7/page"))
 const CreateProjectPage = lazy(() => import("@/app/create/page"))
 const TradePage = lazy(() => import("@/app/trade/page"))
 const LoginForm = lazy(() => import("@/components/login-form").then(m => ({ default: m.LoginForm })))
@@ -62,7 +61,6 @@ function App() {
             <Route path="/invest/project4" element={<InvestProject4Page />} />
             <Route path="/invest/project5" element={<InvestProject5Page />} />
             <Route path="/invest/project6" element={<InvestProject6Page />} />
-            <Route path="/invest/project7" element={<InvestProject7Page />} />
             <Route path="/create" element={<CreateProjectPage />} />
             <Route path="/trade" element={<TradePage />} />
             <Route path="/investments" element={<InvestmentsPage />} />
