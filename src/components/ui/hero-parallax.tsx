@@ -105,7 +105,7 @@ export const HeroParallax = ({
 
 export const Header = ({ title, description }: { title?: string; description?: string }) => {
   return (
-    <div className="max-w-7xl relative mx-auto py-20 md:py-40 px-4 w-full left-0 top-0">
+    <div className="max-w-7xl relative mx-auto py-20 md:py-40 px-4 w-full left-0 top-0 flex flex-col items-center text-center">
       <h1 className="text-2xl md:text-7xl font-bold dark:text-white text-foreground">
         {title || "The Ultimate"} <br /> {title ? "" : "development studio"}
       </h1>

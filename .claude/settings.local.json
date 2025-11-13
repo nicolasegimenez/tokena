@@ -4,7 +4,9 @@
       "Bash(dir C:Usersnicoatokenasrcapp)",
       "Bash(Remove-Item -Recurse -Force \"c:\\Users\\nicoa\\tokena\\src\\app\\invest\\project7\")",
       "Bash(powershell -Command \"Get-Content src/app/landing/page.tsx | Select-String -Pattern ''</section>'' | Select-Object -First 10\")",
-      "Bash(powershell -Command \"(Get-Content src/app/landing/page.tsx | Measure-Object -Line).Lines\")"
+      "Bash(powershell -Command \"(Get-Content src/app/landing/page.tsx | Measure-Object -Line).Lines\")",
+      "Bash(dir:*)",
+      "Bash(powershell -Command \"Get-ChildItem ''c:\\Users\\nicoa\\tokena\\src\\app\\'' -Force\")"
     ],
     "deny": [],
     "ask": []
