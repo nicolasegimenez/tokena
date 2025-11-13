@@ -1,9 +1,7 @@
 "use client";
 
-import React, { useState, useEffect } from 'react';
-import { Link } from 'react-router-dom';
+import { useState, useEffect } from 'react';
 import { useLanguage } from '@/lib/language';
-import { Button } from '@/components/ui/button';
 import { Menu, X, Moon, Sun, Globe } from 'lucide-react';
 
 export function Navbar() {

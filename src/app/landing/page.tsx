@@ -1,5 +1,3 @@
-import React from 'react';
-
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Link, useNavigate } from 'react-router-dom';
@@ -7,29 +5,13 @@ import { useAuth } from '@/lib/auth';
 import { useLanguage } from '@/lib/language';
 import { HeroParallaxDemo } from '@/components/ui/hero-parallax-demo';
 import { ShaderBackground } from '@/components/ui/hero-shader';
-import { AuthenticatedFeaturesCards } from '@/components/ui/authenticated-features-cards';
-import { MetricsKeyCards } from '@/components/ui/metrics-key-cards';
 import { Navbar } from '@/components/ui/navbar';
 import { Users2, TrendingUp, Rocket } from 'lucide-react';
 
-const LanguageSwitcher = () => {
-  const { language, setLanguage } = useLanguage();
-
-  const toggleLanguage = () => {
-    setLanguage(language === "es" ? "en" : "es");
-  };
-
-  return (
-    <Button variant="ghost" size="sm" onClick={toggleLanguage} className="h-8 rounded-md gap-1.5 px-3">
-      {language.toUpperCase()}
-    </Button>
-  );
-};
-
-const LandingPage: React.FC = () => {
+const LandingPage = () => {
   const { login } = useAuth();
   const navigate = useNavigate();
-  const { t, language } = useLanguage();
+  const { t } = useLanguage();
 
   const handleDemoLogin = () => {
     login();
