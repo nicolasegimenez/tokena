@@ -227,7 +227,7 @@ const LandingPage = () => {
                 Participá en grandes proyectos sin grandes capitales
               </h3>
               <p className="text-lg md:text-xl text-muted-foreground max-w-2xl">
-                Fractionalización de inversiones de alto valor. Acceso democrático a proyectos premium antes reservados para inversores institucionales.
+                Tokenización de inversiones de alto valor. Acceso democrático a proyectos premium antes reservados para inversores institucionales.
               </p>
             </div>
           </div>
