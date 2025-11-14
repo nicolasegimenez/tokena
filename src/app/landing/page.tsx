@@ -167,97 +167,49 @@ const LandingPage = () => {
 
       {/* Features Section */}
       <section id="features" className="py-32 w-full px-4 md:px-8 lg:px-12 relative overflow-hidden" aria-label="Características principales">
-        <div className="max-w-7xl mx-auto relative z-10 space-y-24">
+        <div className="max-w-5xl mx-auto relative z-10 space-y-24">
           {/* Feature 1: Convert Savings */}
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-            <div className="flex flex-col justify-center">
-              <div className="w-16 h-1 bg-gradient-to-r from-primary to-primary/40 rounded-full mb-8"></div>
-              <h3 className="text-5xl md:text-6xl lg:text-7xl font-bold text-white leading-tight mb-6">
-                {t('landing_convert_savings_title') || 'Convertí\ntus ahorros\nen activos\nreales'}
-              </h3>
-              <p className="text-lg md:text-xl text-muted-foreground">
-                {t('landing_convert_savings_desc') || 'desde un clic'}
-              </p>
-            </div>
-            <div className="flex justify-center lg:justify-end">
-              <div className="w-full max-w-sm h-80 bg-gradient-to-br from-primary/10 via-primary/5 to-transparent rounded-3xl flex items-center justify-center relative overflow-hidden group">
-                <div className="absolute inset-0 bg-gradient-to-t from-primary/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
-                <img
-                  src="https://via.placeholder.com/400x320/1e40af/60a5fa?text=Casa"
-                  alt="Inversión en activos"
-                  className="w-64 h-64 object-contain transform group-hover:scale-110 transition-transform duration-300"
-                />
-              </div>
-            </div>
+          <div className="flex flex-col justify-center">
+            <div className="w-16 h-1 bg-gradient-to-r from-primary to-primary/40 rounded-full mb-8"></div>
+            <h3 className="text-5xl md:text-6xl lg:text-7xl font-bold text-white leading-tight mb-6">
+              {t('landing_convert_savings_title') || 'Convertí\ntus ahorros\nen activos\nreales'}
+            </h3>
+            <p className="text-lg md:text-xl text-muted-foreground max-w-2xl">
+              {t('landing_convert_savings_desc') || 'desde un clic'}
+            </p>
           </div>
 
           {/* Feature 2: Future Investment */}
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center lg:grid-flow-dense">
-            <div className="flex justify-center lg:justify-start">
-              <div className="w-full max-w-sm h-80 bg-gradient-to-br from-primary/10 via-primary/5 to-transparent rounded-3xl flex items-center justify-center relative overflow-hidden group">
-                <div className="absolute inset-0 bg-gradient-to-t from-primary/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
-                <img
-                  src="https://via.placeholder.com/400x320/1e40af/60a5fa?text=Gráfico"
-                  alt="Inversión del futuro"
-                  className="w-64 h-64 object-contain transform group-hover:scale-110 transition-transform duration-300"
-                />
-              </div>
-            </div>
-            <div className="flex flex-col justify-center lg:text-right">
-              <div className="w-16 h-1 bg-gradient-to-r from-primary to-primary/40 rounded-full mb-8 lg:ml-auto"></div>
-              <h3 className="text-5xl md:text-6xl lg:text-7xl font-bold text-white leading-tight mb-6">
-                {t('landing_future_investment_title') || 'La inversión\ndel futuro,\nhoy'}
-              </h3>
-              <p className="text-lg md:text-xl text-muted-foreground lg:ml-auto lg:max-w-sm">
-                {t('landing_future_investment_desc') || 'Acceso a oportunidades con mejores ratios riesgo/retorno'}
-              </p>
-            </div>
+          <div className="flex flex-col justify-center">
+            <div className="w-16 h-1 bg-gradient-to-r from-primary to-primary/40 rounded-full mb-8"></div>
+            <h3 className="text-5xl md:text-6xl lg:text-7xl font-bold text-white leading-tight mb-6">
+              {t('landing_future_investment_title') || 'La inversión\ndel futuro,\nhoy'}
+            </h3>
+            <p className="text-lg md:text-xl text-muted-foreground max-w-2xl">
+              {t('landing_future_investment_desc') || 'Acceso a oportunidades con mejores ratios riesgo/retorno'}
+            </p>
           </div>
 
           {/* Feature 3: Participate Large Projects */}
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-            <div className="flex flex-col justify-center">
-              <div className="w-16 h-1 bg-gradient-to-r from-primary to-primary/40 rounded-full mb-8"></div>
-              <h3 className="text-5xl md:text-6xl lg:text-7xl font-bold text-white leading-tight mb-6">
-                {t('landing_participate_title') || 'Participá\nen grandes,\nproyectos\nsin grandes\ncapitales'}
-              </h3>
-              <p className="text-lg md:text-xl text-muted-foreground">
-                {t('landing_participate_desc') || 'Acceso democrático a inversiones exclusivas'}
-              </p>
-            </div>
-            <div className="flex justify-center lg:justify-end">
-              <div className="w-full max-w-sm h-80 bg-gradient-to-br from-primary/10 via-primary/5 to-transparent rounded-3xl flex items-center justify-center relative overflow-hidden group">
-                <div className="absolute inset-0 bg-gradient-to-t from-primary/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
-                <img
-                  src="https://via.placeholder.com/400x320/1e40af/60a5fa?text=Alcancía"
-                  alt="Participación en proyectos"
-                  className="w-64 h-64 object-contain transform group-hover:scale-110 transition-transform duration-300"
-                />
-              </div>
-            </div>
+          <div className="flex flex-col justify-center">
+            <div className="w-16 h-1 bg-gradient-to-r from-primary to-primary/40 rounded-full mb-8"></div>
+            <h3 className="text-5xl md:text-6xl lg:text-7xl font-bold text-white leading-tight mb-6">
+              {t('landing_participate_title') || 'Participá\nen grandes,\nproyectos\nsin grandes\ncapitales'}
+            </h3>
+            <p className="text-lg md:text-xl text-muted-foreground max-w-2xl">
+              {t('landing_participate_desc') || 'Acceso democrático a inversiones exclusivas'}
+            </p>
           </div>
 
           {/* Feature 4: Tokenize Value */}
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center lg:grid-flow-dense">
-            <div className="flex justify-center lg:justify-start">
-              <div className="w-full max-w-sm h-80 bg-gradient-to-br from-primary/10 via-primary/5 to-transparent rounded-3xl flex items-center justify-center relative overflow-hidden group">
-                <div className="absolute inset-0 bg-gradient-to-t from-primary/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
-                <img
-                  src="https://via.placeholder.com/400x320/1e40af/60a5fa?text=Token"
-                  alt="Tokenización de valor"
-                  className="w-64 h-64 object-contain transform group-hover:scale-110 transition-transform duration-300"
-                />
-              </div>
-            </div>
-            <div className="flex flex-col justify-center lg:text-right">
-              <div className="w-16 h-1 bg-gradient-to-r from-primary to-primary/40 rounded-full mb-8 lg:ml-auto"></div>
-              <h3 className="text-5xl md:text-6xl lg:text-7xl font-bold text-white leading-tight mb-6">
-                {t('landing_tokenize_title') || 'Todo lo\nque tiene\nvalor,\nahora tiene\ntoken'}
-              </h3>
-              <p className="text-lg md:text-xl text-muted-foreground lg:ml-auto lg:max-w-sm">
-                {t('landing_tokenize_desc') || 'Fractionalización de activos para mayor accesibilidad'}
-              </p>
-            </div>
+          <div className="flex flex-col justify-center">
+            <div className="w-16 h-1 bg-gradient-to-r from-primary to-primary/40 rounded-full mb-8"></div>
+            <h3 className="text-5xl md:text-6xl lg:text-7xl font-bold text-white leading-tight mb-6">
+              {t('landing_tokenize_title') || 'Todo lo\nque tiene\nvalor,\nahora tiene\ntoken'}
+            </h3>
+            <p className="text-lg md:text-xl text-muted-foreground max-w-2xl">
+              {t('landing_tokenize_desc') || 'Fractionalización de activos para mayor accesibilidad'}
+            </p>
           </div>
         </div>
       </section>
