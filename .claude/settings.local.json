@@ -8,7 +8,9 @@
       "Bash(dir:*)",
       "Bash(powershell -Command \"Get-ChildItem ''c:\\Users\\nicoa\\tokena\\src\\app\\'' -Force\")",
       "Bash(bun add:*)",
-      "Bash(powershell:*)"
+      "Bash(powershell:*)",
+      "Bash(git add:*)",
+      "Bash(git commit:*)"
     ],
     "deny": [],
     "ask": []
