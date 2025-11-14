@@ -1,6 +1,5 @@
 import { Button } from '@/components/ui/button';
 import { Card, CardContent } from '@/components/ui/card';
-import { GlowingEffect } from '@/components/ui/glowing-effect';
 import { Link, useNavigate } from 'react-router-dom';
 import { useAuth } from '@/lib/auth';
 import { useLanguage } from '@/lib/language';
@@ -8,6 +7,7 @@ import { HeroParallaxDemo } from '@/components/ui/hero-parallax-demo';
 import { ShaderBackground } from '@/components/ui/hero-shader';
 import { Navbar } from '@/components/ui/navbar';
 import { PlatformFeatures } from '@/components/ui/platform-features';
+import { SquareCarousel } from '@/components/ui/square-carousel';
 
 const LandingPage = () => {
   const { login } = useAuth();
@@ -114,13 +114,13 @@ const LandingPage = () => {
       </section>
 
       {/* Parallax Projects Section */}
-      <section className="w-full py-12 md:py-20 px-0 bg-muted/40" aria-label="Oportunidades de inversión">
+      <section className="w-full py-12 md:py-20 px-3 xs:px-4 sm:px-6 md:px-8 lg:px-12 xl:px-16 bg-muted/40" aria-label="Oportunidades de inversión">
         <HeroParallaxDemo />
       </section>
 
       {/* Trust Section - moved earlier for credibility */}
-      <section id="trust" className="py-20 w-full px-0 bg-gradient-to-b from-background to-muted/30" aria-label="Confianza y cumplimiento">
-        <div className="max-w-6xl mx-auto px-4">
+      <section id="trust" className="py-20 w-full px-3 xs:px-4 sm:px-6 md:px-8 lg:px-12 xl:px-16 bg-gradient-to-b from-background to-muted/30" aria-label="Confianza y cumplimiento">
+        <div className="max-w-6xl mx-auto">
           <Card className="border-2">
             <CardContent className="pt-12 pb-12">
               <div className="text-center mb-12">
@@ -166,93 +166,28 @@ const LandingPage = () => {
         </div>
       </section>
 
-      {/* Features Section - Text with Glowing Effect */}
-      <section className="py-32 w-full px-4 md:px-8 lg:px-12 relative overflow-hidden bg-gradient-to-b from-background to-muted/20" aria-label="Características principales destacadas">
-        <div className="max-w-5xl mx-auto relative z-10 space-y-20">
-          {/* Feature 1: Convert Savings */}
-          <div className="relative group rounded-2xl">
-            <GlowingEffect
-              spread={40}
-              glow={true}
-              disabled={false}
-              proximity={64}
-              inactiveZone={0.01}
-              borderWidth={2}
-            />
-            <div className="relative flex flex-col justify-center rounded-2xl border-2 border-transparent p-8 md:p-12 bg-gradient-to-br from-background/50 to-background/80 backdrop-blur-sm">
-              <div className="w-16 h-1 bg-gradient-to-r from-primary to-primary/40 rounded-full mb-8"></div>
-              <h3 className="text-5xl md:text-6xl lg:text-7xl font-bold text-foreground leading-tight mb-6">
-                Convertí tus ahorros en activos reales
-              </h3>
-              <p className="text-lg md:text-xl text-muted-foreground max-w-2xl">
-                Invierte en bienes raíces, empresas y proyectos con montos accesibles. Diversifica tu portafolio sin comprometer liquidez ni seguridad.
-              </p>
-            </div>
-          </div>
-
-          {/* Feature 2: Future Investment */}
-          <div className="relative group rounded-2xl">
-            <GlowingEffect
-              spread={40}
-              glow={true}
-              disabled={false}
-              proximity={64}
-              inactiveZone={0.01}
-              borderWidth={2}
-            />
-            <div className="relative flex flex-col justify-center rounded-2xl border-2 border-transparent p-8 md:p-12 bg-gradient-to-br from-background/50 to-background/80 backdrop-blur-sm">
-              <div className="w-16 h-1 bg-gradient-to-r from-primary to-primary/40 rounded-full mb-8"></div>
-              <h3 className="text-5xl md:text-6xl lg:text-7xl font-bold text-foreground leading-tight mb-6">
-                La inversión del futuro, hoy
-              </h3>
-              <p className="text-lg md:text-xl text-muted-foreground max-w-2xl">
-                Accede a oportunidades de inversión tokenizada con retornos competitivos y riesgo controlado. Mercado secundario activo para entrada y salida flexible.
-              </p>
-            </div>
-          </div>
-
-          {/* Feature 3: Participate Large Projects */}
-          <div className="relative group rounded-2xl">
-            <GlowingEffect
-              spread={40}
-              glow={true}
-              disabled={false}
-              proximity={64}
-              inactiveZone={0.01}
-              borderWidth={2}
-            />
-            <div className="relative flex flex-col justify-center rounded-2xl border-2 border-transparent p-8 md:p-12 bg-gradient-to-br from-background/50 to-background/80 backdrop-blur-sm">
-              <div className="w-16 h-1 bg-gradient-to-r from-primary to-primary/40 rounded-full mb-8"></div>
-              <h3 className="text-5xl md:text-6xl lg:text-7xl font-bold text-foreground leading-tight mb-6">
-                Participá en grandes proyectos sin grandes capitales
-              </h3>
-              <p className="text-lg md:text-xl text-muted-foreground max-w-2xl">
-                Tokenización de inversiones de alto valor. Acceso democrático a proyectos premium antes reservados para inversores institucionales.
-              </p>
-            </div>
-          </div>
-
-          {/* Feature 4: Tokenize Value */}
-          <div className="relative group rounded-2xl">
-            <GlowingEffect
-              spread={40}
-              glow={true}
-              disabled={false}
-              proximity={64}
-              inactiveZone={0.01}
-              borderWidth={2}
-            />
-            <div className="relative flex flex-col justify-center rounded-2xl border-2 border-transparent p-8 md:p-12 bg-gradient-to-br from-background/50 to-background/80 backdrop-blur-sm">
-              <div className="w-16 h-1 bg-gradient-to-r from-primary to-primary/40 rounded-full mb-8"></div>
-              <h3 className="text-5xl md:text-6xl lg:text-7xl font-bold text-foreground leading-tight mb-6">
-                Todo lo que tiene valor, ahora tiene token
-              </h3>
-              <p className="text-lg md:text-xl text-muted-foreground max-w-2xl">
-                Tecnología blockchain que tokeniza activos reales. Emisión, comercio y custodia transparente con trazabilidad completa en cada operación.
-              </p>
-            </div>
-          </div>
-        </div>
+      {/* Carousel Section */}
+      <section className="py-20 md:py-32 w-full px-3 xs:px-4 sm:px-6 md:px-8 lg:px-12 xl:px-16 bg-gradient-to-b from-background to-muted/20" aria-label="Galería de inversión">
+        <SquareCarousel
+          images={[
+            {
+              url: "https://res.cloudinary.com/dhacybdxf/image/upload/v1763145320/1F724B03-A736-4CB0-90C6-FB400A0F04A5_ez5kjc.png",
+              alt: "Inversión 1"
+            },
+            {
+              url: "https://res.cloudinary.com/dhacybdxf/image/upload/v1763145320/5402C399-5DA9-495A-879F-D935C231CAE6_lx6lwp.png",
+              alt: "Inversión 2"
+            },
+            {
+              url: "https://res.cloudinary.com/dhacybdxf/image/upload/v1763145320/B65B8204-B699-418B-AFB1-057A0CCDB95A_sdsqgp.png",
+              alt: "Inversión 3"
+            },
+            {
+              url: "https://res.cloudinary.com/dhacybdxf/image/upload/v1763145320/5A20ECF8-FDB3-4185-B08F-CABB8D1BF22A_ybvuxj.png",
+              alt: "Inversión 4"
+            }
+          ]}
+        />
       </section>
 
 

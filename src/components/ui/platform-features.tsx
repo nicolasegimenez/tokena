@@ -109,9 +109,8 @@ const Feature = ({
 }) => {
   return (
     <div
-      onClick={onInfoClick}
       className={cn(
-        "flex flex-col lg:border-r py-10 relative group/feature dark:border-neutral-800 cursor-pointer transition-all duration-300",
+        "flex flex-col lg:border-r py-10 relative group/feature dark:border-neutral-800 transition-all duration-300",
         (index === 0 || index === 3) && "lg:border-l dark:border-neutral-800",
         index < 3 && "lg:border-b dark:border-neutral-800"
       )}
@@ -126,25 +125,31 @@ const Feature = ({
         {icon}
       </div>
       <div className="text-lg font-bold mb-2 relative z-10 px-10">
-        <div className="absolute left-0 inset-y-0 h-6 group-hover/feature:h-8 w-1 rounded-tr-full rounded-br-full bg-neutral-300 dark:bg-neutral-700 group-hover/feature:bg-blue-500 transition-all duration-200 origin-center" />
+        <div className="absolute left-0 inset-y-0 h-6 group-hover/feature:h-8 w-1 rounded-tr-full rounded-br-full bg-neutral-300 dark:bg-neutral-700 group-hover/feature:bg-emerald-500 transition-all duration-200 origin-center" />
         <span className="group-hover/feature:translate-x-2 transition duration-200 inline-block text-neutral-800 dark:text-neutral-100">
           {title}
         </span>
       </div>
-      <p className="text-sm text-neutral-600 dark:text-neutral-300 max-w-xs relative z-10 px-10 mb-4">
+      <p className="text-sm text-neutral-600 dark:text-neutral-300 max-w-xs relative z-10 px-10 mb-6 flex-grow">
         {description}
       </p>
-      <div className="relative z-10 px-10">
+      <div className="relative z-10 px-10 flex items-center justify-between">
         <Button
           variant="ghost"
           size="sm"
-          onClick={(e) => {
-            e.stopPropagation();
-            onInfoClick();
-          }}
+          onClick={onInfoClick}
           className="text-blue-500 hover:text-blue-600 hover:bg-blue-50 dark:hover:bg-blue-950/30 h-auto p-1 font-semibold"
         >
           + Info
+        </Button>
+        <Button
+          size="sm"
+          onClick={() => {
+            window.location.href = '/market';
+          }}
+          className="bg-emerald-500 hover:bg-emerald-600 text-white h-auto px-3 py-1 font-semibold rounded-md transition-all duration-300 shadow-md hover:shadow-lg"
+        >
+          Explorar
         </Button>
       </div>
     </div>
