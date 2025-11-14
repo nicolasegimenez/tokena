@@ -172,10 +172,10 @@ const LandingPage = () => {
           <div className="flex flex-col justify-center">
             <div className="w-16 h-1 bg-gradient-to-r from-primary to-primary/40 rounded-full mb-8"></div>
             <h3 className="text-5xl md:text-6xl lg:text-7xl font-bold text-foreground leading-tight mb-6">
-              {t('landing_convert_savings_title') || 'Convertí\ntus ahorros\nen activos\nreales'}
+              Convertí tus ahorros en activos reales
             </h3>
             <p className="text-lg md:text-xl text-muted-foreground max-w-2xl">
-              {t('landing_convert_savings_desc') || 'desde un clic'}
+              desde un clic
             </p>
           </div>
 
@@ -183,10 +183,10 @@ const LandingPage = () => {
           <div className="flex flex-col justify-center">
             <div className="w-16 h-1 bg-gradient-to-r from-primary to-primary/40 rounded-full mb-8"></div>
             <h3 className="text-5xl md:text-6xl lg:text-7xl font-bold text-foreground leading-tight mb-6">
-              {t('landing_future_investment_title') || 'La inversión\ndel futuro,\nhoy'}
+              La inversión del futuro, hoy
             </h3>
             <p className="text-lg md:text-xl text-muted-foreground max-w-2xl">
-              {t('landing_future_investment_desc') || 'Acceso a oportunidades con mejores ratios riesgo/retorno'}
+              Acceso a oportunidades con mejores ratios riesgo/retorno
             </p>
           </div>
 
@@ -194,10 +194,10 @@ const LandingPage = () => {
           <div className="flex flex-col justify-center">
             <div className="w-16 h-1 bg-gradient-to-r from-primary to-primary/40 rounded-full mb-8"></div>
             <h3 className="text-5xl md:text-6xl lg:text-7xl font-bold text-foreground leading-tight mb-6">
-              {t('landing_participate_title') || 'Participá\nen grandes,\nproyectos\nsin grandes\ncapitales'}
+              Participá en grandes proyectos sin grandes capitales
             </h3>
             <p className="text-lg md:text-xl text-muted-foreground max-w-2xl">
-              {t('landing_participate_desc') || 'Acceso democrático a inversiones exclusivas'}
+              Acceso democrático a inversiones exclusivas
             </p>
           </div>
 
@@ -205,10 +205,10 @@ const LandingPage = () => {
           <div className="flex flex-col justify-center">
             <div className="w-16 h-1 bg-gradient-to-r from-primary to-primary/40 rounded-full mb-8"></div>
             <h3 className="text-5xl md:text-6xl lg:text-7xl font-bold text-foreground leading-tight mb-6">
-              {t('landing_tokenize_title') || 'Todo lo\nque tiene\nvalor,\nahora tiene\ntoken'}
+              Todo lo que tiene valor, ahora tiene token
             </h3>
             <p className="text-lg md:text-xl text-muted-foreground max-w-2xl">
-              {t('landing_tokenize_desc') || 'Fractionalización de activos para mayor accesibilidad'}
+              Fractionalización de activos para mayor accesibilidad
             </p>
           </div>
         </div>
