@@ -6,7 +6,7 @@ import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
-import { Search, Tag, Building2, DollarSign, Clock, Filter, TrendingUp, Coins, Trees, Beef, CircleDot, Music } from 'lucide-react';
+import { Search, Tag, Building2, DollarSign, Filter, TrendingUp, Coins, Trees, Beef, CircleDot, Music } from 'lucide-react';
 import { useLanguage } from '@/lib/language';
 import { marketProjects } from '@/lib/market-data';
 import { Badge } from '@/components/ui/badge';
