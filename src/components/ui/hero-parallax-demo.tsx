@@ -14,7 +14,7 @@ export const HeroParallaxDemo = () => {
       title: "Fondo de Criptomonedas",
       link: "/invest/project2",
       thumbnail:
-        "https://res.cloudinary.com/dhacybdxf/image/upload/v1762299809/ethereum_vs8k4y.png",
+        "https://res.cloudinary.com/dhacybdxf/image/upload/w_1000,ar_16:9,c_fill,g_auto,e_sharpen/v1763142970/staking_jfoyen.jpg",
     },
     {
       title: "Campo Santa Lucía",
