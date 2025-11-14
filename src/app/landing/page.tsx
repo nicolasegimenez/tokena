@@ -165,13 +165,13 @@ const LandingPage = () => {
         </div>
       </section>
 
-      {/* Features Section */}
-      <section id="features" className="py-32 w-full px-4 md:px-8 lg:px-12 relative overflow-hidden" aria-label="Características principales">
-        <div className="max-w-5xl mx-auto relative z-10 space-y-24">
+      {/* Features Section - Text Only */}
+      <section className="py-32 w-full px-4 md:px-8 lg:px-12 relative overflow-hidden bg-gradient-to-b from-background to-muted/20" aria-label="Características principales destacadas">
+        <div className="max-w-5xl mx-auto relative z-10 space-y-20">
           {/* Feature 1: Convert Savings */}
           <div className="flex flex-col justify-center">
             <div className="w-16 h-1 bg-gradient-to-r from-primary to-primary/40 rounded-full mb-8"></div>
-            <h3 className="text-5xl md:text-6xl lg:text-7xl font-bold text-white leading-tight mb-6">
+            <h3 className="text-5xl md:text-6xl lg:text-7xl font-bold text-foreground leading-tight mb-6">
               {t('landing_convert_savings_title') || 'Convertí\ntus ahorros\nen activos\nreales'}
             </h3>
             <p className="text-lg md:text-xl text-muted-foreground max-w-2xl">
@@ -182,7 +182,7 @@ const LandingPage = () => {
           {/* Feature 2: Future Investment */}
           <div className="flex flex-col justify-center">
             <div className="w-16 h-1 bg-gradient-to-r from-primary to-primary/40 rounded-full mb-8"></div>
-            <h3 className="text-5xl md:text-6xl lg:text-7xl font-bold text-white leading-tight mb-6">
+            <h3 className="text-5xl md:text-6xl lg:text-7xl font-bold text-foreground leading-tight mb-6">
               {t('landing_future_investment_title') || 'La inversión\ndel futuro,\nhoy'}
             </h3>
             <p className="text-lg md:text-xl text-muted-foreground max-w-2xl">
@@ -193,7 +193,7 @@ const LandingPage = () => {
           {/* Feature 3: Participate Large Projects */}
           <div className="flex flex-col justify-center">
             <div className="w-16 h-1 bg-gradient-to-r from-primary to-primary/40 rounded-full mb-8"></div>
-            <h3 className="text-5xl md:text-6xl lg:text-7xl font-bold text-white leading-tight mb-6">
+            <h3 className="text-5xl md:text-6xl lg:text-7xl font-bold text-foreground leading-tight mb-6">
               {t('landing_participate_title') || 'Participá\nen grandes,\nproyectos\nsin grandes\ncapitales'}
             </h3>
             <p className="text-lg md:text-xl text-muted-foreground max-w-2xl">
@@ -204,7 +204,7 @@ const LandingPage = () => {
           {/* Feature 4: Tokenize Value */}
           <div className="flex flex-col justify-center">
             <div className="w-16 h-1 bg-gradient-to-r from-primary to-primary/40 rounded-full mb-8"></div>
-            <h3 className="text-5xl md:text-6xl lg:text-7xl font-bold text-white leading-tight mb-6">
+            <h3 className="text-5xl md:text-6xl lg:text-7xl font-bold text-foreground leading-tight mb-6">
               {t('landing_tokenize_title') || 'Todo lo\nque tiene\nvalor,\nahora tiene\ntoken'}
             </h3>
             <p className="text-lg md:text-xl text-muted-foreground max-w-2xl">
