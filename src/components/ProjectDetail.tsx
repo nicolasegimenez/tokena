@@ -1,8 +1,11 @@
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Avatar, AvatarFallback } from "@/components/ui/avatar";
+import { Button } from "@/components/ui/button";
 import InvestmentSimulator from "@/components/InvestmentSimulator";
-import { ImageCarousel } from "@/components/ImageCarousel";
+import { ProjectHeroSection } from "@/components/ProjectHeroSection";
 import { useLanguage } from "@/lib/language";
+import { useNavigate } from "react-router-dom";
+import { Users, TrendingUp, Clock, ArrowLeft, Download, CheckCircle2, AlertCircle } from 'lucide-react';
 
 type BilingualString = string | { es: string; en: string };
 
@@ -44,16 +47,27 @@ interface ProjectData {
 
 const labels = {
   es: {
-    team: "Team",
-    documents: "Documents",
-    compliance: "Compliance & Legal",
-    tokenStandard: "Token Standard",
-    legalStructure: "Legal Structure",
-    custodian: "Custodian",
-    kycRequired: "KYC/AML Required",
-    legalDocuments: "Legal Documents",
+    team: "Equipo",
+    documents: "Documentos",
+    compliance: "Cumplimiento Normativo",
+    tokenStandard: "Estándar de Token",
+    legalStructure: "Estructura Legal",
+    custodian: "Custodio",
+    kycRequired: "KYC/AML Requerido",
+    legalDocuments: "Documentos Legales",
     yes: "Sí",
     no: "No",
+    back_to_market: "Volver al Mercado",
+    project_details: "Detalles del Proyecto",
+    funding_progress: "Progreso de Fondeo",
+    investors: "Inversores",
+    funded: "Fondeado",
+    of: "de",
+    download: "Descargar",
+    investment_summary: "Resumen de Inversión",
+    min_investment: "Inversión Mínima",
+    expected_return: "Rentabilidad Esperada",
+    duration: "Plazo",
   },
   en: {
     team: "Team",
@@ -66,6 +80,17 @@ const labels = {
     legalDocuments: "Legal Documents",
     yes: "Yes",
     no: "No",
+    back_to_market: "Back to Market",
+    project_details: "Project Details",
+    funding_progress: "Funding Progress",
+    investors: "Investors",
+    funded: "Funded",
+    of: "of",
+    download: "Download",
+    investment_summary: "Investment Summary",
+    min_investment: "Minimum Investment",
+    expected_return: "Expected Return",
+    duration: "Duration",
   }
 };
 
@@ -80,112 +105,259 @@ export function ProjectDetail({
   duration: number;
   children?: React.ReactNode;
 }) {
+  const navigate = useNavigate();
   const { language } = useLanguage();
   const t = (key: keyof typeof labels.es) => labels[language][key];
 
   const projectName = extractText(projectData.name, language);
   const projectDescription = extractText(projectData.description, language);
 
+  // Calculate funding percentage
+  const fundingPercentage = (projectData.amountRaised / projectData.fundingGoal) * 100;
+
   return (
-    <div className="container mx-auto py-8">
-      <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
-        {/* Left Column: Project Details */}
-        <div className="lg:col-span-2 flex flex-col gap-8">
-          <Card>
-            <CardHeader>
-              <ImageCarousel
-                images={projectData.images || [projectData.image]}
-                alt={projectName}
-                className="mb-4"
-              />
-              <h1 className="text-3xl font-bold tracking-tight">{projectName}</h1>
-            </CardHeader>
-            <CardContent>
-              <p className="text-muted-foreground">{projectDescription}</p>
-            </CardContent>
-          </Card>
+    <div className="min-h-screen bg-gradient-to-br from-slate-50 via-white to-slate-50 dark:from-slate-950 dark:via-slate-900 dark:to-slate-950">
+      {/* Enhanced Header */}
+      <div className="border-b bg-white/50 dark:bg-slate-900/50 backdrop-blur-xl sticky top-0 z-50">
+        <div className="container mx-auto px-4 py-4">
+          <Button
+            variant="ghost"
+            className="gap-2 mb-4"
+            onClick={() => navigate('/market')}
+          >
+            <ArrowLeft className="h-4 w-4" />
+            {t('back_to_market')}
+          </Button>
+          <div className="flex items-start justify-between">
+            <div className="flex-1">
+              <h1 className="text-3xl md:text-4xl font-bold bg-gradient-to-r from-emerald-600 to-teal-600 bg-clip-text text-transparent mb-2">
+                {projectName}
+              </h1>
+              <p className="text-muted-foreground max-w-2xl">
+                {projectDescription}
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
 
-          {children}
+      {/* Main Content */}
+      <div className="container mx-auto px-4 py-8">
+        <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
+          {/* Left Column: Project Details */}
+          <div className="lg:col-span-2 flex flex-col gap-6">
+            {/* Hero Section with Carousel and Description */}
+            <ProjectHeroSection
+              images={projectData.images || [projectData.image]}
+              title={projectName}
+              projectDetails={projectData.description}
+              projectOverview={(projectData as any).projectOverview}
+              language={language}
+            />
 
-          <Card>
-            <CardHeader>
-              <CardTitle>{t('team')}</CardTitle>
-            </CardHeader>
-            <CardContent className="flex flex-col gap-4">
-              {projectData.team.map(member => (
-                <div key={member.name} className="flex items-center gap-4">
-                  <Avatar>
-                    <AvatarFallback>{member.name.charAt(0)}</AvatarFallback>
-                  </Avatar>
-                  <div>
-                    <p className="font-semibold">{member.name}</p>
-                    <p className="text-sm text-muted-foreground">{extractText(member.role, language)}</p>
-                    <p className="text-sm">{extractText(member.bio, language)}</p>
+            {/* Funding Progress Card */}
+            <Card className="border-2 hover:border-emerald-200 dark:hover:border-emerald-800 transition-colors">
+              <CardHeader>
+                <CardTitle className="flex items-center gap-2">
+                  <TrendingUp className="h-5 w-5 text-emerald-600" />
+                  {t('funding_progress')}
+                </CardTitle>
+              </CardHeader>
+              <CardContent className="space-y-6">
+                {/* Stats Grid */}
+                <div className="grid grid-cols-3 gap-4">
+                  <div className="bg-gradient-to-br from-emerald-50 to-teal-50 dark:from-emerald-950 dark:to-teal-950 rounded-lg p-4">
+                    <div className="text-2xl font-bold text-emerald-600">
+                      {fundingPercentage.toFixed(0)}%
+                    </div>
+                    <p className="text-xs text-muted-foreground mt-1">{t('funded')}</p>
+                  </div>
+                  <div className="bg-slate-100 dark:bg-slate-800 rounded-lg p-4">
+                    <div className="text-2xl font-bold">${(projectData.amountRaised / 1_000_000).toFixed(1)}M</div>
+                    <p className="text-xs text-muted-foreground mt-1">{t('funded')}</p>
+                  </div>
+                  <div className="bg-slate-100 dark:bg-slate-800 rounded-lg p-4">
+                    <div className="text-2xl font-bold flex items-center gap-1">
+                      <Users className="h-5 w-5" />
+                      {projectData.investors}
+                    </div>
+                    <p className="text-xs text-muted-foreground mt-1">{t('investors')}</p>
                   </div>
                 </div>
-              ))}
-            </CardContent>
-          </Card>
 
-          <Card>
-            <CardHeader>
-              <CardTitle>{t('documents')}</CardTitle>
-            </CardHeader>
-            <CardContent className="flex flex-col gap-2">
-              {projectData.documents.map(doc => (
-                <a key={extractText(doc.name, language)} href={doc.url} target="_blank" rel="noopener noreferrer" className="text-blue-500 hover:underline">
-                  {extractText(doc.name, language)}
-                </a>
-              ))}
-            </CardContent>
-          </Card>
+                {/* Progress Bar */}
+                <div>
+                  <div className="flex justify-between text-sm mb-2">
+                    <span className="text-muted-foreground">Progreso</span>
+                    <span className="font-semibold">${(projectData.amountRaised / 1_000_000).toFixed(1)}M {t('of')} ${(projectData.fundingGoal / 1_000_000).toFixed(1)}M</span>
+                  </div>
+                  <div className="h-3 bg-slate-200 dark:bg-slate-800 rounded-full overflow-hidden">
+                    <div
+                      className="h-full bg-gradient-to-r from-emerald-500 to-teal-500 transition-all duration-500"
+                      style={{ width: `${Math.min(fundingPercentage, 100)}%` }}
+                    />
+                  </div>
+                </div>
+              </CardContent>
+            </Card>
 
-          <Card>
-            <CardHeader>
-              <CardTitle>{t('compliance')}</CardTitle>
-            </CardHeader>
-            <CardContent className="flex flex-col gap-4">
-              <div className="flex justify-between">
-                <span className="text-muted-foreground">{t('tokenStandard')}</span>
-                <span className="font-medium">{projectData.compliance.tokenStandard}</span>
-              </div>
-              <div className="flex justify-between">
-                <span className="text-muted-foreground">{t('legalStructure')}</span>
-                <span className="font-medium">{extractText(projectData.compliance.legalStructure, language)}</span>
-              </div>
-              <div className="flex justify-between">
-                <span className="text-muted-foreground">{t('custodian')}</span>
-                <span className="font-medium">{extractText(projectData.compliance.custodian, language)}</span>
-              </div>
-              <div className="flex justify-between">
-                <span className="text-muted-foreground">{t('kycRequired')}</span>
-                <span className="font-medium">{projectData.compliance.kycRequired ? t('yes') : t('no')}</span>
-              </div>
-              <div>
-                <h4 className="font-medium mb-2">{t('legalDocuments')}</h4>
-                <div className="flex flex-col gap-2">
-                  {projectData.compliance.legalDocuments.map(doc => (
-                    <a key={extractText(doc.name, language)} href={doc.url} target="_blank" rel="noopener noreferrer" className="text-blue-500 hover:underline">
+            {children}
+
+            {/* Team Section */}
+            <Card className="border-2 hover:border-emerald-200 dark:hover:border-emerald-800 transition-colors">
+              <CardHeader>
+                <CardTitle>{t('team')}</CardTitle>
+              </CardHeader>
+              <CardContent className="space-y-4">
+                {projectData.team.map(member => (
+                  <div key={member.name} className="flex items-start gap-4 pb-4 border-b last:pb-0 last:border-0">
+                    <Avatar className="h-12 w-12 flex-shrink-0">
+                      <AvatarFallback className="bg-gradient-to-br from-emerald-400 to-teal-400 text-white font-bold">
+                        {member.name.charAt(0)}
+                      </AvatarFallback>
+                    </Avatar>
+                    <div className="flex-1">
+                      <p className="font-semibold text-base">{member.name}</p>
+                      <p className="text-sm text-emerald-600 dark:text-emerald-400 font-medium">
+                        {extractText(member.role, language)}
+                      </p>
+                      <p className="text-sm text-muted-foreground mt-1">
+                        {extractText(member.bio, language)}
+                      </p>
+                    </div>
+                  </div>
+                ))}
+              </CardContent>
+            </Card>
+
+            {/* Documents Section */}
+            <Card className="border-2 hover:border-emerald-200 dark:hover:border-emerald-800 transition-colors">
+              <CardHeader>
+                <CardTitle className="flex items-center gap-2">
+                  <Download className="h-5 w-5 text-emerald-600" />
+                  {t('documents')}
+                </CardTitle>
+              </CardHeader>
+              <CardContent className="space-y-2">
+                {projectData.documents.length > 0 ? (
+                  projectData.documents.map(doc => (
+                    <a
+                      key={extractText(doc.name, language)}
+                      href={doc.url}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="flex items-center gap-2 p-3 rounded-lg hover:bg-emerald-50 dark:hover:bg-emerald-950/20 transition-colors text-emerald-600 hover:text-emerald-700 dark:text-emerald-400 dark:hover:text-emerald-300"
+                    >
+                      <Download className="h-4 w-4" />
                       {extractText(doc.name, language)}
                     </a>
-                  ))}
-                </div>
-              </div>
-            </CardContent>
-          </Card>
-        </div>
+                  ))
+                ) : (
+                  <p className="text-muted-foreground text-sm">{language === 'es' ? 'No hay documentos disponibles' : 'No documents available'}</p>
+                )}
+              </CardContent>
+            </Card>
 
-        {/* Right Column: Investment Simulator */}
-        <div className="lg:col-span-1">
-          <InvestmentSimulator
-            projectData={({
-              pricePerToken: projectData.pricePerToken,
-              roi,
-              duration,
-              fundingGoal: projectData.fundingGoal,
-              amountRaised: projectData.amountRaised,
-            })}
-          />
+            {/* Compliance Section */}
+            <Card className="border-2 hover:border-emerald-200 dark:hover:border-emerald-800 transition-colors">
+              <CardHeader>
+                <CardTitle className="flex items-center gap-2">
+                  <CheckCircle2 className="h-5 w-5 text-emerald-600" />
+                  {t('compliance')}
+                </CardTitle>
+              </CardHeader>
+              <CardContent className="space-y-4">
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                  <div className="bg-slate-50 dark:bg-slate-800/50 rounded-lg p-4">
+                    <p className="text-sm text-muted-foreground mb-1">{t('tokenStandard')}</p>
+                    <p className="font-semibold text-base">{projectData.compliance.tokenStandard}</p>
+                  </div>
+                  <div className="bg-slate-50 dark:bg-slate-800/50 rounded-lg p-4">
+                    <p className="text-sm text-muted-foreground mb-1">{t('legalStructure')}</p>
+                    <p className="font-semibold text-base">{extractText(projectData.compliance.legalStructure, language)}</p>
+                  </div>
+                  <div className="bg-slate-50 dark:bg-slate-800/50 rounded-lg p-4">
+                    <p className="text-sm text-muted-foreground mb-1">{t('custodian')}</p>
+                    <p className="font-semibold text-base">{extractText(projectData.compliance.custodian, language)}</p>
+                  </div>
+                  <div className="bg-slate-50 dark:bg-slate-800/50 rounded-lg p-4">
+                    <p className="text-sm text-muted-foreground mb-1">{t('kycRequired')}</p>
+                    <div className="flex items-center gap-2">
+                      {projectData.compliance.kycRequired ? (
+                        <AlertCircle className="h-5 w-5 text-orange-500" />
+                      ) : (
+                        <CheckCircle2 className="h-5 w-5 text-emerald-600" />
+                      )}
+                      <span className="font-semibold">{projectData.compliance.kycRequired ? t('yes') : t('no')}</span>
+                    </div>
+                  </div>
+                </div>
+
+                {/* Legal Documents */}
+                {projectData.compliance.legalDocuments.length > 0 && (
+                  <div className="pt-4 border-t">
+                    <h4 className="font-semibold mb-3">{t('legalDocuments')}</h4>
+                    <div className="space-y-2">
+                      {projectData.compliance.legalDocuments.map(doc => (
+                        <a
+                          key={extractText(doc.name, language)}
+                          href={doc.url}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="flex items-center gap-2 p-2 rounded hover:bg-slate-100 dark:hover:bg-slate-700/50 transition-colors text-emerald-600 hover:text-emerald-700 dark:text-emerald-400"
+                        >
+                          <Download className="h-4 w-4" />
+                          {extractText(doc.name, language)}
+                        </a>
+                      ))}
+                    </div>
+                  </div>
+                )}
+              </CardContent>
+            </Card>
+          </div>
+
+          {/* Right Column: Investment Simulator */}
+          <div className="lg:col-span-1">
+            <div className="sticky top-32">
+              <Card className="border-2 bg-gradient-to-br from-emerald-50 to-teal-50 dark:from-emerald-950/20 dark:to-teal-950/20 border-emerald-200 dark:border-emerald-800">
+                <CardHeader>
+                  <CardTitle>{t('investment_summary')}</CardTitle>
+                </CardHeader>
+                <CardContent className="space-y-4">
+                  <div className="space-y-3">
+                    <div>
+                      <p className="text-sm text-muted-foreground mb-1">{t('min_investment')}</p>
+                      <p className="text-2xl font-bold text-emerald-600">${projectData.pricePerToken}</p>
+                    </div>
+                    <div>
+                      <p className="text-sm text-muted-foreground mb-1">{t('expected_return')}</p>
+                      <div className="flex items-center gap-2">
+                        <TrendingUp className="h-5 w-5 text-emerald-600" />
+                        <p className="text-2xl font-bold text-emerald-600">{roi}%</p>
+                      </div>
+                    </div>
+                    <div>
+                      <p className="text-sm text-muted-foreground mb-1">{t('duration')}</p>
+                      <div className="flex items-center gap-2">
+                        <Clock className="h-5 w-5 text-emerald-600" />
+                        <p className="text-lg font-semibold">{duration} meses</p>
+                      </div>
+                    </div>
+                  </div>
+                </CardContent>
+              </Card>
+              <InvestmentSimulator
+                projectData={({
+                  pricePerToken: projectData.pricePerToken,
+                  roi,
+                  duration,
+                  fundingGoal: projectData.fundingGoal,
+                  amountRaised: projectData.amountRaised,
+                })}
+              />
+            </div>
+          </div>
         </div>
       </div>
     </div>

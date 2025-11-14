@@ -18,6 +18,7 @@ import {
   SelectValue,
 } from "@/components/ui/select"
 import { useState, useMemo, useEffect, useRef } from "react"
+import { useNavigate } from "react-router-dom"
 import PaymentDialog from "@/components/PaymentDialog"
 import { useLanguage } from "@/lib/language"
 import { marketProjects } from "@/lib/market-data"
@@ -116,6 +117,7 @@ const categoryIcons: Record<string, any> = {
 };
 
 const MarketPlaceApp = () => {
+    const navigate = useNavigate();
     const { language } = useLanguage();
     const t = (key: keyof typeof labels.es, vars?: Record<string, any>) => {
       let text = labels[language][key] || '';
@@ -438,7 +440,11 @@ const MarketPlaceApp = () => {
                     </Button>
                   ) : (
                     <>
-                      <Button variant="outline" className="flex-1">
+                      <Button
+                        variant="outline"
+                        className="flex-1"
+                        onClick={() => navigate(`/invest/project${investment.id}`)}
+                      >
                         {t('more_info')}
                       </Button>
                       <Button

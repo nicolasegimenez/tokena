@@ -1,8 +1,10 @@
 import React, { createContext, useContext, useState, useEffect, useRef } from 'react';
 import type { ReactNode, FC } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
+import { useNavigate } from 'react-router-dom';
 import { cn } from "@/lib/utils";
 import { useLanguage } from "@/lib/language";
+import { Button } from "@/components/ui/button";
 
 interface ProgressSliderContextType {
   active: string;
@@ -204,29 +206,34 @@ interface Investment {
   title: string;
   description: string;
   image: string;
+  projectId: string;
 }
 
 const CarouselApp = () => {
   const { t } = useLanguage();
+  const navigate = useNavigate();
 
   const investments: Investment[] = [
     {
       id: 1,
       title: t("tokenized_apartments_title"),
       description: t("tokenized_apartments_desc"),
-      image: "https://res.cloudinary.com/dhacybdxf/image/upload/v1762299810/edificio_qhi0ri.png"
+      image: "https://res.cloudinary.com/dhacybdxf/image/upload/v1762299810/edificio_qhi0ri.png",
+      projectId: "project1"
     },
     {
       id: 2,
       title: t("crypto_fund_title"),
       description: t("crypto_fund_desc"),
-      image: "https://res.cloudinary.com/dhacybdxf/image/upload/v1762299809/ethereum_vs8k4y.png"
+      image: "https://res.cloudinary.com/dhacybdxf/image/upload/v1762299809/ethereum_vs8k4y.png",
+      projectId: "project2"
     },
     {
       id: 3,
       title: t("tokenized_startup_title"),
       description: t("tokenized_startup_desc"),
-      image: "https://res.cloudinary.com/dhacybdxf/image/upload/v1762299809/startup_tb5wu3.png"
+      image: "https://res.cloudinary.com/dhacybdxf/image/upload/v1762299809/startup_tb5wu3.png",
+      projectId: "project3"
     }
   ];
 
@@ -246,7 +253,13 @@ const CarouselApp = () => {
               <div className="absolute inset-0 bg-black/40" />
               <div className="absolute inset-0 flex flex-col justify-end p-6 text-white">
                 <h3 className="text-2xl font-bold mb-2">{investment.title}</h3>
-                <p className="text-sm line-clamp-2">{investment.description}</p>
+                <p className="text-sm line-clamp-2 mb-4">{investment.description}</p>
+                <Button
+                  variant="outline"
+                  onClick={() => navigate(`/invest/${investment.projectId}`)}
+                >
+                  Más Info
+                </Button>
               </div>
             </div>
           </SliderWrapper>

@@ -174,7 +174,7 @@ export const ImageCarousel: React.FC<ImageCarouselProps> = ({
 
   // Normal Carousel View
   return (
-    <div className={`relative w-full h-64 rounded-lg overflow-hidden bg-muted group ${className}`}>
+    <div className={`relative w-full h-96 md:h-[500px] rounded-xl overflow-hidden bg-muted group shadow-lg ${className}`}>
       {/* Main Media */}
       {renderMedia(currentMedia)}
 
@@ -197,10 +197,10 @@ export const ImageCarousel: React.FC<ImageCarouselProps> = ({
             variant="ghost"
             size="icon"
             onClick={handlePrevious}
-            className="absolute left-2 top-1/2 -translate-y-1/2 bg-black/30 hover:bg-black/50 text-white opacity-0 group-hover:opacity-100 transition-opacity"
+            className="absolute left-3 top-1/2 -translate-y-1/2 bg-black/40 hover:bg-black/60 text-white opacity-0 group-hover:opacity-100 transition-opacity duration-300 rounded-full p-2"
             aria-label="Previous media"
           >
-            <ChevronLeft className="h-6 w-6" />
+            <ChevronLeft className="h-7 w-7" />
           </Button>
 
           {/* Next Button */}
@@ -208,10 +208,10 @@ export const ImageCarousel: React.FC<ImageCarouselProps> = ({
             variant="ghost"
             size="icon"
             onClick={handleNext}
-            className="absolute right-2 top-1/2 -translate-y-1/2 bg-black/30 hover:bg-black/50 text-white opacity-0 group-hover:opacity-100 transition-opacity"
+            className="absolute right-3 top-1/2 -translate-y-1/2 bg-black/40 hover:bg-black/60 text-white opacity-0 group-hover:opacity-100 transition-opacity duration-300 rounded-full p-2"
             aria-label="Next media"
           >
-            <ChevronRight className="h-6 w-6" />
+            <ChevronRight className="h-7 w-7" />
           </Button>
 
           {/* Media Counter */}
@@ -220,13 +220,13 @@ export const ImageCarousel: React.FC<ImageCarouselProps> = ({
           </div>
 
           {/* Dots Indicator */}
-          <div className="absolute bottom-2 left-1/2 -translate-x-1/2 flex gap-1">
+          <div className="absolute bottom-4 left-1/2 -translate-x-1/2 flex gap-1.5">
             {mediaArray.map((_, index) => (
               <button
                 key={index}
                 onClick={() => setCurrentIndex(index)}
-                className={`w-2 h-2 rounded-full transition-all ${
-                  index === currentIndex ? 'bg-white w-6' : 'bg-white/50 hover:bg-white/75'
+                className={`rounded-full transition-all duration-300 ${
+                  index === currentIndex ? 'bg-white w-7 h-2.5' : 'bg-white/40 hover:bg-white/70 w-2 h-2'
                 }`}
                 aria-label={`Go to media ${index + 1}`}
               />

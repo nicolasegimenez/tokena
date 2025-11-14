@@ -4,6 +4,10 @@
     "es": "Fondo de Criptomonedas",
     "en": "Cryptocurrency Fund"
   },
+  "projectOverview": {
+    "es": "Accede al mercado cripto con la gestión de expertos. Este fondo diversificado invierte en Bitcoin, Ethereum y las principales criptomonedas del mercado, gestionado por profesionales con 10+ años de experiencia en trading de activos digitales. No necesitas ser un cripto-nativo para participar: nuestro gestor hace el trabajo técnico mientras tú obtienes exposición a la volatilidad y crecimiento de este ecosistema. Desde USD 50, participa en la revolución digital con seguridad, transparencia y auditoría permanente. Tokenización en ERC-20 con custodia en-cadena.",
+    "en": "Access the crypto market with expert management. This diversified fund invests in Bitcoin, Ethereum and the leading cryptocurrencies, managed by professionals with 10+ years of digital asset trading experience. You don't need to be crypto-native to participate: our manager handles the technical work while you get exposure to this ecosystem's volatility and growth. From USD 50, participate in the digital revolution with security, transparency and continuous audit. ERC-20 tokenization with on-chain custody."
+  },
   "description": {
     "es": "Portfolio diversificado de criptomonedas principales con gestión profesional. Invierte en un fondo gestionado que busca maximizar los retornos en el volátil mercado de las criptomonedas.",
     "en": "Diversified portfolio of major cryptocurrencies with professional management. Invest in a managed fund that seeks to maximize returns in the volatile cryptocurrency market."
