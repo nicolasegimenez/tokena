@@ -13,7 +13,9 @@
       "Bash(git commit:*)",
       "Bash(nul)",
       "Bash(tsc:*)",
-      "Bash(find:*)"
+      "Bash(find:*)",
+      "Bash(mkdir:*)",
+      "Bash(bun run build:*)"
     ],
     "deny": [],
     "ask": []
