@@ -185,7 +185,7 @@ const LandingPage = () => {
                 Convertí tus ahorros en activos reales
               </h3>
               <p className="text-lg md:text-xl text-muted-foreground max-w-2xl">
-                desde un clic
+                Invierte en bienes raíces, empresas y proyectos con montos accesibles. Diversifica tu portafolio sin comprometer liquidez ni seguridad.
               </p>
             </div>
           </div>
@@ -206,7 +206,7 @@ const LandingPage = () => {
                 La inversión del futuro, hoy
               </h3>
               <p className="text-lg md:text-xl text-muted-foreground max-w-2xl">
-                Acceso a oportunidades con mejores ratios riesgo/retorno
+                Accede a oportunidades de inversión tokenizada con retornos competitivos y riesgo controlado. Mercado secundario activo para entrada y salida flexible.
               </p>
             </div>
           </div>
@@ -227,7 +227,7 @@ const LandingPage = () => {
                 Participá en grandes proyectos sin grandes capitales
               </h3>
               <p className="text-lg md:text-xl text-muted-foreground max-w-2xl">
-                Acceso democrático a inversiones exclusivas
+                Fractionalización de inversiones de alto valor. Acceso democrático a proyectos premium antes reservados para inversores institucionales.
               </p>
             </div>
           </div>
@@ -248,7 +248,7 @@ const LandingPage = () => {
                 Todo lo que tiene valor, ahora tiene token
               </h3>
               <p className="text-lg md:text-xl text-muted-foreground max-w-2xl">
-                Fractionalización de activos para mayor accesibilidad
+                Tecnología blockchain que tokeniza activos reales. Emisión, comercio y custodia transparente con trazabilidad completa en cada operación.
               </p>
             </div>
           </div>
