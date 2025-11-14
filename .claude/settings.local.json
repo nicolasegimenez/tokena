@@ -10,7 +10,8 @@
       "Bash(bun add:*)",
       "Bash(powershell:*)",
       "Bash(git add:*)",
-      "Bash(git commit:*)"
+      "Bash(git commit:*)",
+      "Bash(nul)"
     ],
     "deny": [],
     "ask": []
