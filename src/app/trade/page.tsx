@@ -1,4 +1,4 @@
-import { useState, useMemo, useEffect } from 'react';
+import { useState, useMemo, useEffect, useRef } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { Card, CardHeader, CardTitle, CardContent, CardFooter, CardDescription } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
@@ -6,7 +6,7 @@ import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
-import { Search, Tag, Building, DollarSign, Clock } from 'lucide-react';
+import { Search, Tag, Building2, DollarSign, Clock, Filter, TrendingUp, Coins, Trees, Beef, CircleDot, Music } from 'lucide-react';
 import { useLanguage } from '@/lib/language';
 import { marketProjects } from '@/lib/market-data';
 import { Badge } from '@/components/ui/badge';
@@ -16,6 +16,29 @@ const myTokens = [
   { id: 't1', projectName: 'Eco-Friendly Housing', tokenSymbol: 'ECOH', quantity: 200, availableToSell: 150, image: 'https://res.cloudinary.com/dhacybdxf/image/upload/v1762299810/edificio_qhi0ri.png' },
   { id: 't2', projectName: 'Tech Startup Fund', tokenSymbol: 'TSF', quantity: 100, availableToSell: 100, image: 'https://res.cloudinary.com/dhacybdxf/image/upload/v1762299809/ethereum_vs8k4y.png' },
 ];
+
+// Icon mapping for categories
+const categoryIcons: Record<string, any> = {
+  'Real Estate': Building2,
+  'Crypto': Coins,
+  'Agricultura': Trees,
+  'Agriculture': Trees,
+  'Ganadería': Beef,
+  'Livestock': Beef,
+  'Deportes': CircleDot,
+  'Sports': CircleDot,
+  'Entretenimiento': Music,
+  'Entertainment': Music,
+  'Startup': Building2,
+  'Energy': TrendingUp,
+  'Venture Capital': Coins,
+  'Collectibles': Tag,
+  'real-estate': Building2,
+  'energy': TrendingUp,
+  'venture-capital': Coins,
+  'crypto': Coins,
+  'collectibles': Tag,
+};
 
 interface Listing {
   id: string;
@@ -51,37 +74,73 @@ const getPaymentMethodVariant = (method: string): "default" | "secondary" | "des
 // --- Componente de Tarjeta de Listado ---
 function ListingCard({ listing, onBuyClick }: { listing: Listing, onBuyClick: (listing: Listing) => void }) {
   const { t } = useLanguage();
+  const Icon = categoryIcons[listing.category] || Building2;
 
   return (
-    <Card className="overflow-hidden transition-all hover:shadow-lg hover:-translate-y-1 duration-300 flex flex-col">
-      <CardHeader className="p-0">
-        <img src={listing.image} alt={listing.projectName} className="w-full h-48 object-cover" />
-      </CardHeader>
+    <Card className="group overflow-hidden hover:shadow-2xl transition-all duration-300 hover:-translate-y-1 border-2 hover:border-emerald-200 dark:hover:border-emerald-800 flex flex-col">
+      {/* Image with Overlay */}
+      <div className="relative h-48 overflow-hidden">
+        <img
+          src={listing.image}
+          alt={listing.projectName}
+          className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
+        />
+        <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/20 to-transparent" />
+
+        {/* Category Badge with Icon */}
+        <div className="absolute bottom-4 left-4 flex items-center gap-2">
+          <div className="bg-white/90 dark:bg-slate-900/90 backdrop-blur-sm rounded-full p-2">
+            <Icon className="h-5 w-5 text-emerald-600" />
+          </div>
+          <Badge variant="secondary" className="bg-white/90 dark:bg-slate-900/90 backdrop-blur-sm">
+            {listing.category}
+          </Badge>
+        </div>
+      </div>
+
       <CardContent className="p-4 flex-grow">
-        <CardTitle className="text-lg font-bold mb-2 truncate">{listing.projectName}</CardTitle>
+        <CardTitle className="text-lg font-bold mb-2 truncate group-hover:text-emerald-600 transition-colors">
+          {listing.projectName}
+        </CardTitle>
         <CardDescription className="flex items-center gap-2 text-sm text-muted-foreground mb-4">
           <Tag className="w-4 h-4" /> {listing.tokenSymbol}
-          <Building className="w-4 h-4 ml-auto" /> {t(listing.category.toLowerCase().replace(' ', '_'))}
         </CardDescription>
-        <div className="flex justify-between items-center mb-4">
-          <div className="text-2xl font-bold text-primary">${listing.pricePerToken}</div>
-          <div className="text-right">
-            <p className="text-sm font-medium">{t('available')}</p>
-            <p className="text-sm text-muted-foreground">{listing.quantity}</p>
+
+        {/* Price Display */}
+        <div className="bg-gradient-to-br from-emerald-50 to-teal-50 dark:from-emerald-950 dark:to-teal-950 rounded-lg p-3 mb-4 text-center">
+          <p className="text-xs text-muted-foreground mb-1">Precio por Token</p>
+          <p className="text-2xl font-extrabold text-emerald-600">${listing.pricePerToken}</p>
+        </div>
+
+        {/* Stats Grid */}
+        <div className="grid grid-cols-2 gap-2 mb-4">
+          <div>
+            <p className="text-xs text-muted-foreground">Disponibles</p>
+            <p className="text-sm font-semibold">{listing.quantity}</p>
+          </div>
+          <div>
+            <p className="text-xs text-muted-foreground">Período</p>
+            <p className="text-sm font-semibold truncate">{listing.totalDuration}</p>
           </div>
         </div>
-        <div className="flex items-center gap-2 text-sm text-muted-foreground mb-4">
-          <Clock className="w-4 h-4" />
-          <span>{listing.totalDuration} para recibir ganancias</span>
-        </div>
-        <div className="flex flex-wrap gap-2">
+
+        {/* Payment Methods */}
+        <div className="flex flex-wrap gap-1">
           {listing.paymentMethods.map(method => (
-            <Badge key={method} variant={getPaymentMethodVariant(method)}>{method}</Badge>
+            <Badge key={method} variant={getPaymentMethodVariant(method)} className="text-xs">
+              {method}
+            </Badge>
           ))}
         </div>
       </CardContent>
-      <CardFooter className="p-4 pt-0 mt-auto grid grid-cols-2 gap-2">
-        <Button className="w-full" onClick={() => onBuyClick(listing)}>{t('buy_now')}</Button>
+
+      <CardFooter className="p-4 pt-0 mt-auto gap-2 grid grid-cols-2">
+        <Button
+          className="w-full bg-gradient-to-r from-emerald-600 to-teal-600 hover:from-emerald-700 hover:to-teal-700"
+          onClick={() => onBuyClick(listing)}
+        >
+          {t('buy_now')}
+        </Button>
         <Button asChild variant="outline" className="w-full">
           <Link to={listing.marketUrl}>{t('more_info')}</Link>
         </Button>
@@ -107,6 +166,30 @@ export default function TradePage() {
   // State for P2P Dialog
   const [isTradeDialogOpen, setIsTradeDialogOpen] = useState(false);
   const [selectedListing, setSelectedListing] = useState<Listing | null>(null);
+
+  // Scroll detection states
+  const [showHeader, setShowHeader] = useState(true);
+  const [showMobileFilters, setShowMobileFilters] = useState(false);
+  const lastScrollY = useRef(0);
+
+  // Smart scroll behavior for mobile
+  useEffect(() => {
+    const handleScroll = () => {
+      const currentScrollY = window.scrollY;
+
+      if (currentScrollY < lastScrollY.current || currentScrollY < 100) {
+        setShowHeader(true);
+      } else if (currentScrollY > lastScrollY.current && currentScrollY > 300) {
+        setShowHeader(false);
+        setShowMobileFilters(false);
+      }
+
+      lastScrollY.current = currentScrollY;
+    };
+
+    window.addEventListener('scroll', handleScroll, { passive: true });
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
 
   // Effect para manejar navegación desde investments page
   useEffect(() => {
@@ -158,28 +241,80 @@ export default function TradePage() {
   };
 
   return (
-    <div className="container mx-auto py-8">
-      <P2PTradeDialog 
-        isOpen={isTradeDialogOpen} 
-        onOpenChange={setIsTradeDialogOpen} 
-        listing={selectedListing} 
+    <div className="min-h-screen bg-gradient-to-br from-slate-50 via-white to-slate-50 dark:from-slate-950 dark:via-slate-900 dark:to-slate-950">
+      <P2PTradeDialog
+        isOpen={isTradeDialogOpen}
+        onOpenChange={setIsTradeDialogOpen}
+        listing={selectedListing}
       />
-      <header className="mb-8">
-        <h1 className="text-4xl font-bold tracking-tight">{t('p2p_market')}</h1>
-        <p className="text-muted-foreground mt-2">{t('trade_security_tokens')}</p>
-      </header>
 
-      <div className="grid grid-cols-1 lg:grid-cols-4 gap-8">
+      {/* Enhanced Header with Smart Scroll Behavior */}
+      <div className={`border-b bg-white/50 dark:bg-slate-900/50 backdrop-blur-xl sticky top-0 z-50 transition-all duration-300 ease-in-out transform ${
+        showHeader ? 'translate-y-0 opacity-100' : '-translate-y-full opacity-0 pointer-events-none'
+      }`}>
+        <div className="container mx-auto px-4 py-6">
+          <div className="flex items-center justify-between mb-4">
+            <div>
+              <h1 className="text-4xl font-bold bg-gradient-to-r from-emerald-600 to-teal-600 bg-clip-text text-transparent">
+                {t('p2p_market')}
+              </h1>
+              <p className="text-muted-foreground mt-2">{t('trade_security_tokens')}</p>
+            </div>
+            <Badge variant="secondary" className="text-sm px-4 py-2">
+              {filteredListings.length} Listados
+            </Badge>
+          </div>
+        </div>
+      </div>
+
+      <div className="container mx-auto px-4 py-8">
+        <div className="grid grid-cols-1 lg:grid-cols-4 gap-8">
         {/* --- Sidebar de Filtros --- */}
         <aside className="lg:col-span-1">
-          <Card>
+          {/* Mobile Filter Toggle */}
+          <div className="lg:hidden mb-4">
+            <Button
+              variant="outline"
+              className="w-full flex items-center justify-center gap-2"
+              onClick={() => setShowMobileFilters(!showMobileFilters)}
+            >
+              <Filter className="h-4 w-4" />
+              {showMobileFilters ? 'Ocultar Filtros' : 'Mostrar Filtros'}
+            </Button>
+          </div>
+
+          {/* Active Filters Display */}
+          {(selectedCategory !== "all" || sortBy !== "price-asc") && (
+            <div className="flex flex-wrap gap-2 items-center mb-4 lg:hidden">
+              {selectedCategory !== "all" && (
+                <Badge variant="secondary" className="text-xs">
+                  {selectedCategory}
+                </Badge>
+              )}
+              {sortBy !== "price-asc" && (
+                <Badge variant="secondary" className="text-xs">
+                  {sortBy === "price-desc" ? "Precio ↓" : "Más nuevo"}
+                </Badge>
+              )}
+            </div>
+          )}
+
+          {/* Filter Card - Collapsible on Mobile */}
+          <Card className={`transition-all duration-300 overflow-hidden ${
+            showMobileFilters ? 'max-h-96 opacity-100' : 'lg:max-h-96 lg:opacity-100 max-h-0 opacity-0 lg:pointer-events-auto pointer-events-none'
+          }`}>
             <CardHeader>
               <CardTitle className="text-xl">{t('filters')}</CardTitle>
             </CardHeader>
             <CardContent className="grid gap-6">
               <div className="relative">
-                <Search className="absolute left-3 top-1/2 -translate-y-1/2 h-5 w-5 text-muted-foreground" />
-                <Input placeholder={t('search_by_name')} className="pl-10" value={searchTerm} onChange={(e) => setSearchTerm(e.target.value)} />
+                <Search className="absolute left-3 top-1/2 -translate-y-1/2 h-5 w-5 text-muted-foreground pointer-events-none" />
+                <Input
+                  placeholder={t('search_by_name')}
+                  className="pl-10"
+                  value={searchTerm}
+                  onChange={(e) => setSearchTerm(e.target.value)}
+                />
               </div>
               <div className="grid gap-2">
                 <Label>{t('category')}</Label>
@@ -210,7 +345,17 @@ export default function TradePage() {
                   </SelectContent>
                 </Select>
               </div>
-              <Button variant="secondary" onClick={() => { setSearchTerm(''); setSelectedCategory('all'); setSortBy('price-asc'); }}>{t('clear_filters')}</Button>
+              <Button
+                variant="secondary"
+                onClick={() => {
+                  setSearchTerm('');
+                  setSelectedCategory('all');
+                  setSortBy('price-asc');
+                  setShowMobileFilters(false);
+                }}
+              >
+                {t('clear_filters')}
+              </Button>
             </CardContent>
           </Card>
         </aside>
@@ -234,17 +379,17 @@ export default function TradePage() {
 
             {/* --- Tab de Vender --- */}
             <TabsContent value="sell">
-              <Card>
-                <CardHeader>
+              <Card className="border-2 hover:border-emerald-200 dark:hover:border-emerald-800">
+                <CardHeader className="bg-gradient-to-r from-emerald-50 to-teal-50 dark:from-emerald-950 dark:to-teal-950">
                   <CardTitle className="text-2xl">{t('create_sell_offer')}</CardTitle>
                   <CardDescription>{t('publish_your_tokens')}</CardDescription>
                 </CardHeader>
-                <CardContent>
+                <CardContent className="pt-6">
                   <form onSubmit={handleSellSubmit} className="grid gap-6">
                     <div className="grid gap-2">
-                      <Label htmlFor="tokenToSell">{t('token_to_sell')}</Label>
+                      <Label htmlFor="tokenToSell" className="text-base font-semibold">{t('token_to_sell')}</Label>
                       <Select onValueChange={setSelectedTokenToSell} value={selectedTokenToSell}>
-                        <SelectTrigger id="tokenToSell">
+                        <SelectTrigger id="tokenToSell" className="h-11">
                           <SelectValue placeholder={t('select_from_portfolio')} />
                         </SelectTrigger>
                         <SelectContent>
@@ -262,21 +407,81 @@ export default function TradePage() {
                         </SelectContent>
                       </Select>
                     </div>
-                    <div className="grid grid-cols-2 gap-4">
+
+                    {/* Summary Card */}
+                    {selectedTokenToSell && (
+                      <div className="bg-gradient-to-br from-emerald-50 to-teal-50 dark:from-emerald-950 dark:to-teal-950 rounded-lg p-4 border border-emerald-200 dark:border-emerald-800">
+                        <p className="text-sm text-muted-foreground mb-2">Resumen de la oferta</p>
+                        <div className="grid grid-cols-2 gap-4">
+                          <div>
+                            <p className="text-xs text-muted-foreground">Total a recibir</p>
+                            <p className="text-lg font-bold text-emerald-600">
+                              ${(parseInt(sellQuantity) * parseFloat(sellPrice) || 0).toFixed(2)}
+                            </p>
+                          </div>
+                          <div>
+                            <p className="text-xs text-muted-foreground">Disponibles</p>
+                            <p className="text-lg font-bold">
+                              {myTokens.find(t => t.tokenSymbol === selectedTokenToSell)?.availableToSell || 0}
+                            </p>
+                          </div>
+                        </div>
+                      </div>
+                    )}
+
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                       <div className="grid gap-2">
-                        <Label htmlFor="sellQuantity">{t('quantity')}</Label>
-                        <Input id="sellQuantity" type="number" placeholder={t('quantity_placeholder')} value={sellQuantity} onChange={(e) => setSellQuantity(e.target.value)} required min="1" />
+                        <Label htmlFor="sellQuantity" className="text-base font-semibold">{t('quantity')}</Label>
+                        <Input
+                          id="sellQuantity"
+                          type="number"
+                          placeholder={t('quantity_placeholder')}
+                          value={sellQuantity}
+                          onChange={(e) => setSellQuantity(e.target.value)}
+                          required
+                          min="1"
+                          className="h-11"
+                        />
                       </div>
                       <div className="grid gap-2">
-                        <Label htmlFor="sellPrice">{t('price_per_token_usd')}</Label>
+                        <Label htmlFor="sellPrice" className="text-base font-semibold">{t('price_per_token_usd')}</Label>
                         <div className="relative">
-                           <DollarSign className="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-muted-foreground" />
-                           <Input id="sellPrice" type="number" placeholder={t('price_placeholder')} value={sellPrice} onChange={(e) => setSellPrice(e.target.value)} required min="0.01" step="0.01" className="pl-8"/>
+                          <DollarSign className="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-muted-foreground pointer-events-none" />
+                          <Input
+                            id="sellPrice"
+                            type="number"
+                            placeholder={t('price_placeholder')}
+                            value={sellPrice}
+                            onChange={(e) => setSellPrice(e.target.value)}
+                            required
+                            min="0.01"
+                            step="0.01"
+                            className="pl-8 h-11"
+                          />
                         </div>
                       </div>
                     </div>
-                    <CardFooter className="p-0 pt-4">
-                       <Button type="submit" size="lg" className="w-full">{t('publish_sell_offer')}</Button>
+
+                    <CardFooter className="p-0 pt-4 flex gap-2">
+                      <Button
+                        type="submit"
+                        size="lg"
+                        className="flex-1 bg-gradient-to-r from-emerald-600 to-teal-600 hover:from-emerald-700 hover:to-teal-700"
+                      >
+                        {t('publish_sell_offer')}
+                      </Button>
+                      <Button
+                        type="button"
+                        variant="outline"
+                        size="lg"
+                        onClick={() => {
+                          setSelectedTokenToSell('');
+                          setSellQuantity('');
+                          setSellPrice('');
+                        }}
+                      >
+                        Limpiar
+                      </Button>
                     </CardFooter>
                   </form>
                 </CardContent>
@@ -284,6 +489,7 @@ export default function TradePage() {
             </TabsContent>
           </Tabs>
         </main>
+        </div>
       </div>
     </div>
   );
