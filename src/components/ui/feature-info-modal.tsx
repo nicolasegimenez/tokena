@@ -21,7 +21,7 @@ const featureInfoMap = {
       "Transparencia total en el uso de fondos",
       "Potencial de retornos significativos"
     ],
-    marketplaceFilters: { category: 'crowdfunding' }
+    marketplaceFilters: { category: 'Entretenimiento' }
   },
   'real-assets': {
     title: "Tokenización de Activos Reales",
@@ -33,7 +33,7 @@ const featureInfoMap = {
       "Reducción de costos de intermediarios",
       "Transparencia total en la tenencia y valor del activo"
     ],
-    marketplaceFilters: { category: 'real-assets' }
+    marketplaceFilters: { category: 'Real Estate' }
   },
   'financial-assets': {
     title: "Tokenización de Activos Financieros",
@@ -45,7 +45,7 @@ const featureInfoMap = {
       "Acceso a fractiones de acciones de empresas grandes",
       "Automatización mediante contratos inteligentes"
     ],
-    marketplaceFilters: { category: 'financial-assets' }
+    marketplaceFilters: { category: 'Crypto' }
   },
   p2p: {
     title: "P2P (Peer-to-Peer)",
@@ -81,7 +81,7 @@ const featureInfoMap = {
       "Recompensas o reconocimiento por contribuciones",
       "Participa en decisiones sobre cómo usar los fondos"
     ],
-    marketplaceFilters: { category: 'collections' }
+    marketplaceFilters: { category: 'Deportes' }
   }
 };
 

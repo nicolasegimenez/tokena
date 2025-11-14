@@ -1,49 +1,13 @@
 "use client";
 
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 import { useLanguage } from '@/lib/language';
-import { Menu, X, Moon, Sun, Globe } from 'lucide-react';
+import { Menu, X } from 'lucide-react';
+import { ThemeLanguageToolbar } from './theme-language-toolbar';
 
 export function Navbar() {
-  const { language, setLanguage } = useLanguage();
+  const { language } = useLanguage();
   const [isOpen, setIsOpen] = useState(false);
-  const [theme, setThemeState] = useState<'light' | 'dark'>('dark');
-  const [mounted, setMounted] = useState(false);
-
-  useEffect(() => {
-    setMounted(true);
-    // Detectar tema del sistema o del localStorage
-    const savedTheme = localStorage.getItem('theme') as 'light' | 'dark' | null;
-    const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
-    const initialTheme = savedTheme || (prefersDark ? 'dark' : 'light');
-    setThemeState(initialTheme);
-
-    // Aplicar tema inicial al documento
-    const html = document.documentElement;
-    if (initialTheme === 'dark') {
-      html.classList.add('dark');
-    } else {
-      html.classList.remove('dark');
-    }
-  }, []);
-
-  const toggleLanguage = () => {
-    setLanguage(language === "es" ? "en" : "es");
-  };
-
-  const toggleTheme = () => {
-    const newTheme = theme === 'dark' ? 'light' : 'dark';
-    setThemeState(newTheme);
-    localStorage.setItem('theme', newTheme);
-
-    // Aplicar tema al documento
-    const html = document.documentElement;
-    if (newTheme === 'dark') {
-      html.classList.add('dark');
-    } else {
-      html.classList.remove('dark');
-    }
-  };
 
   const navItems = {
     es: [
@@ -94,30 +58,8 @@ export function Navbar() {
 
           {/* Right Side - Actions */}
           <div className="flex items-center gap-2 xs:gap-3 lg:gap-4">
-            {/* Theme Toggle */}
-            <button
-              onClick={toggleTheme}
-              className="p-1.5 xs:p-2 text-white/60 hover:text-white transition-colors duration-300 rounded-md hover:bg-white/5"
-              aria-label="Toggle theme"
-            >
-              {mounted && (
-                theme === 'dark' ? (
-                  <Sun className="w-4 xs:w-5 h-4 xs:h-5" />
-                ) : (
-                  <Moon className="w-4 xs:w-5 h-4 xs:h-5" />
-                )
-              )}
-            </button>
-
-            {/* Language Toggle */}
-            <button
-              onClick={toggleLanguage}
-              className="p-1.5 xs:p-2 text-white/60 hover:text-white transition-colors duration-300 flex items-center gap-1 xs:gap-2 rounded-md hover:bg-white/5"
-              aria-label="Toggle language"
-            >
-              <Globe className="w-4 xs:w-5 h-4 xs:h-5" />
-              <span className="text-xs xs:text-sm font-semibold hidden sm:inline">{language.toUpperCase()}</span>
-            </button>
+            {/* Theme and Language Toolbar */}
+            <ThemeLanguageToolbar />
 
             {/* Mobile Menu Button */}
             <button

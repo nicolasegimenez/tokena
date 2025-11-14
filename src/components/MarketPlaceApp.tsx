@@ -18,9 +18,12 @@ import {
   SelectValue,
 } from "@/components/ui/select"
 import { useState, useMemo, useEffect, useRef } from "react"
-import { useNavigate } from "react-router-dom"
+import { useNavigate, useSearchParams } from "react-router-dom"
 import PaymentDialog from "@/components/PaymentDialog"
+import SignUpModal from "@/components/SignUpModal"
+import { ThemeLanguageToolbar } from "@/components/ui/theme-language-toolbar"
 import { useLanguage } from "@/lib/language"
+import { useAuth } from "@/lib/auth"
 import { marketProjects } from "@/lib/market-data"
 import { TrendingUp, Clock, Search, Filter, Building2, Coins, Trees, Beef, CircleDot, Music } from 'lucide-react'
 
@@ -119,6 +122,8 @@ const categoryIcons: Record<string, any> = {
 const MarketPlaceApp = () => {
     const navigate = useNavigate();
     const { language } = useLanguage();
+    const { isAuthenticated } = useAuth();
+    const [searchParams] = useSearchParams();
     const t = (key: keyof typeof labels.es, vars?: Record<string, any>) => {
       let text = labels[language][key] || '';
       if (vars) {
@@ -141,7 +146,7 @@ const MarketPlaceApp = () => {
           title: t(projectNameKey),
           description: t(projectNameKey),
           price: minInvestment,
-          roi: 15,
+          roi: project.roi || 15,
           duration: parseInt(project.totalDuration.replace(/[^0-9]/g, '')),
           available: project.quantity,
           status: project.quantity > 0 ? t('available') : t('sold_out'),
@@ -161,15 +166,28 @@ const MarketPlaceApp = () => {
 
     const [investments, setInvestments] = useState(investmentsData);
     const [searchTerm, setSearchTerm] = useState("");
-    const [category, setCategory] = useState("all");
+    const [category, setCategory] = useState(() => {
+      const categoryParam = searchParams.get('category');
+      return categoryParam || "all";
+    });
     const [sortBy, setSortBy] = useState("default");
     const [paymentDialogOpen, setPaymentDialogOpen] = useState(false);
+    const [signUpDialogOpen, setSignUpDialogOpen] = useState(false);
     const [selectedInvestment, setSelectedInvestment] = useState<typeof investmentsData[0] | null>(null);
 
     // Scroll detection states
     const [showHeader, setShowHeader] = useState(true);
     const [showFilters, setShowFilters] = useState(false);
     const lastScrollY = useRef(0);
+
+    // Apply filters from URL parameters on mount
+    useEffect(() => {
+      const categoryParam = searchParams.get('category');
+      if (categoryParam) {
+        setCategory(categoryParam);
+        filterAndSortInvestments(searchTerm, categoryParam, sortBy);
+      }
+    }, [searchParams]);
 
     // Smart scroll behavior for mobile
     useEffect(() => {
@@ -254,6 +272,7 @@ const MarketPlaceApp = () => {
               <Badge variant="secondary" className="text-sm px-4 py-2">
                 {t('projects_count', { count: investments.length })}
               </Badge>
+              <ThemeLanguageToolbar />
             </div>
           </div>
 
@@ -309,13 +328,22 @@ const MarketPlaceApp = () => {
                 </SelectTrigger>
                 <SelectContent>
                   <SelectItem value="all">{t('all_categories')}</SelectItem>
+
+                  {/* Activos Reales */}
+                  <div className="px-2 py-1.5 text-xs font-semibold text-slate-500 dark:text-slate-400">Activos Reales</div>
                   <SelectItem value="Real Estate">{t('real_estate')}</SelectItem>
-                  <SelectItem value="Crypto">{t('crypto')}</SelectItem>
-                  <SelectItem value="Startup">{t('startup')}</SelectItem>
                   <SelectItem value="Agricultura">{t('agriculture')}</SelectItem>
                   <SelectItem value="Ganadería">{t('livestock')}</SelectItem>
-                  <SelectItem value="Deportes">{t('sports')}</SelectItem>
+
+                  {/* Activos Financieros */}
+                  <div className="px-2 py-1.5 text-xs font-semibold text-slate-500 dark:text-slate-400">Activos Financieros</div>
+                  <SelectItem value="Crypto">{t('crypto')}</SelectItem>
+                  <SelectItem value="Startup">{t('startup')}</SelectItem>
+
+                  {/* Crowfunding */}
+                  <div className="px-2 py-1.5 text-xs font-semibold text-slate-500 dark:text-slate-400">Crowfunding</div>
                   <SelectItem value="Entretenimiento">{t('entertainment')}</SelectItem>
+                  <SelectItem value="Deportes">{t('sports')}</SelectItem>
                 </SelectContent>
               </Select>
               <Select value={sortBy} onValueChange={handleSortByChange}>
@@ -450,8 +478,13 @@ const MarketPlaceApp = () => {
                       <Button
                         className="flex-1 bg-gradient-to-r from-emerald-600 to-teal-600 hover:from-emerald-700 hover:to-teal-700"
                         onClick={() => {
-                          setSelectedInvestment(investment);
-                          setPaymentDialogOpen(true);
+                          if (isAuthenticated) {
+                            setSelectedInvestment(investment);
+                            setPaymentDialogOpen(true);
+                          } else {
+                            setSelectedInvestment(investment);
+                            setSignUpDialogOpen(true);
+                          }
                         }}
                       >
                         {t('invest')}
@@ -476,11 +509,23 @@ const MarketPlaceApp = () => {
       </div>
 
       {selectedInvestment && (
-        <PaymentDialog
-          open={paymentDialogOpen}
-          onOpenChange={setPaymentDialogOpen}
-          investment={selectedInvestment}
-        />
+        <>
+          <PaymentDialog
+            open={paymentDialogOpen && isAuthenticated}
+            onOpenChange={setPaymentDialogOpen}
+            investment={selectedInvestment}
+          />
+          <SignUpModal
+            open={signUpDialogOpen && !isAuthenticated}
+            onOpenChange={(open) => {
+              setSignUpDialogOpen(open);
+              // Si se completa el signup, abre el payment dialog
+              if (!open && isAuthenticated) {
+                setPaymentDialogOpen(true);
+              }
+            }}
+          />
+        </>
       )}
     </div>
   )

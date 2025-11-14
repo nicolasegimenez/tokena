@@ -3,6 +3,7 @@ import { Avatar, AvatarFallback } from "@/components/ui/avatar";
 import { Button } from "@/components/ui/button";
 import InvestmentSimulator from "@/components/InvestmentSimulator";
 import { ProjectHeroSection } from "@/components/ProjectHeroSection";
+import { ThemeLanguageToolbar } from "@/components/ui/theme-language-toolbar";
 import { useLanguage } from "@/lib/language";
 import { useNavigate } from "react-router-dom";
 import { Users, TrendingUp, Clock, ArrowLeft, Download, CheckCircle2, AlertCircle } from 'lucide-react';
@@ -128,7 +129,7 @@ export function ProjectDetail({
             <ArrowLeft className="h-4 w-4" />
             {t('back_to_market')}
           </Button>
-          <div className="flex items-start justify-between">
+          <div className="flex items-start justify-between gap-4">
             <div className="flex-1">
               <h1 className="text-3xl md:text-4xl font-bold bg-gradient-to-r from-emerald-600 to-teal-600 bg-clip-text text-transparent mb-2">
                 {projectName}
@@ -137,6 +138,7 @@ export function ProjectDetail({
                 {projectDescription}
               </p>
             </div>
+            <ThemeLanguageToolbar />
           </div>
         </div>
       </div>

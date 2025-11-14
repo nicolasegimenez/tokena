@@ -7,22 +7,31 @@ import { Slider } from "@/components/ui/slider";
 import { Badge } from "@/components/ui/badge";
 import { Separator } from "@/components/ui/separator";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
+import { useAuth } from "@/lib/auth";
+import SignUpModal from "@/components/SignUpModal";
+import PaymentDialog from "@/components/PaymentDialog";
 
 interface InvestmentSimulatorProps {
   projectData: {
+    id: number;
+    title: string;
     pricePerToken: number;
     roi: number;
     duration: number;
     fundingGoal: number;
     amountRaised: number;
+    currency?: string;
   };
 }
 
 const InvestmentSimulator = ({ projectData }: InvestmentSimulatorProps) => {
+  const { isAuthenticated } = useAuth();
   const [investmentAmount, setInvestmentAmount] = useState(1000);
   const [inputValue, setInputValue] = useState("1000");
   const [timeframe, setTimeframe] = useState(projectData.duration);
   const [roi, setRoi] = useState(projectData.roi);
+  const [paymentDialogOpen, setPaymentDialogOpen] = useState(false);
+  const [signUpDialogOpen, setSignUpDialogOpen] = useState(false);
 
   // Calcular tokens a recibir
   const tokensToReceive = Math.floor(investmentAmount / projectData.pricePerToken);
@@ -267,9 +276,47 @@ const InvestmentSimulator = ({ projectData }: InvestmentSimulatorProps) => {
 
         <Separator />
 
-        <Button size="lg" className="w-full bg-green-600 hover:bg-green-700">
+        <Button
+          size="lg"
+          className="w-full bg-green-600 hover:bg-green-700"
+          onClick={() => {
+            if (isAuthenticated) {
+              setPaymentDialogOpen(true);
+            } else {
+              setSignUpDialogOpen(true);
+            }
+          }}
+        >
           Proceder con Inversión
         </Button>
+
+        {/* Payment Dialog - Solo se abre si está autenticado */}
+        {isAuthenticated && (
+          <PaymentDialog
+            open={paymentDialogOpen}
+            onOpenChange={setPaymentDialogOpen}
+            investment={{
+              id: projectData.id,
+              title: projectData.title,
+              price: investmentAmount,
+              currency: projectData.currency || "USD",
+            }}
+          />
+        )}
+
+        {/* SignUp Modal - Solo se abre si NO está autenticado */}
+        {!isAuthenticated && (
+          <SignUpModal
+            open={signUpDialogOpen}
+            onOpenChange={(open) => {
+              setSignUpDialogOpen(open);
+              // Si se completa el signup, abre el payment dialog
+              if (!open && isAuthenticated) {
+                setPaymentDialogOpen(true);
+              }
+            }}
+          />
+        )}
       </CardContent>
     </Card>
   );
