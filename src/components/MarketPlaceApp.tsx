@@ -17,7 +17,7 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select"
-import { useState, useMemo } from "react"
+import { useState, useMemo, useEffect, useRef } from "react"
 import PaymentDialog from "@/components/PaymentDialog"
 import { useLanguage } from "@/lib/language"
 import { marketProjects } from "@/lib/market-data"
@@ -164,6 +164,33 @@ const MarketPlaceApp = () => {
     const [paymentDialogOpen, setPaymentDialogOpen] = useState(false);
     const [selectedInvestment, setSelectedInvestment] = useState<typeof investmentsData[0] | null>(null);
 
+    // Scroll detection states
+    const [showHeader, setShowHeader] = useState(true);
+    const [showFilters, setShowFilters] = useState(false);
+    const lastScrollY = useRef(0);
+
+    // Smart scroll behavior for mobile
+    useEffect(() => {
+      const handleScroll = () => {
+        const currentScrollY = window.scrollY;
+
+        // Show header when user scrolls up or is near top
+        if (currentScrollY < lastScrollY.current || currentScrollY < 100) {
+          setShowHeader(true);
+        } else if (currentScrollY > lastScrollY.current && currentScrollY > 300) {
+          // Hide header when user scrolls down significantly
+          setShowHeader(false);
+          // Auto-close filters on scroll down for better UX on mobile
+          setShowFilters(false);
+        }
+
+        lastScrollY.current = currentScrollY;
+      };
+
+      window.addEventListener('scroll', handleScroll, { passive: true });
+      return () => window.removeEventListener('scroll', handleScroll);
+    }, []);
+
     const handleSearch = (event: React.ChangeEvent<HTMLInputElement>) => {
         setSearchTerm(event.target.value);
         filterAndSortInvestments(event.target.value, category, sortBy);
@@ -206,8 +233,10 @@ const MarketPlaceApp = () => {
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-slate-50 via-white to-slate-50 dark:from-slate-950 dark:via-slate-900 dark:to-slate-950">
-      {/* Enhanced Header with Sticky Positioning */}
-      <div className="border-b bg-white/50 dark:bg-slate-900/50 backdrop-blur-xl sticky top-0 z-50">
+      {/* Enhanced Header with Smart Scroll Behavior */}
+      <div className={`border-b bg-white/50 dark:bg-slate-900/50 backdrop-blur-xl sticky top-0 z-50 transition-all duration-300 ease-in-out transform ${
+        showHeader ? 'translate-y-0 opacity-100' : '-translate-y-full opacity-0 pointer-events-none'
+      }`}>
         <div className="container mx-auto px-4 py-6">
           {/* Title Section */}
           <div className="flex items-center justify-between mb-6">
@@ -227,7 +256,8 @@ const MarketPlaceApp = () => {
           </div>
 
           {/* Enhanced Filters */}
-          <div className="flex flex-col md:flex-row gap-4">
+          <div className="space-y-4">
+            {/* Search Bar - Always Visible */}
             <div className="flex-1 relative">
               <Search className="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-muted-foreground pointer-events-none" />
               <Input
@@ -237,35 +267,69 @@ const MarketPlaceApp = () => {
                 className="pl-10"
               />
             </div>
-            <Select value={category} onValueChange={handleCategoryChange}>
-              <SelectTrigger className="w-full md:w-[200px]">
-                <Filter className="h-4 w-4 mr-2" />
-                <SelectValue placeholder={t('category')} />
-              </SelectTrigger>
-              <SelectContent>
-                <SelectItem value="all">{t('all_categories')}</SelectItem>
-                <SelectItem value="Real Estate">{t('real_estate')}</SelectItem>
-                <SelectItem value="Crypto">{t('crypto')}</SelectItem>
-                <SelectItem value="Startup">{t('startup')}</SelectItem>
-                <SelectItem value="Agricultura">{t('agriculture')}</SelectItem>
-                <SelectItem value="Ganadería">{t('livestock')}</SelectItem>
-                <SelectItem value="Deportes">{t('sports')}</SelectItem>
-                <SelectItem value="Entretenimiento">{t('entertainment')}</SelectItem>
-              </SelectContent>
-            </Select>
-            <Select value={sortBy} onValueChange={handleSortByChange}>
-              <SelectTrigger className="w-full md:w-[200px]">
-                <SelectValue placeholder={t('sort_by')} />
-              </SelectTrigger>
-              <SelectContent>
-                <SelectItem value="default">{t('default')}</SelectItem>
-                <SelectItem value="price-asc">{t('price_asc')}</SelectItem>
-                <SelectItem value="price-desc">{t('price_desc')}</SelectItem>
-                <SelectItem value="roi-desc">{t('roi_desc')}</SelectItem>
-                <SelectItem value="duration-asc">{t('duration_asc')}</SelectItem>
-                <SelectItem value="progress">{t('progress')}</SelectItem>
-              </SelectContent>
-            </Select>
+
+            {/* Active Filters Display */}
+            {(category !== "all" || sortBy !== "default") && (
+              <div className="flex flex-wrap gap-2 items-center">
+                {category !== "all" && (
+                  <Badge variant="secondary" className="text-xs">
+                    {category}
+                  </Badge>
+                )}
+                {sortBy !== "default" && (
+                  <Badge variant="secondary" className="text-xs">
+                    {sortBy === "price-asc" ? "Precio ↑" : sortBy === "price-desc" ? "Precio ↓" : sortBy === "roi-desc" ? "ROI ↓" : sortBy === "duration-asc" ? "Duración ↑" : "Más Fondeados"}
+                  </Badge>
+                )}
+              </div>
+            )}
+
+            {/* Mobile Filter Toggle Button */}
+            <div className="md:hidden">
+              <Button
+                variant="outline"
+                className="w-full flex items-center justify-center gap-2"
+                onClick={() => setShowFilters(!showFilters)}
+              >
+                <Filter className="h-4 w-4" />
+                {showFilters ? 'Ocultar Filtros' : 'Mostrar Filtros'}
+              </Button>
+            </div>
+
+            {/* Filter Controls - Collapsible on Mobile */}
+            <div className={`flex flex-col md:flex-row gap-4 transition-all duration-300 overflow-hidden ${
+              showFilters ? 'max-h-96 opacity-100' : 'md:max-h-96 md:opacity-100 max-h-0 opacity-0 md:pointer-events-auto pointer-events-none'
+            }`}>
+              <Select value={category} onValueChange={handleCategoryChange}>
+                <SelectTrigger className="w-full md:w-[200px]">
+                  <Filter className="h-4 w-4 mr-2" />
+                  <SelectValue placeholder={t('category')} />
+                </SelectTrigger>
+                <SelectContent>
+                  <SelectItem value="all">{t('all_categories')}</SelectItem>
+                  <SelectItem value="Real Estate">{t('real_estate')}</SelectItem>
+                  <SelectItem value="Crypto">{t('crypto')}</SelectItem>
+                  <SelectItem value="Startup">{t('startup')}</SelectItem>
+                  <SelectItem value="Agricultura">{t('agriculture')}</SelectItem>
+                  <SelectItem value="Ganadería">{t('livestock')}</SelectItem>
+                  <SelectItem value="Deportes">{t('sports')}</SelectItem>
+                  <SelectItem value="Entretenimiento">{t('entertainment')}</SelectItem>
+                </SelectContent>
+              </Select>
+              <Select value={sortBy} onValueChange={handleSortByChange}>
+                <SelectTrigger className="w-full md:w-[200px]">
+                  <SelectValue placeholder={t('sort_by')} />
+                </SelectTrigger>
+                <SelectContent>
+                  <SelectItem value="default">{t('default')}</SelectItem>
+                  <SelectItem value="price-asc">{t('price_asc')}</SelectItem>
+                  <SelectItem value="price-desc">{t('price_desc')}</SelectItem>
+                  <SelectItem value="roi-desc">{t('roi_desc')}</SelectItem>
+                  <SelectItem value="duration-asc">{t('duration_asc')}</SelectItem>
+                  <SelectItem value="progress">{t('progress')}</SelectItem>
+                </SelectContent>
+              </Select>
+            </div>
           </div>
         </div>
       </div>
