@@ -1,5 +1,6 @@
 import { Button } from '@/components/ui/button';
 import { Card, CardContent } from '@/components/ui/card';
+import { GlowingEffect } from '@/components/ui/glowing-effect';
 import { Link, useNavigate } from 'react-router-dom';
 import { useAuth } from '@/lib/auth';
 import { useLanguage } from '@/lib/language';
@@ -165,51 +166,91 @@ const LandingPage = () => {
         </div>
       </section>
 
-      {/* Features Section - Text Only */}
+      {/* Features Section - Text with Glowing Effect */}
       <section className="py-32 w-full px-4 md:px-8 lg:px-12 relative overflow-hidden bg-gradient-to-b from-background to-muted/20" aria-label="Características principales destacadas">
         <div className="max-w-5xl mx-auto relative z-10 space-y-20">
           {/* Feature 1: Convert Savings */}
-          <div className="flex flex-col justify-center">
-            <div className="w-16 h-1 bg-gradient-to-r from-primary to-primary/40 rounded-full mb-8"></div>
-            <h3 className="text-5xl md:text-6xl lg:text-7xl font-bold text-foreground leading-tight mb-6">
-              Convertí tus ahorros en activos reales
-            </h3>
-            <p className="text-lg md:text-xl text-muted-foreground max-w-2xl">
-              desde un clic
-            </p>
+          <div className="relative group rounded-2xl">
+            <GlowingEffect
+              spread={40}
+              glow={true}
+              disabled={false}
+              proximity={64}
+              inactiveZone={0.01}
+              borderWidth={2}
+            />
+            <div className="relative flex flex-col justify-center rounded-2xl border-2 border-transparent p-8 md:p-12 bg-gradient-to-br from-background/50 to-background/80 backdrop-blur-sm">
+              <div className="w-16 h-1 bg-gradient-to-r from-primary to-primary/40 rounded-full mb-8"></div>
+              <h3 className="text-5xl md:text-6xl lg:text-7xl font-bold text-foreground leading-tight mb-6">
+                Convertí tus ahorros en activos reales
+              </h3>
+              <p className="text-lg md:text-xl text-muted-foreground max-w-2xl">
+                desde un clic
+              </p>
+            </div>
           </div>
 
           {/* Feature 2: Future Investment */}
-          <div className="flex flex-col justify-center">
-            <div className="w-16 h-1 bg-gradient-to-r from-primary to-primary/40 rounded-full mb-8"></div>
-            <h3 className="text-5xl md:text-6xl lg:text-7xl font-bold text-foreground leading-tight mb-6">
-              La inversión del futuro, hoy
-            </h3>
-            <p className="text-lg md:text-xl text-muted-foreground max-w-2xl">
-              Acceso a oportunidades con mejores ratios riesgo/retorno
-            </p>
+          <div className="relative group rounded-2xl">
+            <GlowingEffect
+              spread={40}
+              glow={true}
+              disabled={false}
+              proximity={64}
+              inactiveZone={0.01}
+              borderWidth={2}
+            />
+            <div className="relative flex flex-col justify-center rounded-2xl border-2 border-transparent p-8 md:p-12 bg-gradient-to-br from-background/50 to-background/80 backdrop-blur-sm">
+              <div className="w-16 h-1 bg-gradient-to-r from-primary to-primary/40 rounded-full mb-8"></div>
+              <h3 className="text-5xl md:text-6xl lg:text-7xl font-bold text-foreground leading-tight mb-6">
+                La inversión del futuro, hoy
+              </h3>
+              <p className="text-lg md:text-xl text-muted-foreground max-w-2xl">
+                Acceso a oportunidades con mejores ratios riesgo/retorno
+              </p>
+            </div>
           </div>
 
           {/* Feature 3: Participate Large Projects */}
-          <div className="flex flex-col justify-center">
-            <div className="w-16 h-1 bg-gradient-to-r from-primary to-primary/40 rounded-full mb-8"></div>
-            <h3 className="text-5xl md:text-6xl lg:text-7xl font-bold text-foreground leading-tight mb-6">
-              Participá en grandes proyectos sin grandes capitales
-            </h3>
-            <p className="text-lg md:text-xl text-muted-foreground max-w-2xl">
-              Acceso democrático a inversiones exclusivas
-            </p>
+          <div className="relative group rounded-2xl">
+            <GlowingEffect
+              spread={40}
+              glow={true}
+              disabled={false}
+              proximity={64}
+              inactiveZone={0.01}
+              borderWidth={2}
+            />
+            <div className="relative flex flex-col justify-center rounded-2xl border-2 border-transparent p-8 md:p-12 bg-gradient-to-br from-background/50 to-background/80 backdrop-blur-sm">
+              <div className="w-16 h-1 bg-gradient-to-r from-primary to-primary/40 rounded-full mb-8"></div>
+              <h3 className="text-5xl md:text-6xl lg:text-7xl font-bold text-foreground leading-tight mb-6">
+                Participá en grandes proyectos sin grandes capitales
+              </h3>
+              <p className="text-lg md:text-xl text-muted-foreground max-w-2xl">
+                Acceso democrático a inversiones exclusivas
+              </p>
+            </div>
           </div>
 
           {/* Feature 4: Tokenize Value */}
-          <div className="flex flex-col justify-center">
-            <div className="w-16 h-1 bg-gradient-to-r from-primary to-primary/40 rounded-full mb-8"></div>
-            <h3 className="text-5xl md:text-6xl lg:text-7xl font-bold text-foreground leading-tight mb-6">
-              Todo lo que tiene valor, ahora tiene token
-            </h3>
-            <p className="text-lg md:text-xl text-muted-foreground max-w-2xl">
-              Fractionalización de activos para mayor accesibilidad
-            </p>
+          <div className="relative group rounded-2xl">
+            <GlowingEffect
+              spread={40}
+              glow={true}
+              disabled={false}
+              proximity={64}
+              inactiveZone={0.01}
+              borderWidth={2}
+            />
+            <div className="relative flex flex-col justify-center rounded-2xl border-2 border-transparent p-8 md:p-12 bg-gradient-to-br from-background/50 to-background/80 backdrop-blur-sm">
+              <div className="w-16 h-1 bg-gradient-to-r from-primary to-primary/40 rounded-full mb-8"></div>
+              <h3 className="text-5xl md:text-6xl lg:text-7xl font-bold text-foreground leading-tight mb-6">
+                Todo lo que tiene valor, ahora tiene token
+              </h3>
+              <p className="text-lg md:text-xl text-muted-foreground max-w-2xl">
+                Fractionalización de activos para mayor accesibilidad
+              </p>
+            </div>
           </div>
         </div>
       </section>
