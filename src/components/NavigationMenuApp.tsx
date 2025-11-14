@@ -103,7 +103,23 @@ const NavigationMenuApp = () => {
                         Demo Login
                       </Button>
                     </div>
-                  ) : null}
+                  ) : (
+                    <div className="space-y-2">
+                      <Button asChild variant="outline" className="w-full h-11 text-base">
+                        <Link to="/profile">{t("my_profile")}</Link>
+                      </Button>
+                      <Button
+                        onClick={() => {
+                          logout();
+                          navigate("/");
+                        }}
+                        variant="destructive"
+                        className="w-full h-11 text-base"
+                      >
+                        {t("logout")}
+                      </Button>
+                    </div>
+                  )}
                 </div>
               </SheetContent>
             </Sheet>
