@@ -167,95 +167,114 @@ const LandingPage = () => {
       </section>
 
       {/* Features Section */}
-      <section id="features" className="py-20 w-full px-0" aria-label="Características principales">
-        <div className="max-w-6xl mx-auto px-4">
-          <div className="text-center mb-16">
-            <h2 className="text-4xl md:text-5xl font-bold tracking-tight mb-4">{t('landing_why_choose')}</h2>
-            <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
+      <section id="features" className="py-24 w-full px-0 relative overflow-hidden" aria-label="Características principales">
+        {/* Background decorative elements */}
+        <div className="absolute inset-0 -top-40 -right-40 w-80 h-80 bg-gradient-to-br from-primary/5 to-transparent rounded-full blur-3xl pointer-events-none"></div>
+        <div className="absolute inset-0 -bottom-40 -left-40 w-80 h-80 bg-gradient-to-tr from-primary/5 to-transparent rounded-full blur-3xl pointer-events-none"></div>
+
+        <div className="max-w-6xl mx-auto px-4 relative z-10">
+          <div className="text-center mb-20">
+            <div className="inline-flex items-center gap-2 mb-6 px-4 py-2 rounded-full bg-primary/10 border border-primary/20">
+              <span className="w-2 h-2 rounded-full bg-primary animate-pulse"></span>
+              <span className="text-sm font-medium text-primary">Características destacadas</span>
+            </div>
+            <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight mb-6 bg-clip-text text-transparent bg-gradient-to-r from-foreground via-foreground to-foreground/60">
+              {t('landing_why_choose')}
+            </h2>
+            <p className="text-lg md:text-xl text-muted-foreground max-w-3xl mx-auto leading-relaxed">
               {t('landing_why_desc')}
             </p>
           </div>
 
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8 lg:gap-10">
             {/* Security Card */}
-            <div className="relative rounded-xl overflow-hidden group">
-              <GlowingEffect
-                spread={40}
-                glow={true}
-                disabled={false}
-                proximity={64}
-                inactiveZone={0.01}
-                borderWidth={2}
-              />
-              <Card className="relative hover:shadow-xl transition-all duration-300 border-2 hover:border-primary/50 hover:-translate-y-1">
-                <CardHeader className="text-center pb-4">
-                  <div className="mb-4 inline-flex items-center justify-center h-16 w-16 rounded-2xl bg-primary/10 mx-auto">
-                    <svg className="w-8 h-8 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z" />
-                    </svg>
-                  </div>
-                  <CardTitle className="text-2xl">{t('landing_security_title')}</CardTitle>
-                </CardHeader>
-                <CardContent className="text-center">
-                  <CardDescription className="text-base leading-relaxed">
-                    {t('landing_security_desc')}
-                  </CardDescription>
-                </CardContent>
-              </Card>
+            <div className="group relative h-full">
+              <div className="absolute inset-0 bg-gradient-to-br from-primary/10 to-transparent rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-500 blur-xl"></div>
+              <div className="relative rounded-2xl overflow-hidden h-full">
+                <GlowingEffect
+                  spread={40}
+                  glow={true}
+                  disabled={false}
+                  proximity={64}
+                  inactiveZone={0.01}
+                  borderWidth={2}
+                />
+                <Card className="relative h-full flex flex-col bg-gradient-to-br from-card via-card to-card/50 hover:shadow-2xl transition-all duration-300 border-2 hover:border-primary/60 group-hover:-translate-y-2">
+                  <CardHeader className="text-center pb-6 pt-8">
+                    <div className="mb-6 inline-flex items-center justify-center h-20 w-20 rounded-2xl bg-gradient-to-br from-primary/20 to-primary/10 mx-auto group-hover:scale-110 transition-transform duration-300">
+                      <svg className="w-10 h-10 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z" />
+                      </svg>
+                    </div>
+                    <CardTitle className="text-2xl md:text-3xl font-bold">{t('landing_security_title')}</CardTitle>
+                  </CardHeader>
+                  <CardContent className="text-center flex-1 flex flex-col justify-center pb-8">
+                    <CardDescription className="text-base md:text-lg leading-relaxed">
+                      {t('landing_security_desc')}
+                    </CardDescription>
+                  </CardContent>
+                </Card>
+              </div>
             </div>
 
             {/* Performance Card */}
-            <div className="relative rounded-xl overflow-hidden group">
-              <GlowingEffect
-                spread={40}
-                glow={true}
-                disabled={false}
-                proximity={64}
-                inactiveZone={0.01}
-                borderWidth={2}
-              />
-              <Card className="relative hover:shadow-xl transition-all duration-300 border-2 hover:border-primary/50">
-                <CardHeader className="text-center pb-4">
-                  <div className="mb-4 inline-flex items-center justify-center h-16 w-16 rounded-2xl bg-primary/10 mx-auto">
-                    <svg className="w-8 h-8 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M13 10V3L4 14h7v7l9-11h-7z" />
-                    </svg>
-                  </div>
-                  <CardTitle className="text-2xl">{t('landing_performance_title')}</CardTitle>
-                </CardHeader>
-                <CardContent className="text-center">
-                  <CardDescription className="text-base leading-relaxed">
-                    {t('landing_performance_desc')}
-                  </CardDescription>
-                </CardContent>
-              </Card>
+            <div className="group relative h-full">
+              <div className="absolute inset-0 bg-gradient-to-br from-primary/10 to-transparent rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-500 blur-xl"></div>
+              <div className="relative rounded-2xl overflow-hidden h-full">
+                <GlowingEffect
+                  spread={40}
+                  glow={true}
+                  disabled={false}
+                  proximity={64}
+                  inactiveZone={0.01}
+                  borderWidth={2}
+                />
+                <Card className="relative h-full flex flex-col bg-gradient-to-br from-card via-card to-card/50 hover:shadow-2xl transition-all duration-300 border-2 hover:border-primary/60 group-hover:-translate-y-2">
+                  <CardHeader className="text-center pb-6 pt-8">
+                    <div className="mb-6 inline-flex items-center justify-center h-20 w-20 rounded-2xl bg-gradient-to-br from-primary/20 to-primary/10 mx-auto group-hover:scale-110 transition-transform duration-300">
+                      <svg className="w-10 h-10 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M13 10V3L4 14h7v7l9-11h-7z" />
+                      </svg>
+                    </div>
+                    <CardTitle className="text-2xl md:text-3xl font-bold">{t('landing_performance_title')}</CardTitle>
+                  </CardHeader>
+                  <CardContent className="text-center flex-1 flex flex-col justify-center pb-8">
+                    <CardDescription className="text-base md:text-lg leading-relaxed">
+                      {t('landing_performance_desc')}
+                    </CardDescription>
+                  </CardContent>
+                </Card>
+              </div>
             </div>
 
             {/* Experience Card */}
-            <div className="relative rounded-xl overflow-hidden group">
-              <GlowingEffect
-                spread={40}
-                glow={true}
-                disabled={false}
-                proximity={64}
-                inactiveZone={0.01}
-                borderWidth={2}
-              />
-              <Card className="relative hover:shadow-xl transition-all duration-300 border-2 hover:border-primary/50">
-                <CardHeader className="text-center pb-4">
-                  <div className="mb-4 inline-flex items-center justify-center h-16 w-16 rounded-2xl bg-primary/10 mx-auto">
-                    <svg className="w-8 h-8 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M9 12l2 2 4-4M7.835 4.697a3.42 3.42 0 001.946-.806 3.42 3.42 0 014.438 0 3.42 3.42 0 001.946.806 3.42 3.42 0 013.138 3.138 3.42 3.42 0 00.806 1.946 3.42 3.42 0 010 4.438 3.42 3.42 0 00-.806 1.946 3.42 3.42 0 01-3.138 3.138 3.42 3.42 0 00-1.946.806 3.42 3.42 0 01-4.438 0 3.42 3.42 0 00-1.946-.806 3.42 3.42 0 01-3.138-3.138 3.42 3.42 0 00-.806-1.946 3.42 3.42 0 010-4.438 3.42 3.42 0 00.806-1.946 3.42 3.42 0 013.138-3.138z" />
-                    </svg>
-                  </div>
-                  <CardTitle className="text-2xl">{t('landing_experience_title')}</CardTitle>
-                </CardHeader>
-                <CardContent className="text-center">
-                  <CardDescription className="text-base leading-relaxed">
-                    {t('landing_experience_desc')}
-                  </CardDescription>
-                </CardContent>
-              </Card>
+            <div className="group relative h-full">
+              <div className="absolute inset-0 bg-gradient-to-br from-primary/10 to-transparent rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-500 blur-xl"></div>
+              <div className="relative rounded-2xl overflow-hidden h-full">
+                <GlowingEffect
+                  spread={40}
+                  glow={true}
+                  disabled={false}
+                  proximity={64}
+                  inactiveZone={0.01}
+                  borderWidth={2}
+                />
+                <Card className="relative h-full flex flex-col bg-gradient-to-br from-card via-card to-card/50 hover:shadow-2xl transition-all duration-300 border-2 hover:border-primary/60 group-hover:-translate-y-2">
+                  <CardHeader className="text-center pb-6 pt-8">
+                    <div className="mb-6 inline-flex items-center justify-center h-20 w-20 rounded-2xl bg-gradient-to-br from-primary/20 to-primary/10 mx-auto group-hover:scale-110 transition-transform duration-300">
+                      <svg className="w-10 h-10 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M9 12l2 2 4-4M7.835 4.697a3.42 3.42 0 001.946-.806 3.42 3.42 0 014.438 0 3.42 3.42 0 001.946.806 3.42 3.42 0 013.138 3.138 3.42 3.42 0 00.806 1.946 3.42 3.42 0 010 4.438 3.42 3.42 0 00-.806 1.946 3.42 3.42 0 01-3.138 3.138 3.42 3.42 0 00-1.946.806 3.42 3.42 0 01-4.438 0 3.42 3.42 0 00-1.946-.806 3.42 3.42 0 01-3.138-3.138 3.42 3.42 0 00-.806-1.946 3.42 3.42 0 010-4.438 3.42 3.42 0 00.806-1.946 3.42 3.42 0 013.138-3.138z" />
+                      </svg>
+                    </div>
+                    <CardTitle className="text-2xl md:text-3xl font-bold">{t('landing_experience_title')}</CardTitle>
+                  </CardHeader>
+                  <CardContent className="text-center flex-1 flex flex-col justify-center pb-8">
+                    <CardDescription className="text-base md:text-lg leading-relaxed">
+                      {t('landing_experience_desc')}
+                    </CardDescription>
+                  </CardContent>
+                </Card>
+              </div>
             </div>
           </div>
         </div>
