@@ -350,13 +350,15 @@ export function ProjectDetail({
                 </CardContent>
               </Card>
               <InvestmentSimulator
-                projectData={({
+                projectData={{
+                  id: 1,
+                  title: projectName,
                   pricePerToken: projectData.pricePerToken,
                   roi,
                   duration,
                   fundingGoal: projectData.fundingGoal,
                   amountRaised: projectData.amountRaised,
-                })}
+                }}
               />
             </div>
           </div>
