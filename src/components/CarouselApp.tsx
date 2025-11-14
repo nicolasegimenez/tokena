@@ -259,7 +259,7 @@ const CarouselApp = () => {
             key={investment.id}
             value={investment.id.toString()}
             className="text-left cursor-pointer p-4 border-r dark:border-white/20 border-black/20 last:border-r-0"
-            progressBarClass="dark:bg-white bg-black"
+            progressBarClass="dark:bg-white/60 bg-black/60"
           >
             <h4 className="font-semibold text-sm md:text-base mb-1">{investment.title}</h4>
             <p className="text-xs line-clamp-1">{investment.description}</p>
