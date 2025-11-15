@@ -1,13 +1,43 @@
 "use client";
 
-import { useState } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import { useLanguage } from '@/lib/language';
 import { Menu, X } from 'lucide-react';
 import { ThemeLanguageToolbar } from './theme-language-toolbar';
 
-export function Navbar() {
+interface NavbarProps {
+  showNavbar?: boolean;
+}
+
+export function Navbar({ showNavbar: externalShowNavbar }: NavbarProps) {
   const { language } = useLanguage();
   const [isOpen, setIsOpen] = useState(false);
+  const [showNavbar, setShowNavbar] = useState(true);
+  const lastScrollY = useRef(0);
+
+  // Use external showNavbar if provided, otherwise use local state
+  const isNavbarVisible = externalShowNavbar !== undefined ? externalShowNavbar : showNavbar;
+
+  useEffect(() => {
+    // Only use scroll detection if showNavbar prop is not provided
+    if (externalShowNavbar !== undefined) return;
+
+    const handleScroll = () => {
+      const currentScrollY = window.scrollY;
+
+      if (currentScrollY < lastScrollY.current || currentScrollY < 100) {
+        setShowNavbar(true);
+      } else if (currentScrollY > lastScrollY.current && currentScrollY > 300) {
+        setShowNavbar(false);
+        setIsOpen(false);
+      }
+
+      lastScrollY.current = currentScrollY;
+    };
+
+    window.addEventListener('scroll', handleScroll, { passive: true });
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, [externalShowNavbar]);
 
   const navItems = {
     es: [
@@ -27,7 +57,9 @@ export function Navbar() {
   const items = navItems[language as keyof typeof navItems];
 
   return (
-    <nav className="relative w-full">
+    <nav className={`relative w-full transition-all duration-300 ease-in-out transform ${
+      isNavbarVisible ? 'translate-y-0 opacity-100' : '-translate-y-full opacity-0 pointer-events-none'
+    }`}>
       <div className="w-full px-3 xs:px-4 sm:px-6 md:px-8 lg:px-12 xl:px-16 py-4 sm:py-5 md:py-6">
         <div className="flex items-center justify-between">
           {/* Logo */}

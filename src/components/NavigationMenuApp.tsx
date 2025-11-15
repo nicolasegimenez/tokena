@@ -1,3 +1,5 @@
+"use client"
+
 import {
   Sheet,
   SheetContent,
@@ -20,6 +22,14 @@ import { Button } from "./ui/button";
 import { Input } from "./ui/input";
 import { ModeToggle } from "./mode-toggle";
 import { useLanguage } from "@/lib/language";
+import {
+  NavigationMenu,
+  NavigationMenuContent,
+  NavigationMenuItem,
+  NavigationMenuLink,
+  NavigationMenuList,
+  NavigationMenuTrigger,
+} from "@/components/ui/navigation-menu";
 
 interface SingleMenuItem {
   href: string;
@@ -29,8 +39,7 @@ interface SingleMenuItem {
 const singleMenuItems: SingleMenuItem[] = [
   { href: "/market", titleKey: "invest" },
   { href: "/trade", titleKey: "trade" },
-  { href: "/investments", titleKey: "my_investments" },
-  { href: "/create", titleKey: "create_project" },
+  { href: "/filantropy", titleKey: "philanthropy" },
 ];
 
 const LanguageSwitcher = () => {
@@ -144,7 +153,79 @@ const NavigationMenuApp = () => {
 
           {/* Desktop Navigation - Larger buttons for accessibility */}
           <div className="hidden lg:flex items-center gap-2">
-            {singleMenuItems.map((item: SingleMenuItem) => (
+            <NavigationMenu>
+              <NavigationMenuList>
+                <NavigationMenuItem>
+                  <NavigationMenuTrigger className="z-[60]">{t("invest")}</NavigationMenuTrigger>
+                  <NavigationMenuContent className="z-[9999]">
+                    <ul className="grid w-[300px] gap-4">
+                      <li>
+                        <NavigationMenuLink asChild>
+                          <Link to="/market?category=crowfunding">
+                            <div className="text-sm leading-none font-medium">Crowfunding</div>
+                            <p className="text-muted-foreground line-clamp-2 text-sm leading-snug">
+                              Financiamiento colaborativo de proyectos
+                            </p>
+                          </Link>
+                        </NavigationMenuLink>
+                      </li>
+                      <li>
+                        <NavigationMenuLink asChild>
+                          <Link to="/market?category=tokenizacion-activos-reales">
+                            <div className="text-sm leading-none font-medium">Tokenización de Activos Reales</div>
+                            <p className="text-muted-foreground line-clamp-2 text-sm leading-snug">
+                              Tokens respaldados por activos físicos
+                            </p>
+                          </Link>
+                        </NavigationMenuLink>
+                      </li>
+                      <li>
+                        <NavigationMenuLink asChild>
+                          <Link to="/market?category=tokenizacion-activos-financieros">
+                            <div className="text-sm leading-none font-medium">Tokenización de Activos Financieros</div>
+                            <p className="text-muted-foreground line-clamp-2 text-sm leading-snug">
+                              Tokens de instrumentos financieros
+                            </p>
+                          </Link>
+                        </NavigationMenuLink>
+                      </li>
+                      <li>
+                        <NavigationMenuLink asChild>
+                          <Link to="/market?category=p2p">
+                            <div className="text-sm leading-none font-medium">P2P</div>
+                            <p className="text-muted-foreground line-clamp-2 text-sm leading-snug">
+                              Préstamos entre pares directos
+                            </p>
+                          </Link>
+                        </NavigationMenuLink>
+                      </li>
+                      <li>
+                        <NavigationMenuLink asChild>
+                          <Link to="/market?category=subastas">
+                            <div className="text-sm leading-none font-medium">Subastas</div>
+                            <p className="text-muted-foreground line-clamp-2 text-sm leading-snug">
+                              Compra y venta en subastas públicas
+                            </p>
+                          </Link>
+                        </NavigationMenuLink>
+                      </li>
+                      <li>
+                        <NavigationMenuLink asChild>
+                          <Link to="/market?category=colectas">
+                            <div className="text-sm leading-none font-medium">Colectas</div>
+                            <p className="text-muted-foreground line-clamp-2 text-sm leading-snug">
+                              Recaudación de fondos colaborativa
+                            </p>
+                          </Link>
+                        </NavigationMenuLink>
+                      </li>
+                    </ul>
+                  </NavigationMenuContent>
+                </NavigationMenuItem>
+              </NavigationMenuList>
+            </NavigationMenu>
+
+            {singleMenuItems.slice(1).map((item: SingleMenuItem) => (
               <Link key={item.href} to={item.href}>
                 <Button variant="ghost" size="lg" className="text-base font-medium text-foreground hover:text-primary hover:bg-primary/10 active:bg-primary/15 transition-colors rounded-lg h-10">
                   {t(item.titleKey)}
@@ -226,6 +307,14 @@ const NavigationMenuApp = () => {
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
                     </svg>
                     <span className="text-base font-medium">{t("my_investments")}</span>
+                  </Link>
+                </DropdownMenuItem>
+                <DropdownMenuItem asChild className="cursor-pointer">
+                  <Link to="/create" className="flex items-center gap-3 px-4 py-3 rounded-md hover:bg-emerald/10 active:bg-emerald/15 transition-colors bg-gradient-to-r from-emerald-50/50 to-teal-50/50 dark:from-emerald-950/30 dark:to-teal-950/30 border border-emerald-200/30 dark:border-emerald-800/30">
+                    <svg className="w-5 h-5 text-emerald-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 4v16m8-8H4" />
+                    </svg>
+                    <span className="text-base font-medium text-emerald-600 dark:text-emerald-400">{t("create_project")}</span>
                   </Link>
                 </DropdownMenuItem>
               </div>

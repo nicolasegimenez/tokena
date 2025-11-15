@@ -22,6 +22,7 @@ const InvestProject5Page = lazy(() => import("@/app/invest/project5/page"))
 const InvestProject6Page = lazy(() => import("@/app/invest/project6/page"))
 const CreateProjectPage = lazy(() => import("@/app/create/page"))
 const TradePage = lazy(() => import("@/app/trade/page"))
+const PhilanthropyPage = lazy(() => import("@/app/filantropy/page"))
 const LoginForm = lazy(() => import("@/components/login-form").then(m => ({ default: m.LoginForm })))
 const RegisterPage = lazy(() => import("@/app/registrarse/page"))
 const LandingPage = lazy(() => import("@/app/landing/page"))
@@ -63,6 +64,7 @@ function App() {
             <Route path="/invest/project6" element={<InvestProject6Page />} />
             <Route path="/create" element={<CreateProjectPage />} />
             <Route path="/trade" element={<TradePage />} />
+            <Route path="/filantropy" element={<PhilanthropyPage />} />
             <Route path="/investments" element={<InvestmentsPage />} />
             <Route path="*" element={<NotFound />} />
           </Route>

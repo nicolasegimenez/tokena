@@ -9,23 +9,15 @@ import {
 import { Button } from "@/components/ui/button"
 import { Badge } from "@/components/ui/badge"
 
-import { Input } from "@/components/ui/input"
-import {
-  Select,
-  SelectContent,
-  SelectItem,
-  SelectTrigger,
-  SelectValue,
-} from "@/components/ui/select"
 import { useState, useMemo, useEffect, useRef } from "react"
 import { useNavigate, useSearchParams } from "react-router-dom"
 import PaymentDialog from "@/components/PaymentDialog"
 import SignUpModal from "@/components/SignUpModal"
-import { ThemeLanguageToolbar } from "@/components/ui/theme-language-toolbar"
 import { useLanguage } from "@/lib/language"
 import { useAuth } from "@/lib/auth"
 import { marketProjects } from "@/lib/market-data"
-import { TrendingUp, Clock, Search, Filter, Building2, Coins, Trees, Beef, CircleDot, Music } from 'lucide-react'
+import { TrendingUp, Clock, Building2, Coins, Trees, Beef, CircleDot, Music } from 'lucide-react'
+import { MarketplaceHeader } from "@/components/MarketplaceHeader"
 
 const labels = {
   es: {
@@ -176,7 +168,6 @@ const MarketPlaceApp = () => {
     const [selectedInvestment, setSelectedInvestment] = useState<typeof investmentsData[0] | null>(null);
 
     // Scroll detection states
-    const [showHeader, setShowHeader] = useState(true);
     const [showFilters, setShowFilters] = useState(false);
     const lastScrollY = useRef(0);
 
@@ -189,17 +180,12 @@ const MarketPlaceApp = () => {
       }
     }, [searchParams]);
 
-    // Smart scroll behavior for mobile
+    // Smart scroll behavior for mobile - Auto-close filters on scroll down
     useEffect(() => {
       const handleScroll = () => {
         const currentScrollY = window.scrollY;
 
-        // Show header when user scrolls up or is near top
-        if (currentScrollY < lastScrollY.current || currentScrollY < 100) {
-          setShowHeader(true);
-        } else if (currentScrollY > lastScrollY.current && currentScrollY > 300) {
-          // Hide header when user scrolls down significantly
-          setShowHeader(false);
+        if (currentScrollY > lastScrollY.current && currentScrollY > 300) {
           // Auto-close filters on scroll down for better UX on mobile
           setShowFilters(false);
         }
@@ -211,9 +197,9 @@ const MarketPlaceApp = () => {
       return () => window.removeEventListener('scroll', handleScroll);
     }, []);
 
-    const handleSearch = (event: React.ChangeEvent<HTMLInputElement>) => {
-        setSearchTerm(event.target.value);
-        filterAndSortInvestments(event.target.value, category, sortBy);
+    const handleSearch = (value: string) => {
+        setSearchTerm(value);
+        filterAndSortInvestments(value, category, sortBy);
     };
 
     const handleCategoryChange = (value: string) => {
@@ -233,7 +219,26 @@ const MarketPlaceApp = () => {
         );
 
         if (cat !== "all") {
-            filtered = filtered.filter(investment => investment.category === cat);
+            // Handle grouped category filters
+            if (cat === "tokenizacion-activos-reales") {
+                filtered = filtered.filter(investment =>
+                    investment.category === "Real Estate" ||
+                    investment.category === "Agricultura" ||
+                    investment.category === "Ganadería"
+                );
+            } else if (cat === "tokenizacion-activos-financieros") {
+                filtered = filtered.filter(investment =>
+                    investment.category === "Crypto" ||
+                    investment.category === "Startup"
+                );
+            } else if (cat === "crowfunding") {
+                filtered = filtered.filter(investment =>
+                    investment.category === "Entretenimiento" ||
+                    investment.category === "Deportes"
+                );
+            } else {
+                filtered = filtered.filter(investment => investment.category === cat);
+            }
         }
 
         if (sort === "price-asc") {
@@ -253,116 +258,18 @@ const MarketPlaceApp = () => {
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-slate-50 via-white to-slate-50 dark:from-slate-950 dark:via-slate-900 dark:to-slate-950">
-      {/* Enhanced Header with Smart Scroll Behavior */}
-      <div className={`border-b bg-white/50 dark:bg-slate-900/50 backdrop-blur-xl sticky top-0 z-50 transition-all duration-300 ease-in-out transform ${
-        showHeader ? 'translate-y-0 opacity-100' : '-translate-y-full opacity-0 pointer-events-none'
-      }`}>
-        <div className="container mx-auto px-4 py-6">
-          {/* Title Section */}
-          <div className="flex items-center justify-between mb-6">
-            <div>
-              <h1 className="text-4xl font-bold bg-gradient-to-r from-emerald-600 to-teal-600 bg-clip-text text-transparent">
-                {t('invest_market')}
-              </h1>
-              <p className="text-muted-foreground mt-2">
-                {t('discover_tokenized_opportunities')}
-              </p>
-            </div>
-            <div className="flex items-center gap-4">
-              <Badge variant="secondary" className="text-sm px-4 py-2">
-                {t('projects_count', { count: investments.length })}
-              </Badge>
-              <ThemeLanguageToolbar />
-            </div>
-          </div>
-
-          {/* Enhanced Filters */}
-          <div className="space-y-4">
-            {/* Search Bar - Always Visible */}
-            <div className="flex-1 relative">
-              <Search className="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-muted-foreground pointer-events-none" />
-              <Input
-                placeholder={t('search')}
-                value={searchTerm}
-                onChange={handleSearch}
-                className="pl-10"
-              />
-            </div>
-
-            {/* Active Filters Display */}
-            {(category !== "all" || sortBy !== "default") && (
-              <div className="flex flex-wrap gap-2 items-center">
-                {category !== "all" && (
-                  <Badge variant="secondary" className="text-xs">
-                    {category}
-                  </Badge>
-                )}
-                {sortBy !== "default" && (
-                  <Badge variant="secondary" className="text-xs">
-                    {sortBy === "price-asc" ? "Precio ↑" : sortBy === "price-desc" ? "Precio ↓" : sortBy === "roi-desc" ? "ROI ↓" : sortBy === "duration-asc" ? "Duración ↑" : "Más Fondeados"}
-                  </Badge>
-                )}
-              </div>
-            )}
-
-            {/* Mobile Filter Toggle Button */}
-            <div className="md:hidden">
-              <Button
-                variant="outline"
-                className="w-full flex items-center justify-center gap-2"
-                onClick={() => setShowFilters(!showFilters)}
-              >
-                <Filter className="h-4 w-4" />
-                {showFilters ? 'Ocultar Filtros' : 'Mostrar Filtros'}
-              </Button>
-            </div>
-
-            {/* Filter Controls - Collapsible on Mobile */}
-            <div className={`flex flex-col md:flex-row gap-4 transition-all duration-300 overflow-hidden ${
-              showFilters ? 'max-h-96 opacity-100' : 'md:max-h-96 md:opacity-100 max-h-0 opacity-0 md:pointer-events-auto pointer-events-none'
-            }`}>
-              <Select value={category} onValueChange={handleCategoryChange}>
-                <SelectTrigger className="w-full md:w-[200px]">
-                  <Filter className="h-4 w-4 mr-2" />
-                  <SelectValue placeholder={t('category')} />
-                </SelectTrigger>
-                <SelectContent>
-                  <SelectItem value="all">{t('all_categories')}</SelectItem>
-
-                  {/* Activos Reales */}
-                  <div className="px-2 py-1.5 text-xs font-semibold text-slate-500 dark:text-slate-400">Activos Reales</div>
-                  <SelectItem value="Real Estate">{t('real_estate')}</SelectItem>
-                  <SelectItem value="Agricultura">{t('agriculture')}</SelectItem>
-                  <SelectItem value="Ganadería">{t('livestock')}</SelectItem>
-
-                  {/* Activos Financieros */}
-                  <div className="px-2 py-1.5 text-xs font-semibold text-slate-500 dark:text-slate-400">Activos Financieros</div>
-                  <SelectItem value="Crypto">{t('crypto')}</SelectItem>
-                  <SelectItem value="Startup">{t('startup')}</SelectItem>
-
-                  {/* Crowfunding */}
-                  <div className="px-2 py-1.5 text-xs font-semibold text-slate-500 dark:text-slate-400">Crowfunding</div>
-                  <SelectItem value="Entretenimiento">{t('entertainment')}</SelectItem>
-                  <SelectItem value="Deportes">{t('sports')}</SelectItem>
-                </SelectContent>
-              </Select>
-              <Select value={sortBy} onValueChange={handleSortByChange}>
-                <SelectTrigger className="w-full md:w-[200px]">
-                  <SelectValue placeholder={t('sort_by')} />
-                </SelectTrigger>
-                <SelectContent>
-                  <SelectItem value="default">{t('default')}</SelectItem>
-                  <SelectItem value="price-asc">{t('price_asc')}</SelectItem>
-                  <SelectItem value="price-desc">{t('price_desc')}</SelectItem>
-                  <SelectItem value="roi-desc">{t('roi_desc')}</SelectItem>
-                  <SelectItem value="duration-asc">{t('duration_asc')}</SelectItem>
-                  <SelectItem value="progress">{t('progress')}</SelectItem>
-                </SelectContent>
-              </Select>
-            </div>
-          </div>
-        </div>
-      </div>
+      {/* Marketplace Header - Separated Component */}
+      <MarketplaceHeader
+        investmentCount={investments.length}
+        searchTerm={searchTerm}
+        onSearchChange={handleSearch}
+        category={category}
+        onCategoryChange={handleCategoryChange}
+        sortBy={sortBy}
+        onSortByChange={handleSortByChange}
+        showFilters={showFilters}
+        onToggleFilters={() => setShowFilters(!showFilters)}
+      />
 
       {/* Projects Grid */}
       <div className="container mx-auto px-4 py-8">

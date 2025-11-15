@@ -15,6 +15,7 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
 import { Separator } from "@/components/ui/separator"
 import { Shield, Bell, Palette, Lock, FileText, Upload, CheckCircle2, AlertCircle } from "lucide-react"
 import { useAuth } from "@/lib/auth"
+import { getRandomAvatarUrl } from "@/lib/utils"
 
 function Profile() {
   const { user } = useAuth();
@@ -35,7 +36,7 @@ function Profile() {
         <CardContent className="pt-0">
           <div className="flex flex-col md:flex-row items-start md:items-end gap-6 -mt-16 mb-6">
             <Avatar className="h-40 w-40 border-4 border-background shadow-lg">
-              <AvatarImage src={user?.avatarUrl || ""} />
+              <AvatarImage src={user?.avatarUrl || getRandomAvatarUrl(user?.email)} />
               <AvatarFallback className="text-4xl font-bold">
                 {user?.name?.slice(0, 2).toUpperCase() || "US"}
               </AvatarFallback>

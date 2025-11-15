@@ -1,6 +1,7 @@
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { Avatar, AvatarFallback } from "@/components/ui/avatar";
+import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { Button } from "@/components/ui/button";
+import { getRandomAvatarUrl } from "@/lib/utils";
 import InvestmentSimulator from "@/components/InvestmentSimulator";
 import { ProjectHeroSection } from "@/components/ProjectHeroSection";
 import { ThemeLanguageToolbar } from "@/components/ui/theme-language-toolbar";
@@ -110,6 +111,7 @@ export function ProjectDetail({
   const { language } = useLanguage();
   const t = (key: keyof typeof labels.es) => labels[language][key];
 
+
   const projectName = extractText(projectData.name, language);
   const projectDescription = extractText(projectData.description, language);
 
@@ -118,28 +120,25 @@ export function ProjectDetail({
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-slate-50 via-white to-slate-50 dark:from-slate-950 dark:via-slate-900 dark:to-slate-950">
-      {/* Enhanced Header */}
-      <div className="border-b bg-white/50 dark:bg-slate-900/50 backdrop-blur-xl sticky top-0 z-50">
-        <div className="container mx-auto px-4 py-4">
-          <Button
-            variant="ghost"
-            className="gap-2 mb-4"
-            onClick={() => navigate('/market')}
-          >
-            <ArrowLeft className="h-4 w-4" />
-            {t('back_to_market')}
-          </Button>
-          <div className="flex items-start justify-between gap-4">
-            <div className="flex-1">
-              <h1 className="text-3xl md:text-4xl font-bold bg-gradient-to-r from-emerald-600 to-teal-600 bg-clip-text text-transparent mb-2">
-                {projectName}
-              </h1>
-              <p className="text-muted-foreground max-w-2xl">
-                {projectDescription}
-              </p>
-            </div>
-            <ThemeLanguageToolbar />
+      <div className="container mx-auto px-4 py-8">
+        <Button
+          variant="ghost"
+          className="gap-2 mb-6"
+          onClick={() => navigate('/market')}
+        >
+          <ArrowLeft className="h-4 w-4" />
+          {t('back_to_market')}
+        </Button>
+        <div className="flex items-start justify-between gap-4 mb-8">
+          <div className="flex-1">
+            <h1 className="text-3xl md:text-4xl font-bold bg-gradient-to-r from-emerald-600 to-teal-600 bg-clip-text text-transparent mb-2">
+              {projectName}
+            </h1>
+            <p className="text-muted-foreground max-w-2xl">
+              {projectDescription}
+            </p>
           </div>
+          <ThemeLanguageToolbar />
         </div>
       </div>
 
@@ -214,6 +213,7 @@ export function ProjectDetail({
                 {projectData.team.map(member => (
                   <div key={member.name} className="flex items-start gap-4 pb-4 border-b last:pb-0 last:border-0">
                     <Avatar className="h-12 w-12 flex-shrink-0">
+                      <AvatarImage src={getRandomAvatarUrl(member.name)} />
                       <AvatarFallback className="bg-gradient-to-br from-emerald-400 to-teal-400 text-white font-bold">
                         {member.name.charAt(0)}
                       </AvatarFallback>

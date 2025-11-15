@@ -9,12 +9,32 @@ import { PlatformFeatures } from '@/components/ui/platform-features';
 import { SquareCarousel } from '@/components/ui/square-carousel';
 import Slideshow from '@/components/ui/slideshow';
 import { useProjects } from '@/lib/hooks/useProjects';
+import { useState, useEffect, useRef } from 'react';
 
 const LandingPage = () => {
   const { login } = useAuth();
   const navigate = useNavigate();
   const { t } = useLanguage();
   const { projects } = useProjects();
+  const [showHeader, setShowHeader] = useState(true);
+  const lastScrollY = useRef(0);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      const currentScrollY = window.scrollY;
+
+      if (currentScrollY < lastScrollY.current || currentScrollY < 100) {
+        setShowHeader(true);
+      } else if (currentScrollY > lastScrollY.current && currentScrollY > 300) {
+        setShowHeader(false);
+      }
+
+      lastScrollY.current = currentScrollY;
+    };
+
+    window.addEventListener('scroll', handleScroll, { passive: true });
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
 
   const handleDemoLogin = () => {
     login();
@@ -26,7 +46,7 @@ const LandingPage = () => {
       {/* Hero Section with Shader Background */}
       <ShaderBackground>
         {/* Navigation Bar - Inside Hero */}
-        <Navbar />
+        <Navbar showNavbar={showHeader} />
 
         <div className="relative w-full flex flex-col flex-1 items-center justify-center px-[clamp(1rem,5vw,4rem)] py-4 xs:py-6 sm:py-8 md:py-12 lg:py-20">
           {/* Background Glow Effects */}
