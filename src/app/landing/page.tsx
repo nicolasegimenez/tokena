@@ -3,16 +3,18 @@ import { Card, CardContent } from '@/components/ui/card';
 import { Link, useNavigate } from 'react-router-dom';
 import { useAuth } from '@/lib/auth';
 import { useLanguage } from '@/lib/language';
-import { HeroParallaxDemo } from '@/components/ui/hero-parallax-demo';
 import { ShaderBackground } from '@/components/ui/hero-shader';
 import { Navbar } from '@/components/ui/navbar';
 import { PlatformFeatures } from '@/components/ui/platform-features';
 import { SquareCarousel } from '@/components/ui/square-carousel';
+import Slideshow from '@/components/ui/slideshow';
+import { useProjects } from '@/lib/hooks/useProjects';
 
 const LandingPage = () => {
   const { login } = useAuth();
   const navigate = useNavigate();
   const { t } = useLanguage();
+  const { projects } = useProjects();
 
   const handleDemoLogin = () => {
     login();
@@ -113,9 +115,31 @@ const LandingPage = () => {
         </div>
       </section>
 
-      {/* Parallax Projects Section */}
+      {/* Projects Slideshow Section */}
       <section className="w-full py-8 md:py-16 lg:py-20 px-[clamp(1rem,5vw,4rem)] bg-muted/40" aria-label="Oportunidades de inversión">
-        <HeroParallaxDemo />
+        <div className="max-w-7xl mx-auto">
+          <div className="text-center mb-12">
+            <h2 className="text-3xl md:text-4xl font-bold tracking-tight mb-4">{t('landing_investment_opportunities') || 'Oportunidades de Inversión'}</h2>
+            <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
+              {t('landing_investment_opportunities_desc') || 'Acceso a proyectos de inversión tokenizados. Participa en grandes oportunidades con pequeñas inversiones.'}
+            </p>
+          </div>
+
+          {projects.length > 0 ? (
+            <Slideshow
+              slides={projects.map((project) => ({
+                img: project.image,
+                title: project.name.es,
+                description: project.description.es.substring(0, 150) + '...',
+                link: `/invest/${project.id}`,
+              }))}
+            />
+          ) : (
+            <div className="text-center py-12">
+              <p className="text-muted-foreground">Cargando proyectos...</p>
+            </div>
+          )}
+        </div>
       </section>
 
       {/* Trust Section - moved earlier for credibility */}

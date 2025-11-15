@@ -136,6 +136,8 @@ const translations: Record<string, Record<string, string>> = {
     landing_cta_desc: 'Probá la plataforma gratis y descubre cómo simplificar tu inversión en activos tokenizados',
     landing_view_analytics: 'Ver analíticas',
     landing_join_investors: 'Únete a más de 10,000 inversores que confían en Investoken',
+    landing_investment_opportunities: 'Oportunidades de Inversión',
+    landing_investment_opportunities_desc: 'Acceso a proyectos de inversión tokenizados. Participa en grandes oportunidades con pequeñas inversiones.',
     // Investments Page
     investments_page_title: 'Mis Inversiones',
     investments_page_desc: 'Gestiona y monitorea tus activos tokenizados',
@@ -279,6 +281,8 @@ const translations: Record<string, Record<string, string>> = {
     landing_cta_desc: 'Try the platform for free and discover how to simplify your tokenized asset investing',
     landing_view_analytics: 'View analytics',
     landing_join_investors: 'Join over 10,000 investors who trust Investoken',
+    landing_investment_opportunities: 'Investment Opportunities',
+    landing_investment_opportunities_desc: 'Access to tokenized investment projects. Participate in great opportunities with small investments.',
     // Investments Page
     investments_page_title: 'My Investments',
     investments_page_desc: 'Manage and monitor your tokenized assets',
