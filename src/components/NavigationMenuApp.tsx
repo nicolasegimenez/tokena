@@ -36,7 +36,10 @@ interface SingleMenuItem {
   titleKey: string;
 }
 
+
+
 const singleMenuItems: SingleMenuItem[] = [
+  { href: "/", titleKey: "Home" },
   { href: "/market", titleKey: "invest" },
   { href: "/trade", titleKey: "trade" },
   { href: "/filantropy", titleKey: "philanthropy" },
