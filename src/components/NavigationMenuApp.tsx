@@ -156,6 +156,14 @@ const NavigationMenuApp = () => {
 
           {/* Desktop Navigation - Larger buttons for accessibility */}
           <div className="hidden lg:flex items-center gap-2">
+            {/* Home button - First item */}
+            <Link to="/">
+              <Button variant="ghost" size="lg" className="text-base font-medium text-foreground hover:text-primary hover:bg-primary/10 active:bg-primary/15 transition-colors rounded-lg h-10">
+                {t("Home")}
+              </Button>
+            </Link>
+
+            {/* Invertir dropdown menu - Second item */}
             <NavigationMenu>
               <NavigationMenuList>
                 <NavigationMenuItem>
@@ -228,7 +236,8 @@ const NavigationMenuApp = () => {
               </NavigationMenuList>
             </NavigationMenu>
 
-            {singleMenuItems.slice(1).map((item: SingleMenuItem) => (
+            {/* Trade and Philanthropy buttons - Remaining items */}
+            {singleMenuItems.slice(2).map((item: SingleMenuItem) => (
               <Link key={item.href} to={item.href}>
                 <Button variant="ghost" size="lg" className="text-base font-medium text-foreground hover:text-primary hover:bg-primary/10 active:bg-primary/15 transition-colors rounded-lg h-10">
                   {t(item.titleKey)}

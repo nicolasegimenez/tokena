@@ -7,6 +7,7 @@ import { Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle } f
 import { Heart, Users, Target, Search } from 'lucide-react'
 import { useLanguage } from '@/lib/language'
 import { useAuth } from '@/lib/auth'
+import SignUpModal from '@/components/SignUpModal'
 
 const philanthropyProjects = [
   {
@@ -164,6 +165,7 @@ export default function PhilanthropyPage() {
   const [showContributeDialog, setShowContributeDialog] = useState(false)
   const [contributionAmount, setContributionAmount] = useState("")
   const [contributionError, setContributionError] = useState("")
+  const [showSignUpModal, setShowSignUpModal] = useState(false)
 
   const t = (key: string) => {
     return labels[language as keyof typeof labels][key as keyof typeof labels.es] || key
@@ -352,10 +354,13 @@ export default function PhilanthropyPage() {
               <CardFooter className="gap-2">
                 <Button
                   className="flex-1 bg-gradient-to-r from-red-600 to-pink-600 hover:from-red-700 hover:to-pink-700"
-                  disabled={!isAuthenticated}
                   onClick={() => {
-                    setSelectedProject(project)
-                    setShowContributeDialog(true)
+                    if (!isAuthenticated) {
+                      setShowSignUpModal(true)
+                    } else {
+                      setSelectedProject(project)
+                      setShowContributeDialog(true)
+                    }
                   }}
                 >
                   {t('contribute')}
@@ -463,10 +468,13 @@ export default function PhilanthropyPage() {
                 <div className="flex gap-2">
                   <Button
                     className="flex-1 bg-gradient-to-r from-red-600 to-pink-600 hover:from-red-700 hover:to-pink-700"
-                    disabled={!isAuthenticated}
                     onClick={() => {
-                      setShowDetailsDialog(false)
-                      setShowContributeDialog(true)
+                      if (!isAuthenticated) {
+                        setShowSignUpModal(true)
+                      } else {
+                        setShowDetailsDialog(false)
+                        setShowContributeDialog(true)
+                      }
                     }}
                   >
                     {t('proceed_to_contribute')}
@@ -598,6 +606,9 @@ export default function PhilanthropyPage() {
           )}
         </DialogContent>
       </Dialog>
+
+      {/* SignUp Modal */}
+      <SignUpModal open={showSignUpModal} onOpenChange={setShowSignUpModal} />
     </div>
   )
 }

@@ -102,11 +102,22 @@ const Feature = ({
   description,
   icon,
   index,
+  type,
   onInfoClick,
 }: FeatureConfig & {
   index: number;
   onInfoClick: () => void;
 }) => {
+  const handleExplore = () => {
+    if (type === 'collections') {
+      window.location.href = '/filantropy';
+    } else if (type === 'p2p') {
+      window.location.href = '/trade';
+    } else {
+      window.location.href = '/market';
+    }
+  };
+
   return (
     <div
       className={cn(
@@ -144,9 +155,7 @@ const Feature = ({
         </Button>
         <Button
           size="sm"
-          onClick={() => {
-            window.location.href = '/market';
-          }}
+          onClick={handleExplore}
           className="bg-emerald-500 hover:bg-emerald-600 text-white h-auto px-3 py-1 font-semibold rounded-md transition-all duration-300 shadow-md hover:shadow-lg"
         >
           Explorar

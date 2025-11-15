@@ -97,9 +97,11 @@ export function FeatureInfoModal({ open, onOpenChange, featureType }: FeatureInf
   const handleExplore = () => {
     onOpenChange(false);
 
-    // P2P se redirige a /trade, el resto a /market con filtros
+    // Rutas específicas según el tipo de feature
     if (featureType === 'p2p') {
       navigate('/trade');
+    } else if (featureType === 'collections') {
+      navigate('/filantropy');
     } else {
       const filters = info.marketplaceFilters;
       const queryParams = new URLSearchParams();
