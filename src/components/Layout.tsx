@@ -10,9 +10,7 @@ export function Layout() {
   return (
     <div>
       {isAuthenticated && <NavigationMenuApp />}
-      <main className="p-4">
-        <Outlet />
-      </main>
+      <Outlet />
       <footer className="text-center p-4">
         <p>© 2025 Tokena. All rights reserved.</p>
       </footer>

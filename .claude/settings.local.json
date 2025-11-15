@@ -16,7 +16,8 @@
       "Bash(find:*)",
       "Bash(mkdir:*)",
       "Bash(bun run build:*)",
-      "Bash(findstr:*)"
+      "Bash(findstr:*)",
+      "Bash(tree:*)"
     ],
     "deny": [],
     "ask": []

@@ -26,7 +26,7 @@ const LandingPage = () => {
         {/* Navigation Bar - Inside Hero */}
         <Navbar />
 
-        <div className="relative w-full flex flex-col flex-1 items-center justify-center px-3 xs:px-4 sm:px-6 md:px-8 lg:px-12 xl:px-16 py-8 xs:py-10 sm:py-12 md:py-16 lg:py-20">
+        <div className="relative w-full flex flex-col flex-1 items-center justify-center px-[clamp(1rem,5vw,4rem)] py-4 xs:py-6 sm:py-8 md:py-12 lg:py-20">
           {/* Background Glow Effects */}
           <div className="absolute inset-0 -top-20 -right-20 w-96 h-96 bg-gradient-to-br from-cyan-500/15 to-blue-500/10 rounded-full blur-3xl pointer-events-none"></div>
           <div className="absolute inset-0 bottom-0 -right-48 w-96 h-96 bg-gradient-to-tl from-pink-500/10 to-transparent rounded-full blur-3xl pointer-events-none"></div>
@@ -107,19 +107,19 @@ const LandingPage = () => {
       </ShaderBackground>
 
       {/* Platform Features Section */}
-      <section id="features" className="py-20 w-full px-3 xs:px-4 sm:px-6 md:px-8 lg:px-12 xl:px-16 bg-gradient-to-b from-background to-muted/20" aria-label="Características de la plataforma">
+      <section id="features" className="py-10 lg:py-20 w-full px-[clamp(1rem,5vw,4rem)] bg-gradient-to-b from-background to-muted/20" aria-label="Características de la plataforma">
         <div className="max-w-7xl mx-auto">
           <PlatformFeatures />
         </div>
       </section>
 
       {/* Parallax Projects Section */}
-      <section className="w-full py-12 md:py-20 px-3 xs:px-4 sm:px-6 md:px-8 lg:px-12 xl:px-16 bg-muted/40" aria-label="Oportunidades de inversión">
+      <section className="w-full py-8 md:py-16 lg:py-20 px-[clamp(1rem,5vw,4rem)] bg-muted/40" aria-label="Oportunidades de inversión">
         <HeroParallaxDemo />
       </section>
 
       {/* Trust Section - moved earlier for credibility */}
-      <section id="trust" className="py-20 w-full px-3 xs:px-4 sm:px-6 md:px-8 lg:px-12 xl:px-16 bg-gradient-to-b from-background to-muted/30" aria-label="Confianza y cumplimiento">
+      <section id="trust" className="py-10 lg:py-20 w-full px-[clamp(1rem,5vw,4rem)] bg-gradient-to-b from-background to-muted/30" aria-label="Confianza y cumplimiento">
         <div className="max-w-6xl mx-auto">
           <Card className="border-2">
             <CardContent className="pt-12 pb-12">
@@ -167,7 +167,7 @@ const LandingPage = () => {
       </section>
 
       {/* Carousel Section */}
-      <section className="py-20 md:py-32 w-full px-3 xs:px-4 sm:px-6 md:px-8 lg:px-12 xl:px-16 bg-gradient-to-b from-background to-muted/20" aria-label="Galería de inversión">
+      <section className="py-12 md:py-24 lg:py-32 w-full px-[clamp(1rem,5vw,4rem)] bg-gradient-to-b from-background to-muted/20" aria-label="Galería de inversión">
         <SquareCarousel
           images={[
             {
@@ -192,7 +192,7 @@ const LandingPage = () => {
 
 
       {/* SEO Content Section */}
-      <section className="py-20 w-full px-3 xs:px-4 sm:px-6 md:px-8 lg:px-12 xl:px-16 bg-gradient-to-b from-transparent to-primary/5" aria-label="Inversión tokenizada SEO">
+      <section className="py-10 lg:py-20 w-full px-[clamp(1rem,5vw,4rem)] bg-gradient-to-b from-transparent to-primary/5" aria-label="Inversión tokenizada SEO">
         <div className="max-w-6xl mx-auto text-center">
           <h2 className="text-4xl md:text-5xl font-bold tracking-tight mb-6 md:mb-8">{t('landing_tokenized_assets')}</h2>
           <p className="text-base md:text-lg text-foreground/80 max-w-3xl mx-auto leading-relaxed">
@@ -202,7 +202,7 @@ const LandingPage = () => {
       </section>
 
       {/* FAQ Section */}
-      <section id="faq" className="py-20 w-full px-3 xs:px-4 sm:px-6 md:px-8 lg:px-12 xl:px-16 bg-gradient-to-b from-primary/5 to-transparent" aria-label="Preguntas frecuentes">
+      <section id="faq" className="py-10 lg:py-20 w-full px-[clamp(1rem,5vw,4rem)] bg-gradient-to-b from-primary/5 to-transparent" aria-label="Preguntas frecuentes">
         <div className="max-w-4xl mx-auto">
           <div className="text-center mb-16 md:mb-20">
             <h2 className="text-4xl md:text-5xl font-bold tracking-tight mb-6 md:mb-8">{t('landing_faq_title')}</h2>
@@ -262,7 +262,7 @@ const LandingPage = () => {
       </section>
 
       {/* Final CTA */}
-      <section className="py-24 md:py-32 w-full px-3 xs:px-4 sm:px-6 md:px-8 lg:px-12 xl:px-16" aria-label="Llamado a la acción final">
+      <section className="py-12 md:py-24 lg:py-32 w-full px-[clamp(1rem,5vw,4rem)]" aria-label="Llamado a la acción final">
         <div className="max-w-5xl mx-auto">
           <Card className="border-2 border-primary/40 bg-gradient-to-br from-primary/10 via-primary/5 to-background shadow-lg">
             <CardContent className="pt-20 pb-20 md:pt-24 md:pb-24 text-center">
