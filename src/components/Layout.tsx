@@ -12,7 +12,7 @@ export function Layout() {
       {isAuthenticated && <NavigationMenuApp />}
       <Outlet />
       <footer className="text-center p-4">
-        <p>© 2025 Tokena. All rights reserved.</p>
+        <p>© 2025 Investoken. All rights reserved.</p>
       </footer>
       <WhatsAppButton />
     </div>
