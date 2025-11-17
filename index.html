@@ -1,13 +1,66 @@
 <!doctype html>
-<html lang="en">
+<html lang="es">
   <head>
     <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover, maximum-scale=5.0, user-scalable=yes" />
+    <meta name="description" content="Plataforma de inversión en activos tokenizados. Invierte en real estate, criptomonedas, agricultura, ganadería, startups y más." />
+    <meta name="keywords" content="inversión, tokenización, activos, crypto, real estate, crowfunding" />
+    <meta name="theme-color" content="#059669" />
+    <meta name="msapplication-TileColor" content="#059669" />
+    <meta name="msapplication-config" content="/browserconfig.xml" />
+
+    <!-- PWA Meta Tags -->
+    <meta name="application-name" content="Investoken" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+    <meta name="apple-mobile-web-app-title" content="Investoken" />
+    <meta name="format-detection" content="telephone=no" />
+
+    <!-- Open Graph -->
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="Investoken - Plataforma de Inversión Tokenizada" />
+    <meta property="og:description" content="Invierte en activos tokenizados con Investoken" />
+    <meta property="og:url" content="https://investoken.com" />
+
+    <!-- Icons -->
     <link rel="icon" type="image/svg+xml" href="https://res.cloudinary.com/dhacybdxf/image/upload/v1762901050/Investoken/investoken_solo_logo_oficial_azul_y_blanco_jdbnpk.svg" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="apple-touch-icon" href="https://res.cloudinary.com/dhacybdxf/image/upload/v1762901050/Investoken/investoken_solo_logo_oficial_azul_y_blanco_jdbnpk.svg" />
+    <link rel="manifest" href="/manifest.json" />
+
+    <!-- Font Preloading -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" crossorigin>
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="preconnect" href="https://res.cloudinary.com" crossorigin>
+    <link rel="dns-prefetch" href="https://api.example.com" />
+
+    <!-- Performance Optimizations -->
+    <meta http-equiv="x-ua-compatible" content="IE=edge" />
+    <link rel="prefetch" href="/src/main.tsx" />
+
     <title>Investoken</title>
+
+    <!-- Styles will be injected here by Vite -->
   </head>
-  <body style="margin: 0; padding: 0; background-color: #0a0e27;">
-    <div id="root" class="h-screen"></div>
+  <body style="margin: 0; padding: 0; background-color: #0a0e27; overflow-x: hidden;">
+    <div id="root" class="h-screen min-h-screen flex flex-col"></div>
+    <noscript>
+      <div style="display: flex; align-items: center; justify-content: center; height: 100vh; background-color: #0a0e27; color: white; font-family: system-ui, -apple-system, sans-serif; text-align: center;">
+        <div>
+          <h1>JavaScript Requerido</h1>
+          <p>Esta aplicación requiere JavaScript habilitado para funcionar correctamente.</p>
+        </div>
+      </div>
+    </noscript>
     <script type="module" src="/src/main.tsx"></script>
+    <!-- Service Worker Registration -->
+    <script>
+      if ('serviceWorker' in navigator) {
+        window.addEventListener('load', () => {
+          navigator.serviceWorker.register('/sw.js', { scope: '/' })
+            .then(registration => console.log('SW Registered:', registration))
+            .catch(error => console.log('SW Registration failed:', error));
+        });
+      }
+    </script>
   </body>
 </html>

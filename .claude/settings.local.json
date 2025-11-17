@@ -19,7 +19,12 @@
       "Bash(findstr:*)",
       "Bash(tree:*)",
       "Bash(npm run build:*)",
-      "Bash(grep:*)"
+      "Bash(grep:*)",
+      "Bash(cat:*)",
+      "Bash(bunx shadcn-ui@latest add:*)",
+      "Bash(bunx shadcn@latest add:*)",
+      "Bash(pkill:*)",
+      "Bash(git -C \"d:\\Proyecto\\tokena\" status)"
     ],
     "deny": [],
     "ask": []

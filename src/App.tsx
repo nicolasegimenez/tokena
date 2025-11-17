@@ -1,5 +1,6 @@
 import { Suspense, lazy } from 'react'
 import './App.css'
+import '@/styles/responsive.css'
 import { Routes, Route } from "react-router-dom"
 import { ThemeProvider } from "@/components/theme-provider"
 import { Layout } from "@/components/Layout"
