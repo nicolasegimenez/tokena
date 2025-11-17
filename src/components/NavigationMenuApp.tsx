@@ -173,6 +173,16 @@ const NavigationMenuApp = () => {
                     <ul className="grid w-[300px] gap-4">
                       <li>
                         <NavigationMenuLink asChild>
+                          <Link to="/auctions">
+                            <div className="text-sm leading-none font-medium">Subastas Tokenizadas</div>
+                            <p className="text-muted-foreground line-clamp-2 text-sm leading-snug">
+                              Invierte en subastas de activos reales
+                            </p>
+                          </Link>
+                        </NavigationMenuLink>
+                      </li>
+                      <li>
+                        <NavigationMenuLink asChild>
                           <Link to="/market?category=crowfunding">
                             <div className="text-sm leading-none font-medium">Crowfunding</div>
                             <p className="text-muted-foreground line-clamp-2 text-sm leading-snug">

@@ -462,15 +462,6 @@ export default function AuctionsPage() {
               </CardHeader>
 
               <CardContent className="space-y-4 flex-grow">
-                {/* Return Badge */}
-                <div className="bg-gradient-to-r from-emerald-50 to-teal-50 dark:from-emerald-950/30 dark:to-teal-950/30 rounded-lg p-3 border border-emerald-200/30 dark:border-emerald-800/30">
-                  <p className="text-xs text-muted-foreground mb-1">{t('expected_return')}</p>
-                  <p className="font-bold text-lg text-emerald-600 dark:text-emerald-400 flex items-center gap-1">
-                    <TrendingUp className="h-4 w-4" />
-                    {auction.expectedReturn.toFixed(1)}%
-                  </p>
-                </div>
-
                 {/* Investment Info */}
                 <div className="grid grid-cols-2 gap-3 text-sm">
                   <div>
@@ -478,19 +469,15 @@ export default function AuctionsPage() {
                     <p className="font-semibold text-blue-600">${auction.tokenPrice}</p>
                   </div>
                   <div>
-                    <p className="text-muted-foreground text-xs">{t('tokens_available')}</p>
-                    <p className="font-semibold">{auction.tokensAvailable.toLocaleString()}</p>
-                  </div>
-                  <div>
-                    <p className="text-muted-foreground text-xs">{t('current_bid')}</p>
-                    <p className="font-semibold text-blue-600">${auction.currentBid.toLocaleString()}</p>
-                  </div>
-                  <div>
                     <p className="text-muted-foreground text-xs">{t('investors')}</p>
                     <p className="font-semibold flex items-center gap-1">
                       <Users className="h-3 w-3 text-blue-600" />
                       {auction.buyerCount.toLocaleString()}
                     </p>
+                  </div>
+                  <div className="col-span-2">
+                    <p className="text-muted-foreground text-xs mb-1">{t('current_bid')}</p>
+                    <p className="font-bold text-lg text-blue-600">{Math.round(auction.currentBid / auction.tokenPrice)} {auction.tokenName}</p>
                   </div>
                 </div>
 

@@ -103,8 +103,8 @@ const LandingPage = () => {
                 asChild
                 className="px-4 xs:px-6 sm:px-8 py-2.5 xs:py-3 sm:py-4 rounded-full bg-transparent border-2 border-white/40 text-white font-semibold text-xs xs:text-sm sm:text-base transition-all duration-300 hover:bg-white/10 hover:border-white/60 hover:shadow-lg hover:shadow-white/10"
               >
-                <Link to="/market">
-                  {t('landing_explore_market') || 'Explorar mercado'}
+                <Link to="/auctions">
+                  {t('landing_explore_market') || 'Explorar subastas'}
                 </Link>
               </Button>
             </div>
@@ -319,8 +319,8 @@ const LandingPage = () => {
                   {t('landing_demo_login')}
                 </Button>
                 <Button asChild variant="outline" size="lg" className="text-lg px-12 py-7 h-auto border-2">
-                  <Link to="/analytics" aria-label={t('landing_view_analytics')}>
-                    {t('landing_view_analytics')}
+                  <Link to="/auctions" aria-label="Ver subastas">
+                    Ver subastas
                   </Link>
                 </Button>
               </div>
