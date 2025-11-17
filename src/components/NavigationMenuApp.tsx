@@ -43,6 +43,7 @@ const singleMenuItems: SingleMenuItem[] = [
   { href: "/market", titleKey: "invest" },
   { href: "/trade", titleKey: "trade" },
   { href: "/filantropy", titleKey: "philanthropy" },
+  { href: "/billing", titleKey: "billing" },
 ];
 
 const LanguageSwitcher = () => {
