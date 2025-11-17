@@ -1,6 +1,6 @@
 import { useState, useMemo, useEffect, useRef } from 'react';
 import { Link, useLocation } from 'react-router-dom';
-import { Card, CardHeader, CardTitle, CardContent, CardFooter, CardDescription } from "@/components/ui/card";
+import { Card, CardTitle, CardContent, CardFooter } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
@@ -11,6 +11,8 @@ import { useLanguage } from '@/lib/language';
 import { marketProjects } from '@/lib/market-data';
 import { Badge } from '@/components/ui/badge';
 import { P2PTradeDialog } from '@/components/P2PTradeDialog';
+import { SectionCard } from '@/components/SectionCard';
+import { cn } from "@/lib/utils";
 
 const myTokens = [
   { id: 't1', projectName: 'Eco-Friendly Housing', tokenSymbol: 'ECOH', quantity: 200, availableToSell: 150, image: 'https://res.cloudinary.com/dhacybdxf/image/upload/v1762299810/edificio_qhi0ri.png' },
@@ -71,77 +73,98 @@ const getPaymentMethodVariant = (method: string): "default" | "secondary" | "des
   }
 };
 
-// --- Componente de Tarjeta de Listado ---
+// --- Componente de Tarjeta de Listado Premium ---
 function ListingCard({ listing, onBuyClick }: { listing: Listing, onBuyClick: (listing: Listing) => void }) {
   const { t } = useLanguage();
   const Icon = categoryIcons[listing.category] || Building2;
 
   return (
-    <Card className="group overflow-hidden hover:shadow-2xl transition-all duration-300 hover:-translate-y-1 border-2 hover:border-emerald-200 dark:hover:border-emerald-800 flex flex-col">
-      {/* Image with Overlay */}
-      <div className="relative h-48 overflow-hidden">
+    <Card className={cn(
+      "group overflow-hidden transition-all duration-300",
+      "hover:shadow-2xl hover:-translate-y-2 border-2",
+      "flex flex-col h-full",
+      "border-slate-200 dark:border-slate-700 hover:border-emerald-400 dark:hover:border-emerald-600"
+    )}>
+      {/* Image with Premium Overlay */}
+      <div className="relative h-56 overflow-hidden bg-gradient-to-br from-slate-100 to-slate-200 dark:from-slate-800 dark:to-slate-900">
         <img
           src={listing.image}
           alt={listing.projectName}
           className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
         />
-        <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/20 to-transparent" />
+        <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent" />
 
-        {/* Category Badge with Icon */}
-        <div className="absolute bottom-4 left-4 flex items-center gap-2">
-          <div className="bg-white/90 dark:bg-slate-900/90 backdrop-blur-sm rounded-full p-2">
-            <Icon className="h-5 w-5 text-emerald-600" />
-          </div>
-          <Badge variant="secondary" className="bg-white/90 dark:bg-slate-900/90 backdrop-blur-sm">
+        {/* Category Badge */}
+        <div className="absolute top-4 right-4">
+          <Badge className="bg-gradient-to-r from-emerald-600 to-teal-600 text-white shadow-lg">
+            <Icon className="w-3 h-3 mr-1" />
             {listing.category}
           </Badge>
         </div>
+
+        {/* Seller Info */}
+        <div className="absolute bottom-4 left-4 bg-white/95 dark:bg-slate-900/95 backdrop-blur-md rounded-lg px-3 py-2">
+          <p className="text-xs font-semibold text-emerald-600 dark:text-emerald-400">{listing.seller}</p>
+        </div>
       </div>
 
-      <CardContent className="p-4 flex-grow">
-        <CardTitle className="text-lg font-bold mb-2 truncate group-hover:text-emerald-600 transition-colors">
-          {listing.projectName}
-        </CardTitle>
-        <CardDescription className="flex items-center gap-2 text-sm text-muted-foreground mb-4">
-          <Tag className="w-4 h-4" /> {listing.tokenSymbol}
-        </CardDescription>
-
-        {/* Price Display */}
-        <div className="bg-gradient-to-br from-emerald-50 to-teal-50 dark:from-emerald-950 dark:to-teal-950 rounded-lg p-3 mb-4 text-center">
-          <p className="text-xs text-muted-foreground mb-1">Precio por Token</p>
-          <p className="text-2xl font-extrabold text-emerald-600">${listing.pricePerToken}</p>
+      <CardContent className="p-5 flex-grow flex flex-col gap-4">
+        {/* Title & Symbol */}
+        <div>
+          <CardTitle className="text-base font-bold line-clamp-2 group-hover:text-emerald-600 dark:group-hover:text-emerald-400 transition-colors">
+            {listing.projectName}
+          </CardTitle>
+          <div className="flex items-center gap-2 mt-2">
+            <Badge variant="outline" className="bg-emerald-50 dark:bg-emerald-950/30 text-emerald-700 dark:text-emerald-300 border-emerald-200 dark:border-emerald-800">
+              {listing.tokenSymbol}
+            </Badge>
+            <span className="text-xs text-muted-foreground">{listing.quantity} tokens</span>
+          </div>
         </div>
 
-        {/* Stats Grid */}
-        <div className="grid grid-cols-2 gap-2 mb-4">
-          <div>
-            <p className="text-xs text-muted-foreground">Disponibles</p>
-            <p className="text-sm font-semibold">{listing.quantity}</p>
+        {/* Price Highlight */}
+        <div className="bg-gradient-to-br from-emerald-50 to-teal-50 dark:from-emerald-950/40 dark:to-teal-950/40 rounded-lg p-4 border border-emerald-200/50 dark:border-emerald-800/50">
+          <p className="text-xs text-muted-foreground font-medium mb-1">Precio por Token</p>
+          <div className="flex items-baseline gap-2">
+            <span className="text-3xl font-bold text-emerald-600 dark:text-emerald-400">${listing.pricePerToken}</span>
+            <span className="text-xs text-muted-foreground">USD</span>
           </div>
-          <div>
-            <p className="text-xs text-muted-foreground">Período</p>
-            <p className="text-sm font-semibold truncate">{listing.totalDuration}</p>
+        </div>
+
+        {/* Key Metrics */}
+        <div className="grid grid-cols-2 gap-3">
+          <div className="bg-slate-50 dark:bg-slate-800/50 rounded-lg p-3 border border-slate-200 dark:border-slate-700">
+            <p className="text-xs text-muted-foreground font-medium">Disponibles</p>
+            <p className="text-lg font-bold text-slate-900 dark:text-white">{listing.quantity}</p>
+          </div>
+          <div className="bg-slate-50 dark:bg-slate-800/50 rounded-lg p-3 border border-slate-200 dark:border-slate-700">
+            <p className="text-xs text-muted-foreground font-medium">Duración</p>
+            <p className="text-lg font-bold text-slate-900 dark:text-white">{listing.totalDuration}</p>
           </div>
         </div>
 
         {/* Payment Methods */}
-        <div className="flex flex-wrap gap-1">
-          {listing.paymentMethods.map(method => (
-            <Badge key={method} variant={getPaymentMethodVariant(method)} className="text-xs">
-              {method}
-            </Badge>
-          ))}
+        <div className="space-y-2">
+          <p className="text-xs font-semibold text-muted-foreground">Métodos de pago</p>
+          <div className="flex flex-wrap gap-2">
+            {listing.paymentMethods.map(method => (
+              <Badge key={method} variant={getPaymentMethodVariant(method)} className="text-xs font-medium">
+                {method}
+              </Badge>
+            ))}
+          </div>
         </div>
       </CardContent>
 
+      {/* Actions */}
       <CardFooter className="p-4 pt-0 mt-auto gap-2 grid grid-cols-2">
         <Button
-          className="w-full bg-gradient-to-r from-emerald-600 to-teal-600 hover:from-emerald-700 hover:to-teal-700"
+          className="w-full bg-gradient-to-r from-emerald-600 to-teal-600 hover:from-emerald-700 hover:to-teal-700 text-white font-semibold shadow-md hover:shadow-lg transition-all"
           onClick={() => onBuyClick(listing)}
         >
           {t('buy_now')}
         </Button>
-        <Button asChild variant="outline" className="w-full">
+        <Button asChild variant="outline" className="w-full border-emerald-300 dark:border-emerald-800 hover:bg-emerald-50 dark:hover:bg-emerald-950/30">
           <Link to={listing.marketUrl}>{t('more_info')}</Link>
         </Button>
       </CardFooter>
@@ -248,157 +271,176 @@ export default function TradePage() {
         listing={selectedListing}
       />
 
-      {/* Enhanced Header with Smart Scroll Behavior */}
-      <div className={`border-b bg-white/50 dark:bg-slate-900/50 backdrop-blur-xl sticky top-0 z-40 transition-all duration-300 ease-in-out transform ${
+      {/* Premium Header */}
+      <div className={`border-b bg-gradient-to-r from-white/80 to-white/50 dark:from-slate-900/80 dark:to-slate-800/50 backdrop-blur-xl sticky top-0 z-40 transition-all duration-300 ease-in-out transform shadow-sm ${
         showHeader ? 'translate-y-0 opacity-100' : '-translate-y-full opacity-0 pointer-events-none'
       }`}>
-        <div className="container mx-auto px-4 py-6">
-          <div className="flex items-center justify-between mb-4">
+        <div className="container mx-auto px-4 py-5">
+          <div className="flex items-center justify-between">
             <div>
-              <h1 className="text-4xl font-bold bg-gradient-to-r from-emerald-600 to-teal-600 bg-clip-text text-transparent">
+              <h1 className="text-3xl font-bold bg-gradient-to-r from-emerald-600 to-teal-600 bg-clip-text text-transparent">
                 {t('p2p_market')}
               </h1>
-              <p className="text-muted-foreground mt-2">{t('trade_security_tokens')}</p>
+              <p className="text-sm text-muted-foreground mt-1">{t('trade_security_tokens')}</p>
             </div>
-            <Badge variant="secondary" className="text-sm px-4 py-2">
-              {filteredListings.length} Listados
+            <Badge className="bg-gradient-to-r from-emerald-600 to-teal-600 text-white px-4 py-2 text-sm">
+              {filteredListings.length} {filteredListings.length === 1 ? 'Listado' : 'Listados'}
             </Badge>
           </div>
         </div>
       </div>
 
-      <div className="container mx-auto px-4 py-8">
+      <div className="container mx-auto px-4 py-12">
         <div className="grid grid-cols-1 lg:grid-cols-4 gap-8">
-        {/* --- Sidebar de Filtros --- */}
-        <aside className="lg:col-span-1">
-          {/* Mobile Filter Toggle */}
-          <div className="lg:hidden mb-4">
-            <Button
-              variant="outline"
-              className="w-full flex items-center justify-center gap-2"
-              onClick={() => setShowMobileFilters(!showMobileFilters)}
-            >
-              <Filter className="h-4 w-4" />
-              {showMobileFilters ? 'Ocultar Filtros' : 'Mostrar Filtros'}
-            </Button>
-          </div>
-
-          {/* Active Filters Display */}
-          {(selectedCategory !== "all" || sortBy !== "price-asc") && (
-            <div className="flex flex-wrap gap-2 items-center mb-4 lg:hidden">
-              {selectedCategory !== "all" && (
-                <Badge variant="secondary" className="text-xs">
-                  {selectedCategory}
-                </Badge>
-              )}
-              {sortBy !== "price-asc" && (
-                <Badge variant="secondary" className="text-xs">
-                  {sortBy === "price-desc" ? "Precio ↓" : "Más nuevo"}
-                </Badge>
-              )}
-            </div>
-          )}
-
-          {/* Filter Card - Collapsible on Mobile */}
-          <Card className={`transition-all duration-300 overflow-hidden ${
-            showMobileFilters ? 'max-h-96 opacity-100' : 'lg:max-h-96 lg:opacity-100 max-h-0 opacity-0 lg:pointer-events-auto pointer-events-none'
-          }`}>
-            <CardHeader>
-              <CardTitle className="text-xl">{t('filters')}</CardTitle>
-            </CardHeader>
-            <CardContent className="grid gap-6">
-              <div className="relative">
-                <Search className="absolute left-3 top-1/2 -translate-y-1/2 h-5 w-5 text-muted-foreground pointer-events-none" />
-                <Input
-                  placeholder={t('search_by_name')}
-                  className="pl-10"
-                  value={searchTerm}
-                  onChange={(e) => setSearchTerm(e.target.value)}
-                />
-              </div>
-              <div className="grid gap-2">
-                <Label>{t('category')}</Label>
-                <Select value={selectedCategory} onValueChange={setSelectedCategory}>
-                  <SelectTrigger className="w-full truncate">
-                    <SelectValue placeholder={t('all_categories')} />
-                  </SelectTrigger>
-                  <SelectContent>
-                    <SelectItem value="all">{t('all_categories')}</SelectItem>
-                    <SelectItem value="real-estate">{t('real_estate')}</SelectItem>
-                    <SelectItem value="energy">{t('energy')}</SelectItem>
-                    <SelectItem value="venture-capital">{t('venture_capital')}</SelectItem>
-                    <SelectItem value="crypto">{t('crypto')}</SelectItem>
-                    <SelectItem value="collectibles">{t('collectibles')}</SelectItem>
-                  </SelectContent>
-                </Select>
-              </div>
-              <div className="grid gap-2">
-                <Label>{t('sort_by')}</Label>
-                <Select value={sortBy} onValueChange={setSortBy}>
-                  <SelectTrigger className="w-full truncate">
-                    <SelectValue placeholder={t('price_asc')} />
-                  </SelectTrigger>
-                  <SelectContent>
-                    <SelectItem value="price-asc">{t('price_asc')}</SelectItem>
-                    <SelectItem value="price-desc">{t('price_desc')}</SelectItem>
-                    <SelectItem value="newest">{t('newest')}</SelectItem>
-                  </SelectContent>
-                </Select>
-              </div>
+          {/* --- Sidebar de Filtros Premium --- */}
+          <aside className="lg:col-span-1">
+            {/* Mobile Filter Toggle */}
+            <div className="lg:hidden mb-4">
               <Button
-                variant="secondary"
-                onClick={() => {
-                  setSearchTerm('');
-                  setSelectedCategory('all');
-                  setSortBy('price-asc');
-                  setShowMobileFilters(false);
-                }}
+                variant="outline"
+                className="w-full flex items-center justify-center gap-2 border-2 hover:border-emerald-400 dark:hover:border-emerald-600"
+                onClick={() => setShowMobileFilters(!showMobileFilters)}
               >
-                {t('clear_filters')}
+                <Filter className="h-4 w-4" />
+                {showMobileFilters ? 'Ocultar Filtros' : 'Mostrar Filtros'}
               </Button>
-            </CardContent>
-          </Card>
-        </aside>
+            </div>
 
-        {/* --- Contenido Principal (Tabs) --- */}
-        <main className="lg:col-span-3">
-          <Tabs value={activeTab} onValueChange={setActiveTab} className="w-full">
-            <TabsList className="grid w-full grid-cols-2 mb-6">
-              <TabsTrigger value="buy">{t('buy_tokens')}</TabsTrigger>
-              <TabsTrigger value="sell">{t('sell_my_tokens')}</TabsTrigger>
-            </TabsList>
-
-            {/* --- Tab de Comprar --- */}
-            <TabsContent value="buy">
-              <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-6">
-                {filteredListings.map((listing) => (
-                  <ListingCard key={listing.id} listing={listing} onBuyClick={handleBuyClick} />
-                ))}
+            {/* Active Filters Display */}
+            {(selectedCategory !== "all" || sortBy !== "price-asc") && (
+              <div className="flex flex-wrap gap-2 items-center mb-4 lg:hidden">
+                {selectedCategory !== "all" && (
+                  <Badge variant="secondary" className="text-xs">
+                    {selectedCategory}
+                  </Badge>
+                )}
+                {sortBy !== "price-asc" && (
+                  <Badge variant="secondary" className="text-xs">
+                    {sortBy === "price-desc" ? "Precio ↓" : "Más nuevo"}
+                  </Badge>
+                )}
               </div>
-            </TabsContent>
+            )}
 
-            {/* --- Tab de Vender --- */}
-            <TabsContent value="sell">
-              <Card className="border-2 hover:border-emerald-200 dark:hover:border-emerald-800">
-                <CardHeader className="bg-gradient-to-r from-emerald-50 to-teal-50 dark:from-emerald-950 dark:to-teal-950">
-                  <CardTitle className="text-2xl">{t('create_sell_offer')}</CardTitle>
-                  <CardDescription>{t('publish_your_tokens')}</CardDescription>
-                </CardHeader>
-                <CardContent className="pt-6">
-                  <form onSubmit={handleSellSubmit} className="grid gap-6">
-                    <div className="grid gap-2">
+            {/* Filter Card - Premium Styling */}
+            <SectionCard
+              title={t('filters')}
+              description="Refina tu búsqueda"
+              collapsible={false}
+              className={`transition-all duration-300 overflow-hidden ${
+                showMobileFilters ? 'max-h-full opacity-100' : 'lg:max-h-full lg:opacity-100 max-h-0 opacity-0 lg:pointer-events-auto pointer-events-none'
+              }`}
+            >
+              <div className="space-y-5">
+                <div className="relative">
+                  <Search className="absolute left-3 top-1/2 -translate-y-1/2 h-5 w-5 text-muted-foreground pointer-events-none" />
+                  <Input
+                    placeholder={t('search_by_name')}
+                    className="pl-10 border-2 focus-visible:border-emerald-400"
+                    value={searchTerm}
+                    onChange={(e) => setSearchTerm(e.target.value)}
+                  />
+                </div>
+
+                <div className="grid gap-3">
+                  <Label className="font-semibold">{t('category')}</Label>
+                  <Select value={selectedCategory} onValueChange={setSelectedCategory}>
+                    <SelectTrigger className="border-2 h-10">
+                      <SelectValue placeholder={t('all_categories')} />
+                    </SelectTrigger>
+                    <SelectContent>
+                      <SelectItem value="all">{t('all_categories')}</SelectItem>
+                      <SelectItem value="real-estate">{t('real_estate')}</SelectItem>
+                      <SelectItem value="energy">{t('energy')}</SelectItem>
+                      <SelectItem value="venture-capital">{t('venture_capital')}</SelectItem>
+                      <SelectItem value="crypto">{t('crypto')}</SelectItem>
+                      <SelectItem value="collectibles">{t('collectibles')}</SelectItem>
+                    </SelectContent>
+                  </Select>
+                </div>
+
+                <div className="grid gap-3">
+                  <Label className="font-semibold">{t('sort_by')}</Label>
+                  <Select value={sortBy} onValueChange={setSortBy}>
+                    <SelectTrigger className="border-2 h-10">
+                      <SelectValue placeholder={t('price_asc')} />
+                    </SelectTrigger>
+                    <SelectContent>
+                      <SelectItem value="price-asc">{t('price_asc')}</SelectItem>
+                      <SelectItem value="price-desc">{t('price_desc')}</SelectItem>
+                      <SelectItem value="newest">{t('newest')}</SelectItem>
+                    </SelectContent>
+                  </Select>
+                </div>
+
+                <Button
+                  onClick={() => {
+                    setSearchTerm('');
+                    setSelectedCategory('all');
+                    setSortBy('price-asc');
+                    setShowMobileFilters(false);
+                  }}
+                  variant="outline"
+                  className="w-full border-2"
+                >
+                  {t('clear_filters')}
+                </Button>
+              </div>
+            </SectionCard>
+          </aside>
+
+          {/* --- Contenido Principal (Tabs) --- */}
+          <main className="lg:col-span-3">
+            <Tabs value={activeTab} onValueChange={setActiveTab} className="w-full">
+              <TabsList className="grid w-full grid-cols-2 mb-8 bg-slate-100 dark:bg-slate-800 p-1 rounded-lg">
+                <TabsTrigger value="buy" className="data-[state=active]:bg-white dark:data-[state=active]:bg-slate-900 data-[state=active]:shadow-sm rounded-md transition-all">
+                  {t('buy_tokens')}
+                </TabsTrigger>
+                <TabsTrigger value="sell" className="data-[state=active]:bg-white dark:data-[state=active]:bg-slate-900 data-[state=active]:shadow-sm rounded-md transition-all">
+                  {t('sell_my_tokens')}
+                </TabsTrigger>
+              </TabsList>
+
+              {/* --- Tab de Comprar --- */}
+              <TabsContent value="buy">
+                {filteredListings.length > 0 ? (
+                  <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-6">
+                    {filteredListings.map((listing) => (
+                      <ListingCard key={listing.id} listing={listing} onBuyClick={handleBuyClick} />
+                    ))}
+                  </div>
+                ) : (
+                  <Card className="border-2 border-dashed">
+                    <CardContent className="p-12 text-center">
+                      <Search className="w-12 h-12 text-muted-foreground mx-auto mb-4 opacity-50" />
+                      <h3 className="text-xl font-semibold text-slate-900 dark:text-white mb-2">No se encontraron resultados</h3>
+                      <p className="text-muted-foreground">Intenta ajustar tus filtros de búsqueda</p>
+                    </CardContent>
+                  </Card>
+                )}
+              </TabsContent>
+
+              {/* --- Tab de Vender --- */}
+              <TabsContent value="sell">
+                <SectionCard
+                  title={t('create_sell_offer')}
+                  description={t('publish_your_tokens')}
+                  highlight
+                >
+                  <form onSubmit={handleSellSubmit} className="space-y-6">
+                    <div className="space-y-3">
                       <Label htmlFor="tokenToSell" className="text-base font-semibold">{t('token_to_sell')}</Label>
                       <Select onValueChange={setSelectedTokenToSell} value={selectedTokenToSell}>
-                        <SelectTrigger id="tokenToSell" className="h-11">
+                        <SelectTrigger id="tokenToSell" className="h-11 border-2">
                           <SelectValue placeholder={t('select_from_portfolio')} />
                         </SelectTrigger>
                         <SelectContent>
                           {myTokens.map(token => (
                             <SelectItem key={token.id} value={token.tokenSymbol}>
                               <div className="flex items-center gap-3">
-                                <img src={token.image} className="w-8 h-8 object-cover rounded-md"/>
-                                <div>
-                                  <p>{token.projectName} ({token.tokenSymbol})</p>
+                                <img src={token.image} className="w-6 h-6 object-cover rounded"/>
+                                <div className="text-sm">
+                                  <p className="font-medium">{token.projectName}</p>
                                   <p className="text-xs text-muted-foreground">{token.availableToSell} {t('available_to_sell')}</p>
                                 </div>
                               </div>
@@ -410,27 +452,29 @@ export default function TradePage() {
 
                     {/* Summary Card */}
                     {selectedTokenToSell && (
-                      <div className="bg-gradient-to-br from-emerald-50 to-teal-50 dark:from-emerald-950 dark:to-teal-950 rounded-lg p-4 border border-emerald-200 dark:border-emerald-800">
-                        <p className="text-sm text-muted-foreground mb-2">Resumen de la oferta</p>
-                        <div className="grid grid-cols-2 gap-4">
-                          <div>
-                            <p className="text-xs text-muted-foreground">Total a recibir</p>
-                            <p className="text-lg font-bold text-emerald-600">
-                              ${(parseInt(sellQuantity) * parseFloat(sellPrice) || 0).toFixed(2)}
-                            </p>
+                      <Card className="bg-gradient-to-br from-emerald-50 to-teal-50 dark:from-emerald-950/40 dark:to-teal-950/40 border-emerald-200 dark:border-emerald-800/50">
+                        <CardContent className="pt-6">
+                          <p className="text-sm font-semibold text-emerald-900 dark:text-emerald-100 mb-4">Resumen de la oferta</p>
+                          <div className="grid grid-cols-2 gap-4">
+                            <div>
+                              <p className="text-xs text-emerald-700 dark:text-emerald-300 font-medium">Total a recibir</p>
+                              <p className="text-2xl font-bold text-emerald-600 dark:text-emerald-400">
+                                ${(parseInt(sellQuantity) * parseFloat(sellPrice) || 0).toFixed(2)}
+                              </p>
+                            </div>
+                            <div>
+                              <p className="text-xs text-emerald-700 dark:text-emerald-300 font-medium">Disponibles</p>
+                              <p className="text-2xl font-bold text-emerald-600 dark:text-emerald-400">
+                                {myTokens.find(t => t.tokenSymbol === selectedTokenToSell)?.availableToSell || 0}
+                              </p>
+                            </div>
                           </div>
-                          <div>
-                            <p className="text-xs text-muted-foreground">Disponibles</p>
-                            <p className="text-lg font-bold">
-                              {myTokens.find(t => t.tokenSymbol === selectedTokenToSell)?.availableToSell || 0}
-                            </p>
-                          </div>
-                        </div>
-                      </div>
+                        </CardContent>
+                      </Card>
                     )}
 
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                      <div className="grid gap-2">
+                      <div className="space-y-3">
                         <Label htmlFor="sellQuantity" className="text-base font-semibold">{t('quantity')}</Label>
                         <Input
                           id="sellQuantity"
@@ -440,10 +484,10 @@ export default function TradePage() {
                           onChange={(e) => setSellQuantity(e.target.value)}
                           required
                           min="1"
-                          className="h-11"
+                          className="h-11 border-2"
                         />
                       </div>
-                      <div className="grid gap-2">
+                      <div className="space-y-3">
                         <Label htmlFor="sellPrice" className="text-base font-semibold">{t('price_per_token_usd')}</Label>
                         <div className="relative">
                           <DollarSign className="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-muted-foreground pointer-events-none" />
@@ -456,17 +500,17 @@ export default function TradePage() {
                             required
                             min="0.01"
                             step="0.01"
-                            className="pl-8 h-11"
+                            className="pl-8 h-11 border-2"
                           />
                         </div>
                       </div>
                     </div>
 
-                    <CardFooter className="p-0 pt-4 flex gap-2">
+                    <div className="flex gap-3 pt-4">
                       <Button
                         type="submit"
                         size="lg"
-                        className="flex-1 bg-gradient-to-r from-emerald-600 to-teal-600 hover:from-emerald-700 hover:to-teal-700"
+                        className="flex-1 bg-gradient-to-r from-emerald-600 to-teal-600 hover:from-emerald-700 hover:to-teal-700 text-white font-semibold shadow-md"
                       >
                         {t('publish_sell_offer')}
                       </Button>
@@ -474,6 +518,7 @@ export default function TradePage() {
                         type="button"
                         variant="outline"
                         size="lg"
+                        className="border-2"
                         onClick={() => {
                           setSelectedTokenToSell('');
                           setSellQuantity('');
@@ -482,13 +527,12 @@ export default function TradePage() {
                       >
                         Limpiar
                       </Button>
-                    </CardFooter>
+                    </div>
                   </form>
-                </CardContent>
-              </Card>
-            </TabsContent>
-          </Tabs>
-        </main>
+                </SectionCard>
+              </TabsContent>
+            </Tabs>
+          </main>
         </div>
       </div>
     </div>
