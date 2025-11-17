@@ -21,6 +21,7 @@ interface MarketplaceHeaderProps {
   onSortByChange: (value: string) => void
   showFilters: boolean
   onToggleFilters: () => void
+  isCollapsed?: boolean
 }
 
 export function MarketplaceHeader({
@@ -33,6 +34,7 @@ export function MarketplaceHeader({
   onSortByChange,
   showFilters,
   onToggleFilters,
+  isCollapsed = false,
 }: MarketplaceHeaderProps) {
   const { language } = useLanguage();
 
@@ -100,9 +102,11 @@ export function MarketplaceHeader({
 
   return (
     <div className="border-b bg-white/50 dark:bg-slate-900/50 backdrop-blur-xl sticky top-0 z-40">
-      <div className="container mx-auto px-4 py-6">
-        {/* Title Section */}
-        <div className="flex items-center justify-between mb-6">
+      <div className="container mx-auto px-4 transition-all duration-300" style={{ paddingTop: isCollapsed ? '0.75rem' : '1.5rem', paddingBottom: isCollapsed ? '0.75rem' : '1.5rem' }}>
+        {/* Title Section - Collapses on Scroll */}
+        <div className={`flex items-center justify-between mb-6 transition-all duration-300 overflow-hidden ${
+          isCollapsed ? 'max-h-0 opacity-0 mb-0' : 'max-h-32 opacity-100'
+        }`}>
           <div>
             <h1 className="text-4xl font-bold bg-gradient-to-r from-emerald-600 to-teal-600 bg-clip-text text-transparent">
               {getLabel('invest_market')}
@@ -188,7 +192,7 @@ export function MarketplaceHeader({
 
           {/* Filter Controls - Collapsible on Mobile, Visible on Desktop */}
           <div className={`transition-all duration-300 overflow-hidden ${
-            showFilters ? 'max-h-96 opacity-100' : 'md:max-h-96 md:opacity-100 max-h-0 opacity-0 md:pointer-events-auto pointer-events-none'
+            showFilters && !isCollapsed ? 'max-h-96 opacity-100' : 'md:max-h-96 md:opacity-100 max-h-0 opacity-0 md:pointer-events-auto pointer-events-none'
           }`}>
             <div className="flex flex-col md:flex-row gap-3 bg-gradient-to-r from-slate-50/50 to-transparent dark:from-slate-800/50 dark:to-transparent p-4 rounded-lg border border-slate-200/50 dark:border-slate-700/50">
               {/* Category Filter */}

@@ -169,6 +169,7 @@ const MarketPlaceApp = () => {
 
     // Scroll detection states
     const [showFilters, setShowFilters] = useState(false);
+    const [isHeaderCollapsed, setIsHeaderCollapsed] = useState(false);
     const lastScrollY = useRef(0);
 
     // Apply filters from URL parameters on mount
@@ -180,14 +181,19 @@ const MarketPlaceApp = () => {
       }
     }, [searchParams]);
 
-    // Smart scroll behavior for mobile - Auto-close filters on scroll down
+    // Smart scroll behavior - Collapse header and auto-close filters on scroll down
     useEffect(() => {
       const handleScroll = () => {
         const currentScrollY = window.scrollY;
 
-        if (currentScrollY > lastScrollY.current && currentScrollY > 300) {
+        if (currentScrollY > lastScrollY.current && currentScrollY > 100) {
+          // Collapse header on scroll down
+          setIsHeaderCollapsed(true);
           // Auto-close filters on scroll down for better UX on mobile
           setShowFilters(false);
+        } else if (currentScrollY < lastScrollY.current) {
+          // Expand header on scroll up
+          setIsHeaderCollapsed(false);
         }
 
         lastScrollY.current = currentScrollY;
@@ -269,6 +275,7 @@ const MarketPlaceApp = () => {
         onSortByChange={handleSortByChange}
         showFilters={showFilters}
         onToggleFilters={() => setShowFilters(!showFilters)}
+        isCollapsed={isHeaderCollapsed}
       />
 
       {/* Projects Grid */}
