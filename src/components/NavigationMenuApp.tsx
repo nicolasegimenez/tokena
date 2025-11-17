@@ -42,6 +42,7 @@ const singleMenuItems: SingleMenuItem[] = [
   { href: "/", titleKey: "Home" },
   { href: "/market", titleKey: "invest" },
   { href: "/trade", titleKey: "trade" },
+  { href: "/auctions", titleKey: "auctions" },
   { href: "/filantropy", titleKey: "philanthropy" },
 ];
 
