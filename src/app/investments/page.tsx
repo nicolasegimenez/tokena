@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from 'react';
+import React from 'react';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
@@ -10,28 +10,6 @@ import { useNavigate } from 'react-router-dom';
 const InvestmentsPage: React.FC = () => {
   const { t } = useLanguage();
   const navigate = useNavigate();
-
-  // Scroll detection states
-  const [showHeader, setShowHeader] = useState(true);
-  const lastScrollY = useRef(0);
-
-  // Smart scroll behavior for mobile
-  useEffect(() => {
-    const handleScroll = () => {
-      const currentScrollY = window.scrollY;
-
-      if (currentScrollY < lastScrollY.current || currentScrollY < 100) {
-        setShowHeader(true);
-      } else if (currentScrollY > lastScrollY.current && currentScrollY > 300) {
-        setShowHeader(false);
-      }
-
-      lastScrollY.current = currentScrollY;
-    };
-
-    window.addEventListener('scroll', handleScroll, { passive: true });
-    return () => window.removeEventListener('scroll', handleScroll);
-  }, []);
 
   // Mock data - Inversiones que posee el usuario
   const myInvestments = [
@@ -92,10 +70,8 @@ const InvestmentsPage: React.FC = () => {
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-slate-50 via-white to-slate-50 dark:from-slate-950 dark:via-slate-900 dark:to-slate-950">
-      {/* Enhanced Header with Smart Scroll Behavior */}
-      <div className={`border-b bg-white dark:bg-slate-900 transition-all duration-300 ease-in-out transform ${
-        showHeader ? 'translate-y-0 opacity-100' : '-translate-y-full opacity-0 pointer-events-none'
-      }`}>
+      {/* Header */}
+      <div className="border-b bg-white dark:bg-slate-900">
         <div className="container mx-auto px-4 py-6">
           <div className="flex items-center justify-between">
             <div>

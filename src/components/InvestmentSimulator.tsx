@@ -98,7 +98,7 @@ const InvestmentSimulator = ({ projectData }: InvestmentSimulatorProps) => {
   };
 
   return (
-    <Card className="sticky top-8">
+    <Card>
       <CardHeader>
         <CardTitle>Simulador de Inversión</CardTitle>
         <CardDescription>

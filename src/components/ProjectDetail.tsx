@@ -321,7 +321,6 @@ export function ProjectDetail({
 
           {/* Right Column: Investment Simulator */}
           <div className="lg:col-span-1">
-            <div className="sticky top-32">
               <Card className="border-2 bg-gradient-to-br from-emerald-50 to-teal-50 dark:from-emerald-950/20 dark:to-teal-950/20 border-emerald-200 dark:border-emerald-800">
                 <CardHeader>
                   <CardTitle>{t('investment_summary')}</CardTitle>
@@ -364,6 +363,5 @@ export function ProjectDetail({
           </div>
         </div>
       </div>
-    </div>
   );
 }
