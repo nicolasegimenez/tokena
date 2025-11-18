@@ -4,7 +4,7 @@ import { Button } from "@/components/ui/button"
 import { Badge } from "@/components/ui/badge"
 import { Input } from "@/components/ui/input"
 import { Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle } from "@/components/ui/dialog"
-import { Gavel, TrendingUp, Clock, Users, Search } from 'lucide-react'
+import { Gavel, Clock, Users, Search } from 'lucide-react'
 import { useLanguage } from '@/lib/language'
 import { useAuth } from '@/lib/auth'
 import SignUpModal from '@/components/SignUpModal'
