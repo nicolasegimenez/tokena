@@ -17,7 +17,7 @@ const translations: Record<string, Record<string, string>> = {
     invest: 'Invertir',
     trade: 'P2P',
     auctions: 'Subastas',
-    philanthropy: 'Filantropía',
+    philanthropy: 'Donación',
     create_project: 'Publica tu Proyecto',
     invest_market: 'Invest Market',
     discover_tokenized_opportunities: 'Descubre oportunidades de inversión tokenizadas',

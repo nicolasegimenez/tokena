@@ -360,7 +360,7 @@ export default function AuctionsPage() {
   return (
     <div className="min-h-screen bg-gradient-to-br from-blue-50 via-indigo-50 to-blue-50 dark:from-slate-950 dark:via-slate-900 dark:to-slate-950">
       {/* Header */}
-      <div className="border-b bg-white/50 dark:bg-slate-900/50 backdrop-blur-xl sticky top-0 z-40">
+      <div className="border-b bg-white dark:bg-slate-900">
         <div className="container mx-auto px-4 py-6">
           {/* Title Section */}
           <div className="flex items-center justify-between mb-6">

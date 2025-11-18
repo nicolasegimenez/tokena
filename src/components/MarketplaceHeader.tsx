@@ -101,7 +101,7 @@ export function MarketplaceHeader({
   };
 
   return (
-    <div className="border-b bg-white/50 dark:bg-slate-900/50 backdrop-blur-xl sticky top-0 z-40">
+    <div className="border-b bg-white dark:bg-slate-900">
       <div className="container mx-auto px-4 transition-all duration-300" style={{ paddingTop: isCollapsed ? '0.75rem' : '1.5rem', paddingBottom: isCollapsed ? '0.75rem' : '1.5rem' }}>
         {/* Title Section - Collapses on Scroll */}
         <div className={`flex items-center justify-between mb-6 transition-all duration-300 overflow-hidden ${
