@@ -218,7 +218,7 @@ const CarouselApp = () => {
       id: 1,
       title: t("tokenized_apartments_title"),
       description: t("tokenized_apartments_desc"),
-      image: "https://res.cloudinary.com/dhacybdxf/image/upload/v1762299810/edificio_qhi0ri.png",
+      image: "https://res.cloudinary.com/dhacybdxf/image/upload/w_1000,ar_16:9,c_fill,g_auto,e_sharpen/v1762901065/Investoken/IMG_2920_nh0xbw.jpg",
       projectId: "project1"
     },
     {

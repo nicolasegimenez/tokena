@@ -8,7 +8,7 @@ export const HeroParallaxDemo = () => {
       title: "The Residents – Inversión Inmobiliaria",
       link: "/invest/project1",
       thumbnail:
-        "https://res.cloudinary.com/dhacybdxf/image/upload/v1762299810/edificio_qhi0ri.png",
+        "https://res.cloudinary.com/dhacybdxf/image/upload/w_1000,ar_16:9,c_fill,g_auto,e_sharpen/v1762901065/Investoken/IMG_2920_nh0xbw.jpg",
     },
     {
       title: "Fondo de Criptomonedas",

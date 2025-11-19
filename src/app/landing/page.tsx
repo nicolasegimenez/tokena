@@ -49,9 +49,9 @@ const LandingPage = () => {
         <Navbar showNavbar={showHeader} />
 
         <div className="relative w-full flex flex-col flex-1 items-center justify-center px-[clamp(1rem,5vw,4rem)] py-4 xs:py-6 sm:py-8 md:py-12 lg:py-20">
-          {/* Background Glow Effects */}
-          <div className="absolute inset-0 -top-20 -right-20 w-96 h-96 bg-gradient-to-br from-cyan-500/15 to-blue-500/10 rounded-full blur-3xl pointer-events-none"></div>
-          <div className="absolute inset-0 bottom-0 -right-48 w-96 h-96 bg-gradient-to-tl from-pink-500/10 to-transparent rounded-full blur-3xl pointer-events-none"></div>
+          {/* Background Glow Effects - Optimizados con will-change */}
+          <div className="absolute inset-0 -top-20 -right-20 w-96 h-96 bg-gradient-to-br from-cyan-500/15 to-blue-500/10 rounded-full blur-3xl pointer-events-none will-change-auto"></div>
+          <div className="absolute inset-0 bottom-0 -right-48 w-96 h-96 bg-gradient-to-tl from-pink-500/10 to-transparent rounded-full blur-3xl pointer-events-none will-change-auto"></div>
 
           {/* Content Container - Centered */}
           <div className="w-full max-w-7xl text-center z-10">
