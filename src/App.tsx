@@ -43,7 +43,7 @@ function App() {
   return (
     <AuthProvider>
       <LanguageProvider>
-        <ThemeProvider defaultTheme="dark" storageKey="vite-ui-theme">
+        <ThemeProvider defaultTheme="light" storageKey="vite-ui-theme">
         <Suspense fallback={<div className="w-full h-screen flex items-center justify-center"><Skeleton className="w-1/2 h-1/2" /></div>}>
           <Routes>
           <Route path="/" element={<Layout />}>
