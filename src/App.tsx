@@ -7,6 +7,8 @@ import { Skeleton } from "@/components/ui/skeleton";
 import { AuthProvider } from "@/lib/auth";
 import { LanguageProvider } from "@/lib/language";
 
+import { CrossmintProviders } from "@/lib/crossmint-provider";
+
 const MarketPlaceApp = lazy(() => import("@/components/MarketPlaceApp"));
 const Profile = lazy(() => import("@/components/Profile"));
 const TokenManagement = lazy(() => import("@/components/TokenManagement"));
@@ -43,65 +45,67 @@ function NotFound() {
 
 function App() {
   return (
-    <AuthProvider>
-      <LanguageProvider>
-        <ThemeProvider defaultTheme="dark" storageKey="vite-ui-theme">
-          <Suspense
-            fallback={
-              <div className="w-full h-screen flex items-center justify-center">
-                <Skeleton className="w-1/2 h-1/2" />
-              </div>
-            }
-          >
-            <Routes>
-              <Route path="/" element={<Layout />}>
-                <Route index element={<HomePage />} />
-                <Route path="/profile" element={<Profile />} />
-                <Route path="/login" element={<LoginForm />} />
-                <Route path="/registrarse" element={<RegisterPage />} />
-                <Route path="/landing" element={<LandingPage />} />
-                <Route path="/market" element={<MarketPlaceApp />} />
-                <Route path="/token" element={<TokenManagement />} />
-                <Route path="/analytics" element={<AnalyticsPage />} />
-                <Route path="/reports" element={<ReportsPage />} />
-                <Route path="/portfolio" element={<PortfolioPage />} />
-                <Route
-                  path="/invest/project1"
-                  element={<InvestProject1Page />}
-                />
-                <Route
-                  path="/invest/project2"
-                  element={<InvestProject2Page />}
-                />
-                <Route
-                  path="/invest/project3"
-                  element={<InvestProject3Page />}
-                />
-                <Route
-                  path="/invest/project4"
-                  element={<InvestProject4Page />}
-                />
-                <Route
-                  path="/invest/project5"
-                  element={<InvestProject5Page />}
-                />
-                <Route
-                  path="/invest/project6"
-                  element={<InvestProject6Page />}
-                />
-                <Route path="/create" element={<CreateProjectPage />} />
-                <Route path="/trade" element={<TradePage />} />
-                <Route path="/filantropy" element={<PhilanthropyPage />} />
-                <Route path="/auctions" element={<AuctionsPage />} />
-                <Route path="/investments" element={<InvestmentsPage />} />
-                <Route path="*" element={<NotFound />} />
-              </Route>
-              <Route path="/dashboard" element={<DashboardPage />} />
-            </Routes>
-          </Suspense>
-        </ThemeProvider>
-      </LanguageProvider>
-    </AuthProvider>
+    <CrossmintProviders>
+      <AuthProvider>
+        <LanguageProvider>
+          <ThemeProvider defaultTheme="dark" storageKey="vite-ui-theme">
+            <Suspense
+              fallback={
+                <div className="w-full h-screen flex items-center justify-center">
+                  <Skeleton className="w-1/2 h-1/2" />
+                </div>
+              }
+            >
+              <Routes>
+                <Route path="/" element={<Layout />}>
+                  <Route index element={<HomePage />} />
+                  <Route path="/profile" element={<Profile />} />
+                  <Route path="/login" element={<LoginForm />} />
+                  <Route path="/registrarse" element={<RegisterPage />} />
+                  <Route path="/landing" element={<LandingPage />} />
+                  <Route path="/market" element={<MarketPlaceApp />} />
+                  <Route path="/token" element={<TokenManagement />} />
+                  <Route path="/analytics" element={<AnalyticsPage />} />
+                  <Route path="/reports" element={<ReportsPage />} />
+                  <Route path="/portfolio" element={<PortfolioPage />} />
+                  <Route
+                    path="/invest/project1"
+                    element={<InvestProject1Page />}
+                  />
+                  <Route
+                    path="/invest/project2"
+                    element={<InvestProject2Page />}
+                  />
+                  <Route
+                    path="/invest/project3"
+                    element={<InvestProject3Page />}
+                  />
+                  <Route
+                    path="/invest/project4"
+                    element={<InvestProject4Page />}
+                  />
+                  <Route
+                    path="/invest/project5"
+                    element={<InvestProject5Page />}
+                  />
+                  <Route
+                    path="/invest/project6"
+                    element={<InvestProject6Page />}
+                  />
+                  <Route path="/create" element={<CreateProjectPage />} />
+                  <Route path="/trade" element={<TradePage />} />
+                  <Route path="/filantropy" element={<PhilanthropyPage />} />
+                  <Route path="/auctions" element={<AuctionsPage />} />
+                  <Route path="/investments" element={<InvestmentsPage />} />
+                  <Route path="*" element={<NotFound />} />
+                </Route>
+                <Route path="/dashboard" element={<DashboardPage />} />
+              </Routes>
+            </Suspense>
+          </ThemeProvider>
+        </LanguageProvider>
+      </AuthProvider>
+    </CrossmintProviders>
   );
 }
 
