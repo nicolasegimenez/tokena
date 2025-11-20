@@ -1,10 +1,28 @@
-import React, { createContext, useContext, useEffect, useMemo, useState } from "react";
+import React, {
+  createContext,
+  useContext,
+  useEffect,
+  useMemo,
+  useState,
+} from "react";
 
 type AuthUser = {
   id: string;
   name: string;
   email: string;
   avatarUrl?: string;
+  walletAddress?: string;
+  chainId?: number;
+  ens?: string;
+  crossmintUserId?: string;
+  phone?: string;
+  farcaster?: {
+    fid: string;
+    username?: string;
+  };
+  google?: {
+    email: string;
+  };
 };
 
 type AuthContextValue = {
@@ -35,21 +53,24 @@ export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
     else localStorage.removeItem("demo_auth_user");
   }, [user]);
 
-  const value = useMemo<AuthContextValue>(() => ({
-    isAuthenticated: Boolean(user),
-    user,
-    login: (overrides?: Partial<AuthUser>) => {
-      const mock: AuthUser = {
-        id: "1",
-        name: "Nicolas Emanuel",
-        email: "nicolas@example.com",
-        avatarUrl: undefined,
-        ...overrides,
-      } as AuthUser;
-      setUser(mock);
-    },
-    logout: () => setUser(null),
-  }), [user]);
+  const value = useMemo<AuthContextValue>(
+    () => ({
+      isAuthenticated: Boolean(user),
+      user,
+      login: (overrides?: Partial<AuthUser>) => {
+        const mock: AuthUser = {
+          id: "1",
+          name: "Nicolas Emanuel",
+          email: "nicolas@example.com",
+          avatarUrl: undefined,
+          ...overrides,
+        } as AuthUser;
+        setUser(mock);
+      },
+      logout: () => setUser(null),
+    }),
+    [user]
+  );
 
   return <AuthContext.Provider value={value}>{children}</AuthContext.Provider>;
 };
@@ -59,5 +80,3 @@ export const useAuth = (): AuthContextValue => {
   if (!ctx) throw new Error("useAuth must be used within an AuthProvider");
   return ctx;
 };
-
-
