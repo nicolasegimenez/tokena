@@ -1,5 +1,6 @@
 "use client";
 
+import React from "react";
 import {
   Sheet,
   SheetContent,
@@ -38,7 +39,6 @@ interface SingleMenuItem {
 }
 
 const singleMenuItems: SingleMenuItem[] = [
-  { href: "/", titleKey: "Home" },
   { href: "/market", titleKey: "invest" },
   { href: "/trade", titleKey: "trade" },
   { href: "/auctions", titleKey: "auctions" },
@@ -65,77 +65,82 @@ const NavigationMenuApp = () => {
   const { logout } = useCrossmintAuth();
   const navigate = useNavigate();
   const { t } = useLanguage();
+  const [isOpen, setIsOpen] = React.useState(false);
 
   if (isMobile) {
     return (
       <nav className="border-b border-border/30 bg-background sticky top-0 z-50 shadow-sm">
         <div className="flex w-full items-center justify-between px-4 py-3">
-          <Link
-            to="/"
-            className="flex items-center hover:opacity-85 transition-opacity"
-            aria-label="Investoken"
-          >
-            <img
-              src="https://res.cloudinary.com/dhacybdxf/image/upload/v1762901050/Investoken/investoken_solo_logo_oficial_azul_y_blanco_jdbnpk.svg"
-              alt="Investoken"
-              className="h-10 w-10"
-            />
-          </Link>
-
-          <div className="flex items-center gap-2">
-            <LanguageSwitcher />
-            <ModeToggle />
-
-            <Sheet>
+          {/* Menu button moved to the left */}
+          <div className="flex items-center gap-3">
+            <Sheet open={isOpen} onOpenChange={setIsOpen}>
               <SheetTrigger asChild>
-                <Button variant="ghost" size="sm" aria-label="Abrir menú">
-                  <Menu className="h-5 w-5" />
+                <Button
+                  variant="ghost"
+                  size="icon"
+                  className="h-10 w-10"
+                  aria-label="Abrir menú"
+                >
+                  <Menu className="h-6 w-6" />
                 </Button>
               </SheetTrigger>
-              <SheetContent side="left" className="w-72">
-                <SheetHeader className="mb-8">
-                  <SheetTitle className="text-primary text-xl">
+              <SheetContent side="left" enableSwipe onOpenChange={setIsOpen}>
+                <SheetHeader className="mb-6">
+                  <SheetTitle className="text-primary text-2xl font-bold">
                     Investoken
                   </SheetTitle>
                 </SheetHeader>
 
-                <div className="space-y-3">
+                <div className="space-y-2">
                   {singleMenuItems.map((item: SingleMenuItem) => (
-                    <Link key={item.href} to={item.href}>
-                      <div className="block px-4 py-3 text-base font-medium text-foreground hover:bg-primary/10 active:bg-primary/15 rounded-lg transition-colors">
+                    <Link
+                      key={item.href}
+                      to={item.href}
+                      onClick={() => setIsOpen(false)}
+                    >
+                      <div className="block px-5 py-4 text-lg font-medium text-foreground hover:bg-primary/10 active:bg-primary/15 rounded-lg transition-colors">
                         {t(item.titleKey)}
                       </div>
                     </Link>
                   ))}
 
-                  <div className="my-4 border-t border-border/50" />
+                  <div className="my-6 border-t border-border/50" />
 
                   {!isAuthenticated ? (
-                    <div className="space-y-2">
+                    <div className="space-y-3">
                       <Button
                         asChild
                         variant="outline"
-                        className="w-full h-11 text-base"
+                        className="w-full h-12 text-lg"
+                        onClick={() => setIsOpen(false)}
                       >
                         <Link to="/registrarse">Registrarse</Link>
                       </Button>
-                      <Button asChild className="w-full h-11 text-base">
+                      <Button
+                        asChild
+                        className="w-full h-12 text-lg"
+                        onClick={() => setIsOpen(false)}
+                      >
                         <Link to="/login">Iniciar sesión</Link>
                       </Button>
                       <Button
-                        onClick={() => login()}
+                        onClick={() => {
+                          login();
+                          setIsOpen(false);
+                        }}
                         variant="secondary"
-                        className="w-full h-11 text-base"
+                        className="w-full h-12 text-lg"
                       >
                         Demo Login
                       </Button>
                     </div>
                   ) : (
-                    <div className="space-y-2">
+                    <div className="space-y-3 px-4">
                       <Button
                         asChild
                         variant="outline"
-                        className="w-full h-11 text-base"
+                        className="w-full h-12 text-lg"
+                        onClick={() => setIsOpen(false)}
                       >
                         <Link to="/profile">{t("my_profile")}</Link>
                       </Button>
@@ -143,9 +148,10 @@ const NavigationMenuApp = () => {
                         onClick={() => {
                           logout();
                           navigate("/");
+                          setIsOpen(false);
                         }}
                         variant="destructive"
-                        className="w-full h-11 text-base"
+                        className="w-full h-12 text-lg"
                       >
                         {t("logout")}
                       </Button>
@@ -154,6 +160,23 @@ const NavigationMenuApp = () => {
                 </div>
               </SheetContent>
             </Sheet>
+
+            <Link
+              to="/"
+              className="flex items-center hover:opacity-85 transition-opacity"
+              aria-label="Investoken"
+            >
+              <img
+                src="https://res.cloudinary.com/dhacybdxf/image/upload/v1762901050/Investoken/investoken_solo_logo_oficial_azul_y_blanco_jdbnpk.svg"
+                alt="Investoken"
+                className="h-10 w-10"
+              />
+            </Link>
+          </div>
+
+          <div className="flex items-center gap-2">
+            <LanguageSwitcher />
+            <ModeToggle />
           </div>
         </div>
       </nav>

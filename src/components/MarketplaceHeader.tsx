@@ -1,27 +1,34 @@
-import { Badge } from "@/components/ui/badge"
-import { Input } from "@/components/ui/input"
-import { Button } from "@/components/ui/button"
-import { Search, Filter, X, SortAsc } from 'lucide-react'
+import { Badge } from "@/components/ui/badge";
+import { Input } from "@/components/ui/input";
+import { Button } from "@/components/ui/button";
+import { Search, Filter, X, SortAsc } from "lucide-react";
 import {
   Select,
   SelectContent,
   SelectItem,
   SelectTrigger,
   SelectValue,
-} from "@/components/ui/select"
-import { useLanguage } from "@/lib/language"
+} from "@/components/ui/select";
+import {
+  Dialog,
+  DialogContent,
+  DialogHeader,
+  DialogTitle,
+  DialogDescription,
+} from "@/components/ui/dialog";
+import { useLanguage } from "@/lib/language";
 
 interface MarketplaceHeaderProps {
-  investmentCount: number
-  searchTerm: string
-  onSearchChange: (value: string) => void
-  category: string
-  onCategoryChange: (value: string) => void
-  sortBy: string
-  onSortByChange: (value: string) => void
-  showFilters: boolean
-  onToggleFilters: () => void
-  isCollapsed?: boolean
+  investmentCount: number;
+  searchTerm: string;
+  onSearchChange: (value: string) => void;
+  category: string;
+  onCategoryChange: (value: string) => void;
+  sortBy: string;
+  onSortByChange: (value: string) => void;
+  showFilters: boolean;
+  onToggleFilters: () => void;
+  isCollapsed?: boolean;
 }
 
 export function MarketplaceHeader({
@@ -41,7 +48,8 @@ export function MarketplaceHeader({
   const labels = {
     es: {
       invest_market: "Invest Market",
-      discover_tokenized_opportunities: "Descubre oportunidades de inversión tokenizadas",
+      discover_tokenized_opportunities:
+        "Descubre oportunidades de inversión tokenizadas",
       search: "Buscar proyectos...",
       category: "Categoría",
       all_categories: "Todas las categorías",
@@ -64,10 +72,14 @@ export function MarketplaceHeader({
       show_filters: "Mostrar filtros",
       hide_filters: "Ocultar filtros",
       active_filters: "Filtros activos",
+      filters: "Filtros",
+      filters_description: "Filtra y ordena proyectos según tus preferencias",
+      apply_filters: "Aplicar filtros",
     },
     en: {
       invest_market: "Invest Market",
-      discover_tokenized_opportunities: "Discover tokenized investment opportunities",
+      discover_tokenized_opportunities:
+        "Discover tokenized investment opportunities",
       search: "Search projects...",
       category: "Category",
       all_categories: "All categories",
@@ -90,34 +102,44 @@ export function MarketplaceHeader({
       show_filters: "Show filters",
       hide_filters: "Hide filters",
       active_filters: "Active filters",
-    }
+      filters: "Filters",
+      filters_description:
+        "Filter and sort projects according to your preferences",
+      apply_filters: "Apply filters",
+    },
   };
   const getLabel = (key: string) => {
-    const value = labels[language as keyof typeof labels][key as keyof typeof labels.es];
-    if (typeof value === 'string' && value.includes('{count}')) {
-      return value.replace('{count}', investmentCount.toString());
+    const value =
+      labels[language as keyof typeof labels][key as keyof typeof labels.es];
+    if (typeof value === "string" && value.includes("{count}")) {
+      return value.replace("{count}", investmentCount.toString());
     }
     return value;
   };
 
   return (
     <div className="border-b bg-white dark:bg-slate-900">
-      <div className="container mx-auto px-4 transition-all duration-300" style={{ paddingTop: isCollapsed ? '0.75rem' : '1.5rem', paddingBottom: isCollapsed ? '0.75rem' : '1.5rem' }}>
+      <div
+        className="container mx-auto px-4 transition-all duration-300"
+        style={{
+          paddingTop: isCollapsed ? "0.75rem" : "1.5rem",
+          paddingBottom: isCollapsed ? "0.75rem" : "1.5rem",
+        }}
+      >
         {/* Title Section - Collapses on Scroll */}
-        <div className={`flex items-center justify-between mb-6 transition-all duration-300 overflow-hidden ${
-          isCollapsed ? 'max-h-0 opacity-0 mb-0' : 'max-h-32 opacity-100'
-        }`}>
+        <div
+          className={`mb-6 transition-all duration-300 overflow-hidden ${
+            isCollapsed ? "max-h-0 opacity-0 mb-0" : "max-h-32 opacity-100"
+          }`}
+        >
           <div>
             <h1 className="text-4xl font-bold bg-gradient-to-r from-emerald-600 to-teal-600 bg-clip-text text-transparent">
-              {getLabel('invest_market')}
+              {getLabel("invest_market")}
             </h1>
             <p className="text-muted-foreground mt-2">
-              {getLabel('discover_tokenized_opportunities')}
+              {getLabel("discover_tokenized_opportunities")}
             </p>
           </div>
-          <Badge variant="secondary" className="text-sm px-4 py-2">
-            {getLabel('projects_count')}
-          </Badge>
         </div>
 
         {/* Enhanced Filters Section */}
@@ -127,7 +149,7 @@ export function MarketplaceHeader({
             <div className="flex-1 relative">
               <Search className="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-muted-foreground pointer-events-none" />
               <Input
-                placeholder={getLabel('search')}
+                placeholder={getLabel("search")}
                 value={searchTerm}
                 onChange={(e) => onSearchChange(e.target.value)}
                 className="pl-10 bg-white/80 dark:bg-slate-800/80 border-emerald-200/50 dark:border-emerald-800/50 focus:border-emerald-500 focus:ring-emerald-500/20"
@@ -152,11 +174,20 @@ export function MarketplaceHeader({
             <div className="flex flex-wrap gap-2 items-center bg-gradient-to-r from-emerald-50/50 to-teal-50/50 dark:from-emerald-950/20 dark:to-teal-950/20 p-3 rounded-lg border border-emerald-200/30 dark:border-emerald-800/30">
               <span className="text-xs font-semibold text-muted-foreground flex items-center gap-1">
                 <Filter className="h-3 w-3" />
-                {getLabel('active_filters')}:
+                {getLabel("active_filters")}:
               </span>
               {category !== "all" && (
-                <Badge variant="secondary" className="text-xs bg-emerald-100 dark:bg-emerald-900/50 text-emerald-900 dark:text-emerald-100 border-emerald-300 dark:border-emerald-700">
-                  {category === "tokenizacion-activos-reales" ? "Activos Reales" : category === "tokenizacion-activos-financieros" ? "Activos Financieros" : category === "crowfunding" ? "Crowfunding" : category}
+                <Badge
+                  variant="secondary"
+                  className="text-xs bg-emerald-100 dark:bg-emerald-900/50 text-emerald-900 dark:text-emerald-100 border-emerald-300 dark:border-emerald-700"
+                >
+                  {category === "tokenizacion-activos-reales"
+                    ? "Activos Reales"
+                    : category === "tokenizacion-activos-financieros"
+                      ? "Activos Financieros"
+                      : category === "crowfunding"
+                        ? "Crowfunding"
+                        : category}
                   <button
                     onClick={() => onCategoryChange("all")}
                     className="ml-1 hover:opacity-70 transition-opacity"
@@ -166,8 +197,19 @@ export function MarketplaceHeader({
                 </Badge>
               )}
               {sortBy !== "default" && (
-                <Badge variant="secondary" className="text-xs bg-emerald-100 dark:bg-emerald-900/50 text-emerald-900 dark:text-emerald-100 border-emerald-300 dark:border-emerald-700">
-                  {sortBy === "price-asc" ? "Precio ↑" : sortBy === "price-desc" ? "Precio ↓" : sortBy === "roi-desc" ? "ROI ↓" : sortBy === "duration-asc" ? "Duración ↑" : "Más Fondeados"}
+                <Badge
+                  variant="secondary"
+                  className="text-xs bg-emerald-100 dark:bg-emerald-900/50 text-emerald-900 dark:text-emerald-100 border-emerald-300 dark:border-emerald-700"
+                >
+                  {sortBy === "price-asc"
+                    ? "Precio ↑"
+                    : sortBy === "price-desc"
+                      ? "Precio ↓"
+                      : sortBy === "roi-desc"
+                        ? "ROI ↓"
+                        : sortBy === "duration-asc"
+                          ? "Duración ↑"
+                          : "Más Fondeados"}
                   <button
                     onClick={() => onSortByChange("default")}
                     className="ml-1 hover:opacity-70 transition-opacity"
@@ -185,45 +227,56 @@ export function MarketplaceHeader({
                 }}
                 className="ml-auto text-xs text-muted-foreground hover:text-foreground hover:bg-white/50 dark:hover:bg-slate-800/50"
               >
-                {getLabel('clear_filters')}
+                {getLabel("clear_filters")}
               </Button>
             </div>
           )}
 
-          {/* Filter Controls - Collapsible on Mobile, Visible on Desktop */}
-          <div className={`transition-all duration-300 overflow-hidden ${
-            showFilters && !isCollapsed ? 'max-h-96 opacity-100' : 'md:max-h-96 md:opacity-100 max-h-0 opacity-0 md:pointer-events-auto pointer-events-none'
-          }`}>
+          {/* Desktop Filter Controls - Always Visible */}
+          <div className="hidden md:block">
             <div className="flex flex-col md:flex-row gap-3 bg-gradient-to-r from-slate-50/50 to-transparent dark:from-slate-800/50 dark:to-transparent p-4 rounded-lg border border-slate-200/50 dark:border-slate-700/50">
               {/* Category Filter */}
               <div className="flex-1 md:flex-none">
                 <label className="text-xs font-semibold text-muted-foreground mb-2 block">
-                  {getLabel('category')}
+                  {getLabel("category")}
                 </label>
                 <Select value={category} onValueChange={onCategoryChange}>
                   <SelectTrigger className="w-full md:w-[220px] bg-white/80 dark:bg-slate-800/80 border-slate-200/50 dark:border-slate-700/50 hover:border-emerald-400 dark:hover:border-emerald-600 focus:border-emerald-500 focus:ring-emerald-500/20">
                     <Filter className="h-4 w-4 mr-2 text-emerald-600" />
-                    <SelectValue placeholder={getLabel('all_categories')} />
+                    <SelectValue placeholder={getLabel("all_categories")} />
                   </SelectTrigger>
                   <SelectContent className="bg-white dark:bg-slate-900">
-                    <SelectItem value="all">{getLabel('all_categories')}</SelectItem>
+                    <SelectItem value="all">
+                      {getLabel("all_categories")}
+                    </SelectItem>
 
                     {/* Activos Reales */}
-                    <div className="px-2 py-1.5 text-xs font-semibold text-slate-500 dark:text-slate-400 bg-slate-100 dark:bg-slate-800">Activos Reales</div>
+                    <div className="px-2 py-1.5 text-xs font-semibold text-slate-500 dark:text-slate-400 bg-slate-100 dark:bg-slate-800">
+                      Activos Reales
+                    </div>
                     <SelectItem value="tokenizacion-activos-reales">
-                      <span>{getLabel('real_estate')}</span>, {getLabel('agriculture')}, {getLabel('livestock')}
+                      <span>{getLabel("real_estate")}</span>,{" "}
+                      {getLabel("agriculture")}, {getLabel("livestock")}
                     </SelectItem>
 
                     {/* Activos Financieros */}
-                    <div className="px-2 py-1.5 text-xs font-semibold text-slate-500 dark:text-slate-400 bg-slate-100 dark:bg-slate-800">Activos Financieros</div>
+                    <div className="px-2 py-1.5 text-xs font-semibold text-slate-500 dark:text-slate-400 bg-slate-100 dark:bg-slate-800">
+                      Activos Financieros
+                    </div>
                     <SelectItem value="tokenizacion-activos-financieros">
-                      <span>{getLabel('crypto')}, {getLabel('startup')}</span>
+                      <span>
+                        {getLabel("crypto")}, {getLabel("startup")}
+                      </span>
                     </SelectItem>
 
                     {/* Crowfunding */}
-                    <div className="px-2 py-1.5 text-xs font-semibold text-slate-500 dark:text-slate-400 bg-slate-100 dark:bg-slate-800">Crowfunding</div>
+                    <div className="px-2 py-1.5 text-xs font-semibold text-slate-500 dark:text-slate-400 bg-slate-100 dark:bg-slate-800">
+                      Crowfunding
+                    </div>
                     <SelectItem value="crowfunding">
-                      <span>{getLabel('entertainment')}, {getLabel('sports')}</span>
+                      <span>
+                        {getLabel("entertainment")}, {getLabel("sports")}
+                      </span>
                     </SelectItem>
                   </SelectContent>
                 </Select>
@@ -232,25 +285,156 @@ export function MarketplaceHeader({
               {/* Sort Filter */}
               <div className="flex-1 md:flex-none">
                 <label className="text-xs font-semibold text-muted-foreground mb-2 block">
-                  {getLabel('sort_by')}
+                  {getLabel("sort_by")}
                 </label>
                 <Select value={sortBy} onValueChange={onSortByChange}>
                   <SelectTrigger className="w-full md:w-[220px] bg-white/80 dark:bg-slate-800/80 border-slate-200/50 dark:border-slate-700/50 hover:border-emerald-400 dark:hover:border-emerald-600 focus:border-emerald-500 focus:ring-emerald-500/20">
                     <SortAsc className="h-4 w-4 mr-2 text-emerald-600" />
-                    <SelectValue placeholder={getLabel('default')} />
+                    <SelectValue placeholder={getLabel("default")} />
                   </SelectTrigger>
                   <SelectContent className="bg-white dark:bg-slate-900">
-                    <SelectItem value="default">{getLabel('default')}</SelectItem>
-                    <SelectItem value="price-asc">{getLabel('price_asc')}</SelectItem>
-                    <SelectItem value="price-desc">{getLabel('price_desc')}</SelectItem>
-                    <SelectItem value="roi-desc">{getLabel('roi_desc')}</SelectItem>
-                    <SelectItem value="duration-asc">{getLabel('duration_asc')}</SelectItem>
-                    <SelectItem value="progress">{getLabel('progress')}</SelectItem>
+                    <SelectItem value="default">
+                      {getLabel("default")}
+                    </SelectItem>
+                    <SelectItem value="price-asc">
+                      {getLabel("price_asc")}
+                    </SelectItem>
+                    <SelectItem value="price-desc">
+                      {getLabel("price_desc")}
+                    </SelectItem>
+                    <SelectItem value="roi-desc">
+                      {getLabel("roi_desc")}
+                    </SelectItem>
+                    <SelectItem value="duration-asc">
+                      {getLabel("duration_asc")}
+                    </SelectItem>
+                    <SelectItem value="progress">
+                      {getLabel("progress")}
+                    </SelectItem>
                   </SelectContent>
                 </Select>
               </div>
             </div>
           </div>
+
+          {/* Mobile Filter Dialog */}
+          <Dialog open={showFilters} onOpenChange={onToggleFilters}>
+            <DialogContent className="max-w-md mx-1 md:hidden max-h-[85vh] overflow-y-auto">
+              <DialogHeader className="mb-6">
+                <DialogTitle className="text-2xl font-bold bg-gradient-to-r from-emerald-600 to-teal-600 bg-clip-text text-transparent">
+                  {getLabel("filters")}
+                </DialogTitle>
+                <DialogDescription className="text-muted-foreground">
+                  {getLabel("filters_description")}
+                </DialogDescription>
+              </DialogHeader>
+
+              <div className="space-y-6">
+                {/* Category Filter */}
+                <div>
+                  <label className="text-sm font-semibold text-foreground mb-3 block">
+                    {getLabel("category")}
+                  </label>
+                  <Select value={category} onValueChange={onCategoryChange}>
+                    <SelectTrigger className="w-full h-12 bg-white/80 dark:bg-slate-800/80 border-emerald-200/50 dark:border-emerald-800/50 focus:border-emerald-500 focus:ring-emerald-500/20">
+                      <Filter className="h-4 w-4 mr-2 text-emerald-600" />
+                      <SelectValue placeholder={getLabel("all_categories")} />
+                    </SelectTrigger>
+                    <SelectContent className="bg-white dark:bg-slate-900">
+                      <SelectItem value="all">
+                        {getLabel("all_categories")}
+                      </SelectItem>
+
+                      {/* Activos Reales */}
+                      <div className="px-2 py-1.5 text-xs font-semibold text-slate-500 dark:text-slate-400 bg-slate-100 dark:bg-slate-800">
+                        Activos Reales
+                      </div>
+                      <SelectItem value="tokenizacion-activos-reales">
+                        <span>{getLabel("real_estate")}</span>,{" "}
+                        {getLabel("agriculture")}, {getLabel("livestock")}
+                      </SelectItem>
+
+                      {/* Activos Financieros */}
+                      <div className="px-2 py-1.5 text-xs font-semibold text-slate-500 dark:text-slate-400 bg-slate-100 dark:bg-slate-800">
+                        Activos Financieros
+                      </div>
+                      <SelectItem value="tokenizacion-activos-financieros">
+                        <span>
+                          {getLabel("crypto")}, {getLabel("startup")}
+                        </span>
+                      </SelectItem>
+
+                      {/* Crowfunding */}
+                      <div className="px-2 py-1.5 text-xs font-semibold text-slate-500 dark:text-slate-400 bg-slate-100 dark:bg-slate-800">
+                        Crowfunding
+                      </div>
+                      <SelectItem value="crowfunding">
+                        <span>
+                          {getLabel("entertainment")}, {getLabel("sports")}
+                        </span>
+                      </SelectItem>
+                    </SelectContent>
+                  </Select>
+                </div>
+
+                {/* Sort Filter */}
+                <div>
+                  <label className="text-sm font-semibold text-foreground mb-3 block">
+                    {getLabel("sort_by")}
+                  </label>
+                  <Select value={sortBy} onValueChange={onSortByChange}>
+                    <SelectTrigger className="w-full h-12 bg-white/80 dark:bg-slate-800/80 border-emerald-200/50 dark:border-emerald-800/50 focus:border-emerald-500 focus:ring-emerald-500/20">
+                      <SortAsc className="h-4 w-4 mr-2 text-emerald-600" />
+                      <SelectValue placeholder={getLabel("default")} />
+                    </SelectTrigger>
+                    <SelectContent className="bg-white dark:bg-slate-900">
+                      <SelectItem value="default">
+                        {getLabel("default")}
+                      </SelectItem>
+                      <SelectItem value="price-asc">
+                        {getLabel("price_asc")}
+                      </SelectItem>
+                      <SelectItem value="price-desc">
+                        {getLabel("price_desc")}
+                      </SelectItem>
+                      <SelectItem value="roi-desc">
+                        {getLabel("roi_desc")}
+                      </SelectItem>
+                      <SelectItem value="duration-asc">
+                        {getLabel("duration_asc")}
+                      </SelectItem>
+                      <SelectItem value="progress">
+                        {getLabel("progress")}
+                      </SelectItem>
+                    </SelectContent>
+                  </Select>
+                </div>
+
+                {/* Clear Filters Button */}
+                {(category !== "all" || sortBy !== "default") && (
+                  <Button
+                    variant="outline"
+                    onClick={() => {
+                      onCategoryChange("all");
+                      onSortByChange("default");
+                    }}
+                    className="w-full h-12 border-emerald-200/50 dark:border-emerald-800/50 hover:bg-emerald-50 dark:hover:bg-emerald-950/30"
+                  >
+                    <X className="h-4 w-4 mr-2" />
+                    {getLabel("clear_filters")}
+                  </Button>
+                )}
+
+                {/* Apply Filters Button */}
+                <Button
+                  onClick={onToggleFilters}
+                  className="w-full h-12 bg-gradient-to-r from-emerald-600 to-teal-600 hover:from-emerald-700 hover:to-teal-700 text-white"
+                >
+                  {getLabel("apply_filters")}
+                </Button>
+              </div>
+            </DialogContent>
+          </Dialog>
         </div>
       </div>
     </div>
