@@ -1,28 +1,38 @@
 import {
-    Card,
-    CardContent,
-    CardDescription,
-    CardFooter,
-    CardHeader,
-    CardTitle,
-  } from "@/components/ui/card"
-import { Button } from "@/components/ui/button"
-import { Badge } from "@/components/ui/badge"
+  Card,
+  CardContent,
+  CardDescription,
+  CardFooter,
+  CardHeader,
+  CardTitle,
+} from "@/components/ui/card";
+import { Button } from "@/components/ui/button";
+import { Badge } from "@/components/ui/badge";
 
-import { useState, useMemo, useEffect, useRef } from "react"
-import { useNavigate, useSearchParams } from "react-router-dom"
-import PaymentDialog from "@/components/PaymentDialog"
-import SignUpModal from "@/components/SignUpModal"
-import { useLanguage } from "@/lib/language"
-import { useAuth } from "@/lib/auth"
-import { marketProjects } from "@/lib/market-data"
-import { TrendingUp, Clock, Building2, Coins, Trees, Beef, CircleDot, Music } from 'lucide-react'
-import { MarketplaceHeader } from "@/components/MarketplaceHeader"
+import { useState, useMemo, useEffect, useRef } from "react";
+import { useNavigate, useSearchParams } from "react-router-dom";
+import PaymentDialog from "@/components/PaymentDialog";
+import SignUpModal from "@/components/SignUpModal";
+import { useLanguage } from "@/lib/language";
+import { useAuth } from "@/lib/auth";
+import { marketProjects } from "@/lib/market-data";
+import {
+  TrendingUp,
+  Clock,
+  Building2,
+  Coins,
+  Trees,
+  Beef,
+  CircleDot,
+  Music,
+} from "lucide-react";
+import { MarketplaceHeader } from "@/components/MarketplaceHeader";
 
 const labels = {
   es: {
     invest_market: "Invest Market",
-    discover_tokenized_opportunities: "Descubre oportunidades de inversión tokenizadas",
+    discover_tokenized_opportunities:
+      "Descubre oportunidades de inversión tokenizadas",
     search: "Buscar proyectos...",
     category: "Categoría",
     all: "Todos",
@@ -54,12 +64,13 @@ const labels = {
     project_2_name: "Fondo de Criptomonedas",
     project_3_name: "Campo Santa Lucía – Zona Núcleo",
     project_4_name: "Tokenización de Ganado – Vaca Alfa",
-    project_5_name: "Polo Horse Token – \"Embajador\"",
-    project_6_name: "Recital Tokenizado – \"LUNA EN VIVO 2025\"",
+    project_5_name: 'Polo Horse Token – "Embajador"',
+    project_6_name: 'Recital Tokenizado – "LUNA EN VIVO 2025"',
   },
   en: {
     invest_market: "Invest Market",
-    discover_tokenized_opportunities: "Discover tokenized investment opportunities",
+    discover_tokenized_opportunities:
+      "Discover tokenized investment opportunities",
     search: "Search projects...",
     category: "Category",
     all: "All",
@@ -91,47 +102,49 @@ const labels = {
     project_2_name: "Cryptocurrency Fund",
     project_3_name: "Santa Lucía Field – Core Zone",
     project_4_name: "Livestock Tokenization – Vaca Alfa",
-    project_5_name: "Polo Horse Token – \"Ambassador\"",
-    project_6_name: "Tokenized Concert – \"LUNA LIVE 2025\"",
-  }
+    project_5_name: 'Polo Horse Token – "Ambassador"',
+    project_6_name: 'Tokenized Concert – "LUNA LIVE 2025"',
+  },
 };
 
 // Icon mapping for categories
 const categoryIcons: Record<string, any> = {
-  'Real Estate': Building2,
-  'Crypto': Coins,
-  'Agricultura': Trees,
-  'Agriculture': Trees,
-  'Ganadería': Beef,
-  'Livestock': Beef,
-  'Deportes': CircleDot,
-  'Sports': CircleDot,
-  'Entretenimiento': Music,
-  'Entertainment': Music,
-  'Startup': Building2,
+  "Real Estate": Building2,
+  Crypto: Coins,
+  Agricultura: Trees,
+  Agriculture: Trees,
+  Ganadería: Beef,
+  Livestock: Beef,
+  Deportes: CircleDot,
+  Sports: CircleDot,
+  Entretenimiento: Music,
+  Entertainment: Music,
+  Startup: Building2,
 };
 
 const MarketPlaceApp = () => {
-    const navigate = useNavigate();
-    const { language } = useLanguage();
-    const { isAuthenticated } = useAuth();
-    const [searchParams] = useSearchParams();
-    const t = (key: keyof typeof labels.es, vars?: Record<string, any>) => {
-      let text = labels[language][key] || '';
-      if (vars) {
-        Object.keys(vars).forEach(key => {
-          text = text.replace(`{${key}}`, vars[key]);
-        });
-      }
-      return text;
-    };
+  const navigate = useNavigate();
+  const { language } = useLanguage();
+  const { isAuthenticated } = useAuth();
+  const [searchParams] = useSearchParams();
+  const t = (key: keyof typeof labels.es, vars?: Record<string, any>) => {
+    let text = labels[language][key] || "";
+    if (vars) {
+      Object.keys(vars).forEach((key) => {
+        text = text.replace(`{${key}}`, vars[key]);
+      });
+    }
+    return text;
+  };
 
-    const investmentsData = useMemo(() =>
+  const investmentsData = useMemo(
+    () =>
       marketProjects.map((project) => {
-        const projectNameKey = `project_${project.id}_name` as keyof typeof labels.es;
+        const projectNameKey =
+          `project_${project.id}_name` as keyof typeof labels.es;
         const minInvestment = project.pricePerToken || 500;
-        const totalRaised = (project.quantity * minInvestment * 0.75); // Simulated raised amount
-        const totalGoal = (project.quantity * minInvestment);
+        const totalRaised = project.quantity * minInvestment * 0.75; // Simulated raised amount
+        const totalGoal = project.quantity * minInvestment;
 
         return {
           id: parseInt(project.id),
@@ -139,9 +152,9 @@ const MarketPlaceApp = () => {
           description: t(projectNameKey),
           price: minInvestment,
           roi: project.roi || 15,
-          duration: parseInt(project.totalDuration.replace(/[^0-9]/g, '')),
+          duration: parseInt(project.totalDuration.replace(/[^0-9]/g, "")),
           available: project.quantity,
-          status: project.quantity > 0 ? t('available') : t('sold_out'),
+          status: project.quantity > 0 ? t("available") : t("sold_out"),
           category: project.category,
           image: project.image,
           currency: "USD",
@@ -153,114 +166,125 @@ const MarketPlaceApp = () => {
           progressPercentage: (totalRaised / totalGoal) * 100,
           icon: categoryIcons[project.category] || Building2,
         };
-      })
-    , [language, t]);
+      }),
+    [language, t]
+  );
 
-    const [investments, setInvestments] = useState(investmentsData);
-    const [searchTerm, setSearchTerm] = useState("");
-    const [category, setCategory] = useState(() => {
-      const categoryParam = searchParams.get('category');
-      return categoryParam || "all";
-    });
-    const [sortBy, setSortBy] = useState("default");
-    const [paymentDialogOpen, setPaymentDialogOpen] = useState(false);
-    const [signUpDialogOpen, setSignUpDialogOpen] = useState(false);
-    const [selectedInvestment, setSelectedInvestment] = useState<typeof investmentsData[0] | null>(null);
+  const [investments, setInvestments] = useState(investmentsData);
+  const [searchTerm, setSearchTerm] = useState("");
+  const [category, setCategory] = useState(() => {
+    const categoryParam = searchParams.get("category");
+    return categoryParam || "all";
+  });
+  const [sortBy, setSortBy] = useState("default");
+  const [paymentDialogOpen, setPaymentDialogOpen] = useState(false);
+  const [signUpDialogOpen, setSignUpDialogOpen] = useState(false);
+  const [selectedInvestment, setSelectedInvestment] = useState<
+    (typeof investmentsData)[0] | null
+  >(null);
 
-    // Scroll detection states
-    const [showFilters, setShowFilters] = useState(false);
-    const [isHeaderCollapsed, setIsHeaderCollapsed] = useState(false);
-    const lastScrollY = useRef(0);
+  // Scroll detection states
+  const [showFilters, setShowFilters] = useState(false);
+  const [isHeaderCollapsed, setIsHeaderCollapsed] = useState(false);
+  const lastScrollY = useRef(0);
 
-    // Apply filters from URL parameters on mount
-    useEffect(() => {
-      const categoryParam = searchParams.get('category');
-      if (categoryParam) {
-        setCategory(categoryParam);
-        filterAndSortInvestments(searchTerm, categoryParam, sortBy);
+  // Apply filters from URL parameters on mount
+  useEffect(() => {
+    const categoryParam = searchParams.get("category");
+    if (categoryParam) {
+      setCategory(categoryParam);
+      filterAndSortInvestments(searchTerm, categoryParam, sortBy);
+    }
+  }, [searchParams]);
+
+  // Smart scroll behavior - Collapse header and auto-close filters on scroll down
+  useEffect(() => {
+    const handleScroll = () => {
+      const currentScrollY = window.scrollY;
+
+      if (currentScrollY > lastScrollY.current && currentScrollY > 100) {
+        // Collapse header on scroll down
+        setIsHeaderCollapsed(true);
+        // Auto-close filters on scroll down for better UX on mobile
+        setShowFilters(false);
+      } else if (currentScrollY < lastScrollY.current) {
+        // Expand header on scroll up
+        setIsHeaderCollapsed(false);
       }
-    }, [searchParams]);
 
-    // Smart scroll behavior - Collapse header and auto-close filters on scroll down
-    useEffect(() => {
-      const handleScroll = () => {
-        const currentScrollY = window.scrollY;
-
-        if (currentScrollY > lastScrollY.current && currentScrollY > 100) {
-          // Collapse header on scroll down
-          setIsHeaderCollapsed(true);
-          // Auto-close filters on scroll down for better UX on mobile
-          setShowFilters(false);
-        } else if (currentScrollY < lastScrollY.current) {
-          // Expand header on scroll up
-          setIsHeaderCollapsed(false);
-        }
-
-        lastScrollY.current = currentScrollY;
-      };
-
-      window.addEventListener('scroll', handleScroll, { passive: true });
-      return () => window.removeEventListener('scroll', handleScroll);
-    }, []);
-
-    const handleSearch = (value: string) => {
-        setSearchTerm(value);
-        filterAndSortInvestments(value, category, sortBy);
+      lastScrollY.current = currentScrollY;
     };
 
-    const handleCategoryChange = (value: string) => {
-        setCategory(value);
-        filterAndSortInvestments(searchTerm, value, sortBy);
-    };
+    window.addEventListener("scroll", handleScroll, { passive: true });
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
 
-    const handleSortByChange = (value: string) => {
-        setSortBy(value);
-        filterAndSortInvestments(searchTerm, category, value);
-    };
+  const handleSearch = (value: string) => {
+    setSearchTerm(value);
+    filterAndSortInvestments(value, category, sortBy);
+  };
 
-    const filterAndSortInvestments = (search: string, cat: string, sort: string) => {
-        let filtered = investmentsData.filter(investment =>
-            investment.title.toLowerCase().includes(search.toLowerCase()) ||
-            investment.description.toLowerCase().includes(search.toLowerCase())
+  const handleCategoryChange = (value: string) => {
+    setCategory(value);
+    filterAndSortInvestments(searchTerm, value, sortBy);
+  };
+
+  const handleSortByChange = (value: string) => {
+    setSortBy(value);
+    filterAndSortInvestments(searchTerm, category, value);
+  };
+
+  const filterAndSortInvestments = (
+    search: string,
+    cat: string,
+    sort: string
+  ) => {
+    let filtered = investmentsData.filter(
+      (investment) =>
+        investment.title.toLowerCase().includes(search.toLowerCase()) ||
+        investment.description.toLowerCase().includes(search.toLowerCase())
+    );
+
+    if (cat !== "all") {
+      // Handle grouped category filters
+      if (cat === "tokenizacion-activos-reales") {
+        filtered = filtered.filter(
+          (investment) =>
+            investment.category === "Real Estate" ||
+            investment.category === "Agricultura" ||
+            investment.category === "Ganadería"
         );
+      } else if (cat === "tokenizacion-activos-financieros") {
+        filtered = filtered.filter(
+          (investment) =>
+            investment.category === "Crypto" ||
+            investment.category === "Startup"
+        );
+      } else if (cat === "crowfunding") {
+        filtered = filtered.filter(
+          (investment) =>
+            investment.category === "Entretenimiento" ||
+            investment.category === "Deportes"
+        );
+      } else {
+        filtered = filtered.filter((investment) => investment.category === cat);
+      }
+    }
 
-        if (cat !== "all") {
-            // Handle grouped category filters
-            if (cat === "tokenizacion-activos-reales") {
-                filtered = filtered.filter(investment =>
-                    investment.category === "Real Estate" ||
-                    investment.category === "Agricultura" ||
-                    investment.category === "Ganadería"
-                );
-            } else if (cat === "tokenizacion-activos-financieros") {
-                filtered = filtered.filter(investment =>
-                    investment.category === "Crypto" ||
-                    investment.category === "Startup"
-                );
-            } else if (cat === "crowfunding") {
-                filtered = filtered.filter(investment =>
-                    investment.category === "Entretenimiento" ||
-                    investment.category === "Deportes"
-                );
-            } else {
-                filtered = filtered.filter(investment => investment.category === cat);
-            }
-        }
+    if (sort === "price-asc") {
+      filtered.sort((a, b) => a.price - b.price);
+    } else if (sort === "price-desc") {
+      filtered.sort((a, b) => b.price - a.price);
+    } else if (sort === "roi-desc") {
+      filtered.sort((a, b) => b.roi - a.roi);
+    } else if (sort === "duration-asc") {
+      filtered.sort((a, b) => a.duration - b.duration);
+    } else if (sort === "progress") {
+      filtered.sort((a, b) => b.progressPercentage - a.progressPercentage);
+    }
 
-        if (sort === "price-asc") {
-            filtered.sort((a, b) => a.price - b.price);
-        } else if (sort === "price-desc") {
-            filtered.sort((a, b) => b.price - a.price);
-        } else if (sort === "roi-desc") {
-            filtered.sort((a, b) => b.roi - a.roi);
-        } else if (sort === "duration-asc") {
-            filtered.sort((a, b) => a.duration - b.duration);
-        } else if (sort === "progress") {
-            filtered.sort((a, b) => b.progressPercentage - a.progressPercentage);
-        }
-
-        setInvestments(filtered);
-    };
+    setInvestments(filtered);
+  };
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-slate-50 via-white to-slate-50 dark:from-slate-950 dark:via-slate-900 dark:to-slate-950">
@@ -280,6 +304,13 @@ const MarketPlaceApp = () => {
 
       {/* Projects Grid */}
       <div className="container mx-auto px-4 py-8">
+        {/* Project Count Label */}
+        <div className="mb-6">
+          <span className="inline-flex items-center px-3 py-1.5 rounded-md text-sm font-medium bg-emerald-50 dark:bg-emerald-950/30 text-emerald-700 dark:text-emerald-400 border border-emerald-200/50 dark:border-emerald-800/50">
+            {investments.length} {language === "es" ? "Proyectos" : "Projects"}
+          </span>
+        </div>
+
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
           {investments.map((investment) => {
             const Icon = investment.icon;
@@ -311,7 +342,10 @@ const MarketPlaceApp = () => {
                       <div className="bg-white/90 dark:bg-slate-900/90 backdrop-blur-sm rounded-full p-2">
                         <Icon className="h-5 w-5 text-emerald-600" />
                       </div>
-                      <Badge variant="secondary" className="bg-white/90 dark:bg-slate-900/90 backdrop-blur-sm">
+                      <Badge
+                        variant="secondary"
+                        className="bg-white/90 text-black dark:bg-slate-900/90 backdrop-blur-sm"
+                      >
                         {investment.category}
                       </Badge>
                     </div>
@@ -337,7 +371,7 @@ const MarketPlaceApp = () => {
                       </span>
                     </div>
                     <p className="text-sm text-muted-foreground">
-                      {t('expected_return')}
+                      {t("expected_return")}
                     </p>
                   </div>
 
@@ -346,21 +380,33 @@ const MarketPlaceApp = () => {
                     <div className="flex items-center gap-2">
                       <Clock className="h-4 w-4 text-muted-foreground" />
                       <div>
-                        <p className="font-semibold">{investment.duration} meses</p>
-                        <p className="text-xs text-muted-foreground">{t('duration_label')}</p>
+                        <p className="font-semibold">
+                          {investment.duration} meses
+                        </p>
+                        <p className="text-xs text-muted-foreground">
+                          {t("duration_label")}
+                        </p>
                       </div>
                     </div>
                     <div>
-                      <p className="font-semibold">{investment.minInvestment}</p>
-                      <p className="text-xs text-muted-foreground">{t('min_investment')}</p>
+                      <p className="font-semibold">
+                        {investment.minInvestment}
+                      </p>
+                      <p className="text-xs text-muted-foreground">
+                        {t("min_investment")}
+                      </p>
                     </div>
                   </div>
 
                   {/* Progress Bar */}
                   <div>
                     <div className="flex justify-between text-sm mb-2">
-                      <span className="text-muted-foreground">{t('progress_label')}</span>
-                      <span className="font-semibold">{investment.progressPercentage.toFixed(0)}%</span>
+                      <span className="text-muted-foreground">
+                        {t("progress_label")}
+                      </span>
+                      <span className="font-semibold">
+                        {investment.progressPercentage.toFixed(0)}%
+                      </span>
                     </div>
                     <div className="h-2 bg-slate-200 dark:bg-slate-800 rounded-full overflow-hidden">
                       <div
@@ -369,25 +415,29 @@ const MarketPlaceApp = () => {
                       />
                     </div>
                     <div className="flex justify-between text-xs text-muted-foreground mt-1">
-                      <span>${(investment.totalRaised / 1000).toFixed(0)}K</span>
+                      <span>
+                        ${(investment.totalRaised / 1000).toFixed(0)}K
+                      </span>
                       <span>${(investment.totalGoal / 1000).toFixed(0)}K</span>
                     </div>
                   </div>
                 </CardContent>
 
                 <CardFooter className="gap-2">
-                  {investment.status === t('sold_out') ? (
+                  {investment.status === t("sold_out") ? (
                     <Button className="w-full" disabled>
-                      {t('sold_out')}
+                      {t("sold_out")}
                     </Button>
                   ) : (
                     <>
                       <Button
                         variant="outline"
                         className="flex-1"
-                        onClick={() => navigate(`/invest/project${investment.id}`)}
+                        onClick={() =>
+                          navigate(`/invest/project${investment.id}`)
+                        }
                       >
-                        {t('more_info')}
+                        {t("more_info")}
                       </Button>
                       <Button
                         className="flex-1 bg-gradient-to-r from-emerald-600 to-teal-600 hover:from-emerald-700 hover:to-teal-700"
@@ -401,7 +451,7 @@ const MarketPlaceApp = () => {
                           }
                         }}
                       >
-                        {t('invest')}
+                        {t("invest")}
                       </Button>
                     </>
                   )}
@@ -414,9 +464,9 @@ const MarketPlaceApp = () => {
         {investments.length === 0 && (
           <div className="text-center py-12">
             <p className="text-muted-foreground text-lg">
-              {language === 'es'
-                ? 'No se encontraron proyectos con los filtros seleccionados'
-                : 'No projects found with the selected filters'}
+              {language === "es"
+                ? "No se encontraron proyectos con los filtros seleccionados"
+                : "No projects found with the selected filters"}
             </p>
           </div>
         )}
@@ -442,7 +492,7 @@ const MarketPlaceApp = () => {
         </>
       )}
     </div>
-  )
-}
+  );
+};
 
-export default MarketPlaceApp
+export default MarketPlaceApp;
