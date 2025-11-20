@@ -65,5 +65,230 @@
     "capitalTokenizado": "USD 4,1 M",
     "tir": "16,9%",
     "payback": "28 meses"
+  },
+  "tokenizationModel": {
+    "totalTokens": 41000,
+    "tokenValue": 100,
+    "tokenRepresents": {
+      "es": "Cada token representa una cuota del fideicomiso financiero equivalente al 0,00244% del valor total del proyecto",
+      "en": "Each token represents a trust unit equivalent to 0.00244% of the total project value"
+    },
+    "legalFramework": {
+      "regulatoryBody": "CNV (Comisión Nacional de Valores)",
+      "resolutions": ["CNV 1069/25", "CNV 1081/25"],
+      "sandbox": {
+        "enabled": true,
+        "duration": "12 meses",
+        "description": {
+          "es": "Proyecto bajo sandbox regulatorio CNV, garantizando cumplimiento legal, financiero y tecnológico bajo supervisión durante 12 meses",
+          "en": "Project under CNV regulatory sandbox, ensuring legal, financial and technological compliance under supervision for 12 months"
+        }
+      },
+      "blockchain": {
+        "authorized": true,
+        "network": "Red blockchain autorizada por CNV",
+        "standard": "ERC-20"
+      }
+    },
+    "trustStructure": {
+      "roles": [
+        {
+          "role": "Fiduciante",
+          "entity": "Grupo Horizon Developments",
+          "function": {
+            "es": "Transfiere el proyecto inmobiliario al fideicomiso como activo subyacente",
+            "en": "Transfers the real estate project to the trust as the underlying asset"
+          }
+        },
+        {
+          "role": "Fiduciario",
+          "entity": "Compañía Fiduciaria Americana S.A.",
+          "function": {
+            "es": "Administra el fideicomiso, gestiona el activo, distribuye rentas y representa legalmente el vehículo",
+            "en": "Administers the trust, manages the asset, distributes income and legally represents the vehicle"
+          },
+          "responsibilities": [
+            {
+              "es": "Gestión de ingresos (ventas de unidades, rendimientos)",
+              "en": "Income management (unit sales, returns)"
+            },
+            {
+              "es": "Distribución automática a tenedores de tokens mediante smart contracts",
+              "en": "Automatic distribution to token holders via smart contracts"
+            },
+            {
+              "es": "Rendición de cuentas periódica ante CNV y beneficiarios",
+              "en": "Periodic reporting to CNV and beneficiaries"
+            },
+            {
+              "es": "Representación legal del fideicomiso",
+              "en": "Legal representation of the trust"
+            }
+          ]
+        },
+        {
+          "role": "SPAV (Sociedad Proveedora de Activos Virtuales)",
+          "entity": "Investoken",
+          "function": {
+            "es": "Emite los tokens del fideicomiso y los custodia digitalmente en blockchain. Registra titulares y permite transferencias seguras",
+            "en": "Issues trust tokens and digitally custodies them on blockchain. Records holders and enables secure transfers"
+          },
+          "responsibilities": [
+            {
+              "es": "Emisión de 41,000 tokens en blockchain autorizada por CNV",
+              "en": "Issuance of 41,000 tokens on CNV-authorized blockchain"
+            },
+            {
+              "es": "Registro de titularidad en blockchain",
+              "en": "Ownership registration on blockchain"
+            },
+            {
+              "es": "Gestión de smart contracts vinculados al fideicomiso",
+              "en": "Management of smart contracts linked to the trust"
+            },
+            {
+              "es": "Trazabilidad y transparencia total del flujo de fondos",
+              "en": "Full traceability and transparency of fund flows"
+            }
+          ]
+        },
+        {
+          "role": "Beneficiarios/Inversores",
+          "entity": "Tenedores de tokens",
+          "function": {
+            "es": "Reciben beneficios económicos proporcionales al número de tokens que poseen",
+            "en": "Receive economic benefits proportional to the number of tokens they hold"
+          },
+          "rights": [
+            {
+              "es": "Cobrar distribuciones proporcionales por hitos de obra y venta de unidades",
+              "en": "Collect proportional distributions per construction milestones and unit sales"
+            },
+            {
+              "es": "Vender o transferir tokens en plataforma autorizada",
+              "en": "Sell or transfer tokens on authorized platform"
+            },
+            {
+              "es": "Recibir reportes automáticos de gestión y rendimientos",
+              "en": "Receive automatic management and performance reports"
+            },
+            {
+              "es": "Participar en decisiones según contrato de fideicomiso",
+              "en": "Participate in decisions according to trust agreement"
+            }
+          ]
+        }
+      ]
+    },
+    "tokenAttributes": {
+      "uniqueIdentifier": true,
+      "blockchainTraceable": true,
+      "smartContractLinked": true,
+      "transferable": true,
+      "fractional": true,
+      "description": {
+        "es": "Cada token tiene identificador único, registro de titularidad en blockchain y vinculación al smart contract del fideicomiso que define derechos económicos y operativos",
+        "en": "Each token has a unique identifier, blockchain ownership record and link to the trust's smart contract that defines economic and operational rights"
+      }
+    },
+    "operationalFlow": {
+      "steps": [
+        {
+          "step": 1,
+          "description": {
+            "es": "Grupo Horizon Developments (Fiduciante) transfiere el proyecto al Fideicomiso",
+            "en": "Grupo Horizon Developments (Settlor) transfers the project to the Trust"
+          }
+        },
+        {
+          "step": 2,
+          "description": {
+            "es": "Investoken (SPAV) emite 41,000 tokens representando cuotas del fideicomiso",
+            "en": "Investoken (SPAV) issues 41,000 tokens representing trust units"
+          }
+        },
+        {
+          "step": 3,
+          "description": {
+            "es": "Inversores compran tokens (mínimo USD 200 = 2 tokens) y se convierten en beneficiarios",
+            "en": "Investors buy tokens (minimum USD 200 = 2 tokens) and become beneficiaries"
+          }
+        },
+        {
+          "step": 4,
+          "description": {
+            "es": "Fiduciario administra ingresos y los distribuye automáticamente mediante smart contracts",
+            "en": "Fiduciary manages income and distributes automatically via smart contracts"
+          }
+        },
+        {
+          "step": 5,
+          "description": {
+            "es": "Inversores reciben distribuciones proporcionales por hitos de obra y venta de unidades",
+            "en": "Investors receive proportional distributions per milestones and unit sales"
+          }
+        }
+      ]
+    },
+    "investorMarket": {
+      "tradeable": true,
+      "platform": "Investoken Platform",
+      "kycRequired": true,
+      "amlCompliance": true,
+      "automaticReporting": true,
+      "description": {
+        "es": "Los tokens pueden negociarse en la plataforma autorizada. Todos los inversores deben estar verificados (KYC/AML)",
+        "en": "Tokens can be traded on the authorized platform. All investors must be verified (KYC/AML)"
+      }
+    },
+    "compliance": {
+      "kycAml": {
+        "required": true,
+        "description": {
+          "es": "Verificación obligatoria de identidad para todos los inversores",
+          "en": "Mandatory identity verification for all investors"
+        }
+      },
+      "smartContracts": {
+        "compliant": true,
+        "framework": {
+          "es": "Ajustados al Código Civil y Comercial argentino y Ley de Fideicomisos Financieros",
+          "en": "Compliant with Argentine Civil and Commercial Code and Financial Trust Law"
+        }
+      },
+      "reporting": {
+        "periodic": true,
+        "recipients": ["CNV", "Beneficiarios"],
+        "automated": true
+      },
+      "taxation": {
+        "trustLevel": {
+          "es": "El fideicomiso tributa según su tipo y estructura",
+          "en": "Trust pays taxes according to its type and structure"
+        },
+        "investorLevel": {
+          "es": "Inversores declaran rendimientos según normativa fiscal vigente",
+          "en": "Investors declare returns according to current tax regulations"
+        }
+      }
+    },
+    "benefits": {
+      "legal": {
+        "es": "Seguridad jurídica mediante estructura de fideicomiso financiero regulado",
+        "en": "Legal security through regulated financial trust structure"
+      },
+      "technological": {
+        "es": "Trazabilidad y liquidez mediante emisión y custodia de tokens en blockchain",
+        "en": "Traceability and liquidity through token issuance and custody on blockchain"
+      },
+      "democratization": {
+        "es": "Acceso fraccionado a inversión inmobiliaria premium desde USD 200",
+        "en": "Fractional access to premium real estate investment from USD 200"
+      },
+      "transparency": {
+        "es": "Transparencia total con validación CNV y reportes automáticos",
+        "en": "Full transparency with CNV validation and automatic reporting"
+      }
+    }
   }
 }

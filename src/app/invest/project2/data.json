@@ -39,5 +39,194 @@
       { "name": { "es": "Memorándum de Oferta Privada", "en": "Private Placement Memorandum" }, "url": "#" },
       { "name": { "es": "Acuerdo de Suscripción", "en": "Subscription Agreement" }, "url": "#" }
     ]
+  },
+  "tokenizationModel": {
+    "totalTokens": 20000,
+    "tokenValue": 50,
+    "tokenRepresents": {
+      "es": "Cada token representa una cuota del fondo equivalente al 0,005% del capital total bajo gestión",
+      "en": "Each token represents a fund unit equivalent to 0.005% of total capital under management"
+    },
+    "legalFramework": {
+      "regulatoryBody": "Cayman Islands Monetary Authority (CIMA)",
+      "resolutions": ["Mutual Funds Act", "Securities Investment Business Act"],
+      "sandbox": {
+        "enabled": false,
+        "duration": "N/A",
+        "description": {
+          "es": "Fondo registrado bajo legislación de Islas Caimán con estructura de auto-custodia on-chain",
+          "en": "Fund registered under Cayman Islands legislation with on-chain self-custody structure"
+        }
+      },
+      "blockchain": {
+        "authorized": true,
+        "network": "Ethereum Mainnet",
+        "standard": "ERC-20"
+      }
+    },
+    "trustStructure": {
+      "roles": [
+        {
+          "role": "Fund Manager",
+          "entity": "Investoken Asset Management",
+          "function": {
+            "es": "Gestiona el portfolio de criptomonedas y ejecuta estrategias de trading",
+            "en": "Manages cryptocurrency portfolio and executes trading strategies"
+          }
+        },
+        {
+          "role": "Administrator",
+          "entity": "Cayman Fund Services Ltd.",
+          "function": {
+            "es": "Administra el fondo, NAV calculations y reportes regulatorios",
+            "en": "Administers fund, NAV calculations and regulatory reports"
+          }
+        },
+        {
+          "role": "Custodian",
+          "entity": "Auto-custodia en blockchain",
+          "function": {
+            "es": "Custodia digital mediante smart contracts y multi-signature wallets",
+            "en": "Digital custody via smart contracts and multi-signature wallets"
+          }
+        },
+        {
+          "role": "Investors",
+          "entity": "Token holders",
+          "function": {
+            "es": "Reciben rendimientos proporcionales según performance del fondo",
+            "en": "Receive proportional returns based on fund performance"
+          },
+          "rights": [
+            {
+              "es": "Participación en ganancias/pérdidas del portfolio cripto",
+              "en": "Participation in crypto portfolio gains/losses"
+            },
+            {
+              "es": "Redenciones trimestrales según NAV actualizado",
+              "en": "Quarterly redemptions based on updated NAV"
+            },
+            {
+              "es": "Reportes mensuales de performance y holdings",
+              "en": "Monthly performance and holdings reports"
+            },
+            {
+              "es": "Transferencia de tokens en plataforma autorizada",
+              "en": "Token transfer on authorized platform"
+            }
+          ]
+        }
+      ]
+    },
+    "tokenAttributes": {
+      "uniqueIdentifier": true,
+      "blockchainTraceable": true,
+      "smartContractLinked": true,
+      "transferable": true,
+      "fractional": true,
+      "description": {
+        "es": "Tokens ERC-20 con trazabilidad on-chain, vinculados a NAV del fondo actualizado mensualmente",
+        "en": "ERC-20 tokens with on-chain traceability, linked to monthly updated fund NAV"
+      }
+    },
+    "operationalFlow": {
+      "steps": [
+        {
+          "step": 1,
+          "description": {
+            "es": "Inversores compran tokens (mínimo USD 50) y aportan capital al fondo",
+            "en": "Investors buy tokens (minimum USD 50) and contribute capital to the fund"
+          }
+        },
+        {
+          "step": 2,
+          "description": {
+            "es": "Fund Manager ejecuta estrategia de inversión en Bitcoin, Ethereum y altcoins principales",
+            "en": "Fund Manager executes investment strategy in Bitcoin, Ethereum and major altcoins"
+          }
+        },
+        {
+          "step": 3,
+          "description": {
+            "es": "Performance se refleja en NAV (Net Asset Value) calculado mensualmente",
+            "en": "Performance reflected in NAV (Net Asset Value) calculated monthly"
+          }
+        },
+        {
+          "step": 4,
+          "description": {
+            "es": "Inversores pueden redimir tokens trimestralmente según NAV vigente",
+            "en": "Investors can redeem tokens quarterly based on current NAV"
+          }
+        },
+        {
+          "step": 5,
+          "description": {
+            "es": "Reportes automáticos de holdings, performance y métricas via dashboard",
+            "en": "Automatic reports of holdings, performance and metrics via dashboard"
+          }
+        }
+      ]
+    },
+    "investorMarket": {
+      "tradeable": true,
+      "platform": "Investoken Platform + DEX integration",
+      "kycRequired": true,
+      "amlCompliance": true,
+      "automaticReporting": true,
+      "description": {
+        "es": "Tokens negociables en plataforma Investoken y DEX autorizados. KYC/AML obligatorio para todos los participantes",
+        "en": "Tokens tradeable on Investoken platform and authorized DEXs. Mandatory KYC/AML for all participants"
+      }
+    },
+    "compliance": {
+      "kycAml": {
+        "required": true,
+        "description": {
+          "es": "Verificación completa de identidad según estándares CIMA",
+          "en": "Full identity verification per CIMA standards"
+        }
+      },
+      "smartContracts": {
+        "compliant": true,
+        "framework": {
+          "es": "Auditoría de smart contracts por CertiK, ajustados a Mutual Funds Act",
+          "en": "Smart contract audit by CertiK, compliant with Mutual Funds Act"
+        }
+      },
+      "reporting": {
+        "periodic": true,
+        "recipients": ["CIMA", "Investors", "Administrator"],
+        "automated": true
+      },
+      "taxation": {
+        "fundLevel": {
+          "es": "El fondo opera bajo régimen tax-neutral de Islas Caimán",
+          "en": "Fund operates under Cayman Islands tax-neutral regime"
+        },
+        "investorLevel": {
+          "es": "Inversores declaran ganancias según jurisdicción de residencia",
+          "en": "Investors declare gains according to residence jurisdiction"
+        }
+      }
+    },
+    "benefits": {
+      "legal": {
+        "es": "Estructura offshore reconocida internacionalmente con protección de activos",
+        "en": "Internationally recognized offshore structure with asset protection"
+      },
+      "technological": {
+        "es": "Custodia on-chain con transparencia total y sin intermediarios tradicionales",
+        "en": "On-chain custody with full transparency and no traditional intermediaries"
+      },
+      "democratization": {
+        "es": "Acceso a gestión profesional cripto desde USD 50",
+        "en": "Access to professional crypto management from USD 50"
+      },
+      "transparency": {
+        "es": "NAV actualizado mensualmente, holdings visibles, reportes automatizados",
+        "en": "Monthly updated NAV, visible holdings, automated reports"
+      }
+    }
   }
 }
