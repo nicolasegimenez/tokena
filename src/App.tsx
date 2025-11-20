@@ -1,34 +1,36 @@
-import { Suspense, lazy } from 'react'
-import './App.css'
-import { Routes, Route } from "react-router-dom"
-import { ThemeProvider } from "@/components/theme-provider"
-import { Layout } from "@/components/Layout"
-import { Skeleton } from "@/components/ui/skeleton"
-import { AuthProvider } from "@/lib/auth"
-import { LanguageProvider } from "@/lib/language"
+import { Suspense, lazy } from "react";
+import "./App.css";
+import { Routes, Route } from "react-router-dom";
+import { ThemeProvider } from "@/components/theme-provider";
+import { Layout } from "@/components/Layout";
+import { Skeleton } from "@/components/ui/skeleton";
+import { AuthProvider } from "@/lib/auth";
+import { LanguageProvider } from "@/lib/language";
 
-const MarketPlaceApp = lazy(() => import("@/components/MarketPlaceApp"))
-const Profile = lazy(() => import("@/components/Profile"))
-const TokenManagement = lazy(() => import("@/components/TokenManagement"))
-const DashboardPage = lazy(() => import("@/app/dashboard/page"))
-const AnalyticsPage = lazy(() => import("@/app/analytics/page"))
-const ReportsPage = lazy(() => import("@/app/reports/page"))
-const PortfolioPage = lazy(() => import("@/app/portfolio/page"))
-const InvestProject1Page = lazy(() => import("@/app/invest/project1/page"))
-const InvestProject2Page = lazy(() => import("@/app/invest/project2/page"))
-const InvestProject3Page = lazy(() => import("@/app/invest/project3/page"))
-const InvestProject4Page = lazy(() => import("@/app/invest/project4/page"))
-const InvestProject5Page = lazy(() => import("@/app/invest/project5/page"))
-const InvestProject6Page = lazy(() => import("@/app/invest/project6/page"))
-const CreateProjectPage = lazy(() => import("@/app/create/page"))
-const TradePage = lazy(() => import("@/app/trade/page"))
-const PhilanthropyPage = lazy(() => import("@/app/filantropy/page"))
-const AuctionsPage = lazy(() => import("@/app/auctions/page"))
-const LoginForm = lazy(() => import("@/components/login-form").then(m => ({ default: m.LoginForm })))
-const RegisterPage = lazy(() => import("@/app/registrarse/page"))
-const LandingPage = lazy(() => import("@/app/landing/page"))
-const HomePage = lazy(() => import("@/components/HomePage"))
-const InvestmentsPage = lazy(() => import("@/app/investments/page"))
+const MarketPlaceApp = lazy(() => import("@/components/MarketPlaceApp"));
+const Profile = lazy(() => import("@/components/Profile"));
+const TokenManagement = lazy(() => import("@/components/TokenManagement"));
+const DashboardPage = lazy(() => import("@/app/dashboard/page"));
+const AnalyticsPage = lazy(() => import("@/app/analytics/page"));
+const ReportsPage = lazy(() => import("@/app/reports/page"));
+const PortfolioPage = lazy(() => import("@/app/portfolio/page"));
+const InvestProject1Page = lazy(() => import("@/app/invest/project1/page"));
+const InvestProject2Page = lazy(() => import("@/app/invest/project2/page"));
+const InvestProject3Page = lazy(() => import("@/app/invest/project3/page"));
+const InvestProject4Page = lazy(() => import("@/app/invest/project4/page"));
+const InvestProject5Page = lazy(() => import("@/app/invest/project5/page"));
+const InvestProject6Page = lazy(() => import("@/app/invest/project6/page"));
+const CreateProjectPage = lazy(() => import("@/app/create/page"));
+const TradePage = lazy(() => import("@/app/trade/page"));
+const PhilanthropyPage = lazy(() => import("@/app/filantropy/page"));
+const AuctionsPage = lazy(() => import("@/app/auctions/page"));
+const LoginForm = lazy(() =>
+  import("@/components/login-form").then((m) => ({ default: m.LoginForm }))
+);
+const RegisterPage = lazy(() => import("@/app/registrarse/page"));
+const LandingPage = lazy(() => import("@/app/landing/page"));
+const HomePage = lazy(() => import("@/components/HomePage"));
+const InvestmentsPage = lazy(() => import("@/app/investments/page"));
 
 function NotFound() {
   return (
@@ -36,7 +38,7 @@ function NotFound() {
       <h1 className="text-4xl font-bold">404</h1>
       <p className="text-xl">Page Not Found</p>
     </div>
-  )
+  );
 }
 
 function App() {
@@ -44,39 +46,63 @@ function App() {
     <AuthProvider>
       <LanguageProvider>
         <ThemeProvider defaultTheme="dark" storageKey="vite-ui-theme">
-        <Suspense fallback={<div className="w-full h-screen flex items-center justify-center"><Skeleton className="w-1/2 h-1/2" /></div>}>
-          <Routes>
-          <Route path="/" element={<Layout />}>
-            <Route index element={<HomePage />} />
-            <Route path="/profile" element={<Profile />} />
-            <Route path="/login" element={<LoginForm />} />
-            <Route path="/registrarse" element={<RegisterPage />} />
-            <Route path="/landing" element={<LandingPage />} />
-            <Route path="/market" element={<MarketPlaceApp />} />
-            <Route path="/token" element={<TokenManagement />} />
-            <Route path="/analytics" element={<AnalyticsPage />} />
-            <Route path="/reports" element={<ReportsPage />} />
-            <Route path="/portfolio" element={<PortfolioPage />} />
-            <Route path="/invest/project1" element={<InvestProject1Page />} />
-            <Route path="/invest/project2" element={<InvestProject2Page />} />
-            <Route path="/invest/project3" element={<InvestProject3Page />} />
-            <Route path="/invest/project4" element={<InvestProject4Page />} />
-            <Route path="/invest/project5" element={<InvestProject5Page />} />
-            <Route path="/invest/project6" element={<InvestProject6Page />} />
-            <Route path="/create" element={<CreateProjectPage />} />
-            <Route path="/trade" element={<TradePage />} />
-            <Route path="/filantropy" element={<PhilanthropyPage />} />
-            <Route path="/auctions" element={<AuctionsPage />} />
-            <Route path="/investments" element={<InvestmentsPage />} />
-            <Route path="*" element={<NotFound />} />
-          </Route>
-          <Route path="/dashboard" element={<DashboardPage />} />
-          </Routes>
-        </Suspense>
+          <Suspense
+            fallback={
+              <div className="w-full h-screen flex items-center justify-center">
+                <Skeleton className="w-1/2 h-1/2" />
+              </div>
+            }
+          >
+            <Routes>
+              <Route path="/" element={<Layout />}>
+                <Route index element={<HomePage />} />
+                <Route path="/profile" element={<Profile />} />
+                <Route path="/login" element={<LoginForm />} />
+                <Route path="/registrarse" element={<RegisterPage />} />
+                <Route path="/landing" element={<LandingPage />} />
+                <Route path="/market" element={<MarketPlaceApp />} />
+                <Route path="/token" element={<TokenManagement />} />
+                <Route path="/analytics" element={<AnalyticsPage />} />
+                <Route path="/reports" element={<ReportsPage />} />
+                <Route path="/portfolio" element={<PortfolioPage />} />
+                <Route
+                  path="/invest/project1"
+                  element={<InvestProject1Page />}
+                />
+                <Route
+                  path="/invest/project2"
+                  element={<InvestProject2Page />}
+                />
+                <Route
+                  path="/invest/project3"
+                  element={<InvestProject3Page />}
+                />
+                <Route
+                  path="/invest/project4"
+                  element={<InvestProject4Page />}
+                />
+                <Route
+                  path="/invest/project5"
+                  element={<InvestProject5Page />}
+                />
+                <Route
+                  path="/invest/project6"
+                  element={<InvestProject6Page />}
+                />
+                <Route path="/create" element={<CreateProjectPage />} />
+                <Route path="/trade" element={<TradePage />} />
+                <Route path="/filantropy" element={<PhilanthropyPage />} />
+                <Route path="/auctions" element={<AuctionsPage />} />
+                <Route path="/investments" element={<InvestmentsPage />} />
+                <Route path="*" element={<NotFound />} />
+              </Route>
+              <Route path="/dashboard" element={<DashboardPage />} />
+            </Routes>
+          </Suspense>
         </ThemeProvider>
       </LanguageProvider>
     </AuthProvider>
-  )
+  );
 }
 
-export default App
+export default App;
