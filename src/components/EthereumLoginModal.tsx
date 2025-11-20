@@ -13,27 +13,6 @@ interface EthereumLoginModalProps {
   onOpenChange: (open: boolean) => void;
 }
 
-const walletOptions = [
-  {
-    id: "metamask",
-    name: "MetaMask",
-    description: "Connect using MetaMask browser extension",
-    logo: "/images/metamask-logo.png",
-  },
-  {
-    id: "walletconnect",
-    name: "WalletConnect",
-    description: "Scan with mobile wallet",
-    logo: "/images/Walletconnect-logo.png",
-  },
-  {
-    id: "coinbase",
-    name: "Coinbase Wallet",
-    description: "Connect to your Coinbase Wallet",
-    logo: "/images/coinbase-logo.png",
-  },
-];
-
 const EthereumLoginModal = ({
   open,
   onOpenChange,

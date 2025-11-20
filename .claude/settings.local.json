@@ -23,7 +23,8 @@
       "Bash(bun remove:*)",
       "Bash(Remove-Item -Path \"D:\\Proyecto\\tokena\\src\\lib\\firebase.ts\" -Force)",
       "Bash(Remove-Item -Path \"D:\\Proyecto\\tokena\\src\\lib\\firebase-auth.ts\" -Force)",
-      "Bash(Remove-Item -Path \"D:\\Proyecto\\tokena\\firebase.json\" -Force)"
+      "Bash(Remove-Item -Path \"D:\\Proyecto\\tokena\\firebase.json\" -Force)",
+      "Bash($env:NODE_OPTIONS=\"--max-old-space-size=4096\")"
     ],
     "deny": [],
     "ask": []
