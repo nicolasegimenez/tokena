@@ -10,13 +10,15 @@ import { SquareCarousel } from '@/components/ui/square-carousel';
 import Slideshow from '@/components/ui/slideshow';
 import { useProjects } from '@/lib/hooks/useProjects';
 import { useState, useEffect, useRef } from 'react';
+import EthereumLoginModal from '@/components/EthereumLoginModal';
 
 const LandingPage = () => {
-  const { login } = useAuth();
+  const { isAuthenticated } = useAuth();
   const navigate = useNavigate();
   const { t } = useLanguage();
   const { projects } = useProjects();
   const [showHeader, setShowHeader] = useState(true);
+  const [isLoginModalOpen, setIsLoginModalOpen] = useState(false);
   const lastScrollY = useRef(0);
 
   useEffect(() => {
@@ -37,8 +39,11 @@ const LandingPage = () => {
   }, []);
 
   const handleDemoLogin = () => {
-    login();
-    navigate('/');
+    if (isAuthenticated) {
+      navigate('/');
+    } else {
+      setIsLoginModalOpen(true);
+    }
   };
 
   return (
@@ -331,6 +336,18 @@ const LandingPage = () => {
           </Card>
         </div>
       </section>
+
+      {/* Ethereum Login Modal */}
+      <EthereumLoginModal
+        open={isLoginModalOpen}
+        onOpenChange={(open) => {
+          setIsLoginModalOpen(open);
+          // If modal closes and user is authenticated, navigate to home
+          if (!open && isAuthenticated) {
+            navigate('/');
+          }
+        }}
+      />
     </main>
   );
 };
